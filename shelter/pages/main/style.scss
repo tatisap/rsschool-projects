@@ -1,5 +1,32 @@
 @use '../../node_modules/normalize.css/normalize.css';
 
+//fonts
+@font-face {
+    font-family: 'Arial';
+    src: url('../../assets/fonts/Arial.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arial';
+    src: url('../../assets/fonts/Arial\ Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Georgia';
+    src: url('../../assets/fonts/Georgia.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Georgia';
+    src: url('../../assets/fonts/Georgia\ Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+//colors
 $color-light-xl: #ffffff;
 $color-light-l: #f6f6f6;
 $color-light-s: #fafafa;
@@ -11,3 +38,15 @@ $color-dark-2xl: #444444;
 $color-dark-3xl: #292929;
 $color-primary: #f1cdb3;
 $color-primary-light: #fddcc4;
+
+$georgia-n-44: normal 400 44px 'Georgia', serif;
+$georgia-n-35: normal 400 35px 'Georgia', serif;
+$georgia-n-32: normal 400 32px 'Georgia', serif;
+$georgia-n-25: normal 400 25px 'Georgia', serif;
+$georgia-n-20: normal 400 20px 'Georgia', serif;
+$georgia-n-15: normal 400 15px 'Georgia', serif;
+$georgia-b-15: normal 700 15px 'Georgia', serif;
+$arial-n-32: normal 400 32px 'Arial', sans-serif;
+$arial-n-15: normal 400 15px 'Arial', sans-serif;
+$arial-n-13: normal 400 13px 'Arial', sans-serif;
+$arial-i-12: italic 400 12px 'Arial', sans-serif;
