@@ -361,13 +361,14 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.help .container .help-list, .pets-slider .slider-cards {
+.help .container .help-list {
   display: flex;
   justify-content: space-between;
 }
 
-.button-secondary:hover, .pets-slider .slider-cards .slider-card:hover, .pets-slider .button-arrow-left:hover,
-.pets-slider .button-arrow-right:hover, .button-primary:hover, .button-primary, .nav .nav-list .nav-item .nav-link:hover {
+.button-secondary:hover, .button-secondary, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .pets-slider .button-arrow-left:hover,
+.pets-slider .button-arrow-right:hover, .pets-slider .button-arrow-left,
+.pets-slider .button-arrow-right, .button-primary:hover, .button-primary, .nav .nav-list .nav-item .nav-link:hover {
   cursor: pointer;
   transition: 0.3s;
 }
@@ -499,16 +500,18 @@ header .container {
 
 .about .container {
   padding-top: 94px;
-  padding-left: 49.5833333333%;
   padding-bottom: 114px;
   background-image: url("../../assets/images/about-pets.png");
   background-repeat: no-repeat;
   background-position: top 80px left 21.9387755102%;
 }
-.about .container .section-heading {
+.about .container .shelter-description-wrapper {
+  padding-left: 49.5833333333%;
+}
+.about .container .shelter-description-wrapper .section-heading {
   width: 370px;
 }
-.about .container .shelter-description {
+.about .container .shelter-description-wrapper .shelter-description {
   padding-top: 25px;
   width: 71.0743801653%;
   margin: 0;
@@ -517,20 +520,26 @@ header .container {
   line-height: 160%;
 }
 
+.pets {
+  background-color: #f6f6f6;
+}
 .pets .container {
   display: flex;
   flex-direction: column;
   gap: 60px;
-  padding-top: 80px;
-  background-color: #f6f6f6;
+  padding-top: 79px;
+  padding-bottom: 100px;
 }
 .pets .container .section-heading {
   margin: 0 auto;
   width: 400px;
   text-align: center;
 }
-.pets .container .button-primary {
-  margin: 0 auto 100px;
+.pets .container form {
+  display: flex;
+  justify-content: center;
+}
+.pets .container form .button-primary {
   width: 261px;
 }
 
@@ -553,12 +562,17 @@ header .container {
 .pets-slider .button-arrow-left:hover,
 .pets-slider .button-arrow-right:hover {
   background-color: #fddcc4;
+  border-color: #fddcc4;
 }
 .pets-slider .button-arrow-left {
   background-image: url("../../assets/icons/arrow-left.svg");
 }
 .pets-slider .button-arrow-right {
   background-image: url("../../assets/icons/arrow-right.svg");
+}
+.pets-slider .slider-cards {
+  display: flex;
+  justify-content: space-between;
 }
 .pets-slider .slider-cards .slider-card {
   display: flex;
@@ -571,6 +585,10 @@ header .container {
 }
 .pets-slider .slider-cards .slider-card:hover {
   background-color: #ffffff;
+}
+.pets-slider .slider-cards .slider-card:hover .button-secondary {
+  background-color: #fddcc4;
+  border-color: #fddcc4;
 }
 .pets-slider .slider-cards .slider-card .slider-card-title {
   font: normal 400 20px "Georgia", serif;
@@ -593,6 +611,7 @@ header .container {
 }
 .button-secondary:hover {
   background-color: #fddcc4;
+  border-color: #fddcc4;
 }
 
 .help .container {

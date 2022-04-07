@@ -211,47 +211,52 @@ header {
 	font: $georgia-n-35;
 	color: $color-dark-l;
 	line-height: 130%;
-	letter-spacing: 0.06em;
+	letter-spacing: $letter-spacing;
 }
 
 .about {
 	.container {
 		padding-top: 94px;
-		padding-left: 595px / 1200px * 100%;
 		padding-bottom: 114px;
 		background-image: url('../../assets/images/about-pets.png');
 		background-repeat: no-repeat;
 		background-position: top 80px	left 215px / 980px * 100%;
-		.section-heading {
-			width: 370px;
-		}
-		.shelter-description {
-			padding-top: 25px;
-			width: 430px / (1200px - 595px) * 100%;
-			margin: 0;
-			font: $arial-n-15;
-			color: $color-dark-xl;
-			line-height: 160%;
+		.shelter-description-wrapper {
+			padding-left: 595px / 1200px * 100%;
+			.section-heading {
+				width: 370px;
+			}
+			.shelter-description {
+				padding-top: 25px;
+				width: 430px / (1200px - 595px) * 100%;
+				margin: 0;
+				font: $arial-n-15;
+				color: $color-dark-xl;
+				line-height: 160%;
+			}
 		}
 	}
 }
 
-
 .pets {
+	background-color: $color-light-l;
 	.container {
 		display: flex;
 		flex-direction: column;
 		gap: 60px;
-		padding-top: 80px;
-		background-color: $color-light-l;
+		padding-top: 79px;
+		padding-bottom: 100px;
 		.section-heading {
 			margin: 0 auto;
 			width: 400px;
 			text-align: center;
 		}
-		.button-primary {
-			margin: 0 auto 100px;
-			width: 261px;
+		form {
+			display: flex;
+			justify-content: center;
+			.button-primary {
+				width: 261px;
+			}
 		}
 	}
 }
@@ -270,8 +275,10 @@ header {
 		background: transparent;
 		background-repeat: no-repeat;
 		background-position: center;
+		@extend %hover-interactive;
 		&:hover {
 			background-color: $color-primary-light;
+			border-color: $color-primary-light;
 			@extend %hover-interactive;
 		}
 	}
@@ -282,7 +289,8 @@ header {
 		background-image: url('../../assets/icons/arrow-right.svg');
 	}
 	.slider-cards {
-		@extend %flex;
+		display: flex;
+		justify-content: space-between;
 		.slider-card {
 			display: flex;
 			align-items: center;
@@ -291,15 +299,21 @@ header {
 			width: 270px;
 			height: 435px;
 			background-color: $color-light-s;
+			@extend %hover-interactive;
 			&:hover {
 				background-color: $color-light-xl;
 				@extend %hover-interactive;
+				.button-secondary {
+					background-color: $color-primary-light;
+					border-color: $color-primary-light;
+					@extend %hover-interactive;
+				}
 			}
 			.slider-card-title {
 				font: $georgia-n-20;
 				color: $color-dark-l;
 				line-height: 23px;
-				letter-spacing: 0.06em;
+				letter-spacing: $letter-spacing;
 				text-align: center;
 			}
 		}
@@ -315,9 +329,11 @@ header {
 	font: $georgia-n-17;
 	color: $color-dark-3xl;
 	line-height: 130%;
-	letter-spacing: 0.06em;
+	letter-spacing: $letter-spacing;
+	@extend %hover-interactive;
 	&:hover {
 		background-color: $color-primary-light;
+		border-color: $color-primary-light;
 		@extend %hover-interactive;
 	}
 }
