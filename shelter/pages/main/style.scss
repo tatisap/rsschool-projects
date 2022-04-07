@@ -55,6 +55,8 @@ $arial-n-15: normal 400 15px 'Arial', sans-serif;
 $arial-n-13: normal 400 13px 'Arial', sans-serif;
 $arial-i-12: italic 400 12px 'Arial', sans-serif;
 
+$letter-spacing: 0.06em;
+
 //icons
 $pet-food-icon: url('../../assets/icons/icon-pet-food.svg');
 $transportation-icon: url('../../assets/icons/icon-transportation.svg');
@@ -93,42 +95,55 @@ html {
 }
 
 header {
+	background: $start-screen-gradient;
+	height: 908px;
 	.container {
-		@extend %flex;
-		height: 908px;
+		display: flex;
+		justify-content: space-between;
 		padding-top: 60px;
-		background: $start-screen-gradient;
-		.logo {
-			.logo-title {
-				margin: 0 0 10px;
-				font: $georgia-n-32;
-				color: $color-primary;
-				line-height: 110%;
-				letter-spacing: 0.06em;
-			}
-			.logo-subtitle {
-				margin: 0;
-				font: $arial-n-13;
-				color: $color-light-xl;
-				line-height: 15px;
-				letter-spacing: 0.1em;
-				text-align: center;
-			}
+	}
+}
+
+.logo {
+	.logo-link {
+		padding-bottom: 25px;
+		color: inherit;
+		text-decoration: none;
+		.logo-title {
+		margin: 0 0 10px;
+		font: $georgia-n-32;
+		color: $color-primary;
+		line-height: 110%;
+		letter-spacing: $letter-spacing;
+		}
+		.logo-subtitle {
+		margin: 0;
+		font: $arial-n-13;
+		color: $color-light-xl;
+		line-height: 15px;
+		letter-spacing: 0.1em;
+		text-align: center;
 		}
 	}
 }
 
 .nav {
 	.nav-list {
-		@extend %flex;
+		display: flex;
+		justify-content: space-between;
 		gap: 35px;
+		padding: 0;
 		list-style: none;
 		.nav-item {
 			.nav-link {
+				padding-bottom: 3px;
 				font: $arial-n-15;
 				color: $color-dark-s;
 				line-height: 160%;
 				text-decoration: none;
+				&.active {
+					border-bottom: 3px solid $color-primary;
+				}
 				&:hover {
 					color: $color-light-s;
 					@extend %hover-interactive;
@@ -139,27 +154,38 @@ header {
 }
 
 
-.hero {	
+.not-only {	
 	.container {
+		display: flex;
+		justify-content: space-between;
 		height: 788px;
 		margin-top: -788px;
-		padding-top: 223px;
-		background-image: url('../../assets/images/start-screen-puppy.png');
-		background-repeat: no-repeat;
-		background-position: bottom right 40px;
-		.hero-heading {
-			width: 310px / 1200px * 100%;
-			margin: 0 0 42px;
-			font: $georgia-n-44;
-			color: $color-light-xl;
-			line-height: 130%;
-		}
-		.hero-subheading {
+		padding-top: 60px;
+		.not-only-info-wrapper {
 			width: 460px / 1200px * 100%;
-			margin: 0 0 42px;
-			font: $arial-n-15;
-			color: $color-dark-s;
-			line-height: 160%;
+			padding-top: 163px / 1200px * 100%;
+			.not-only-heading {
+				width: 310px / 460px * 100%;
+				margin: 0 0 42px;
+				font: $georgia-n-44;
+				color: $color-light-xl;
+				line-height: 130%;
+			}
+			.not-only-subheading {
+				width: 100%;
+				margin: 0 0 42px;
+				font: $arial-n-15;
+				color: $color-dark-s;
+				line-height: 160%;
+			}
+		}
+		.not-only-img-wrapper	{
+			width: 698px / 1200px * 100%;
+			height: 728px;
+			background-image: url('../../assets/images/start-screen-puppy.png');
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+			background-position: bottom right;
 		}
 	}
 }
@@ -173,6 +199,7 @@ header {
 	font: $georgia-n-17;
 	color: $color-dark-3xl;
 	letter-spacing: 0.06em;
+	@extend %hover-interactive;
 	&:hover {
 		background-color: $color-primary-light;
 		@extend %hover-interactive;

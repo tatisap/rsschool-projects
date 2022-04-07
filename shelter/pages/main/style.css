@@ -361,13 +361,13 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.help .container .help-list, .pets-slider .slider-cards, .nav .nav-list, header .container {
+.help .container .help-list, .pets-slider .slider-cards {
   display: flex;
   justify-content: space-between;
 }
 
 .button-secondary:hover, .pets-slider .slider-cards .slider-card:hover, .pets-slider .button-arrow-left:hover,
-.pets-slider .button-arrow-right:hover, .button-primary:hover, .nav .nav-list .nav-item .nav-link:hover {
+.pets-slider .button-arrow-right:hover, .button-primary:hover, .button-primary, .nav .nav-list .nav-item .nav-link:hover {
   cursor: pointer;
   transition: 0.3s;
 }
@@ -389,19 +389,29 @@ html {
   padding: 0 40px;
 }
 
-header .container {
-  height: 908px;
-  padding-top: 60px;
+header {
   background: url("../../assets/images/noise_transparent.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+  height: 908px;
 }
-header .container .logo .logo-title {
+header .container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 60px;
+}
+
+.logo .logo-link {
+  padding-bottom: 25px;
+  color: inherit;
+  text-decoration: none;
+}
+.logo .logo-link .logo-title {
   margin: 0 0 10px;
   font: normal 400 32px "Georgia", serif;
   color: #f1cdb3;
   line-height: 110%;
   letter-spacing: 0.06em;
 }
-header .container .logo .logo-subtitle {
+.logo .logo-link .logo-subtitle {
   margin: 0;
   font: normal 400 13px "Arial", sans-serif;
   color: #ffffff;
@@ -411,40 +421,58 @@ header .container .logo .logo-subtitle {
 }
 
 .nav .nav-list {
+  display: flex;
+  justify-content: space-between;
   gap: 35px;
+  padding: 0;
   list-style: none;
 }
 .nav .nav-list .nav-item .nav-link {
+  padding-bottom: 3px;
   font: normal 400 15px "Arial", sans-serif;
   color: #cdcdcd;
   line-height: 160%;
   text-decoration: none;
 }
+.nav .nav-list .nav-item .nav-link.active {
+  border-bottom: 3px solid #f1cdb3;
+}
 .nav .nav-list .nav-item .nav-link:hover {
   color: #fafafa;
 }
 
-.hero .container {
+.not-only .container {
+  display: flex;
+  justify-content: space-between;
   height: 788px;
   margin-top: -788px;
-  padding-top: 223px;
-  background-image: url("../../assets/images/start-screen-puppy.png");
-  background-repeat: no-repeat;
-  background-position: bottom right 40px;
+  padding-top: 60px;
 }
-.hero .container .hero-heading {
-  width: 25.8333333333%;
+.not-only .container .not-only-info-wrapper {
+  width: 38.3333333333%;
+  padding-top: 13.5833333333%;
+}
+.not-only .container .not-only-info-wrapper .not-only-heading {
+  width: 67.3913043478%;
   margin: 0 0 42px;
   font: normal 400 44px "Georgia", serif;
   color: #ffffff;
   line-height: 130%;
 }
-.hero .container .hero-subheading {
-  width: 38.3333333333%;
+.not-only .container .not-only-info-wrapper .not-only-subheading {
+  width: 100%;
   margin: 0 0 42px;
   font: normal 400 15px "Arial", sans-serif;
   color: #cdcdcd;
   line-height: 160%;
+}
+.not-only .container .not-only-img-wrapper {
+  width: 58.1666666667%;
+  height: 728px;
+  background-image: url("../../assets/images/start-screen-puppy.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom right;
 }
 
 .button-primary {
