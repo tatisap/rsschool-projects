@@ -361,11 +361,6 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.help .container .help-list {
-  display: flex;
-  justify-content: space-between;
-}
-
 .button-secondary:hover, .button-secondary, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .pets-slider .button-arrow-left:hover,
 .pets-slider .button-arrow-right:hover, .pets-slider .button-arrow-left,
 .pets-slider .button-arrow-right, .button-primary:hover, .button-primary, .nav .nav-list .nav-item .nav-link:hover {
@@ -618,11 +613,12 @@ header .container {
   padding-top: 80px;
 }
 .help .container .section-heading {
-  margin: 0 auto 60px;
+  margin: 0 auto 59px;
   width: 310px;
   text-align: center;
 }
 .help .container .help-list {
+  display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 55px 119px;
@@ -674,26 +670,30 @@ header .container {
   background-image: url("../../assets/icons/icon-sleeping-area.svg");
 }
 
+.donation {
+  background-color: #f6f6f6;
+}
 .donation .container {
   padding-top: 80px;
-  padding-left: 56.09375%;
   padding-bottom: 100px;
-  background-color: #f6f6f6;
   background-image: url("../../assets/images/donation-dog.png");
   background-repeat: no-repeat;
   background-position: top 91px left 23.6129032258%;
 }
-.donation .container .section-heading {
+.donation .container .donation-info-wrapper {
+  padding-left: 56.5%;
+}
+.donation .container .donation-info-wrapper .section-heading {
   width: 300px;
 }
-.donation .container .donation-section-subtitle {
-  margin-bottom: 20px;
+.donation .container .donation-info-wrapper .donation-section-subtitle {
+  margin: 20px 0 19px;
   font: normal 400 15px "Georgia", serif;
   color: #545454;
   line-height: 110%;
   letter-spacing: 0.06em;
 }
-.donation .container .donation-card-info {
+.donation .container .donation-info-wrapper .donation-card-info {
   margin-bottom: 20px;
   padding-top: 10px;
   padding-left: 60px;
@@ -709,7 +709,11 @@ header .container {
   line-height: 115%;
   letter-spacing: 0.06em;
 }
-.donation .container .donation-legal-info {
+.donation .container .donation-info-wrapper .donation-card-info a {
+  color: inherit;
+  text-decoration: none;
+}
+.donation .container .donation-info-wrapper .donation-legal-info {
   margin: 0;
   max-width: 380px;
   font: italic 400 12px "Arial", sans-serif;
@@ -717,25 +721,32 @@ header .container {
   line-height: 18px;
 }
 
+footer {
+  background: url("../../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
 footer .container {
   display: flex;
-  justify-content: flex-start;
-  gap: 136px;
-  padding-top: 56px;
-  background: url("../../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
-  background-image: url("../../assets/images/footer-puppy.png");
-  background-repeat: no-repeat;
-  background-position: bottom right 40px;
+  justify-content: space-between;
+  padding-top: 40px;
 }
-footer .contacts-info,
+footer .contacts-info {
+  padding-top: 16px;
+  width: 279px;
+}
 footer .locations-info {
-  padding-bottom: 20px;
+  padding-top: 16px;
   width: 302px;
 }
-footer .contacts-info .contacts-title,
-footer .contacts-info .locations-title,
-footer .locations-info .contacts-title,
-footer .locations-info .locations-title {
+footer .footer-img-wrapper {
+  width: 300px;
+  height: 310px;
+  background-image: url("../../assets/images/footer-puppy.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.contacts-title,
+.locations-title {
   margin: 0;
   margin-bottom: 40px;
   font: normal 400 35px "Georgia", serif;
@@ -743,25 +754,16 @@ footer .locations-info .locations-title {
   line-height: 130%;
   letter-spacing: 0.06em;
 }
-footer .contacts-info .contacts-list,
-footer .contacts-info .locations-list,
-footer .locations-info .contacts-list,
-footer .locations-info .locations-list {
+
+.contacts-list,
+.locations-list {
   padding: 0;
   list-style: none;
 }
-footer .contacts-info .contacts-list .e-mail-info,
-footer .contacts-info .contacts-list .phone-info,
-footer .contacts-info .contacts-list .location-item,
-footer .contacts-info .locations-list .e-mail-info,
-footer .contacts-info .locations-list .phone-info,
-footer .contacts-info .locations-list .location-item,
-footer .locations-info .contacts-list .e-mail-info,
-footer .locations-info .contacts-list .phone-info,
-footer .locations-info .contacts-list .location-item,
-footer .locations-info .locations-list .e-mail-info,
-footer .locations-info .locations-list .phone-info,
-footer .locations-info .locations-list .location-item {
+
+.e-mail-info,
+.phone-info,
+.location-item {
   display: flex;
   align-items: center;
   margin-bottom: 40px;
@@ -773,37 +775,22 @@ footer .locations-info .locations-list .location-item {
   line-height: 115%;
   letter-spacing: 0.06em;
 }
-footer .contacts-info .contacts-list .e-mail-info a,
-footer .contacts-info .contacts-list .phone-info a,
-footer .contacts-info .contacts-list .location-item a,
-footer .contacts-info .locations-list .e-mail-info a,
-footer .contacts-info .locations-list .phone-info a,
-footer .contacts-info .locations-list .location-item a,
-footer .locations-info .contacts-list .e-mail-info a,
-footer .locations-info .contacts-list .phone-info a,
-footer .locations-info .contacts-list .location-item a,
-footer .locations-info .locations-list .e-mail-info a,
-footer .locations-info .locations-list .phone-info a,
-footer .locations-info .locations-list .location-item a {
+.e-mail-info a,
+.phone-info a,
+.location-item a {
   color: inherit;
   text-decoration: none;
 }
-footer .contacts-info .contacts-list .e-mail-info,
-footer .contacts-info .locations-list .e-mail-info,
-footer .locations-info .contacts-list .e-mail-info,
-footer .locations-info .locations-list .e-mail-info {
+
+.e-mail-info {
   background-image: url("../../assets/icons/icon-email.svg");
 }
-footer .contacts-info .contacts-list .phone-info,
-footer .contacts-info .locations-list .phone-info,
-footer .locations-info .contacts-list .phone-info,
-footer .locations-info .locations-list .phone-info {
+
+.phone-info {
   background-image: url("../../assets/icons/icon-phone.svg");
 }
-footer .contacts-info .contacts-list .location-item,
-footer .contacts-info .locations-list .location-item,
-footer .locations-info .contacts-list .location-item,
-footer .locations-info .locations-list .location-item {
+
+.location-item {
   padding-left: 42px;
   background-image: url("../../assets/icons/icon-marker.png");
 }

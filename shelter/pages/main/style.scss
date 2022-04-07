@@ -342,12 +342,12 @@ header {
 	.container{
 		padding-top: 80px;
 		.section-heading {
-			margin: 0 auto 60px;
+			margin: 0 auto 59px;
 			width: 310px;
 			text-align: center;
 		}
 		.help-list {
-			@extend %flex;
+			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			gap: 55px 119px;
@@ -363,7 +363,7 @@ header {
 					font: $georgia-n-20;
 					color: $color-dark-l;
 					line-height: 115%;
-					letter-spacing: 0.06em;
+					letter-spacing: $letter-spacing;
 				}
 			}
 		}
@@ -404,106 +404,121 @@ header {
 }
 
 .donation {
+	background-color: $color-light-l;
 	.container {
 		padding-top: 80px;
-		padding-left: 718px / 1280px * 100%;
 		padding-bottom: 100px;
-		background-color: $color-light-l;
 		background-image: url('../../assets/images/donation-dog.png');
 		background-repeat: no-repeat;
 		background-position: top 91px left 183px / (1280px - 505px) * 100%;
-		.section-heading {
-			width: 300px;
-		}
-		.donation-section-subtitle {
-			margin-bottom: 20px;
-			font: $georgia-n-15;
-			color: $color-dark-l;
-			line-height: 110%;
-			letter-spacing: 0.06em;
-		}
-		.donation-card-info {
-			margin-bottom: 20px;
-			padding-top: 10px;
-			padding-left: 60px;
-			border-radius: 9px;
-			width: 349px;
-			height: 43px;
-			background-color: $color-primary;
-			background-image: url('../../assets/icons/credit-card.svg');
-			background-repeat: no-repeat;
-			background-position: top 10px left 15px;
-			font: $georgia-n-20;
-			color: $color-dark-l;
-			line-height: 115%;
-			letter-spacing: 0.06em;
-		}
-		.donation-legal-info {
-			margin: 0;
-			max-width: 380px;
-			font: $arial-i-12;
-			color: $color-dark-m;
-			line-height: 18px;
+		.donation-info-wrapper {
+			padding-left: 678px / 1200px * 100%;
+			.section-heading {
+				width: 300px;
+			}
+			.donation-section-subtitle {
+				margin: 20px 0 19px;
+				font: $georgia-n-15;
+				color: $color-dark-l;
+				line-height: 110%;
+				letter-spacing: 0.06em;
+			}
+			.donation-card-info {
+				margin-bottom: 20px;
+				padding-top: 10px;
+				padding-left: 60px;
+				border-radius: 9px;
+				width: 349px;
+				height: 43px;
+				background-color: $color-primary;
+				background-image: url('../../assets/icons/credit-card.svg');
+				background-repeat: no-repeat;
+				background-position: top 10px left 15px;
+				font: $georgia-n-20;
+				color: $color-dark-l;
+				line-height: 115%;
+				letter-spacing: 0.06em;
+				a {
+					color: inherit;
+					text-decoration: none;
+				}
+			}
+			.donation-legal-info {
+				margin: 0;
+				max-width: 380px;
+				font: $arial-i-12;
+				color: $color-dark-m;
+				line-height: 18px;
+			}
 		}
 	}
 }
 
 footer {
+	background: $footer-gradient;
 	.container {
 		display: flex;
-		justify-content: flex-start;
-		gap: 136px;
-		padding-top: 56px;
-		background: $footer-gradient;
+		justify-content: space-between;
+		padding-top: 40px;
+	}
+	.contacts-info {
+		padding-top: 16px;
+		width: 279px;
+	}
+	.locations-info {
+		padding-top: 16px;
+		width: 302px;
+	}
+	.footer-img-wrapper {
+		width: 300px;
+		height: 310px;
 		background-image: url('../../assets/images/footer-puppy.png');
 		background-repeat: no-repeat;
-		background-position: bottom right 40px;
+		background-position: bottom right;
 	}
-	.contacts-info,
-	.locations-info {
-		padding-bottom: 20px;
-		width: 302px;
-		.contacts-title,
-		.locations-title {
-			margin: 0;
-			margin-bottom: 40px;
-			font: $georgia-n-35;
-			color: $color-light-xl;
-			line-height: 130%;
-			letter-spacing: 0.06em;
-		}
-		.contacts-list,
-		.locations-list {
-			padding: 0;
-			list-style: none;
-			.e-mail-info,
-			.phone-info,
-			.location-item {
-				display: flex;
-				align-items: center;
-				margin-bottom: 40px;
-				padding-left: 60px;
-				height: 32px;
-				background-repeat: no-repeat;
-				font: $georgia-n-20;
-				color: $color-primary;
-				line-height: 115%;
-				letter-spacing: 0.06em;
-				& a {
-					color: inherit;
-					text-decoration: none;
-				}
-			}
-			.e-mail-info {
-				background-image: url('../../assets/icons/icon-email.svg');
-			}
-			.phone-info {
-				background-image: url('../../assets/icons/icon-phone.svg');
-			}
-			.location-item {
-				padding-left: 42px;
-				background-image: url('../../assets/icons/icon-marker.png');
-			}
-		}
+}
+
+.contacts-title,
+.locations-title {
+	margin: 0;
+	margin-bottom: 40px;
+	font: $georgia-n-35;
+	color: $color-light-xl;
+	line-height: 130%;
+	letter-spacing: $letter-spacing;
+}
+
+.contacts-list,
+.locations-list {
+	padding: 0;
+	list-style: none;
+}
+
+.e-mail-info,
+.phone-info,
+.location-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+	padding-left: 60px;
+	height: 32px;
+	background-repeat: no-repeat;
+	font: $georgia-n-20;
+	color: $color-primary;
+	line-height: 115%;
+	letter-spacing: $letter-spacing;
+	& a {
+		color: inherit;
+		text-decoration: none;
 	}
+}
+.e-mail-info {
+	background-image: url('../../assets/icons/icon-email.svg');
+}
+.phone-info {
+	background-image: url('../../assets/icons/icon-phone.svg');
+}
+.location-item {
+	padding-left: 42px;
+	background-image: url('../../assets/icons/icon-marker.png');
 }
