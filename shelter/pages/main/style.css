@@ -339,25 +339,25 @@ template {
 
 @font-face {
   font-family: "Arial";
-  src: url("../../assets/fonts/Arial.ttf");
+  src: url("../assets/fonts/Arial.ttf");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Arial";
-  src: url("../../assets/fonts/Arial Italic.ttf");
+  src: url("../assets/fonts/Arial Italic.ttf");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("../../assets/fonts/Georgia.ttf");
+  src: url("../assets/fonts/Georgia.ttf");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("../../assets/fonts/Georgia Bold.ttf");
+  src: url("../assets/fonts/Georgia Bold.ttf");
   font-weight: 700;
   font-style: normal;
 }
@@ -386,7 +386,7 @@ html {
 }
 
 header {
-  background: url("../../assets/images/noise_transparent.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+  background: url("../assets/images/noise_transparent.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
   height: 908px;
 }
 header .container {
@@ -640,34 +640,34 @@ header .container {
 }
 
 .help-item:nth-child(1) {
-  background-image: url("../../assets/icons/icon-pet-food.svg");
+  background-image: url("../assets/icons/icon-pet-food.svg");
 }
 .help-item:nth-child(2) {
-  background-image: url("../../assets/icons/icon-transportation.svg");
+  background-image: url("../assets/icons/icon-transportation.svg");
 }
 .help-item:nth-child(3) {
   flex-basis: 60px;
   display: flex;
   justify-content: center;
-  background-image: url("../../assets/icons/icon-toys.svg");
+  background-image: url("../assets/icons/icon-toys.svg");
 }
 .help-item:nth-child(4) {
-  background-image: url("../../assets/icons/icon-bowls-and-cups.svg");
+  background-image: url("../assets/icons/icon-bowls-and-cups.svg");
 }
 .help-item:nth-child(5) {
-  background-image: url("../../assets/icons/icon-shampoos.svg");
+  background-image: url("../assets/icons/icon-shampoos.svg");
 }
 .help-item:nth-child(6) {
-  background-image: url("../../assets/icons/icon-vitamins.svg");
+  background-image: url("../assets/icons/icon-vitamins.svg");
 }
 .help-item:nth-child(7) {
-  background-image: url("../../assets/icons/icon-medicines.svg");
+  background-image: url("../assets/icons/icon-medicines.svg");
 }
 .help-item:nth-child(8) {
-  background-image: url("../../assets/icons/icon-collars-leashes.svg");
+  background-image: url("../assets/icons/icon-collars-leashes.svg");
 }
 .help-item:nth-child(9) {
-  background-image: url("../../assets/icons/icon-sleeping-area.svg");
+  background-image: url("../assets/icons/icon-sleeping-area.svg");
 }
 
 .donation {
@@ -722,7 +722,7 @@ header .container {
 }
 
 footer {
-  background: url("../../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+  background: url("../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
 footer .container {
   display: flex;
