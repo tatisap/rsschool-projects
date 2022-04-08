@@ -1,24 +1,36 @@
 @font-face {
     font-family: 'Arial';
     src: url('#{$path-to-assets}fonts/Arial.ttf');
+    src: url('#{$path-to-assets}fonts/Arial.eot');
+    src: url('#{$path-to-assets}fonts/Arial.woff');
+    src: url('#{$path-to-assets}fonts/Arial.woff2');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: 'Arial'; 
     src: url('#{$path-to-assets}fonts/Arial\ Italic.ttf');
+    src: url('#{$path-to-assets}fonts/Arial-Italic.eot');
+    src: url('#{$path-to-assets}fonts/Arial-Italic.woff');
+    src: url('#{$path-to-assets}fonts/Arial-Italic.woff2');
     font-weight: 400;
     font-style: italic;
 }
 @font-face {
     font-family: 'Georgia';
     src: url('#{$path-to-assets}fonts/Georgia.ttf');
+    src: url('#{$path-to-assets}fonts/Georgia.eot');
+    src: url('#{$path-to-assets}fonts/Georgia.woff');
+    src: url('#{$path-to-assets}fonts/Georgia.woff2');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: 'Georgia';
     src: url('#{$path-to-assets}fonts/Georgia\ Bold.ttf');
+    src: url('#{$path-to-assets}fonts/Georgia-Bold.eot');
+    src: url('#{$path-to-assets}fonts/Georgia-Bold.woff');
+    src: url('#{$path-to-assets}fonts/Georgia-Bold.woff2');
     font-weight: 700;
     font-style: normal;
 }

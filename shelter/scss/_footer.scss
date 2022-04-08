@@ -40,11 +40,11 @@ footer {
 	display: flex;
 	align-items: center;
 	margin-bottom: 40px;
-	padding-left: 60px;
 	height: 32px;
 	background-repeat: no-repeat;
   @include typography($georgia-n-20, $color-primary, 115%, $letter-spacing);
 	& a {
+		padding-left: 60px;
 		@extend %normalize-link;
 	}
 }
@@ -55,6 +55,8 @@ footer {
 	background-image: url('../../assets/icons/icon-phone.svg');
 }
 .location-item {
-	padding-left: 42px;
 	background-image: url('../../assets/icons/icon-marker.png');
+	& a {
+		padding-left: 42px;
+	}
 }

@@ -340,28 +340,40 @@ template {
 @font-face {
   font-family: "Arial";
   src: url("../../assets/fonts/Arial.ttf");
+  src: url("../../assets/fonts/Arial.eot");
+  src: url("../../assets/fonts/Arial.woff");
+  src: url("../../assets/fonts/Arial.woff2");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Arial";
   src: url("../../assets/fonts/Arial Italic.ttf");
+  src: url("../../assets/fonts/Arial-Italic.eot");
+  src: url("../../assets/fonts/Arial-Italic.woff");
+  src: url("../../assets/fonts/Arial-Italic.woff2");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "Georgia";
   src: url("../../assets/fonts/Georgia.ttf");
+  src: url("../../assets/fonts/Georgia.eot");
+  src: url("../../assets/fonts/Georgia.woff");
+  src: url("../../assets/fonts/Georgia.woff2");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Georgia";
   src: url("../../assets/fonts/Georgia Bold.ttf");
+  src: url("../../assets/fonts/Georgia-Bold.eot");
+  src: url("../../assets/fonts/Georgia-Bold.woff");
+  src: url("../../assets/fonts/Georgia-Bold.woff2");
   font-weight: 700;
   font-style: normal;
 }
-.donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .nav-item .nav-link:hover, .nav-item .nav-link, .button-arrow-left:hover,
+.donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .nav-item .nav-link:hover, .nav-item .nav-link, .pagination button.available:hover, .button-arrow-left:hover,
 .button-arrow-right:hover, .button-arrow-left,
 .button-arrow-right, .button-secondary:hover, .button-secondary, .button-primary:hover, .button-primary {
   cursor: pointer;
@@ -463,12 +475,15 @@ html {
   width: 52px;
   height: 52px;
   background-color: transparent;
-  text-align: center;
-  vertical-align: middle;
+  transition: 0.3s;
   font: normal 400 20px "Georgia", serif;
   color: #292929;
   line-height: 115%;
   letter-spacing: 0.06em;
+}
+.pagination button.available:hover {
+  border-color: #fddcc4;
+  background-color: #fddcc4;
 }
 .pagination button.inactive {
   border-color: #cdcdcd;
@@ -476,9 +491,6 @@ html {
 }
 .pagination button.active {
   background-color: #f1cdb3;
-}
-.pagination button.pagination-start {
-  content: "<<";
 }
 
 footer {
@@ -521,7 +533,6 @@ footer .container .footer-img-wrapper {
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-  padding-left: 60px;
   height: 32px;
   background-repeat: no-repeat;
   font: normal 400 20px "Georgia", serif;
@@ -529,6 +540,12 @@ footer .container .footer-img-wrapper {
   line-height: 115%;
   letter-spacing: 0.06em;
 }
+.e-mail-info a,
+.phone-info a,
+.location-item a {
+  padding-left: 60px;
+}
+
 .e-mail-info {
   background-image: url("../../assets/icons/icon-email.svg");
 }
@@ -538,8 +555,10 @@ footer .container .footer-img-wrapper {
 }
 
 .location-item {
-  padding-left: 42px;
   background-image: url("../../assets/icons/icon-marker.png");
+}
+.location-item a {
+  padding-left: 42px;
 }
 
 .section-heading {
@@ -809,8 +828,6 @@ header .container {
 .donation-info-wrapper .donation-card-info {
   margin-bottom: 20px;
   border-radius: 9px;
-  padding-top: 10px;
-  padding-left: 60px;
   width: 349px;
   height: 43px;
   background-color: #f1cdb3;
@@ -824,6 +841,13 @@ header .container {
 }
 .donation-info-wrapper .donation-card-info:hover {
   background-color: #fddcc4;
+}
+.donation-info-wrapper .donation-card-info a {
+  display: block;
+  padding-top: 10px;
+  padding-left: 60px;
+  width: 100%;
+  height: 100%;
 }
 .donation-info-wrapper .donation-legal-info {
   margin: 0;
