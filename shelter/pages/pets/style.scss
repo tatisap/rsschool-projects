@@ -1,9 +1,26 @@
-@import '../../scss/common.scss';
+$path-to-assets: '../../assets/';
+
+//normalize
+@use '../../node_modules/normalize.css/normalize.css';
+
+//utilities
+@import '../../scss/variables';
+@import '../../scss/typography';
+@import '../../scss/extends';
+@import '../../scss/functions';
+@import '../../scss/mixins';
+
+//layout
+@import '../../scss/common';
+@import '../../scss/buttons';
+@import '../../scss/footer';
+
+//header
 header {
   position: sticky;
   top: 0;
-	background: $color-light-xl;
 	height: 120px;
+	background: $color-light-xl;
 	.container {
 		display: flex;
 		justify-content: space-between;
@@ -14,52 +31,42 @@ header {
 .logo {
 	.logo-link {
 		padding-bottom: 25px;
-		color: inherit;
-		text-decoration: none;
+		@extend %normalize-link;
 		.logo-title {
       margin: 0 0 10px;
-      font: $georgia-n-32;
-      color: $color-dark-l;
-      line-height: 110%;
-      letter-spacing: $letter-spacing;
+      @include typography($georgia-n-32, $color-dark-l, 110%, $letter-spacing);
 		}
 		.logo-subtitle {
       margin: 0;
-      font: $arial-n-13;
-      color: $color-dark-3xl;
-      line-height: 15px;
-      letter-spacing: 0.1em;
       text-align: center;
+      @include typography($arial-n-13, $color-dark-3xl, 15px, 0.1em);
 		}
 	}
 }
 
-.nav {
-	.nav-list {
-		display: flex;
-		justify-content: space-between;
-		gap: 35px;
-		padding: 0;
-		list-style: none;
-		.nav-item {
-			.nav-link {
-				padding-bottom: 3px;
-				font: $arial-n-15;
-				color: $color-dark-l;
-				line-height: 160%;
-				text-decoration: none;
-				&.active {
-					border-bottom: 3px solid $color-primary;
-				}
-				&:hover {
-					color: $color-dark-3xl;
-					@extend %hover-interactive;
-				}
-			}
+.nav-list {
+	display: flex;
+	justify-content: space-between;
+	gap: 35px;
+  @extend %normalize-list;
+}
+
+.nav-item {
+	.nav-link {
+		padding-bottom: 3px;
+		text-decoration: none;
+    @include typography($arial-n-15, $color-dark-l, 160%, normal);
+		&:hover {
+      color: $color-dark-3xl;
+			@extend %hover-interactive;
 		}
+    &.active {
+      border-bottom: 3px solid $color-primary;
+    }
 	}
 }
 
+//pets section
 .pets {
   background-color: $color-light-l;
   .container {
@@ -67,22 +74,20 @@ header {
     padding-bottom: 100px;
   }
 }
+
 .section-heading {
-	margin: 0 auto 60px;
+	margin: 0 auto 59px;
   width: 400px;
-	font: $georgia-n-35;
-	color: $color-dark-l;
-	line-height: 130%;
-	letter-spacing: $letter-spacing;
   text-align: center;
+  @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
 }
 
 .pets-cards {
-		display: flex;
-		justify-content: space-between;
-    flex-wrap: wrap;
-    row-gap: 30px;
-    margin-bottom: 60px;
+	display: flex;
+	justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  margin-bottom: 60px;
 	.pet-card {
 		display: flex;
 		align-items: center;
@@ -96,36 +101,15 @@ header {
 			background-color: $color-light-xl;
 			@extend %hover-interactive;
 			.button-secondary {
-				background-color: $color-primary-light;
 				border-color: $color-primary-light;
+				background-color: $color-primary-light;
 				@extend %hover-interactive;
 			}
 		}
 		.pet-card-title {
-			font: $georgia-n-20;
-			color: $color-dark-l;
-			line-height: 23px;
-			letter-spacing: $letter-spacing;
 			text-align: center;
+      @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
 		}
-	}
-}
-
-.button-secondary {
-	border: 2px solid $color-primary;
-	border-radius: 100px;
-	width: 187px;
-	height: 52px;
-	background: transparent;
-	font: $georgia-n-17;
-	color: $color-dark-3xl;
-	line-height: 130%;
-	letter-spacing: $letter-spacing;
-	@extend %hover-interactive;
-	&:hover {
-		background-color: $color-primary-light;
-		border-color: $color-primary-light;
-		@extend %hover-interactive;
 	}
 }
 
@@ -134,95 +118,4 @@ header {
   justify-content: space-between;
   margin: 0 auto;
   width: 340px;
-  button {
-    border: 2px solid $color-primary;
-    border-radius: 100px;
-    width: 52px;
-    height: 52px;
-    background-color: transparent;
-    font: $georgia-n-20;
-    line-height: 115%;
-    letter-spacing: $letter-spacing;
-    color: $color-dark-3xl;
-    &.inactive {
-      border-color: $color-dark-s;
-      color: $color-dark-s;
-    }
-    &.active {
-      background-color: $color-primary;
-    }
-    &.pagination-start {
-      content: "<<";
-    }
-  }
-}
-
-
-footer {
-	background: $footer-gradient;
-	.container {
-		display: flex;
-		justify-content: space-between;
-		padding-top: 40px;
-	}
-	.contacts-info {
-		padding-top: 16px;
-		width: 279px;
-	}
-	.locations-info {
-		padding-top: 16px;
-		width: 302px;
-	}
-	.footer-img-wrapper {
-		width: 300px;
-		height: 310px;
-		background-image: url('../../assets/images/footer-puppy.png');
-		background-repeat: no-repeat;
-		background-position: bottom right;
-	}
-}
-
-.contacts-title,
-.locations-title {
-	margin: 0;
-	margin-bottom: 40px;
-	font: $georgia-n-35;
-	color: $color-light-xl;
-	line-height: 130%;
-	letter-spacing: $letter-spacing;
-}
-
-.contacts-list,
-.locations-list {
-	padding: 0;
-	list-style: none;
-}
-
-.e-mail-info,
-.phone-info,
-.location-item {
-	display: flex;
-	align-items: center;
-	margin-bottom: 40px;
-	padding-left: 60px;
-	height: 32px;
-	background-repeat: no-repeat;
-	font: $georgia-n-20;
-	color: $color-primary;
-	line-height: 115%;
-	letter-spacing: $letter-spacing;
-	& a {
-		color: inherit;
-		text-decoration: none;
-	}
-}
-.e-mail-info {
-	background-image: url('../../assets/icons/icon-email.svg');
-}
-.phone-info {
-	background-image: url('../../assets/icons/icon-phone.svg');
-}
-.location-item {
-	padding-left: 42px;
-	background-image: url('../../assets/icons/icon-marker.png');
 }

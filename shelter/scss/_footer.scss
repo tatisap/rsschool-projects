@@ -1,0 +1,60 @@
+footer {
+	background: $footer-gradient;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 40px;
+    .contacts-info {
+      padding-top: 16px;
+      width: 279px;
+    }
+    .locations-info {
+      padding-top: 16px;
+      width: 302px;
+    }
+    .footer-img-wrapper {
+      width: 300px;
+      height: 310px;
+      background-image: url('../../assets/images/footer-puppy.png');
+      background-repeat: no-repeat;
+      background-position: bottom right;
+    }
+	}
+}
+
+.contacts-title,
+.locations-title {
+	margin: 0;
+	margin-bottom: 40px;
+  @include typography($georgia-n-35, $color-light-xl, 130%, $letter-spacing);
+}
+
+.contacts-list,
+.locations-list {
+	@extend %normalize-list;
+}
+
+.e-mail-info,
+.phone-info,
+.location-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+	padding-left: 60px;
+	height: 32px;
+	background-repeat: no-repeat;
+  @include typography($georgia-n-20, $color-primary, 115%, $letter-spacing);
+	& a {
+		@extend %normalize-link;
+	}
+}
+.e-mail-info {
+	background-image: url('../../assets/icons/icon-email.svg');
+}
+.phone-info {
+	background-image: url('../../assets/icons/icon-phone.svg');
+}
+.location-item {
+	padding-left: 42px;
+	background-image: url('../../assets/icons/icon-marker.png');
+}

@@ -1,8 +1,32 @@
-@import '../../scss/common.scss';
+$path-to-assets: '../../assets/';
 
+//normalize
+@use '../../node_modules/normalize.css/normalize.css';
+
+//utilities
+@import '../../scss/variables';
+@import '../../scss/typography';
+@import '../../scss/extends';
+@import '../../scss/functions';
+@import '../../scss/mixins';
+
+//layout
+@import '../../scss/common';
+@import '../../scss/buttons';
+@import '../../scss/footer';
+
+//items style
+.section-heading {
+	margin: 0;
+  @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
+}
+
+//blocks style
+
+//header
 header {
+  height: 908px;
 	background: $start-screen-gradient;
-	height: 908px;
 	.container {
 		display: flex;
 		justify-content: space-between;
@@ -13,80 +37,66 @@ header {
 .logo {
 	.logo-link {
 		padding-bottom: 25px;
-		color: inherit;
-		text-decoration: none;
+		@extend %normalize-link;
 		.logo-title {
-		margin: 0 0 10px;
-		font: $georgia-n-32;
-		color: $color-primary;
-		line-height: 110%;
-		letter-spacing: $letter-spacing;
+		  margin: 0 0 10px;
+      @include typography($georgia-n-32, $color-primary, 110%, $letter-spacing);
 		}
 		.logo-subtitle {
-		margin: 0;
-		font: $arial-n-13;
-		color: $color-light-xl;
-		line-height: 15px;
-		letter-spacing: 0.1em;
-		text-align: center;
+      margin: 0;
+      text-align: center;
+      @include typography($arial-n-13, $color-light-xl, 15px, 0.1em);
 		}
 	}
 }
 
-.nav {
-	.nav-list {
-		display: flex;
-		justify-content: space-between;
-		gap: 35px;
-		padding: 0;
-		list-style: none;
-		.nav-item {
-			.nav-link {
-				padding-bottom: 3px;
-				font: $arial-n-15;
-				color: $color-dark-s;
-				line-height: 160%;
-				text-decoration: none;
-				&.active {
-					border-bottom: 3px solid $color-primary;
-				}
-				&:hover {
-					color: $color-light-s;
-					@extend %hover-interactive;
-				}
-			}
+.nav-list {
+	display: flex;
+	justify-content: space-between;
+	gap: 35px;
+	@extend %normalize-list;
+}
+
+.nav-item {
+	.nav-link {
+		padding-bottom: 3px;
+    text-decoration: none;
+    @include typography($arial-n-15, $color-dark-s, 160%, normal);
+    @extend %hover-interactive;
+    &:hover {
+			color: $color-light-s;
+			@extend %hover-interactive;
+		}
+		&.active {
+			border-bottom: 3px solid $color-primary;
 		}
 	}
 }
 
-
+//not-only section
 .not-only {	
 	.container {
 		display: flex;
 		justify-content: space-between;
-		height: 788px;
 		margin-top: -788px;
 		padding-top: 60px;
+		height: 788px;
 		.not-only-info-wrapper {
-			width: 460px / 1200px * 100%;
-			padding-top: 163px / 1200px * 100%;
+      padding-top: calc-percentage(163px, 1200px);
+			width: calc-percentage(460px, 1200px);
 			.not-only-heading {
-				width: 310px / 460px * 100%;
-				margin: 0 0 42px;
-				font: $georgia-n-44;
-				color: $color-light-xl;
-				line-height: 130%;
+        margin: 0 0 42px;
+				width: calc-percentage(310px, 460px);
+        @include typography($georgia-n-44, $color-light-xl, 130%, normal);
 			}
 			.not-only-subheading {
+        margin: 0 0 42px;
 				width: 100%;
-				margin: 0 0 42px;
-				font: $arial-n-15;
-				color: $color-dark-s;
-				line-height: 160%;
+        @include typography($arial-n-15, $color-dark-s, 160%, normal);
 			}
 		}
 		.not-only-img-wrapper	{
-			width: 698px / 1200px * 100%;
+			width: calc-percentage(698px, 1200px);
 			height: 728px;
 			background-image: url('../../assets/images/start-screen-puppy.png');
 			background-size: 100% auto;
@@ -96,54 +106,31 @@ header {
 	}
 }
 
-.button-primary {
-	width: 207px;
-	height: 52px;
-	border: 0;
-	border-radius: 100px;
-	background-color: $color-primary;
-	font: $georgia-n-17;
-	color: $color-dark-3xl;
-	letter-spacing: 0.06em;
-	@extend %hover-interactive;
-	&:hover {
-		background-color: $color-primary-light;
-		@extend %hover-interactive;
-	}
-}
-
-.section-heading {
-	margin: 0;
-	font: $georgia-n-35;
-	color: $color-dark-l;
-	line-height: 130%;
-	letter-spacing: $letter-spacing;
-}
-
+//about section
 .about {
 	.container {
 		padding-top: 94px;
 		padding-bottom: 114px;
 		background-image: url('../../assets/images/about-pets.png');
 		background-repeat: no-repeat;
-		background-position: top 80px	left 215px / 980px * 100%;
-		.shelter-description-wrapper {
-			padding-left: 595px / 1200px * 100%;
-			.section-heading {
-				width: 370px;
-			}
-			.shelter-description {
-				padding-top: 25px;
-				width: 430px / (1200px - 595px) * 100%;
-				margin: 0;
-				font: $arial-n-15;
-				color: $color-dark-xl;
-				line-height: 160%;
-			}
-		}
+		background-position: top 80px	left calc-percentage(215px, 980px);
+  }
+}
+
+.shelter-description-wrapper {
+	padding-left: calc-percentage(595px, 1200px);
+	.section-heading {
+		width: 370px;
+	}
+	.shelter-description {
+		margin: 0;
+		padding-top: 25px;
+		width: calc-percentage(430px, (1200px - 595px));
+    @include typography($arial-n-15, $color-dark-xl, 160%, normal);
 	}
 }
 
+//pets section
 .pets {
 	background-color: $color-light-l;
 	.container {
@@ -172,31 +159,10 @@ header {
 	grid-template-columns: 52px 1fr 52px;
 	grid-column-gap: 53px;
 	align-items: center;
-	.button-arrow-left,
-	.button-arrow-right {
-		border: 2px solid $color-primary;
-		border-radius: 100px;
-		width: 52px;
-		height: 52px;
-		background: transparent;
-		background-repeat: no-repeat;
-		background-position: center;
-		@extend %hover-interactive;
-		&:hover {
-			background-color: $color-primary-light;
-			border-color: $color-primary-light;
-			@extend %hover-interactive;
-		}
-	}
-	.button-arrow-left {
-		background-image: url('../../assets/icons/arrow-left.svg');
-	}
-	.button-arrow-right {
-		background-image: url('../../assets/icons/arrow-right.svg');
-	}
 	.slider-cards {
 		display: flex;
 		justify-content: space-between;
+    flex-wrap: wrap;
 		.slider-card {
 			display: flex;
 			align-items: center;
@@ -216,34 +182,14 @@ header {
 				}
 			}
 			.slider-card-title {
-				font: $georgia-n-20;
-				color: $color-dark-l;
-				line-height: 23px;
-				letter-spacing: $letter-spacing;
 				text-align: center;
+        @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
 			}
 		}
 	}
 }
 
-.button-secondary {
-	border: 2px solid $color-primary;
-	border-radius: 100px;
-	width: 187px;
-	height: 52px;
-	background: transparent;
-	font: $georgia-n-17;
-	color: $color-dark-3xl;
-	line-height: 130%;
-	letter-spacing: $letter-spacing;
-	@extend %hover-interactive;
-	&:hover {
-		background-color: $color-primary-light;
-		border-color: $color-primary-light;
-		@extend %hover-interactive;
-	}
-}
-
+//help section
 .help {
 	.container{
 		padding-top: 80px;
@@ -251,29 +197,27 @@ header {
 			margin: 0 auto 59px;
 			width: 310px;
 			text-align: center;
-		}
-		.help-list {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 55px 119px;
-			margin-bottom: 100px;
-			padding: 0 87px;
-			list-style: none;
-			.help-item {
-				padding-top: 90px;
-				height: 113px;
-				background-repeat: no-repeat;
-				background-position: 50% 0;
-				.help-item-title {
-					font: $georgia-n-20;
-					color: $color-dark-l;
-					line-height: 115%;
-					letter-spacing: $letter-spacing;
-				}
-			}
-		}
+		}		
 	}
+}
+
+.help-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 55px 119px;
+  margin-bottom: 100px;
+  padding: 0 87px;
+  list-style: none;
+  .help-item {
+    padding-top: 90px;
+    height: 113px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    .help-item-title {
+      @include typography($georgia-n-20, $color-dark-l, 115%, $letter-spacing);
+    }
+  }
 }
 
 .help-item {
@@ -309,6 +253,7 @@ header {
 	}	
 }
 
+//donation section
 .donation {
 	background-color: $color-light-l;
 	.container {
@@ -316,115 +261,38 @@ header {
 		padding-bottom: 100px;
 		background-image: url('../../assets/images/donation-dog.png');
 		background-repeat: no-repeat;
-		background-position: top 91px left 183px / (1280px - 505px) * 100%;
-		.donation-info-wrapper {
-			padding-left: 678px / 1200px * 100%;
-			.section-heading {
-				width: 300px;
-			}
-			.donation-section-subtitle {
-				margin: 20px 0 19px;
-				font: $georgia-n-15;
-				color: $color-dark-l;
-				line-height: 110%;
-				letter-spacing: 0.06em;
-			}
-			.donation-card-info {
-				margin-bottom: 20px;
-				padding-top: 10px;
-				padding-left: 60px;
-				border-radius: 9px;
-				width: 349px;
-				height: 43px;
-				background-color: $color-primary;
-				background-image: url('../../assets/icons/credit-card.svg');
-				background-repeat: no-repeat;
-				background-position: top 10px left 15px;
-				font: $georgia-n-20;
-				color: $color-dark-l;
-				line-height: 115%;
-				letter-spacing: 0.06em;
-				a {
-					color: inherit;
-					text-decoration: none;
-				}
-			}
-			.donation-legal-info {
-				margin: 0;
-				max-width: 380px;
-				font: $arial-i-12;
-				color: $color-dark-m;
-				line-height: 18px;
-			}
-		}
+		background-position: top 91px left calc-percentage(183px, (1280px - 505px));
 	}
 }
 
-footer {
-	background: $footer-gradient;
-	.container {
-		display: flex;
-		justify-content: space-between;
-		padding-top: 40px;
-	}
-	.contacts-info {
-		padding-top: 16px;
-		width: 279px;
-	}
-	.locations-info {
-		padding-top: 16px;
-		width: 302px;
-	}
-	.footer-img-wrapper {
-		width: 300px;
-		height: 310px;
-		background-image: url('../../assets/images/footer-puppy.png');
-		background-repeat: no-repeat;
-		background-position: bottom right;
-	}
-}
-
-.contacts-title,
-.locations-title {
-	margin: 0;
-	margin-bottom: 40px;
-	font: $georgia-n-35;
-	color: $color-light-xl;
-	line-height: 130%;
-	letter-spacing: $letter-spacing;
-}
-
-.contacts-list,
-.locations-list {
-	padding: 0;
-	list-style: none;
-}
-
-.e-mail-info,
-.phone-info,
-.location-item {
-	display: flex;
-	align-items: center;
-	margin-bottom: 40px;
-	padding-left: 60px;
-	height: 32px;
-	background-repeat: no-repeat;
-	font: $georgia-n-20;
-	color: $color-primary;
-	line-height: 115%;
-	letter-spacing: $letter-spacing;
-	& a {
-		color: inherit;
-		text-decoration: none;
-	}
-}
-.e-mail-info {
-	background-image: url('../../assets/icons/icon-email.svg');
-}
-.phone-info {
-	background-image: url('../../assets/icons/icon-phone.svg');
-}
-.location-item {
-	padding-left: 42px;
-	background-image: url('../../assets/icons/icon-marker.png');
+.donation-info-wrapper {
+  padding-left: calc-percentage(678px, 1200px);
+  .section-heading {
+    width: 300px;
+  }
+  .donation-section-subtitle {
+    margin: 20px 0 19px;
+    @include typography($georgia-n-15, $color-dark-l, 110%, $letter-spacing);
+  }
+  .donation-card-info {
+    margin-bottom: 20px;
+    border-radius: 9px;
+    padding-top: 10px;
+    padding-left: 60px;
+    width: 349px;
+    height: 43px;
+    background-color: $color-primary;
+    background-image: url('../../assets/icons/credit-card.svg');
+    background-repeat: no-repeat;
+    background-position: top 10px left 15px;
+    @include typography($georgia-n-20, $color-dark-l, 115%, $letter-spacing);
+    a {
+      @extend %normalize-link;
+    }
+  }
+  .donation-legal-info {
+    margin: 0;
+    max-width: 380px;
+    @include typography($arial-i-12, $color-dark-m, 18px, normal);
+  }
 }

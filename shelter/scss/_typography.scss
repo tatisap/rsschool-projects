@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Arial';
+    src: url('#{$path-to-assets}fonts/Arial.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arial'; 
+    src: url('#{$path-to-assets}fonts/Arial\ Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Georgia';
+    src: url('#{$path-to-assets}fonts/Georgia.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Georgia';
+    src: url('#{$path-to-assets}fonts/Georgia\ Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
