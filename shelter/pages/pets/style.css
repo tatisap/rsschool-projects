@@ -361,7 +361,7 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.pets-cards .pet-card:hover .button-secondary, .pets-cards .pet-card:hover, .pets-cards .pet-card, .nav-item .nav-link:hover, .button-arrow-left:hover,
+.pets-cards .pet-card:hover .button-secondary, .pets-cards .pet-card:hover, .pets-cards .pet-card, .nav-item .nav-link:hover, .pagination button.available:hover, .pagination button, .button-arrow-left:hover,
 .button-arrow-right:hover, .button-arrow-left,
 .button-arrow-right, .button-secondary:hover, .button-secondary, .button-primary:hover, .button-primary {
   cursor: pointer;
@@ -463,12 +463,14 @@ html {
   width: 52px;
   height: 52px;
   background-color: transparent;
-  text-align: center;
-  vertical-align: middle;
   font: normal 400 20px "Georgia", serif;
   color: #292929;
   line-height: 115%;
   letter-spacing: 0.06em;
+}
+.pagination button.available:hover {
+  border-color: #fddcc4;
+  background-color: #fddcc4;
 }
 .pagination button.inactive {
   border-color: #cdcdcd;
@@ -476,9 +478,6 @@ html {
 }
 .pagination button.active {
   background-color: #f1cdb3;
-}
-.pagination button.pagination-start {
-  content: "<<";
 }
 
 footer {
@@ -592,6 +591,7 @@ header .container {
 }
 .nav-item .nav-link.active {
   border-bottom: 3px solid #f1cdb3;
+  color: #292929;
 }
 
 .pets {
@@ -624,6 +624,7 @@ header .container {
   align-items: center;
   flex-direction: column;
   gap: 30px;
+  border-radius: 9px;
   width: 270px;
   height: 435px;
   background-color: #fafafa;

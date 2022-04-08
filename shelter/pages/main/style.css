@@ -361,7 +361,7 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .nav-item .nav-link:hover, .nav-item .nav-link, .button-arrow-left:hover,
+.donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .nav-item .nav-link:hover, .nav-item .nav-link, .button-arrow-left:hover,
 .button-arrow-right:hover, .button-arrow-left,
 .button-arrow-right, .button-secondary:hover, .button-secondary, .button-primary:hover, .button-primary {
   cursor: pointer;
@@ -598,6 +598,7 @@ header .container {
 }
 .nav-item .nav-link.active {
   border-bottom: 3px solid #f1cdb3;
+  color: #fafafa;
 }
 
 .not-only .container {
@@ -699,6 +700,7 @@ header .container {
   align-items: center;
   flex-direction: column;
   gap: 30px;
+  border-radius: 9px;
   width: 270px;
   height: 435px;
   background-color: #fafafa;
@@ -819,6 +821,9 @@ header .container {
   color: #545454;
   line-height: 115%;
   letter-spacing: 0.06em;
+}
+.donation-info-wrapper .donation-card-info:hover {
+  background-color: #fddcc4;
 }
 .donation-info-wrapper .donation-legal-info {
   margin: 0;

@@ -62,6 +62,7 @@ header {
 		}
     &.active {
       border-bottom: 3px solid $color-primary;
+      color: $color-dark-3xl;
     }
 	}
 }
@@ -93,6 +94,7 @@ header {
 		align-items: center;
 		flex-direction: column;
 		gap: 30px;
+    border-radius: 9px;
 		width: 270px;
 		height: 435px;
 		background-color: $color-light-s;

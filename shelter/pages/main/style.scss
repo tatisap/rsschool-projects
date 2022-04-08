@@ -69,6 +69,7 @@ header {
 		}
 		&.active {
 			border-bottom: 3px solid $color-primary;
+      color: $color-light-s;
 		}
 	}
 }
@@ -168,6 +169,7 @@ header {
 			align-items: center;
 			flex-direction: column;
 			gap: 30px;
+      border-radius: 9px;
 			width: 270px;
 			height: 435px;
 			background-color: $color-light-s;
@@ -286,6 +288,11 @@ header {
     background-repeat: no-repeat;
     background-position: top 10px left 15px;
     @include typography($georgia-n-20, $color-dark-l, 115%, $letter-spacing);
+    @extend %hover-interactive;
+    &:hover {
+      background-color: $color-primary-light;
+      @extend %hover-interactive;
+    }
     a {
       @extend %normalize-link;
     }
