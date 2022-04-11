@@ -1,0 +1,123 @@
+$path-to-assets: '../../assets/';
+
+//normalize
+@use '../../node_modules/normalize.css/normalize.css';
+
+//utilities
+@import '../../scss/variables';
+@import '../../scss/typography';
+@import '../../scss/extends';
+@import '../../scss/functions';
+@import '../../scss/mixins';
+
+//layout
+@import '../../scss/common';
+@import '../../scss/buttons';
+@import '../../scss/footer';
+
+//header
+header {
+  position: sticky;
+  top: 0;
+	height: 120px;
+	background: $color-light-xl;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		padding: 30px 40px;
+	}
+}
+
+.logo {
+	.logo-link {
+		padding-bottom: 25px;
+		@extend %normalize-link;
+		.logo-title {
+      margin: 0 0 10px;
+      @include typography($georgia-n-32, $color-dark-l, 110%, $letter-spacing);
+		}
+		.logo-subtitle {
+      margin: 0;
+      text-align: center;
+      @include typography($arial-n-13, $color-dark-3xl, 15px, 0.1em);
+		}
+	}
+}
+
+.nav-list {
+	display: flex;
+	justify-content: space-between;
+	gap: 35px;
+  @extend %normalize-list;
+}
+
+.nav-item {
+	.nav-link {
+		padding-bottom: 3px;
+		text-decoration: none;
+    @include typography($arial-n-15, $color-dark-l, 160%, normal);
+		&:hover {
+      color: $color-dark-3xl;
+			@extend %hover-interactive;
+		}
+    &.active {
+      border-bottom: 3px solid $color-primary;
+      color: $color-dark-3xl;
+    }
+	}
+}
+
+//pets section
+.pets {
+  background-color: $color-light-l;
+  .container {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+}
+
+.section-heading {
+	margin: 0 auto 59px;
+  width: 400px;
+  text-align: center;
+  @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
+}
+
+.pets-cards {
+	display: flex;
+	justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  margin-bottom: 60px;
+	.pet-card {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 30px;
+    border-radius: 9px;
+		width: 270px;
+		height: 435px;
+		background-color: $color-light-s;
+		@extend %hover-interactive;
+		&:hover {
+			background-color: $color-light-xl;
+			@extend %hover-interactive;
+			.button-secondary {
+				border-color: $color-primary-light;
+				background-color: $color-primary-light;
+				@extend %hover-interactive;
+			}
+		}
+		.pet-card-title {
+			text-align: center;
+      @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
+		}
+	}
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 340px;
+}

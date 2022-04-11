@@ -1,0 +1,42 @@
+//colors and gradients
+$color-light-xl: #ffffff;
+$color-light-l: #f6f6f6;
+$color-light-s: #fafafa;
+$color-dark-s: #cdcdcd;
+$color-dark-m: #b2b2b2;
+$color-dark-l: #545454;
+$color-dark-xl: #4c4c4c;
+$color-dark-2xl: #444444;
+$color-dark-3xl: #292929;
+$color-primary: #f1cdb3;
+$color-primary-light: #fddcc4;
+$start-screen-gradient: url('#{$path-to-assets}images/noise_transparent.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+$footer-gradient: url('#{$path-to-assets}images/noise_transparent.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+
+//fonts
+$georgia-n-44: normal 400 44px 'Georgia', serif;
+$georgia-n-35: normal 400 35px 'Georgia', serif;
+$georgia-n-32: normal 400 32px 'Georgia', serif;
+$georgia-n-25: normal 400 25px 'Georgia', serif;
+$georgia-n-20: normal 400 20px 'Georgia', serif;
+$georgia-n-17: normal 400 17px 'Georgia', serif;
+$georgia-n-15: normal 400 15px 'Georgia', serif;
+$georgia-b-15: normal 700 15px 'Georgia', serif;
+$arial-n-32: normal 400 32px 'Arial', sans-serif;
+$arial-n-15: normal 400 15px 'Arial', sans-serif;
+$arial-n-13: normal 400 13px 'Arial', sans-serif;
+$arial-i-12: italic 400 12px 'Arial', sans-serif;
+
+//icons
+$pet-food-icon: url('#{$path-to-assets}icons/icon-pet-food.svg');
+$transportation-icon: url('#{$path-to-assets}icons/icon-transportation.svg');
+$toys-icon: url('#{$path-to-assets}icons/icon-toys.svg');
+$bowls-and-cups-icon: url('#{$path-to-assets}icons/icon-bowls-and-cups.svg');
+$shampoos-icon: url('#{$path-to-assets}icons/icon-shampoos.svg');
+$vitamins-icon: url('#{$path-to-assets}icons/icon-vitamins.svg');
+$medicines-icon: url('#{$path-to-assets}icons/icon-medicines.svg');
+$collars-leashes-icon: url('#{$path-to-assets}icons/icon-collars-leashes.svg');
+$sleeping-areas-icon: url('#{$path-to-assets}icons/icon-sleeping-area.svg');
+
+//other
+$letter-spacing: 0.06em;

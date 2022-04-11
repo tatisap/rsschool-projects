@@ -1,0 +1,79 @@
+.button-primary {
+  border: 0;
+	border-radius: 100px;
+	width: 207px;
+  height: 52px;
+	background-color: $color-primary;
+  @include typography($georgia-n-17, $color-dark-3xl, normal, $letter-spacing);
+	@extend %hover-interactive;
+	&:hover {
+		background-color: $color-primary-light;
+		@extend %hover-interactive;
+	}
+}
+
+.button-secondary {
+	border: 2px solid $color-primary;
+	border-radius: 100px;
+	width: 187px;
+	height: 52px;
+	background: transparent;
+  @include typography($georgia-n-17, $color-dark-3xl, 130%, $letter-spacing);
+	@extend %hover-interactive;
+	&:hover {
+		border-color: $color-primary-light;
+		background-color: $color-primary-light;
+		@extend %hover-interactive;
+	}
+}
+
+.button-arrow-left,
+.button-arrow-right {
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  @extend %hover-interactive;
+  &:hover {
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
+    @extend %hover-interactive;
+  }
+}
+.button-arrow-left {
+  background-image: url('../../assets/icons/arrow-left.svg');
+}
+.button-arrow-right {
+  background-image: url('../../assets/icons/arrow-right.svg');
+}
+
+.pagination {
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    padding: 0;
+    width: 52px;
+    height: 52px;
+    background-color: transparent;
+    transition: 0.3s;
+    @include typography($georgia-n-20, $color-dark-3xl, 115%, $letter-spacing);
+    &.available:hover {
+      border-color: $color-primary-light;
+      background-color: $color-primary-light;
+      @extend %hover-interactive;
+    }
+    &.inactive {
+      border-color: $color-dark-s;
+      color: $color-dark-s;
+    }
+    &.active {
+      background-color: $color-primary;
+    }
+  }
+}
