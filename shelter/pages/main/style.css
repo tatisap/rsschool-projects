@@ -726,6 +726,7 @@ header .container {
 }
 .pets-slider .slider-cards .slider-card:hover {
   background-color: #ffffff;
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 .pets-slider .slider-cards .slider-card:hover .button-secondary {
   background-color: #fddcc4;
