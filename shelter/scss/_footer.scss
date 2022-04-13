@@ -3,14 +3,26 @@ footer {
 	.container {
 		display: flex;
 		justify-content: space-between;
+    flex-wrap: wrap;
 		padding-top: 40px;
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    justify-content: center;
+    gap: 24px 60px;
+    padding-top: 30px;
+    }
     .contacts-info {
       padding-top: 16px;
       width: 279px;
+      @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      padding-top: 0;
+      }
     }
     .locations-info {
       padding-top: 16px;
       width: 302px;
+      @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+        padding-top: 0;
+      }
     }
     .footer-img-wrapper {
       width: 300px;

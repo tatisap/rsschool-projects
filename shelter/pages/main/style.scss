@@ -27,10 +27,16 @@ $path-to-assets: '../../assets/';
 header {
   height: 908px;
 	background: $start-screen-gradient;
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    height: 1165px;
+  }
 	.container {
 		display: flex;
 		justify-content: space-between;
 		padding-top: 60px;
+		@media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+			padding-top: 30px;
+		}
 	}
 }
 
@@ -82,13 +88,30 @@ header {
 		margin-top: -788px;
 		padding-top: 60px;
 		height: 788px;
+		@media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      flex-direction: column;
+      align-items: center;
+      margin-top: -1075px;
+      height: 1075px;
+    }
 		.not-only-info-wrapper {
-      padding-top: calc-percentage(163px, 1200px);
-			width: calc-percentage(460px, 1200px);
+      padding-top: 163px;
+			width: 460px;
+		  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+        padding-top: 0;
+        width: calc-percentage(460px, 708px);
+        .button-primary {
+          display: block;
+          margin: 0 auto;
+        }
+      }
 			.not-only-heading {
         margin: 0 0 42px;
 				width: calc-percentage(310px, 460px);
         @include typography($georgia-n-44, $color-light-xl, 130%, normal);
+        @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+          width: 310px;
+        }
 			}
 			.not-only-subheading {
         margin: 0 0 42px;
@@ -97,12 +120,17 @@ header {
 			}
 		}
 		.not-only-img-wrapper	{
-			width: calc-percentage(698px, 1200px);
+			width: 698px;
 			height: 728px;
 			background-image: url('../../assets/images/start-screen-puppy.png');
 			background-size: 100% auto;
 			background-repeat: no-repeat;
 			background-position: bottom right;
+		  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+        margin-left: auto;
+        width: 569px;
+        height: 593px;
+      }
 		}
 	}
 }
@@ -115,19 +143,35 @@ header {
 		background-image: url('../../assets/images/about-pets.png');
 		background-repeat: no-repeat;
 		background-position: top 80px	left calc-percentage(215px, 980px);
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      padding-top: 80px;
+      padding-bottom: 100px;
+      background-position: bottom 100px left 50%;
+    }
   }
 }
 
 .shelter-description-wrapper {
 	padding-left: calc-percentage(595px, 1200px);
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    padding-left: 0;
+    padding-bottom: 488px;
+  }
 	.section-heading {
 		width: 370px;
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      margin-left: calc-percentage(139px, 708px);
+    }
 	}
 	.shelter-description {
 		margin: 0;
 		padding-top: 25px;
 		width: calc-percentage(430px, (1200px - 595px));
     @include typography($arial-n-15, $color-dark-xl, 160%, normal);
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      margin: 0 auto;
+      width: calc-percentage(430px, 708px);
+    }
 	}
 }
 
@@ -160,16 +204,23 @@ header {
 	grid-template-columns: 52px 1fr 52px;
 	grid-column-gap: 53px;
 	align-items: center;
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    grid-column-gap: 12px;
+  }
 	.slider-cards {
 		display: flex;
 		justify-content: space-between;
     flex-wrap: wrap;
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      justify-content: space-around;
+      gap: 40px;
+    }
 		.slider-card {
 			display: flex;
 			align-items: center;
 			flex-direction: column;
 			gap: 30px;
-      		border-radius: 9px;
+      border-radius: 9px;
 			width: 270px;
 			height: 435px;
 			background-color: $color-light-s;
@@ -184,6 +235,11 @@ header {
 					@extend %hover-interactive;
 				}
 			}
+      @media (min-width: $tablet) and (max-width: ($desktop - 180px)) {
+        &:nth-child(3) {
+          display: none;
+        } 
+      }
 			.slider-card-title {
 				text-align: center;
         @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
@@ -212,11 +268,25 @@ header {
   margin-bottom: 100px;
   padding: 0 87px;
   list-style: none;
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 55px 60px;
+    justify-items: center;
+    padding: 0 calc-percentage(69px, 708px);
+  }
   .help-item {
     padding-top: 90px;
     height: 113px;
     background-repeat: no-repeat;
     background-position: 50% 0;
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      display: flex;
+		  justify-content: center;
+      width: 170px;
+      height: 113px;
+    }
     .help-item-title {
       @include typography($georgia-n-20, $color-dark-l, 115%, $letter-spacing);
     }
@@ -265,11 +335,20 @@ header {
 		background-image: url('../../assets/images/donation-dog.png');
 		background-repeat: no-repeat;
 		background-position: top 91px left calc-percentage(183px, (1280px - 505px));
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      background-position: bottom 100px left 50%;
+    }
 	}
 }
 
 .donation-info-wrapper {
   padding-left: calc-percentage(678px, 1200px);
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    margin: 0 auto;
+    padding-left: 0;
+    padding-bottom: 321px;
+    width: calc-percentage(380px, 708px);
+  }
   .section-heading {
     width: 300px;
   }
@@ -306,5 +385,8 @@ header {
     margin: 0;
     max-width: 380px;
     @include typography($arial-i-12, $color-dark-m, 18px, normal);
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      max-width: 100%;
+    }
   }
 }
