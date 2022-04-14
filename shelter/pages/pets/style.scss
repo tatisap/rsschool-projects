@@ -24,7 +24,8 @@ header {
 	.container {
 		display: flex;
 		justify-content: space-between;
-		padding: 30px 40px;
+		padding-top: 30px;
+		padding-bottom: 30px;
 	}
 }
 
@@ -73,6 +74,9 @@ header {
   .container {
     padding-top: 80px;
     padding-bottom: 100px;
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      padding-bottom: 76px;
+    }
   }
 }
 
@@ -81,6 +85,9 @@ header {
   width: 400px;
   text-align: center;
   @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    margin-bottom: 29px;
+  }
 }
 
 .pets-cards {
@@ -89,6 +96,11 @@ header {
   flex-wrap: wrap;
   row-gap: 30px;
   margin-bottom: 60px;
+  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    justify-content: center;
+    column-gap: 40px;
+    margin-bottom: 40px;
+  }
 	.pet-card {
 		display: flex;
 		align-items: center;
@@ -109,6 +121,12 @@ header {
 				@extend %hover-interactive;
 			}
 		}
+    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      &:nth-child(7),
+      &:nth-child(8) {
+        display: none;
+      }
+    }
 		.pet-card-title {
 			text-align: center;
       @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
