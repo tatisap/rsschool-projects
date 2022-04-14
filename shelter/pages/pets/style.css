@@ -697,6 +697,12 @@ header .container {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+@media (max-width: 767px) {
+  header .container {
+    align-items: center;
+    padding-right: 53px;
+  }
+}
 
 .logo .logo-link {
   padding-bottom: 25px;
@@ -715,6 +721,16 @@ header .container {
   color: #292929;
   line-height: 15px;
   letter-spacing: 0.1em;
+}
+
+.hamburger .line {
+  background-color: black;
+}
+
+@media (max-width: 767px) {
+  .nav {
+    display: none;
+  }
 }
 
 .nav-list {
@@ -751,6 +767,12 @@ header .container {
     padding-bottom: 76px;
   }
 }
+@media (max-width: 767px) {
+  .pets .container {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+}
 
 .section-heading {
   margin: 0 auto 59px;
@@ -764,6 +786,14 @@ header .container {
 @media (max-width: 1279px) {
   .section-heading {
     margin-bottom: 29px;
+  }
+}
+@media (max-width: 767px) {
+  .section-heading {
+    margin-bottom: 42px;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
   }
 }
 
@@ -804,6 +834,16 @@ header .container {
     display: none;
   }
 }
+@media (max-width: 767px) {
+  .pets-cards .pet-card:nth-child(5), .pets-cards .pet-card:nth-child(6) {
+    display: none;
+  }
+}
+@media (max-width: 599px) {
+  .pets-cards .pet-card:nth-child(4) {
+    display: none;
+  }
+}
 .pets-cards .pet-card .pet-card-title {
   text-align: center;
   font: normal 400 20px "Georgia", serif;
@@ -817,4 +857,9 @@ header .container {
   justify-content: space-between;
   margin: 0 auto;
   width: 340px;
+}
+@media (max-width: 767px) {
+  .pagination {
+    width: 300px;
+  }
 }

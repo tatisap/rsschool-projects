@@ -27,6 +27,10 @@ header {
 		justify-content: space-between;
 		padding-top: 30px;
 		padding-bottom: 30px;
+    @media (max-width: ($tablet - 1px)) {
+      align-items: center;
+      padding-right: 53px;
+    }
 	}
 }
 
@@ -44,6 +48,18 @@ header {
       @include typography($arial-n-13, $color-dark-3xl, 15px, 0.1em);
 		}
 	}
+}
+
+.hamburger {
+  .line {
+    background-color: black;
+  }
+}
+
+.nav {
+  @media (max-width: ($tablet - 1px)) {
+    display: none;
+  }
 }
 
 .nav-list {
@@ -78,6 +94,10 @@ header {
     @media (max-width: ($desktop - 1px)) {
       padding-bottom: 76px;
     }
+    @media (max-width: ($tablet - 1px)) {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
   }
 }
 
@@ -88,6 +108,12 @@ header {
   @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
   @media (max-width: ($desktop - 1px)) {
     margin-bottom: 29px;
+  }
+  @media (max-width: ($tablet - 1px)) {
+    margin-bottom: 42px;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
   }
 }
 
@@ -128,6 +154,17 @@ header {
         display: none;
       }
     }
+    @media (max-width: ($tablet - 1px)) {
+      &:nth-child(5),
+      &:nth-child(6) {
+        display: none;
+      }
+    }
+    @media (max-width: 599px) {
+      &:nth-child(4) {
+        display: none;
+      }
+    }
 		.pet-card-title {
 			text-align: center;
       @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
@@ -140,4 +177,7 @@ header {
   justify-content: space-between;
   margin: 0 auto;
   width: 340px;
+  @media (max-width: ($tablet - 1px)) {
+    width: 300px;
+  }
 }
