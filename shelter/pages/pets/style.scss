@@ -12,6 +12,7 @@ $path-to-assets: '../../assets/';
 
 //layout
 @import '../../scss/common';
+@import '../../scss/burger';
 @import '../../scss/buttons';
 @import '../../scss/footer';
 
@@ -74,7 +75,7 @@ header {
   .container {
     padding-top: 80px;
     padding-bottom: 100px;
-    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    @media (max-width: ($desktop - 1px)) {
       padding-bottom: 76px;
     }
   }
@@ -85,7 +86,7 @@ header {
   width: 400px;
   text-align: center;
   @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
-  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+  @media (max-width: ($desktop - 1px)) {
     margin-bottom: 29px;
   }
 }
@@ -96,7 +97,7 @@ header {
   flex-wrap: wrap;
   row-gap: 30px;
   margin-bottom: 60px;
-  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+  @media (max-width: ($desktop - 1px)) {
     justify-content: center;
     column-gap: 40px;
     margin-bottom: 40px;
@@ -121,7 +122,7 @@ header {
 				@extend %hover-interactive;
 			}
 		}
-    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    @media (max-width: ($desktop - 1px)) {
       &:nth-child(7),
       &:nth-child(8) {
         display: none;

@@ -5,22 +5,25 @@ footer {
 		justify-content: space-between;
     flex-wrap: wrap;
 		padding-top: 40px;
-    @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+    @media (max-width: ($desktop - 1px)) {
     justify-content: center;
     gap: 24px 60px;
     padding-top: 30px;
     }
+    @media (max-width: ($tablet - 1px)) {
+      gap: 40px;
+    }
     .contacts-info {
       padding-top: 16px;
       width: 279px;
-      @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      @media (max-width: ($desktop - 1px)) {
       padding-top: 0;
       }
     }
     .locations-info {
       padding-top: 16px;
       width: 302px;
-      @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+      @media (max-width: ($desktop - 1px)) {
         padding-top: 0;
       }
     }
@@ -30,6 +33,11 @@ footer {
       background-image: url('../../assets/images/footer-puppy.png');
       background-repeat: no-repeat;
       background-position: bottom right;
+      @media (max-width: ($tablet - 1px)) {
+        width: 260px;
+        height: 269px;
+        background-size: 260px 269px;
+      }
     }
 	}
 }
@@ -39,11 +47,42 @@ footer {
 	margin: 0;
 	margin-bottom: 40px;
   @include typography($georgia-n-35, $color-light-xl, 130%, $letter-spacing);
+  @media (max-width: ($tablet - 1px)) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    font-size: 25px;
+    text-align: center;
+  }
+}
+
+.locations-title {
+  @media (max-width: ($tablet - 1px)) {
+    margin-bottom: 45px;
+  }
 }
 
 .contacts-list,
 .locations-list {
 	@extend %normalize-list;
+  @media (max-width: ($tablet - 1px)) {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 0;
+  }
+}
+
+.contacts-list {
+  @media (max-width: ($tablet - 1px)) {
+    align-items: center;
+  }
+}
+
+.locations-list {
+  @media (max-width: ($tablet - 1px)) {
+    gap: 45px;
+  }
 }
 
 .e-mail-info,
@@ -59,6 +98,12 @@ footer {
 		padding-left: 60px;
 		@extend %normalize-link;
 	}
+  @media (max-width: ($tablet - 1px)) {
+    margin-bottom: 0;
+    & a {
+      display: block;
+    }
+  }
 }
 .e-mail-info {
 	background-image: url('../../assets/icons/icon-email.svg');
