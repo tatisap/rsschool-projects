@@ -12,6 +12,7 @@ $path-to-assets: '../../assets/';
 
 //layout
 @import '../../scss/common';
+@import '../../scss/burger';
 @import '../../scss/buttons';
 @import '../../scss/footer';
 
@@ -19,6 +20,10 @@ $path-to-assets: '../../assets/';
 .section-heading {
 	margin: 0;
   @include typography($georgia-n-35, $color-dark-l, 130%, $letter-spacing);
+  @media (max-width: ($tablet - 1px)) {
+    font-size: 25px;
+    text-align: center;
+  }
 }
 
 //blocks style
@@ -27,10 +32,24 @@ $path-to-assets: '../../assets/';
 header {
   height: 908px;
 	background: $start-screen-gradient;
+  @media (max-width: ($desktop - 1px)) {
+    height: 1165px;
+  }
+  @media (max-width: ($tablet - 1px)) {
+    height: 823px;
+  }
 	.container {
 		display: flex;
 		justify-content: space-between;
 		padding-top: 60px;
+		@media (max-width: ($desktop - 1px)) {
+			padding-top: 30px;
+		}
+    @media (max-width: ($tablet - 1px)) {
+      align-items: center;
+      padding-right: 53px;
+      height: 90.19px;
+    }
 	}
 }
 
@@ -48,13 +67,41 @@ header {
       @include typography($arial-n-13, $color-light-xl, 15px, 0.1em);
 		}
 	}
+  @media (max-width: ($tablet - 1px)) {
+    &.active {
+      position: fixed;
+      right: 126px;
+      z-index: 5;
+    }
+  }
 }
 
+.nav {
+  @media (max-width: ($tablet - 1px)) {
+    position: fixed;
+    top: 0px;
+    right: -700px;
+    z-index: 3;
+    width: 320px;
+    height: 100vh;
+    background-color: $color-dark-3xl;
+    transition: all 0.5s ease-in-out;
+    &.active {
+      right: 0;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
 .nav-list {
 	display: flex;
 	justify-content: space-between;
 	gap: 35px;
 	@extend %normalize-list;
+  @media (max-width: ($tablet - 1px)) {
+    flex-direction: column;
+    align-items: center;
+    padding: 248px 39px 0;
+  }
 }
 
 .nav-item {
@@ -71,6 +118,9 @@ header {
 			border-bottom: 3px solid $color-primary;
       color: $color-light-s;
 		}
+    @media (max-width: ($tablet - 1px)) {
+      font-size: 32px;
+    }
 	}
 }
 
@@ -82,27 +132,74 @@ header {
 		margin-top: -788px;
 		padding-top: 60px;
 		height: 788px;
+		@media (max-width: ($desktop - 1px)) {
+      flex-direction: column;
+      align-items: center;
+      margin-top: -1075px;
+      height: 1075px;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      margin-top: -733px;
+      height: 733px;
+    }
 		.not-only-info-wrapper {
-      padding-top: calc-percentage(163px, 1200px);
-			width: calc-percentage(460px, 1200px);
+      padding-top: 163px;
+			width: 460px;
+		  @media (max-width: ($desktop - 1px)) {
+        padding-top: 0;
+        width: calc-percentage(460px, 708px);
+        .button-primary {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      @media (max-width: ($tablet - 1px)) {
+        width: 100%;
+      }
 			.not-only-heading {
         margin: 0 0 42px;
 				width: calc-percentage(310px, 460px);
         @include typography($georgia-n-44, $color-light-xl, 130%, normal);
+        @media (max-width: ($desktop - 1px)) {
+          width: 100%;
+        }
+        @media (max-width: ($tablet - 1px)) {
+          margin-left: auto;
+          margin-right: auto;
+          width: 80%;
+          text-align: center;
+          @include typography($georgia-n-25, $color-light-xl, 130%, $letter-spacing);
+        }
 			}
 			.not-only-subheading {
         margin: 0 0 42px;
 				width: 100%;
         @include typography($arial-n-15, $color-dark-s, 160%, normal);
+        @media (max-width: ($tablet - 1px)) {
+          text-align: center;
+        }
 			}
 		}
 		.not-only-img-wrapper	{
-			width: calc-percentage(698px, 1200px);
+			width: 698px;
 			height: 728px;
 			background-image: url('../../assets/images/start-screen-puppy.png');
 			background-size: 100% auto;
 			background-repeat: no-repeat;
 			background-position: bottom right;
+		  @media (max-width: ($desktop - 1px)) {
+        margin-left: auto;
+        width: 569px;
+        height: 593px;
+      }
+      @media (max-width: ($tablet - 1px)) {
+        width: 350px;
+        height: 365.84px;
+      }
+      @media (max-width: 450px) {
+        width: 260px;
+        height: 271.77px;
+      }
 		}
 	}
 }
@@ -115,19 +212,53 @@ header {
 		background-image: url('../../assets/images/about-pets.png');
 		background-repeat: no-repeat;
 		background-position: top 80px	left calc-percentage(215px, 980px);
+    @media (max-width: ($desktop - 1px)) {
+      padding-top: 80px;
+      padding-bottom: 100px;
+      background-position: bottom 100px left 50%;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      padding: 42px 25px;
+      background-size: 260px 353.6px;
+      background-position: bottom 42px left 50%;
+    }
   }
 }
 
 .shelter-description-wrapper {
 	padding-left: calc-percentage(595px, 1200px);
+  @media (max-width: ($desktop - 1px)) {
+    padding-left: 0;
+    padding-bottom: 488px;
+  }
+  @media (max-width: ($tablet - 1px)) {
+    padding-bottom: 394px;
+  }
 	.section-heading {
 		width: 370px;
+    @media (max-width: ($desktop - 1px)) {
+      margin-left: calc-percentage(139px, 708px);
+      width: calc-percentage(430px, 708px);
+    }
+    @media (max-width: ($tablet - 1px)) {
+      margin: 0 auto 3px;
+      width: 100%;
+    }
 	}
 	.shelter-description {
 		margin: 0;
 		padding-top: 25px;
 		width: calc-percentage(430px, (1200px - 595px));
     @include typography($arial-n-15, $color-dark-xl, 160%, normal);
+    @media (max-width: ($desktop - 1px)) {
+      margin: 0 auto;
+      width: calc-percentage(430px, 708px);
+    }
+    @media (max-width: ($tablet - 1px)) {
+      padding-top: 22px;
+      width: 100%;
+      text-align: justify;
+    }
 	}
 }
 
@@ -140,10 +271,17 @@ header {
 		gap: 60px;
 		padding-top: 79px;
 		padding-bottom: 100px;
+    @media (max-width: ($tablet - 1px)) {
+      padding: 42px 10px;
+      gap: 42px;
+    }
 		.section-heading {
 			margin: 0 auto;
 			width: 400px;
 			text-align: center;
+      @media (max-width: ($tablet - 1px)) {
+        width: 100%;
+      }
 		}
 		form {
 			display: flex;
@@ -160,16 +298,39 @@ header {
 	grid-template-columns: 52px 1fr 52px;
 	grid-column-gap: 53px;
 	align-items: center;
+  @media (max-width: ($desktop - 1px)) {
+    grid-column-gap: 12px;
+  }
+  @media (max-width: ($tablet - 1px)) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 52px;
+    grid-column-gap: 0;
+    grid-column-gap: 80px;
+    grid-row-gap: 20px;
+    .button-arrow-left {
+      justify-self: end;
+    }
+  }
 	.slider-cards {
 		display: flex;
 		justify-content: space-between;
     flex-wrap: wrap;
+    @media (max-width: ($desktop - 1px)) {
+      justify-content: space-around;
+      gap: 40px;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      order: -1;
+    }
 		.slider-card {
 			display: flex;
 			align-items: center;
 			flex-direction: column;
 			gap: 30px;
-      		border-radius: 9px;
+      border-radius: 9px;
 			width: 270px;
 			height: 435px;
 			background-color: $color-light-s;
@@ -184,6 +345,16 @@ header {
 					@extend %hover-interactive;
 				}
 			}
+      @media (max-width: ($desktop - 1px)) {
+        &:nth-child(3) {
+          display: none;
+        } 
+      }
+      @media (max-width: ($tablet - 1px)) {
+        &:nth-child(2) {
+          display: none;
+        } 
+      }
 			.slider-card-title {
 				text-align: center;
         @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
@@ -196,10 +367,17 @@ header {
 .help {
 	.container{
 		padding-top: 80px;
+    @media (max-width: ($tablet - 1px)) {
+      padding-top: 42px;
+    }
 		.section-heading {
 			margin: 0 auto 59px;
 			width: 310px;
 			text-align: center;
+      @media (max-width: ($tablet - 1px)) {
+        margin-bottom: 41px;
+        width: 100%;
+      }
 		}		
 	}
 }
@@ -209,17 +387,50 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 55px 119px;
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
   padding: 0 87px;
+  max-width: 290px;
   list-style: none;
+  @media (max-width: ($desktop - 1px)) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 55px 60px;
+    justify-items: center;
+    padding: 0 calc-percentage(69px, 708px);
+  }
+  @media (max-width: ($tablet - 1px)) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: center;
+    grid-gap: 30px;
+    margin-bottom: 42px;
+    padding: 0 5px;
+  }
   .help-item {
     padding-top: 90px;
     height: 113px;
     background-repeat: no-repeat;
     background-position: 50% 0;
+    @media (max-width: ($desktop - 1px)) {
+      display: flex;
+		  justify-content: center;
+      width: 170px;
+      height: 113px;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      padding-top: 70px;
+      width: 130px;
+      height: 87px;
+      background-size: 50px 50px;
+    }
     .help-item-title {
       @include typography($georgia-n-20, $color-dark-l, 115%, $letter-spacing);
+      @media (max-width: ($tablet - 1px)) {
+        @include typography($georgia-n-15, $color-dark-l, 110%, $letter-spacing);
+      }
     }
+    
   }
 }
 
@@ -265,17 +476,46 @@ header {
 		background-image: url('../../assets/images/donation-dog.png');
 		background-repeat: no-repeat;
 		background-position: top 91px left calc-percentage(183px, (1280px - 505px));
+    @media (max-width: ($desktop - 1px)) {
+      background-position: bottom 100px left 50%;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      padding-top: 42px;
+      padding-bottom: 42px;
+      background-size: 260px 135.2px;
+      background-position: bottom 42px left 50%;
+    }
 	}
 }
 
 .donation-info-wrapper {
   padding-left: calc-percentage(678px, 1200px);
+  @media (max-width: ($desktop - 1px)) {
+    margin: 0 auto;
+    padding-left: 0;
+    padding-bottom: 321px;
+    width: calc-percentage(380px, 708px);
+  }
+  @media (max-width: ($tablet - 1px)) {
+    margin: 0;
+    padding: 0 10px 177.2px;
+    width: 100%;
+  }
   .section-heading {
     width: 300px;
+    @media (max-width: ($desktop - 1px)) {
+      margin: 0 auto;
+      width: 100%;
+    }
   }
   .donation-section-subtitle {
     margin: 20px 0 19px;
     @include typography($georgia-n-15, $color-dark-l, 110%, $letter-spacing);
+    @media (max-width: ($tablet - 1px)) {
+      margin: 19px auto;
+      text-align: center;
+      @include typography($georgia-n-15, $color-dark-l, 160%, normal);
+    }
   }
   .donation-card-info {
     margin-bottom: 20px;
@@ -286,7 +526,6 @@ header {
     background-image: url('../../assets/icons/credit-card.svg');
     background-repeat: no-repeat;
     background-position: top 10px left 15px;
-
     @include typography($georgia-n-20, $color-dark-l, 115%, $letter-spacing);
     @extend %hover-interactive;
     &:hover {
@@ -301,10 +540,25 @@ header {
       height: 100%;
       @extend %normalize-link;
     }
+    @media (max-width: ($tablet - 1px)) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 281px;
+      @include typography($georgia-n-15, $color-dark-l, 110%, $letter-spacing);
+      a {
+        padding-top: 14px;
+      }
+    }
   }
   .donation-legal-info {
     margin: 0;
     max-width: 380px;
     @include typography($arial-i-12, $color-dark-m, 18px, normal);
+    @media (max-width: ($desktop - 1px)) {
+      max-width: 100%;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      text-align: justify;
+    }
   }
 }
