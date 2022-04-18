@@ -134,7 +134,7 @@ header {
 				width: calc-percentage(310px, 460px);
         @include typography($georgia-n-44, $color-light-xl, 130%, normal);
         @media (max-width: ($desktop - 1px)) {
-          width: 310px;
+          width: 100%;
         }
         @media (max-width: ($tablet - 1px)) {
           margin-left: auto;
@@ -211,10 +211,11 @@ header {
 		width: 370px;
     @media (max-width: ($desktop - 1px)) {
       margin-left: calc-percentage(139px, 708px);
+      width: calc-percentage(430px, 708px);
     }
     @media (max-width: ($tablet - 1px)) {
       margin: 0 auto 3px;
-      width: 80%;
+      width: 100%;
     }
 	}
 	.shelter-description {
@@ -317,7 +318,7 @@ header {
 					@extend %hover-interactive;
 				}
 			}
-      @media (max-width: ($desktop - 180px)) {
+      @media (max-width: ($desktop - 1px)) {
         &:nth-child(3) {
           display: none;
         } 
@@ -359,8 +360,9 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 55px 119px;
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
   padding: 0 87px;
+  max-width: 290px;
   list-style: none;
   @media (max-width: ($desktop - 1px)) {
     display: grid;
@@ -474,9 +476,9 @@ header {
   }
   .section-heading {
     width: 300px;
-    @media (max-width: ($tablet - 1px)) {
+    @media (max-width: ($desktop - 1px)) {
       margin: 0 auto;
-      width: 80%;
+      width: 100%;
     }
   }
   .donation-section-subtitle {

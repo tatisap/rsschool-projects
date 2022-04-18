@@ -126,7 +126,11 @@ header {
   @media (max-width: ($desktop - 1px)) {
     justify-content: center;
     column-gap: 40px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
+    max-width: 748px;
+  }
+  @media (max-width: ($desktop - 1px)) {
+    max-width: 300px;
   }
 	.pet-card {
 		display: flex;
@@ -155,13 +159,9 @@ header {
       }
     }
     @media (max-width: ($tablet - 1px)) {
+      &:nth-child(4),
       &:nth-child(5),
       &:nth-child(6) {
-        display: none;
-      }
-    }
-    @media (max-width: 599px) {
-      &:nth-child(4) {
         display: none;
       }
     }

@@ -5,12 +5,18 @@ footer {
 		justify-content: space-between;
     flex-wrap: wrap;
 		padding-top: 40px;
+    @media (max-width: ($desktop - 1px)) and (min-width: 1061px) {
+      padding-left: 150px;
+      padding-right: 150px;
+    }
     @media (max-width: ($desktop - 1px)) {
-    justify-content: center;
-    gap: 24px 60px;
-    padding-top: 30px;
+      justify-content: center;
+      gap: 24px 60px;
+      padding-top: 30px;
     }
     @media (max-width: ($tablet - 1px)) {
+      flex-direction: column;
+      align-items: center;
       gap: 40px;
     }
     .contacts-info {

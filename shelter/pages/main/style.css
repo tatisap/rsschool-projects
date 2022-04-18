@@ -448,7 +448,7 @@ html {
 }
 .hamburger .line {
   display: block;
-  margin: 10px auto;
+  margin: 8px auto;
   width: 30px;
   height: 2px;
   background-color: #f1cdb3;
@@ -546,6 +546,12 @@ footer .container {
   flex-wrap: wrap;
   padding-top: 40px;
 }
+@media (max-width: 1279px) and (min-width: 1061px) {
+  footer .container {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
 @media (max-width: 1279px) {
   footer .container {
     justify-content: center;
@@ -555,6 +561,8 @@ footer .container {
 }
 @media (max-width: 767px) {
   footer .container {
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
   }
 }
@@ -827,7 +835,7 @@ header .container {
 }
 @media (max-width: 1279px) {
   .not-only .container .not-only-info-wrapper .not-only-heading {
-    width: 310px;
+    width: 100%;
   }
 }
 @media (max-width: 767px) {
@@ -925,12 +933,13 @@ header .container {
 @media (max-width: 1279px) {
   .shelter-description-wrapper .section-heading {
     margin-left: 19.6327683616%;
+    width: 60.7344632768%;
   }
 }
 @media (max-width: 767px) {
   .shelter-description-wrapper .section-heading {
     margin: 0 auto 3px;
-    width: 80%;
+    width: 100%;
   }
 }
 .shelter-description-wrapper .shelter-description {
@@ -1050,7 +1059,7 @@ header .container {
   background-color: #fddcc4;
   border-color: #fddcc4;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1279px) {
   .pets-slider .slider-cards .slider-card:nth-child(3) {
     display: none;
   }
@@ -1093,8 +1102,9 @@ header .container {
   justify-content: center;
   flex-wrap: wrap;
   gap: 55px 119px;
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
   padding: 0 87px;
+  max-width: 290px;
   list-style: none;
 }
 @media (max-width: 1279px) {
@@ -1230,10 +1240,10 @@ header .container {
 .donation-info-wrapper .section-heading {
   width: 300px;
 }
-@media (max-width: 767px) {
+@media (max-width: 1279px) {
   .donation-info-wrapper .section-heading {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
   }
 }
 .donation-info-wrapper .donation-section-subtitle {
