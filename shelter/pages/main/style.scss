@@ -48,6 +48,7 @@ header {
     @media (max-width: ($tablet - 1px)) {
       align-items: center;
       padding-right: 53px;
+      height: 90.19px;
     }
 	}
 }
@@ -66,11 +67,29 @@ header {
       @include typography($arial-n-13, $color-light-xl, 15px, 0.1em);
 		}
 	}
+  @media (max-width: ($tablet - 1px)) {
+    &.active {
+      position: fixed;
+      right: 126px;
+      z-index: 5;
+    }
+  }
 }
 
 .nav {
   @media (max-width: ($tablet - 1px)) {
-    display: none;
+    position: fixed;
+    top: 0px;
+    right: -700px;
+    z-index: 3;
+    width: 320px;
+    height: 100vh;
+    background-color: $color-dark-3xl;
+    transition: all 0.5s ease-in-out;
+    &.active {
+      right: 0;
+      transition: all 0.5s ease-in-out;
+    }
   }
 }
 .nav-list {
@@ -78,6 +97,11 @@ header {
 	justify-content: space-between;
 	gap: 35px;
 	@extend %normalize-list;
+  @media (max-width: ($tablet - 1px)) {
+    flex-direction: column;
+    align-items: center;
+    padding: 248px 39px 0;
+  }
 }
 
 .nav-item {
@@ -94,6 +118,9 @@ header {
 			border-bottom: 3px solid $color-primary;
       color: $color-light-s;
 		}
+    @media (max-width: ($tablet - 1px)) {
+      font-size: 32px;
+    }
 	}
 }
 

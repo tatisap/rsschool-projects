@@ -20,6 +20,7 @@ $path-to-assets: '../../assets/';
 header {
   position: sticky;
   top: 0;
+  z-index: 0;
 	height: 120px;
 	background: $color-light-xl;
 	.container {
@@ -30,6 +31,8 @@ header {
     @media (max-width: ($tablet - 1px)) {
       align-items: center;
       padding-right: 53px;
+      padding-bottom: 0;
+      height: 90.19px;
     }
 	}
 }
@@ -48,17 +51,40 @@ header {
       @include typography($arial-n-13, $color-dark-3xl, 15px, 0.1em);
 		}
 	}
+  @media (max-width: ($tablet - 1px)) {
+    &.active {
+      position: fixed;
+      right: 126px;
+      z-index: 5;
+    }
+  }
 }
 
 .hamburger {
   .line {
-    background-color: black;
+    background-color: $color-dark-l;
+  }
+  &:hover {
+    .line {
+      background-color: $color-dark-3xl;
+    }
   }
 }
 
 .nav {
   @media (max-width: ($tablet - 1px)) {
-    display: none;
+    position: fixed;
+    top: 0px;
+    right: -700px;
+    z-index: 3;
+    width: 320px;
+    height: 100vh;
+    background-color: white;
+    transition: all 0.5s ease-in-out;
+    &.active {
+      right: 0;
+      transition: all 0.5s ease-in-out;
+    }
   }
 }
 
@@ -67,6 +93,11 @@ header {
 	justify-content: space-between;
 	gap: 35px;
   @extend %normalize-list;
+  @media (max-width: ($tablet - 1px)) {
+    flex-direction: column;
+    align-items: center;
+    padding: 248px 39px 0;
+  }
 }
 
 .nav-item {
@@ -81,6 +112,9 @@ header {
     &.active {
       border-bottom: 3px solid $color-primary;
       color: $color-dark-3xl;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      font-size: 32px;
     }
 	}
 }
