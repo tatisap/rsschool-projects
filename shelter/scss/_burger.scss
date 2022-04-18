@@ -1,0 +1,44 @@
+.hamburger {
+  display: none;
+  z-index: 4;
+  transition: 0.3s;
+  @media (max-width: ($tablet - 1px)) {
+    display: block;
+  }
+  &:hover {
+    @extend %hover-interactive;
+    .line {
+      background-color: $color-primary-light;
+    }
+  }
+  &.active {
+    position: fixed;
+    right: 53px;
+    margin: 0;
+    transform: rotate(90deg);
+    }
+  .line {
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height: 2px;
+    background-color: $color-primary;
+    &:nth-child(2) {
+      margin: 8px 0;
+    }
+  }
+}
+
+.blackout {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.6);
+  &.active {
+    display: block;
+  }
+}
