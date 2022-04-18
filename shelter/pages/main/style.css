@@ -1145,7 +1145,6 @@ header .container {
   gap: 55px 119px;
   margin: 0 auto 100px;
   padding: 0 87px;
-  max-width: 290px;
   list-style: none;
 }
 @media (max-width: 1279px) {
@@ -1166,6 +1165,7 @@ header .container {
     grid-gap: 30px;
     margin-bottom: 42px;
     padding: 0 5px;
+    max-width: 290px;
   }
 }
 .help-list .help-item {

@@ -163,7 +163,7 @@ header {
     margin: 0 auto 40px;
     max-width: 748px;
   }
-  @media (max-width: ($desktop - 1px)) {
+  @media (max-width: ($tablet - 1px)) {
     max-width: 300px;
   }
 	.pet-card {

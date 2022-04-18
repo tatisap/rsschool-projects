@@ -389,7 +389,6 @@ header {
   gap: 55px 119px;
   margin: 0 auto 100px;
   padding: 0 87px;
-  max-width: 290px;
   list-style: none;
   @media (max-width: ($desktop - 1px)) {
     display: grid;
@@ -406,6 +405,7 @@ header {
     grid-gap: 30px;
     margin-bottom: 42px;
     padding: 0 5px;
+    max-width: 290px;
   }
   .help-item {
     padding-top: 90px;
