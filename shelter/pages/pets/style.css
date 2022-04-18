@@ -435,6 +435,7 @@ html {
 }
 .hamburger.active {
   position: fixed;
+  top: 45px;
   right: 53px;
   margin: 0;
   transform: rotate(90deg);
@@ -746,6 +747,7 @@ header .container {
 @media (max-width: 767px) {
   .logo.active {
     position: fixed;
+    top: 30px;
     right: 126px;
     z-index: 5;
   }
@@ -772,6 +774,7 @@ header .container {
   .nav.active {
     right: 0;
     transition: all 0.5s ease-in-out;
+    overflow-y: auto;
   }
 }
 

@@ -54,6 +54,7 @@ header {
   @media (max-width: ($tablet - 1px)) {
     &.active {
       position: fixed;
+      top: 30px;
       right: 126px;
       z-index: 5;
     }
@@ -84,6 +85,7 @@ header {
     &.active {
       right: 0;
       transition: all 0.5s ease-in-out;
+      overflow-y: auto;
     }
   }
 }
