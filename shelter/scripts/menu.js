@@ -1,33 +1,39 @@
+import { onBlackout } from '../scripts/blackout.js';
+import { offBlackout } from '../scripts/blackout.js';
+
 const hamburgerButton = document.querySelector('.hamburger');
-const header = document.querySelector('header');
 const nav = document.querySelector('.nav');
 const navList = document.querySelector('.nav-list');
-const blackout = document.createElement('div');
+const blackout = document.querySelector('.blackout');
 const logo = document.querySelector('.logo');
 
 export function initAdaptiveMenu() {
-  header.append(blackout);
-  blackout.classList.add('blackout');
-
   hamburgerButton.addEventListener('click', switchMenu);
 
   nav.addEventListener('click', closeMenu);
+  blackout.addEventListener('click', closeMenu);
+
+  blackout.style.display = 'none';
 }
 
 function switchMenu() {
   hamburgerButton.classList.toggle('active');
   nav.classList.toggle('active');
   navList.classList.toggle('active');
-  blackout.classList.toggle('active');
   logo.classList.toggle('active');
+  document.body.classList.toggle('no-scroll');
+
+  (blackout.style.display === 'none') ? onBlackout() : offBlackout();
 }
 
 function closeMenu(event) {
-  if (event.target.classList.contains('nav-link')) {
+  if (event.target.classList.contains('nav-link') || event.target.classList.contains('blackout')) {
     hamburgerButton.classList.remove('active');
     nav.classList.remove('active');
-    navList.classList.remove('active');  
-    blackout.classList.remove('active');
+    navList.classList.remove('active');
     logo.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+
+    offBlackout();
   }
 }

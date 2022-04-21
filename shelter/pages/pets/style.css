@@ -420,6 +420,10 @@ html {
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .hamburger {
   display: none;
   z-index: 4;
@@ -449,20 +453,6 @@ html {
 }
 .hamburger .line:nth-child(2) {
   margin: 8px 0;
-}
-
-.blackout {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(41, 41, 41, 0.6);
-}
-.blackout.active {
-  display: block;
 }
 
 .button-primary {
@@ -702,6 +692,19 @@ footer .container .footer-img-wrapper {
 }
 .location-item a {
   padding-left: 42px;
+}
+
+.blackout {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.6);
 }
 
 header {
