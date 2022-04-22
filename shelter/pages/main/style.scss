@@ -572,3 +572,102 @@ header {
     }
   }
 }
+
+.modal-window {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 25%;
+  width: 900px;
+  height: 500px;
+  border-radius: 9px;
+  background-color: $color-light-s;
+  &:hover {
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    transition: 0.3s;
+  }
+  @media (max-width: ($desktop - 1px)) {
+    width: 630px;
+    height: 350px;
+  }
+  @media (max-width: ($tablet - 1px)) {
+    width: 240px;
+    height: 341px;
+  }
+  .modal-window-img {
+    @media (max-width: ($tablet - 1px)) {
+      display: none;
+    }
+  }
+  .modal-window-info {
+    padding: 50px 20px 0px 29px;
+    @media (max-width: ($desktop - 1px)) {
+      padding: 10px 8px 0px 11px;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      padding: 10px 10px 0px;
+    }
+    .modal-window-title {
+      margin: 0;
+      @include typography($georgia-n-35, black, 130%, $letter-spacing);
+      @media (max-width: ($tablet - 1px)) {
+        text-align: center;
+      }
+    }
+    .modal-window-subtitle {
+      margin-top: 10px;
+      margin-bottom: 40px;
+      @include typography($georgia-n-20, black, 115%, $letter-spacing);
+      @media (max-width: ($desktop - 1px)) {
+        margin-bottom: 20px;
+      }
+      @media (max-width: ($tablet - 1px)) {
+        text-align: center;
+      }
+    }
+    .modal-window-pet-info {
+      margin: 0;
+      margin-bottom: 40px;
+      @include typography($georgia-n-15, black, 110%, $letter-spacing);
+      @media (max-width: ($desktop - 1px)) {
+        margin-bottom: 20px;
+        font-size: 13px;
+      }
+      @media (max-width: ($tablet - 1px)) {
+        margin-bottom: 24px;
+        text-align: justify;
+      }
+    }
+    .modal-window-info-list {
+      margin: 0;
+      padding-left: 14px;
+      li::marker {
+        color: $color-primary;
+      }
+      li {
+        margin-bottom: 10px;
+        height: 18px;
+        @include typography($georgia-n-15, black, 110%, $letter-spacing);
+        @media (max-width: ($desktop - 1px)) {
+          margin-bottom: 5px;
+        }
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .modal-window-close-button {
+    position: absolute;
+    top: -52px;
+    right: -52px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    background-color: transparent;
+    background-image: url('../../assets/icons/close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
