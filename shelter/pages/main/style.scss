@@ -362,6 +362,9 @@ header {
           display: none;
         } 
       }
+      .slider-card-img {
+        height: 270px;
+      }
 			.slider-card-title {
 				text-align: center;
         @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);

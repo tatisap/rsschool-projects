@@ -1122,6 +1122,9 @@ header .container {
     display: none;
   }
 }
+.pets-slider .slider-cards .slider-card .slider-card-img {
+  height: 270px;
+}
 .pets-slider .slider-cards .slider-card .slider-card-title {
   text-align: center;
   font: normal 400 20px "Georgia", serif;
