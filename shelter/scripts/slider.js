@@ -60,7 +60,6 @@ function generateSlideDraft(petsData) {
   let draft = new Set();
   while (draft.size != slideSize) {
   let pet = petsData[Math.floor(Math.random() * petsData.length)];
-  console.log(pet);
   if (!currentSlideDraft.find(item => item.name === pet.name)) draft.add(pet);
   }
   return Array.from(draft);
