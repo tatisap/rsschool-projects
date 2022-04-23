@@ -77,3 +77,22 @@
     }
   }
 }
+
+.modal-window-close-button {
+  position: absolute;
+  top: -52px;
+  right: -52px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+  background-color: transparent;
+  background-image: url('../../assets/icons/close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  &:hover {
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
+    @extend %hover-interactive;
+  }
+}

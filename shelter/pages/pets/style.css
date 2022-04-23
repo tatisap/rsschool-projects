@@ -373,7 +373,7 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.pets-cards .pet-card:hover .button-secondary, .pets-cards .pet-card:hover, .pets-cards .pet-card, .nav-item .nav-link:hover, .blackout:hover + .container .modal-window-close-button, .pagination button.available:hover, .button-arrow-left:hover,
+.pets-cards .pet-card:hover .button-secondary, .pets-cards .pet-card:hover, .pets-cards .pet-card, .nav-item .nav-link:hover, .blackout:hover + .modal-window .modal-window-close-button, .modal-window-close-button:hover, .pagination button.available:hover, .button-arrow-left:hover,
 .button-arrow-right:hover, .button-arrow-left,
 .button-arrow-right, .button-secondary:hover, .button-secondary, .button-primary:hover, .button-primary, .hamburger:hover {
   cursor: pointer;
@@ -539,6 +539,24 @@ html {
 }
 .pagination button.active {
   background-color: #f1cdb3;
+}
+
+.modal-window-close-button {
+  position: absolute;
+  top: -52px;
+  right: -52px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #f1cdb3;
+  border-radius: 100px;
+  background-color: transparent;
+  background-image: url("../../assets/icons/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.modal-window-close-button:hover {
+  border-color: #fddcc4;
+  background-color: #fddcc4;
 }
 
 footer {
@@ -709,7 +727,7 @@ footer .container .footer-img-wrapper {
   height: 100vh;
   background-color: rgba(41, 41, 41, 0.6);
 }
-.blackout:hover + .container .modal-window-close-button {
+.blackout:hover + .modal-window .modal-window-close-button {
   border-color: #fddcc4;
   background-color: #fddcc4;
 }

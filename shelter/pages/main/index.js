@@ -1,19 +1,15 @@
 import { initAdaptiveMenu } from '../../scripts/menu.js';
-import { getPets } from '../../scripts/slider.js';
+import { initSlider } from '../../scripts/slider.js';
+import { addSlide } from '../../scripts/slider.js';
 import { showPetInfo } from '../../scripts/popup.js';
 
 initAdaptiveMenu();
-getPets();
+initSlider();
 
-const buttonLeft = document.querySelector('.button-arrow-left');
-const buttonRight = document.querySelector('.button-arrow-right');
 
-buttonLeft.addEventListener('click', getPets);
-buttonRight.addEventListener('click', getPets);
-
-let cardsContainer = document.querySelector('.slider-cards');
+let cardsContainer = document.querySelector('.slider');
 cardsContainer.addEventListener('click', (event) => {
-  if (!event.target.closest('.slider-card')) return; 
-  let name = event.target.closest('.slider-card').querySelector('.slider-card-title').textContent;
+  if (!event.target.closest('.slide')) return; 
+  let name = event.target.closest('.slide').querySelector('.slide-card-title').textContent;
   showPetInfo(name);
-})
+}); 
