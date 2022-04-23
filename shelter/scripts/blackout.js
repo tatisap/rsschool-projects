@@ -1,7 +1,14 @@
-export function onBlackout() {
-    document.querySelector('.blackout').style.display = 'block';
-}
+export class Blackout {
+  constructor() {
+    let blackout = document.createElement('div');
+    blackout.classList.add('blackout');
 
-export function offBlackout() {
-    document.querySelector('.blackout').style.display = 'none';
+    this.blackout = blackout;
+  }
+  addInto(elem) {
+    elem.append(this.blackout);
+  }
+  remove() {
+    this.blackout.remove();
+  }
 }

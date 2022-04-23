@@ -1,8 +1,9 @@
+import { Blackout } from '../scripts/blackout.js';
+
 class ModalWindow {
   constructor() {
     let container = document.createElement('div');
     container.classList.add('modal-window');
-    this.container = container;
 
     let image = document.createElement('img');
     image.classList.add('modal-window-img');
@@ -52,11 +53,12 @@ class ModalWindow {
     let button = document.createElement('button');
     button.classList.add('modal-window-close-button');
     container.append(button);
-    
-    button.addEventListener('click', () => {
-      this.container.style.display = 'none';
-    })
+    button.addEventListener('click', closeWindow);
 
+    let blackout = new Blackout();
+    blackout.blackout.addEventListener('click', closeWindow);
+
+    this.blackout = blackout;
     this.container = container;
     this.image = image;
     this.title = title;
@@ -87,6 +89,15 @@ class ModalWindow {
   addToPage() {
     document.body.append(this.container);
   }
+  addBlackout() {
+    this.container.before(this.blackout.blackout);
+  }
+}
+
+function closeWindow() {
+  document.querySelector('.modal-window').remove();
+  document.querySelector('.blackout').remove();
+  document.body.classList.remove('no-scroll');
 }
 
 export async function showPetInfo(name) {
@@ -96,6 +107,7 @@ export async function showPetInfo(name) {
   const pet = new ModalWindow();
   pet.setInfo(petsData.find(pet => pet.name === name));
   pet.addToPage();
-
+  pet.addBlackout();
+  document.body.classList.add('no-scroll');
 } 
 

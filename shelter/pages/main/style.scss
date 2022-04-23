@@ -576,15 +576,18 @@ header {
 .modal-window {
   display: flex;
   position: fixed;
-  top: 50%;
-  left: 25%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   width: 900px;
   height: 500px;
   border-radius: 9px;
   background-color: $color-light-s;
+  z-index: 5;
   &:hover {
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-    transition: 0.3s;
   }
   @media (max-width: ($desktop - 1px)) {
     width: 630px;
@@ -592,9 +595,11 @@ header {
   }
   @media (max-width: ($tablet - 1px)) {
     width: 240px;
-    height: 341px;
+    min-height: 341px;
+    height: max-content;
   }
   .modal-window-img {
+    border-radius: 9px;
     @media (max-width: ($tablet - 1px)) {
       display: none;
     }
@@ -605,7 +610,7 @@ header {
       padding: 10px 8px 0px 11px;
     }
     @media (max-width: ($tablet - 1px)) {
-      padding: 10px 10px 0px;
+      padding: 10px;
     }
     .modal-window-title {
       margin: 0;
@@ -646,7 +651,6 @@ header {
       }
       li {
         margin-bottom: 10px;
-        height: 18px;
         @include typography($georgia-n-15, black, 110%, $letter-spacing);
         @media (max-width: ($desktop - 1px)) {
           margin-bottom: 5px;
@@ -669,5 +673,10 @@ header {
     background-image: url('../../assets/icons/close.svg');
     background-repeat: no-repeat;
     background-position: center;
+    &:hover {
+      border-color: $color-primary-light;
+      background-color: $color-primary-light;
+      @extend %hover-interactive;
+    }
   }
 }

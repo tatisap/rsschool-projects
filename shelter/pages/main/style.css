@@ -373,7 +373,7 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .nav-item .nav-link:hover, .nav-item .nav-link, .pagination button.available:hover, .button-arrow-left:hover,
+.modal-window .modal-window-close-button:hover, .donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-cards .slider-card:hover .button-secondary, .pets-slider .slider-cards .slider-card:hover, .pets-slider .slider-cards .slider-card, .nav-item .nav-link:hover, .nav-item .nav-link, .blackout:hover + .modal-window .modal-window-close-button, .pagination button.available:hover, .button-arrow-left:hover,
 .button-arrow-right:hover, .button-arrow-left,
 .button-arrow-right, .button-secondary:hover, .button-secondary, .button-primary:hover, .button-primary, .hamburger:hover {
   cursor: pointer;
@@ -433,6 +433,9 @@ html {
   .hamburger {
     display: block;
   }
+}
+.hamburger:hover {
+  transition: 0.5s;
 }
 .hamburger:hover .line {
   background-color: #fddcc4;
@@ -695,7 +698,7 @@ footer .container .footer-img-wrapper {
 }
 
 .blackout {
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -705,6 +708,10 @@ footer .container .footer-img-wrapper {
   width: 100vw;
   height: 100vh;
   background-color: rgba(41, 41, 41, 0.6);
+}
+.blackout:hover + .modal-window .modal-window-close-button {
+  border-color: #fddcc4;
+  background-color: #fddcc4;
 }
 
 .section-heading {
@@ -1379,16 +1386,19 @@ header .container {
 .modal-window {
   display: flex;
   position: fixed;
-  top: 50%;
-  left: 25%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   width: 900px;
   height: 500px;
   border-radius: 9px;
   background-color: #fafafa;
+  z-index: 5;
 }
 .modal-window:hover {
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-  transition: 0.3s;
 }
 @media (max-width: 1279px) {
   .modal-window {
@@ -1399,8 +1409,12 @@ header .container {
 @media (max-width: 767px) {
   .modal-window {
     width: 240px;
-    height: 341px;
+    min-height: 341px;
+    height: max-content;
   }
+}
+.modal-window .modal-window-img {
+  border-radius: 9px;
 }
 @media (max-width: 767px) {
   .modal-window .modal-window-img {
@@ -1417,7 +1431,7 @@ header .container {
 }
 @media (max-width: 767px) {
   .modal-window .modal-window-info {
-    padding: 10px 10px 0px;
+    padding: 10px;
   }
 }
 .modal-window .modal-window-info .modal-window-title {
@@ -1479,7 +1493,6 @@ header .container {
 }
 .modal-window .modal-window-info .modal-window-info-list li {
   margin-bottom: 10px;
-  height: 18px;
   font: normal 400 15px "Georgia", serif;
   color: black;
   line-height: 110%;
@@ -1505,4 +1518,8 @@ header .container {
   background-image: url("../../assets/icons/close.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+.modal-window .modal-window-close-button:hover {
+  border-color: #fddcc4;
+  background-color: #fddcc4;
 }
