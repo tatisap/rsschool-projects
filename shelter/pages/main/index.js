@@ -8,7 +8,7 @@ initSlider();
 
 let cardsContainer = document.querySelector('.slider');
 cardsContainer.addEventListener('click', (event) => {
-  if (!event.target.closest('.slide')) return; 
-  let name = event.target.closest('.slide').querySelector('.slide-card-title').textContent;
+  if (!event.target.closest('.card')) return; 
+  let name = event.target.closest('.card').querySelector('.card-title').textContent;
   showPetInfo(name);
 }); 

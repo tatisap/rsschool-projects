@@ -1,11 +1,23 @@
 import { initAdaptiveMenu } from '../../scripts/menu.js';
+import { getPets } from '../../scripts/pagination.js';
+import { setPage } from '../../scripts/pagination.js';
 import { showPetInfo } from '../../scripts/popup.js';
 
+
+const buttons = document.querySelector('.pagination').querySelectorAll('button');
+
 initAdaptiveMenu();
+getPets().then(() => {
+  buttons.forEach(button => {
+    button.addEventListener('click', setPage);
+  });
+}
+);
 
 let cardsContainer = document.querySelector('.pets-cards');
 cardsContainer.addEventListener('click', (event) => {
-  if (!event.target.closest('.pet-card')) return; 
-  let name = event.target.closest('.pet-card').querySelector('.pet-card-title').textContent;
+  if (!event.target.closest('.card')) return; 
+  let name = event.target.closest('.card').querySelector('.card-title').textContent;
   showPetInfo(name);
 }); 
+

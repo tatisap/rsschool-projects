@@ -68,7 +68,7 @@
       background-color: $color-primary-light;
       @extend %hover-interactive;
     }
-    &.inactive {
+    &:disabled {
       border-color: $color-dark-s;
       color: $color-dark-s;
     }

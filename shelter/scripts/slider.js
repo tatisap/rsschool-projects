@@ -1,3 +1,5 @@
+import { Card } from '../scripts/card.js';
+
 const sliderContainer = document.querySelector('.slider-wrapper');
 const slider = document.querySelector('.slider');
 const buttonLeft = document.querySelector('.button-arrow-left');
@@ -63,38 +65,6 @@ function generateSlideDraft(petsData) {
   if (!currentSlideDraft.find(item => item.name === pet.name)) draft.add(pet);
   }
   return Array.from(draft);
-}
-
-class Card {
-  constructor() {
-    let container = document.createElement('div')
-    container.classList.add('slide-card');
-
-    let image = document.createElement('img');
-    image.classList.add('slide-card-img');
-    container.append(image);
-
-    let title = document.createElement('span');
-    title.classList.add('slide-card-title');
-    container.append(title);
-
-    let button = document.createElement('button');
-    button.classList.add('button-secondary');
-    button.textContent = 'Learn more';
-    container.append(button);
-
-    this.container = container;
-    this.image = image;
-    this.title = title;
-  }
-  addInto(elem) {
-    elem.append(this.container);
-  }
-  fill(src, text) {
-    this.image.src = src;
-    this.image.alt = text;
-    this.title.textContent = text;
-  }
 }
 
 class Slide {

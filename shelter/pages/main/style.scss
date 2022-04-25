@@ -364,7 +364,7 @@ header {
         &.three {
           order: 3;
         }
-        .slide-card {
+        .card {
           display: flex;
           align-items: center;
           flex-direction: column;
@@ -394,10 +394,10 @@ header {
               display: none;
             } 
           }
-          .slide-card-img {
+          .card-img {
             height: 270px;
           }
-          .slide-card-title {
+          .card-title {
             text-align: center;
             @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
           }

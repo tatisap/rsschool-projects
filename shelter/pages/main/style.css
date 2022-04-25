@@ -373,7 +373,7 @@ template {
   font-weight: 700;
   font-style: normal;
 }
-.donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-wrapper .slider .slide .slide-card:hover .button-secondary, .pets-slider .slider-wrapper .slider .slide .slide-card:hover, .pets-slider .slider-wrapper .slider .slide .slide-card, .nav-item .nav-link:hover, .nav-item .nav-link, .blackout:hover + .modal-window .modal-window-close-button, .modal-window-close-button:hover, .pagination button.available:hover, .button-arrow-left:hover,
+.donation-info-wrapper .donation-card-info:hover, .donation-info-wrapper .donation-card-info, .pets-slider .slider-wrapper .slider .slide .card:hover .button-secondary, .pets-slider .slider-wrapper .slider .slide .card:hover, .pets-slider .slider-wrapper .slider .slide .card, .nav-item .nav-link:hover, .nav-item .nav-link, .blackout:hover + .modal-window .modal-window-close-button, .modal-window-close-button:hover, .pagination button.available:hover, .button-arrow-left:hover,
 .button-arrow-right:hover, .button-arrow-left,
 .button-arrow-right, .button-secondary:hover, .button-secondary, .button-primary:hover, .button-primary, .hamburger:hover {
   cursor: pointer;
@@ -1280,7 +1280,7 @@ header .container {
 .pets-slider .slider-wrapper .slider .slide.three {
   order: 3;
 }
-.pets-slider .slider-wrapper .slider .slide .slide-card {
+.pets-slider .slider-wrapper .slider .slide .card {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -1290,28 +1290,28 @@ header .container {
   height: 435px;
   background-color: #fafafa;
 }
-.pets-slider .slider-wrapper .slider .slide .slide-card:hover {
+.pets-slider .slider-wrapper .slider .slide .card:hover {
   background-color: #ffffff;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
-.pets-slider .slider-wrapper .slider .slide .slide-card:hover .button-secondary {
+.pets-slider .slider-wrapper .slider .slide .card:hover .button-secondary {
   background-color: #fddcc4;
   border-color: #fddcc4;
 }
 @media (max-width: 1279px) {
-  .pets-slider .slider-wrapper .slider .slide .slide-card:nth-child(3) {
+  .pets-slider .slider-wrapper .slider .slide .card:nth-child(3) {
     display: none;
   }
 }
 @media (max-width: 767px) {
-  .pets-slider .slider-wrapper .slider .slide .slide-card:nth-child(2) {
+  .pets-slider .slider-wrapper .slider .slide .card:nth-child(2) {
     display: none;
   }
 }
-.pets-slider .slider-wrapper .slider .slide .slide-card .slide-card-img {
+.pets-slider .slider-wrapper .slider .slide .card .card-img {
   height: 270px;
 }
-.pets-slider .slider-wrapper .slider .slide .slide-card .slide-card-title {
+.pets-slider .slider-wrapper .slider .slide .card .card-title {
   text-align: center;
   font: normal 400 20px "Georgia", serif;
   color: #545454;
