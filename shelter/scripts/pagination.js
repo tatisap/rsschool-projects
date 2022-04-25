@@ -3,8 +3,12 @@ import { Card } from '../scripts/card.js';
 const wrapper = document.querySelector('.pets-cards-wrapper');
 const buttons = document.querySelector('.pagination').querySelectorAll('button');
 const buttonCurrent = document.querySelector('button.pagination-current');
+const buttonStart = document.querySelector('.pagination-start');
+const buttonLeft = document.querySelector('.pagination-left');
+const buttonRight = document.querySelector('.pagination-right');
+const buttonFinish = document.querySelector('.pagination-finish');
+
 let pageSize = (window.innerWidth < 1280 && window.innerWidth >= 768) ? 6 : (window.innerWidth < 768) ? 3 : 8;
-console.log(pageSize);
 let pets = [];
 let pages = [];
 
@@ -15,7 +19,7 @@ export async function getPets() {
   for (let i = 0; i < 6; i++) {
     pets.push(...petsData);
   }
-  console.log(pets);
+  
   while (pets.length !== 0) {
     if (pets.length <= pageSize) {
       let page = pets.splice(0, pets.length);
@@ -28,9 +32,6 @@ export async function getPets() {
     pages.push(page);
   }
 
-  console.log(pages);
-  console.log(pets);
-  
   initFirstPage();
 } 
 
@@ -46,7 +47,6 @@ function initFirstPage() {
     let card = new Card();
     card.fill(pet.img, pet.name);
     card.addInto(document.querySelector('.pets-cards'));
-
   });
 }
 
@@ -79,12 +79,6 @@ export function setPage(event) {
     wrapper.lastElementChild.remove()
     buttons.forEach(button => button.addEventListener('click', setPage));
   }, 500);
-
-
-  const buttonStart = document.querySelector('.pagination-start');
-  const buttonLeft = document.querySelector('.pagination-left');
-  const buttonRight = document.querySelector('.pagination-right');
-  const buttonFinish = document.querySelector('.pagination-finish');
 
   switch (buttonCurrent.textContent) {
     case '1': {

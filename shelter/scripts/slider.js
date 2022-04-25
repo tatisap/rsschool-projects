@@ -39,7 +39,7 @@ function addSlide(event) {
         if(index === (slides.length -1)) setTimeout(() => {
           slide.remove();
           buttonLeft.addEventListener('click', addSlide);
-        }, 300);
+        }, 400);
       });
     }
     if (slide.event.target.classList.contains('button-arrow-right')) {
@@ -52,7 +52,7 @@ function addSlide(event) {
         if(index === 0) setTimeout(() => {
           slide.remove();
           buttonRight.addEventListener('click', addSlide);
-        }, 300);
+        }, 400);
       });
     }
   });
