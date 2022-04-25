@@ -12,6 +12,22 @@ let pageSize = (window.innerWidth < 1280 && window.innerWidth >= 768) ? 6 : (win
 let pets = [];
 let pages = [];
 
+
+/*window.addEventListener('resize', changePageSize);
+
+function changePageSize() {
+  window.removeEventListener('resize', changePageSize);
+
+  pageSize = (window.innerWidth < 1280 && window.innerWidth >= 768) ? 6 : (window.innerWidth < 768) ? 3 : 8;
+  pets = [];
+  pages = [];
+  getPets().then(() => {
+    document.querySelector('.pets-cards').innerHTML = '';
+    initPage(+buttonCurrent.textContent);
+    window.addEventListener('resize', changePageSize);
+  });
+}*/
+
 export async function getPets() {
   const petsRes = await fetch('../../assets/pets.json');
   const petsData = await petsRes.json();
@@ -33,7 +49,6 @@ export async function getPets() {
   }
   shuffle(pages);
   console.log(pages);
-  initFirstPage();
 } 
 
 function shuffle(page) {
@@ -43,8 +58,8 @@ function shuffle(page) {
   }
 }
 
-function initFirstPage() {
-  pages[0].forEach(pet => {
+export function initPage(n) {
+  pages[n].forEach(pet => {
     let card = new Card();
     card.fill(pet.img, pet.name);
     card.addInto(document.querySelector('.pets-cards'));
@@ -78,7 +93,9 @@ export function setPage(event) {
   wrapper.lastElementChild.classList.add('opacity0');
   setTimeout(() => {
     wrapper.lastElementChild.remove()
-    buttons.forEach(button => button.addEventListener('click', setPage));
+    buttons.forEach(button => {
+      if (!button.classList.contains('active')) button.addEventListener('click', setPage);
+    });
   }, 500);
 
   switch (buttonCurrent.textContent) {

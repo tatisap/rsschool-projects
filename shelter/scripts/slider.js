@@ -5,8 +5,22 @@ const slider = document.querySelector('.slider');
 const buttonLeft = document.querySelector('.button-arrow-left');
 const buttonRight = document.querySelector('.button-arrow-right');
 
-const slideSize = (sliderContainer.offsetWidth === 990) ? 3 : (sliderContainer.offsetWidth === 580) ? 2 : 1;
+let slideSize = (sliderContainer.offsetWidth === 990) ? 3 : (sliderContainer.offsetWidth === 580) ? 2 : 1;
 let currentSlideDraft = [];
+
+/*window.addEventListener('resize', changeSlideSize);
+
+function changeSlideSize() {
+  window.removeEventListener('resize', changeSlideSize);
+  slideSize = (sliderContainer.offsetWidth === 990) ? 3 : (sliderContainer.offsetWidth === 580) ? 2 : 1;
+  currentSlideDraft = [];
+  getSlide().then(slide => {
+    slider.innerHTML = '';
+    slide.setLeftPos(`${slider.offsetWidth / 3}px`)
+    slide.addBeforeEnd(slider);
+    window.addEventListener('resize', changeSlideSize);
+  });
+}*/
 
 export function initSlider() {
   getSlide().then(slide => {
