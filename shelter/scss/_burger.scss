@@ -7,6 +7,7 @@
   }
   &:hover {
     @extend %hover-interactive;
+    transition: 0.5s;
     .line {
       background-color: $color-primary-light;
     }
@@ -27,19 +28,5 @@
     &:nth-child(2) {
       margin: 8px 0;
     }
-  }
-}
-
-.blackout {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(41, 41, 41, 0.6);
-  &.active {
-    display: block;
   }
 }

@@ -15,12 +15,14 @@ $path-to-assets: '../../assets/';
 @import '../../scss/burger';
 @import '../../scss/buttons';
 @import '../../scss/footer';
+@import '../../scss/blackout';
+@import '../../scss/modal-window';
 
 //header
 header {
   position: sticky;
   top: 0;
-  z-index: 0;
+  z-index: 1;
 	height: 120px;
 	background: $color-light-xl;
 	.container {
@@ -81,10 +83,10 @@ header {
     width: 320px;
     height: 100vh;
     background-color: white;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-in-out;
     &.active {
       right: 0;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.6s ease-in-out;
       overflow-y: auto;
     }
   }
@@ -158,59 +160,81 @@ header {
   }
 }
 
-.pets-cards {
-	display: flex;
-	justify-content: space-between;
-  flex-wrap: wrap;
-  row-gap: 30px;
+.pets-cards-wrapper {
+  position: relative;
   margin-bottom: 60px;
-  @media (max-width: ($desktop - 1px)) {
-    justify-content: center;
-    column-gap: 40px;
-    margin: 0 auto 40px;
-    max-width: 748px;
-  }
-  @media (max-width: ($tablet - 1px)) {
-    max-width: 300px;
-  }
-	.pet-card {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		gap: 30px;
-    border-radius: 9px;
-		width: 270px;
-		height: 435px;
-		background-color: $color-light-s;
-		@extend %hover-interactive;
-		&:hover {
-			background-color: $color-light-xl;
-			box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-			@extend %hover-interactive;
-			.button-secondary {
-				border-color: $color-primary-light;
-				background-color: $color-primary-light;
-				@extend %hover-interactive;
-			}
-		}
+  height: 900px;
+    transition: 0.3s;
     @media (max-width: ($desktop - 1px)) {
-      &:nth-child(7),
-      &:nth-child(8) {
-        display: none;
-      }
+      margin: 0 auto 40px;
+      max-width: 748px;
+      height: 1365px;
     }
     @media (max-width: ($tablet - 1px)) {
-      &:nth-child(4),
-      &:nth-child(5),
-      &:nth-child(6) {
-        display: none;
+      max-width: 300px;
+    }
+  .pets-cards {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    height: 900px;
+    opacity: 1;
+    transition: all ease 0.5s;
+    &.opacity0 {
+      opacity: 0;
+    }
+    @media (max-width: ($desktop - 1px)) {
+      justify-content: center;
+      column-gap: 40px;
+      max-width: 748px;
+      height: 1365px;
+    }
+    @media (max-width: ($tablet - 1px)) {
+      max-width: 300px;
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+      border-radius: 9px;
+      width: 270px;
+      height: 435px;
+      background-color: $color-light-s;
+      @extend %hover-interactive;
+      &:hover {
+        background-color: $color-light-xl;
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+        @extend %hover-interactive;
+        .button-secondary {
+          border-color: $color-primary-light;
+          background-color: $color-primary-light;
+          @extend %hover-interactive;
+        }
+      }
+      @media (max-width: ($desktop - 1px)) {
+        &:nth-child(7),
+        &:nth-child(8) {
+          display: none;
+        }
+      }
+      @media (max-width: ($tablet - 1px)) {
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+          display: none;
+        }
+      }
+      .card-title {
+        text-align: center;
+        @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
       }
     }
-		.pet-card-title {
-			text-align: center;
-      @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
-		}
-	}
+  }
 }
 
 .pagination {
