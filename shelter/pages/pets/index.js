@@ -1,5 +1,5 @@
 import { initAdaptiveMenu } from '../../scripts/menu.js';
-import { getPets } from '../../scripts/pagination.js';
+import { getPets, initPage } from '../../scripts/pagination.js';
 import { setPage } from '../../scripts/pagination.js';
 import { showPetInfo } from '../../scripts/popup.js';
 
@@ -7,8 +7,9 @@ const buttons = document.querySelector('.pagination').querySelectorAll('button')
 
 initAdaptiveMenu();
 getPets().then(() => {
+  initPage(0);
   buttons.forEach(button => {
-    button.addEventListener('click', setPage);
+    if (!button.classList.contains('active')) button.addEventListener('click', setPage);
   });
 }
 );

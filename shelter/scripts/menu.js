@@ -11,6 +11,16 @@ export function initAdaptiveMenu() {
 
   nav.addEventListener('click', closeMenu);
   blackout.blackout.addEventListener('click', closeMenu);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      hamburgerButton.classList.remove('active');
+      nav.classList.remove('active');
+      logo.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+  
+      blackout.remove();
+    };
+  })
 }
 
 function switchMenu() {
