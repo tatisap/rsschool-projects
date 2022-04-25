@@ -1,0 +1,17 @@
+.blackout {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.6);
+  &:hover + .modal-window .modal-window-close-button{
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
+    @extend %hover-interactive;
+  }
+}

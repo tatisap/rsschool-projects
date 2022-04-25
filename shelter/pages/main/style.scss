@@ -15,6 +15,8 @@ $path-to-assets: '../../assets/';
 @import '../../scss/burger';
 @import '../../scss/buttons';
 @import '../../scss/footer';
+@import '../../scss/blackout';
+@import '../../scss/modal-window';
 
 //items style
 .section-heading {
@@ -54,6 +56,7 @@ header {
 }
 
 .logo {
+  transition: 0.3s;
 	.logo-link {
 		padding-bottom: 25px;
 		@extend %normalize-link;
@@ -85,10 +88,10 @@ header {
     width: 320px;
     height: 100vh;
     background-color: $color-dark-3xl;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-in-out;
     &.active {
       right: 0;
-      transition: all 0.5s ease-in-out;
+      transition: all 0.6s ease-in-out;
       overflow-y: auto;
     }
   }
@@ -103,7 +106,7 @@ header {
     align-items: center;
     gap: 42px;
     margin: 0;
-    padding: 248px 39px 0;
+    padding: 248px 30px 0px;
   }
 }
 
@@ -318,56 +321,93 @@ header {
       justify-self: end;
     }
   }
-	.slider-cards {
-		display: flex;
-		justify-content: space-between;
-    flex-wrap: wrap;
+  .slider-wrapper {
+    position: relative;
+    height: 435px;
+    width: 990px;
+    overflow: hidden;
     @media (max-width: ($desktop - 1px)) {
-      justify-content: space-around;
-      gap: 40px;
+      margin: 0 auto;
+      width: 580px;
     }
     @media (max-width: ($tablet - 1px)) {
       grid-column-start: 1;
       grid-column-end: 3;
       order: -1;
+      width: 270px;
     }
-		.slider-card {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			gap: 30px;
-      border-radius: 9px;
-			width: 270px;
-			height: 435px;
-			background-color: $color-light-s;
-			@extend %hover-interactive;
-			&:hover {
-				background-color: $color-light-xl;
-				box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-				@extend %hover-interactive;
-				.button-secondary {
-					background-color: $color-primary-light;
-					border-color: $color-primary-light;
-					@extend %hover-interactive;
-				}
-			}
-      @media (max-width: ($desktop - 1px)) {
-        &:nth-child(3) {
-          display: none;
-        } 
+    .slider {
+      position: absolute;
+      left: -100%;
+      width: 300%;
+      .slide {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 90px;
+        width: 990px;
+        transition: 0.5s;
+        @media (max-width: ($desktop - 1px)) {
+          justify-content: space-around;
+          gap: 40px;
+          width: 580px;
+        }
+        @media (max-width: ($tablet - 1px)) {
+          width: 270px;
+        }
+        &.one {
+          order: 1;
+        }
+        &.two {
+          order: 2;
+        }
+        &.three {
+          order: 3;
+        }
+        .card {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          gap: 30px;
+          border-radius: 9px;
+          width: 270px;
+          height: 435px;
+          background-color: $color-light-s;
+          @extend %hover-interactive;
+          &:hover {
+            background-color: $color-light-xl;
+            box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+            @extend %hover-interactive;
+            .button-secondary {
+              background-color: $color-primary-light;
+              border-color: $color-primary-light;
+              @extend %hover-interactive;
+            }
+          }
+          @media (max-width: ($desktop - 1px)) {
+            &:nth-child(3) {
+              display: none;
+            } 
+          }
+          @media (max-width: ($tablet - 1px)) {
+            &:nth-child(2) {
+              display: none;
+            } 
+          }
+          .card-img {
+            height: 270px;
+          }
+          .card-title {
+            text-align: center;
+            @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
+          }
+        }
       }
-      @media (max-width: ($tablet - 1px)) {
-        &:nth-child(2) {
-          display: none;
-        } 
-      }
-			.slider-card-title {
-				text-align: center;
-        @include typography($georgia-n-20, $color-dark-l, 23px, $letter-spacing);
-			}
-		}
+    }
 	}
 }
+
 
 //help section
 .help {
