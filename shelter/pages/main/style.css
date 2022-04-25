@@ -533,7 +533,7 @@ html {
   border-color: #fddcc4;
   background-color: #fddcc4;
 }
-.pagination button.inactive {
+.pagination button:disabled {
   border-color: #cdcdcd;
   color: #cdcdcd;
 }
@@ -722,7 +722,7 @@ footer .container .footer-img-wrapper {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: 1;
   width: 100vw;
   height: 100vh;
   background-color: rgba(41, 41, 41, 0.6);
@@ -902,6 +902,9 @@ header .container {
   }
 }
 
+.logo {
+  transition: 0.3s;
+}
 .logo .logo-link {
   padding-bottom: 25px;
 }
@@ -937,11 +940,11 @@ header .container {
     width: 320px;
     height: 100vh;
     background-color: #292929;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-in-out;
   }
   .nav.active {
     right: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-in-out;
     overflow-y: auto;
   }
 }
@@ -957,7 +960,7 @@ header .container {
     align-items: center;
     gap: 42px;
     margin: 0;
-    padding: 248px 39px 0;
+    padding: 248px 30px 0px;
   }
 }
 

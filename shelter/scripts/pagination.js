@@ -23,19 +23,20 @@ export async function getPets() {
   while (pets.length !== 0) {
     if (pets.length <= pageSize) {
       let page = pets.splice(0, pets.length);
-      shufflePage(page);
+      shuffle(page);
       pages.push(page);
       break;
     }
     let page = pets.splice(0, pageSize);
-    shufflePage(page);
+    shuffle(page);
     pages.push(page);
   }
-
+  shuffle(pages);
+  console.log(pages);
   initFirstPage();
 } 
 
-function shufflePage(page) {
+function shuffle(page) {
   for (let i = page.length - 1; i > 0; i--) {
     let x = Math.floor(Math.random() * (i + 1));
     [page[i], page[x]] = [page[x], page[i]];
