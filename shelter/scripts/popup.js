@@ -97,7 +97,9 @@ class ModalWindow {
 function closeWindow() {
   document.querySelector('.modal-window').remove();
   document.querySelector('.blackout').remove();
-  document.body.classList.remove('no-scroll');
+  //document.body.classList.remove('no-scroll');
+  window.onscroll = () => {};
+  document.documentElement.style.scrollBehavior = 'smooth';
 }
 
 export async function showPetInfo(name) {
@@ -108,6 +110,10 @@ export async function showPetInfo(name) {
   pet.setInfo(petsData.find(pet => pet.name === name));
   pet.addToPage();
   pet.addBlackout();
-  document.body.classList.add('no-scroll');
+  //document.body.classList.add('no-scroll');
+  let x = window.scrollX;
+  let y = window.scrollY;
+  window.onscroll = () => window.scrollTo(x, y);
+  document.documentElement.style.scrollBehavior = 'auto';
 } 
 
