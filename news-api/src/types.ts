@@ -12,3 +12,11 @@ export interface Source {
     id: string;
     name: string;
 }
+
+export interface ArticlesResponse {
+    articles: Article[];
+}
+
+export interface SourcesResponse {
+    sources: Source[];
+}
