@@ -1,4 +1,12 @@
-import { Drawer, LoaderParams, RequestParams, SearchParams, UrlParams } from '../../types';
+import {
+    ArticlesResponse,
+    Drawer,
+    LoaderParams,
+    RequestParams,
+    SearchParams,
+    SourcesResponse,
+    UrlParams,
+} from '../../types';
 
 class Loader {
     baseLink: string;
@@ -11,7 +19,7 @@ class Loader {
 
     getResp(
         { endpoint, options = {} }: RequestParams,
-        callback: Drawer = () => {
+        callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse> = () => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -39,7 +47,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Drawer, options: SearchParams = {}) {
+    load(
+        method: string,
+        endpoint: string,
+        callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse>,
+        options: SearchParams = {}
+    ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
