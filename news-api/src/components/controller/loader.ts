@@ -9,15 +9,15 @@ import {
 } from '../../types';
 
 class Loader {
-    baseLink: string;
-    options: LoaderParams;
+    private baseLink: string;
+    private options: LoaderParams;
 
     constructor(baseLink: string, options: LoaderParams) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp(
+    public getResp(
         { endpoint, options = {} }: RequestParams,
         callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse> = () => {
             console.error('No callback for GET response');
@@ -26,7 +26,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: Response): Response | never {
+    private errorHandler(res: Response): Response | never {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -36,7 +36,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: SearchParams, endpoint: string) {
+    private makeUrl(options: SearchParams, endpoint: string) {
         const urlOptions: UrlParams = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -47,7 +47,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(
+    private load(
         method: string,
         endpoint: string,
         callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse>,
