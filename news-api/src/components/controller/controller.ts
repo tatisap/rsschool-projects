@@ -1,7 +1,8 @@
+import { Drawer } from '../../types';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback) {
+    getSources(callback: Drawer) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,13 +11,16 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback) {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e: Event, callback: Drawer) {
+        let target = e.target as HTMLElement | null;
+        const newsContainer = e.currentTarget as HTMLElement | null;
+        if (newsContainer === null) return;
 
         while (target !== newsContainer) {
+            if (target === null) return;
             if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
+                const sourceId: string | null = target.getAttribute('data-source-id');
+                if (sourceId === null) return;
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
@@ -31,7 +35,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            target = target.parentNode;
+            target = target.parentElement;
         }
     }
 }

@@ -23,7 +23,7 @@ export interface SourcesResponse {
 
 export interface RequestParams {
     endpoint: string;
-    options: SearchParams;
+    options?: SearchParams;
 }
 
 export type SearchParams = {

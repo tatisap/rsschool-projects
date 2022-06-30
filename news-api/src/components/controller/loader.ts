@@ -11,7 +11,7 @@ class Loader {
 
     getResp(
         { endpoint, options = {} }: RequestParams,
-        callback = () => {
+        callback: Drawer = () => {
             console.error('No callback for GET response');
         }
     ): void {
