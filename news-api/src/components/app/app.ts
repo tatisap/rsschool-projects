@@ -11,7 +11,7 @@ class App {
         this.view = new AppView();
     }
 
-    public start() {
+    public start(): void {
         (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e: MouseEvent) =>
             this.controller.getNews(e, (data: ArticlesResponse | undefined) => this.view.drawNews(data))
         );
