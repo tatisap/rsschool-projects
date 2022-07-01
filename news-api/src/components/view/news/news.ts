@@ -1,7 +1,7 @@
-import { Article } from '../../../types';
+import { Article, Renderer } from '../../../types';
 import './news.css';
 
-class News {
+class NewsRenderer implements Renderer {
     public draw(data: Article[]): void {
         const news: Article[] = data.length >= 10 ? data.filter((_item: Article, idx: number) => idx < 10) : data;
 
@@ -38,4 +38,4 @@ class News {
     }
 }
 
-export default News;
+export default NewsRenderer;

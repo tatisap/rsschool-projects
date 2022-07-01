@@ -13,9 +13,9 @@ class App {
 
     public start(): void {
         (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e: MouseEvent) =>
-            this.controller.getNews(e, (data: ArticlesResponse | undefined) => this.view.drawNews(data))
+            this.controller.getNews(e, (data: ArticlesResponse) => this.view.render(data))
         );
-        this.controller.getSources((data: SourcesResponse | undefined) => this.view.drawSources(data));
+        this.controller.getSources((data: SourcesResponse) => this.view.render(data));
     }
 }
 

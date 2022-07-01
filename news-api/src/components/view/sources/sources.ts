@@ -1,7 +1,7 @@
-import { Source } from '../../../types';
+import { Renderer, Source } from '../../../types';
 import './sources.css';
 
-class Sources {
+class SourcesRenderer implements Renderer {
     public draw(data: Source[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
@@ -19,4 +19,4 @@ class Sources {
     }
 }
 
-export default Sources;
+export default SourcesRenderer;

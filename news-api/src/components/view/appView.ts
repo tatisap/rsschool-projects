@@ -1,25 +1,30 @@
-import { Article, ArticlesResponse, Source, SourcesResponse } from '../../types';
-import News from './news/news';
-import Sources from './sources/sources';
+import { ArticlesResponse, SourcesResponse, nameof } from '../../types';
+import NewsRenderer from './news/news';
+import SourcesRenderer from './sources/sources';
 
 export class AppView {
-    private news: News;
-    private sources: Sources;
+    private news: NewsRenderer;
+    private sources: SourcesRenderer;
 
     constructor() {
-        this.news = new News();
-        this.sources = new Sources();
+        this.news = new NewsRenderer();
+        this.sources = new SourcesRenderer();
     }
 
-    public drawNews(data: ArticlesResponse | undefined): void {
-        const values: Article[] = data?.articles ? data?.articles : [];
-        this.news.draw(values);
+    public render<T extends ArticlesResponse | SourcesResponse>(data: T) {
+        if (nameof<ArticlesResponse>('articles') in data) this.news.draw(data.articles);
+        if (nameof<SourcesResponse>('sources') in data) this.sources.draw(data.sources);
     }
 
-    public drawSources(data: SourcesResponse | undefined): void {
-        const values: Source[] = data?.sources ? data?.sources : [];
-        this.sources.draw(values);
-    }
+    // public drawNews(data: ArticlesResponse | undefined): void {
+    //     const values: Article[] = data?.articles ? data.articles : [];
+    //     this.news.draw(values);
+    // }
+
+    // public drawSources(data: SourcesResponse | undefined): void {
+    //     const values: Source[] = data?.sources ? data.sources : [];
+    //     this.sources.draw(values);
+    // }
 }
 
 export default AppView;

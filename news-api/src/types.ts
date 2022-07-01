@@ -37,5 +37,11 @@ export type LoaderParams = {
 export type UrlParams = LoaderParams & SearchParams;
 
 export interface Render<T> {
-    (data: T | undefined): void;
+    (data: T): void;
 }
+
+export interface Renderer {
+    draw(data: Article[] | Source[]): void;
+}
+
+export const nameof = <T>(name: keyof T) => name;
