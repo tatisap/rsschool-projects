@@ -45,3 +45,8 @@ export interface Renderer {
 }
 
 export const nameof = <T>(name: keyof T) => name;
+
+export enum StatusCode {
+    Unauthorized = 401,
+    NotFound = 404,
+}

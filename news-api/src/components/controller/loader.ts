@@ -6,6 +6,7 @@ import {
     SearchParams,
     SourcesResponse,
     UrlParams,
+    StatusCode,
 } from '../../types';
 
 class Loader {
@@ -28,7 +29,7 @@ class Loader {
 
     private errorHandler(res: Response): Response | never {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === StatusCode.Unauthorized || res.status === StatusCode.NotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
