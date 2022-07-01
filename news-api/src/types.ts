@@ -36,6 +36,6 @@ export type LoaderParams = {
 
 export type UrlParams = LoaderParams & SearchParams;
 
-export interface Drawer<T> {
+export interface Render<T> {
     (data: T | undefined): void;
 }

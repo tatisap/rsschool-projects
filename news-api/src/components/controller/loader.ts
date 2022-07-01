@@ -1,6 +1,6 @@
 import {
     ArticlesResponse,
-    Drawer,
+    Render,
     LoaderParams,
     RequestParams,
     SearchParams,
@@ -19,7 +19,7 @@ class Loader {
 
     public getResp(
         { endpoint, options = {} }: RequestParams,
-        callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse> = (): void => {
+        callback: Render<ArticlesResponse> | Render<SourcesResponse> = (): void => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -50,7 +50,7 @@ class Loader {
     private load(
         method: string,
         endpoint: string,
-        callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse>,
+        callback: Render<ArticlesResponse> | Render<SourcesResponse>,
         options: SearchParams = {}
     ) {
         fetch(this.makeUrl(options, endpoint), { method })

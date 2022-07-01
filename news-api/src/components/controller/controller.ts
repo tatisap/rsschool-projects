@@ -1,8 +1,8 @@
-import { ArticlesResponse, Drawer, SourcesResponse } from '../../types';
+import { ArticlesResponse, Render, SourcesResponse } from '../../types';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    public getSources(callback: Drawer<SourcesResponse>): void {
+    public getSources(callback: Render<SourcesResponse>): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews(e: Event, callback: Drawer<ArticlesResponse>): void {
+    public getNews(e: Event, callback: Render<ArticlesResponse>): void {
         let target = e.target as HTMLElement | null;
         const newsContainer = e.currentTarget as HTMLElement | null;
         if (newsContainer === null) return;
