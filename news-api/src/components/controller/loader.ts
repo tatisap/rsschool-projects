@@ -19,7 +19,7 @@ class Loader {
 
     public getResp(
         { endpoint, options = {} }: RequestParams,
-        callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse> = () => {
+        callback: Drawer<ArticlesResponse> | Drawer<SourcesResponse> = (): void => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -36,11 +36,11 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: SearchParams, endpoint: string) {
+    private makeUrl(options: SearchParams, endpoint: string): string {
         const urlOptions: UrlParams = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
-        Object.entries(urlOptions).forEach(([key, value]) => {
+        Object.entries(urlOptions).forEach(([key, value]: [string, string]) => {
             url += `${key}=${value}&`;
         });
 
@@ -55,9 +55,9 @@ class Loader {
     ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .then((res: Response) => res.json())
+            .then((data: (ArticlesResponse & SourcesResponse) | undefined): void => callback(data))
+            .catch((err: Error) => console.error(err));
     }
 }
 
