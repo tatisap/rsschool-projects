@@ -3,8 +3,8 @@ import NewsRenderer from './news/news';
 import SourcesRenderer from './sources/sources';
 
 export class AppView {
-    private news: NewsRenderer;
-    private sources: SourcesRenderer;
+    private readonly news: NewsRenderer;
+    private readonly sources: SourcesRenderer;
 
     constructor() {
         this.news = new NewsRenderer();

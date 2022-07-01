@@ -9,8 +9,8 @@ import {
 } from '../../types';
 
 class Loader {
-    private baseLink: string;
-    private options: LoaderParams;
+    private readonly baseLink: string;
+    private readonly options: LoaderParams;
 
     constructor(baseLink: string, options: LoaderParams) {
         this.baseLink = baseLink;

@@ -1,16 +1,16 @@
 export interface Article {
-    source: Source;
-    author: string;
-    title: string;
-    description: string;
-    url: string;
-    urlToImage: string;
-    publishedAt: string;
+    readonly source: Source;
+    readonly author: string;
+    readonly title: string;
+    readonly description: string;
+    readonly url: string;
+    readonly urlToImage: string;
+    readonly publishedAt: string;
 }
 
 export interface Source {
-    id: string;
-    name: string;
+    readonly id: string;
+    readonly name: string;
 }
 
 export interface ArticlesResponse {
