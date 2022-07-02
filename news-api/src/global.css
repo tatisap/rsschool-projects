@@ -1,23 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    color: #fff;
-    background: #17181c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    color: #2a2a2a;
+    background: #fff;
+    margin: 0;
     font-family: sans-serif;
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 30px;
+    background: #000;
+    color: #fff;
+    font-family: 'Abril Fatface', cursive;
 }
 
 header h1 {
-    font-size: 40px;
+    margin: 0;
+    font-size: 4rem;
     font-weight: 800;
 }
 
+main {
+    flex-grow: 1;
+    min-height: calc(100vh - 100px - 192px);
+    position: relative;
+    margin-bottom: 70px;
+}
+
 footer {
-    height: 100px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    background: #000;
+    color: #fff;
+    z-index: 20;
 }
 footer .copyright {
     font-size: 14px;
@@ -32,4 +64,50 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+
+.github-link,
+.github-link:visited {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.github-link:hover {
+    color: #69db7e;
+}
+.rs-link {
+    width: 104px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: white;
+    background-image: url('./assets/icons/rsschool.svg');
+    background-size: 94px 38px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+.rs-link:hover {
+    transform: scale(1.1);
+}
+.rs-link a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 10vw;
+}
+}
+
+@media (max-width: 450px) {
+    header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    footer {
+        padding: 0 10px;
+        gap: 5px;
+    }
 }

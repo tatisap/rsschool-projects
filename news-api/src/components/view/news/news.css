@@ -1,8 +1,14 @@
+.news {
+  height: 100%;
+  overflow: auto;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
     margin: 1rem auto;
     margin-bottom: 1.6%;
+    border: #cecdce 2px solid;
     background: #fff;
     color: #333;
     line-height: 1.4;

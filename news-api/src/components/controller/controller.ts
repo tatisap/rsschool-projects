@@ -38,6 +38,16 @@ class AppController extends AppLoader {
             target = target.parentElement;
         }
     }
+
+    public openSources(): void {
+        (document.querySelector('.sources') as HTMLDivElement).classList.add('open');
+        (document.querySelector('.blackout') as HTMLDivElement).classList.add('on');
+    }
+
+    public closeSources(): void {
+        (document.querySelector('.sources') as HTMLDivElement).classList.remove('open');
+        (document.querySelector('.blackout') as HTMLDivElement).classList.remove('on');
+    }
 }
 
 export default AppController;

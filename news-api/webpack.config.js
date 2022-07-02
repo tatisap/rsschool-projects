@@ -17,6 +17,14 @@ const baseConfig = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.(ttf|woff|woff2|eot)$/,
+                type: 'asset/inline',
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
