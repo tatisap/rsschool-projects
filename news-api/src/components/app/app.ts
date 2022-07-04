@@ -17,11 +17,11 @@ class App {
         );
         this.controller.getSources((data: SourcesResponse) => this.view.render(data));
 
-        (document.querySelector('.open-sources') as HTMLButtonElement).addEventListener(
+        (document.querySelector('.sources__button_open') as HTMLButtonElement).addEventListener(
             'click',
             this.controller.openSources
         );
-        (document.querySelector('.close-sources') as HTMLButtonElement).addEventListener(
+        (document.querySelector('.sources__button_close') as HTMLButtonElement).addEventListener(
             'click',
             this.controller.closeSources
         );

@@ -66,16 +66,16 @@ footer .copyright:before {
     content: '©';
 }
 
-.github-link,
-.github-link:visited {
+.footer__link_github,
+.footer__link_github:visited {
     color: white;
     text-decoration: none;
     transition: 0.3s;
 }
-.github-link:hover {
+.footer__link_github:hover {
     color: #69db7e;
 }
-.rs-link {
+.footer__link_rs {
     width: 104px;
     height: 48px;
     border-radius: 10px;
@@ -86,10 +86,10 @@ footer .copyright:before {
     background-repeat: no-repeat;
     transition: 0.3s;
 }
-.rs-link:hover {
+.footer__link_rs:hover {
     transform: scale(1.1);
 }
-.rs-link a {
+.footer__link_rs a {
     display: block;
     width: 100%;
     height: 100%;

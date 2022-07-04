@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
-.open-sources {
+.sources__button_open {
     display: block;
     width: 200px;
     height: 50px;
@@ -19,12 +19,12 @@
     transition: 0.3s;
 }
 
-.open-sources:hover {
+.sources__button_open:hover {
     transform: scale(97%);
     background-position: right 5px bottom;
 }
 
-.open-sources::after {
+.sources__button_open::after {
     content: 'Sources';
 }
 
@@ -65,7 +65,7 @@
     width: 0;
 }
   
-.close-sources {
+.sources__button_close {
     position: sticky;
     top: 5px;
     align-self: end;
@@ -78,7 +78,7 @@
     transition: 0.3s;
 }
 
-.close-sources:hover {
+.sources__button_close:hover {
     transform: scale(115%);
 }
 
@@ -114,16 +114,16 @@
 }
 
 @media (max-width: 768px) {
-    .open-sources {
+    .sources__button_open {
         width: 70px;
     }
 
-    .open-sources:hover {
+    .sources__button_open:hover {
         transform: rotate(180deg);
         background-position: right 10px bottom;
     }
 
-    .open-sources::after {
+    .sources__button_open::after {
         content: '';
     }
 
