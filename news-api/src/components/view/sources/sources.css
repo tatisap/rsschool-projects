@@ -11,17 +11,17 @@
     background-repeat: no-repeat;
     background-position: right 10px bottom;
     padding-left: 15px;
-    color: #fff;
     font-family: 'Merriweather', serif;
     font-size: 1.5em;
+    color: #fff;
     text-align: left;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .sources__button_open:hover {
-    transform: scale(97%);
     background-position: right 5px bottom;
+    transform: scale(97%);
 }
 
 .sources__button_open::after {
@@ -29,15 +29,15 @@
 }
 
 .blackout {
-    display: none;
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 25;
+    display: none;
     width: 100vw;
     height: 100vh;
     background-color: #000;
     opacity: 50%;
-    z-index: 25;
 }
 
 .blackout.on {
@@ -48,17 +48,17 @@
     position: fixed;
     top: 0;
     right: -400px;
+    z-index: 30;
     display: flex;
+    align-items: center;
     flex-direction: column;
     width: 350px;
     height: 100vh;
-    overflow: auto;
-    align-items: center;
     padding: 10px 20px;
     background-color: #2a2a2a;
     font: 300 1em 'Fira Sans', sans-serif;
-    z-index: 30;
     transition: 0.3s;
+    overflow: auto;
   }
 
 .sources::-webkit-scrollbar {
@@ -72,8 +72,8 @@
     border: 0;
     border-radius: 5px;
     background-color: #2a2a2a;
-    color: #fff;
     font-size: 1.5rem;
+    color: #fff;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -88,29 +88,27 @@
 
 .source__item {
     width: 90%;
-    background: none;
-    /* border: 2px solid #fff; */
-    border-radius: 10px;
-    font: inherit;
-    line-height: 1;
     margin: 0.5em;
     padding: 1em 2em;
+    border-radius: 10px;
+    background: none;
+    font: inherit;
     color: #fff;
-    transition: 0.25s;
-    cursor: pointer;
     text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 .source__item:hover,
 .source__item:focus {
     border-color: #3fcc59;
-    color: #69db7e;
     box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+    color: #69db7e;
 }
 
 .source__item-name {
     font-weight: 400;
-    /* white-space: nowrap; */
 }
 
 @media (max-width: 768px) {
@@ -119,8 +117,8 @@
     }
 
     .sources__button_open:hover {
-        transform: rotate(180deg);
         background-position: right 10px bottom;
+        transform: rotate(180deg);
     }
 
     .sources__button_open::after {
