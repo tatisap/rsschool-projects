@@ -58,8 +58,8 @@ class Loader {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((response: Response) => response.json())
-            .then((data: (ArticlesResponse & SourcesResponse) | undefined): void => {
-                if (data === undefined) return;
+            .then((data?: ArticlesResponse & SourcesResponse): void => {
+                if (!data) return;
                 callback(data);
             })
             .catch((error: Error) => console.error(error));
