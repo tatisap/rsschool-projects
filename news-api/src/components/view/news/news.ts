@@ -4,15 +4,15 @@ import placeholder from '../../../assets/placeholder.png';
 
 class NewsRenderer implements Renderer {
     public draw(data: Article[]): void {
-        const news: Article[] = data.length >= 10 ? data.filter((_item: Article, idx: number) => idx < 10) : data;
+        const news: Article[] = data.length >= 10 ? data.filter((_item: Article, index: number) => index < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
+        const newsItemTemplate = document.querySelector('#newsItemTemplate') as HTMLTemplateElement;
 
-        news.forEach((item: Article, idx: number) => {
-            const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
+        news.forEach((item: Article, index: number) => {
+            const newsClone = newsItemTemplate.content.cloneNode(true) as DocumentFragment;
 
-            if (idx % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
+            if (index % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
 
             (newsClone.querySelector('.news__meta-photo') as HTMLDivElement).style.backgroundImage = `url(${
                 item.urlToImage || placeholder

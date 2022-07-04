@@ -19,7 +19,7 @@ class Loader {
         this.options = options;
     }
 
-    public getResp(
+    public getResponse(
         { endpoint, options = {} }: RequestParams,
         callback: Render<ArticlesResponse> | Render<SourcesResponse> = (): void => {
             console.error('No callback for GET response');
@@ -28,14 +28,14 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    private errorHandler(res: Response): Response | never {
-        if (!res.ok) {
-            if (res.status === StatusCode.Unauthorized || res.status === StatusCode.NotFound)
-                console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
-            throw Error(res.statusText);
+    private errorHandler(response: Response): Response | never {
+        if (!response.ok) {
+            if (response.status === StatusCode.Unauthorized || response.status === StatusCode.NotFound)
+                console.log(`Sorry, but there is ${response.status} error: ${response.statusText}`);
+            throw Error(response.statusText);
         }
 
-        return res;
+        return response;
     }
 
     private makeUrl(options: SearchParams, endpoint: Endpoint): string {
@@ -57,12 +57,12 @@ class Loader {
     ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res: Response) => res.json())
+            .then((response: Response) => response.json())
             .then((data: (ArticlesResponse & SourcesResponse) | undefined): void => {
                 if (data === undefined) return;
                 callback(data);
             })
-            .catch((err: Error) => console.error(err));
+            .catch((error: Error) => console.error(error));
     }
 }
 

@@ -12,8 +12,8 @@ class App {
     }
 
     public start(): void {
-        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e: MouseEvent) =>
-            this.controller.getNews(e, (data: ArticlesResponse) => this.view.render(data))
+        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (event: MouseEvent) =>
+            this.controller.getNews(event, (data: ArticlesResponse) => this.view.render(data))
         );
         this.controller.getSources((data: SourcesResponse) => this.view.render(data));
 
@@ -29,8 +29,8 @@ class App {
             'click',
             this.controller.closeSources
         );
-        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e: Event) => {
-            const target = e.target as HTMLElement | null;
+        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (event: Event) => {
+            const target = event.target as HTMLElement | null;
             if (target?.closest('.source__item')) this.controller.closeSources();
         });
     }

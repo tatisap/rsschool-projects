@@ -3,7 +3,7 @@ import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
     public getSources(callback: Render<SourcesResponse>): void {
-        super.getResp(
+        super.getResponse(
             {
                 endpoint: 'sources',
             },
@@ -11,9 +11,9 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews(e: Event, callback: Render<ArticlesResponse>): void {
-        let target = e.target as HTMLElement | null;
-        const newsContainer = e.currentTarget as HTMLElement | null;
+    public getNews(event: Event, callback: Render<ArticlesResponse>): void {
+        let target = event.target as HTMLElement | null;
+        const newsContainer = event.currentTarget as HTMLElement | null;
         if (newsContainer === null) return;
 
         while (target !== newsContainer) {
@@ -23,7 +23,7 @@ class AppController extends AppLoader {
                 if (sourceId === null) return;
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
+                    super.getResponse(
                         {
                             endpoint: 'everything',
                             options: {
