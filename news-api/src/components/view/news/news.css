@@ -1,6 +1,6 @@
 .news {
-  height: 100%;
-  overflow: auto;
+    height: 100%;
+    overflow: auto;
 }
 
 .news__item {

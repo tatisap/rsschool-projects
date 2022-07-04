@@ -29,19 +29,19 @@
 }
 
 .blackout {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  opacity: 50%;
-  z-index: 25;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 50%;
+    z-index: 25;
 }
 
 .blackout.on {
-  display: block;
+    display: block;
 }
 
 .sources {
