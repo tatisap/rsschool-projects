@@ -45,7 +45,9 @@ class AppController extends AppLoader {
     }
 
     public closeSources(): void {
-        (document.querySelector('.sources') as HTMLDivElement).classList.remove('open');
+        const sources = document.querySelector('.sources') as HTMLDivElement;
+        sources.classList.remove('open');
+        sources.scrollTop = 0;
         (document.querySelector('.blackout') as HTMLDivElement).classList.remove('on');
     }
 }
