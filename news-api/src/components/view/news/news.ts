@@ -1,5 +1,6 @@
 import { Article, Renderer } from '../../../types';
 import './news.css';
+import placeholder from '../../../assets/placeholder.png';
 
 class NewsRenderer implements Renderer {
     public draw(data: Article[]): void {
@@ -14,7 +15,7 @@ class NewsRenderer implements Renderer {
             if (idx % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
 
             (newsClone.querySelector('.news__meta-photo') as HTMLDivElement).style.backgroundImage = `url(${
-                item.urlToImage || 'img/news_placeholder.jpg'
+                item.urlToImage || placeholder
             })`;
             (newsClone.querySelector('.news__meta-author') as HTMLLIElement).textContent =
                 item.author || item.source.name;
