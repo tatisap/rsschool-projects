@@ -7,6 +7,7 @@ import {
     SourcesResponse,
     UrlParams,
     StatusCode,
+    Endpoint,
 } from '../../types';
 
 class Loader {
@@ -37,8 +38,8 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: SearchParams, endpoint: string): string {
-        const urlOptions: UrlParams = { ...this.options, ...options };
+    private makeUrl(options: SearchParams, endpoint: Endpoint): string {
+        const urlOptions: Partial<UrlParams> = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.entries(urlOptions).forEach(([key, value]: [string, string]) => {
@@ -50,7 +51,7 @@ class Loader {
 
     private load(
         method: string,
-        endpoint: string,
+        endpoint: Endpoint,
         callback: Render<ArticlesResponse> | Render<SourcesResponse>,
         options: SearchParams = {}
     ) {
