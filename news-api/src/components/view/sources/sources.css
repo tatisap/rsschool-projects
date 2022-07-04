@@ -59,7 +59,7 @@
     font: 300 1em 'Fira Sans', sans-serif;
     transition: 0.3s;
     overflow: auto;
-  }
+}
 
 .sources::-webkit-scrollbar {
     width: 0;
@@ -112,6 +112,7 @@
 }
 
 @media (max-width: 768px) {
+
     .sources__button_open {
         width: 70px;
     }
@@ -128,7 +129,9 @@
 } 
 
 @media (max-width: 400px) {
+
     .sources {
         width: 100vw;
     }
+    
 }
