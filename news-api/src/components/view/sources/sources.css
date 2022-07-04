@@ -4,16 +4,16 @@
     display: block;
     width: 200px;
     height: 50px;
-    border: #f5f5f5 1px solid;
+    border: #F5F5F5 1px solid;
     border-radius: 5px;
-    background: #000;
+    background: #000000;
     background-image: url('.././../../assets/icons/list.svg');
     background-repeat: no-repeat;
     background-position: right 10px bottom;
     padding-left: 15px;
     font-family: 'Merriweather', serif;
     font-size: 1.5em;
-    color: #fff;
+    color: #FFFFFF;
     text-align: left;
     cursor: pointer;
     transition: 0.3s;
@@ -36,7 +36,7 @@
     display: none;
     width: 100vw;
     height: 100vh;
-    background-color: #000;
+    background-color: #000000;
     opacity: 50%;
 }
 
@@ -55,7 +55,7 @@
     width: 350px;
     height: 100vh;
     padding: 10px 20px;
-    background-color: #2a2a2a;
+    background-color: #2A2A2A;
     font: 300 1em 'Fira Sans', sans-serif;
     transition: 0.3s;
     overflow: auto;
@@ -71,9 +71,9 @@
     align-self: end;
     border: 0;
     border-radius: 5px;
-    background-color: #2a2a2a;
+    background-color: #2A2A2A;
     font-size: 1.5rem;
-    color: #fff;
+    color: #FFFFFF;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -93,7 +93,7 @@
     border-radius: 10px;
     background: none;
     font: inherit;
-    color: #fff;
+    color: #FFFFFF;
     text-align: center;
     line-height: 1;
     cursor: pointer;
@@ -102,9 +102,9 @@
 
 .source__item:hover,
 .source__item:focus {
-    border-color: #3fcc59;
-    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
-    color: #69db7e;
+    border-color: #3FCC59;
+    box-shadow: 0 0.5em 0.5em -0.4em #3FCC59;
+    color: #69DB7E;
 }
 
 .source__item-name {
