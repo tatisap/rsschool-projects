@@ -7,13 +7,15 @@ class NewsRenderer implements Renderer {
   public draw(data: Article[]): void {
     const news: Article[] =
       data.length >= NUMBER_OF_ARTICLES_PER_PAGE
-        ? data.filter((_item: Article, index: number) => index < NUMBER_OF_ARTICLES_PER_PAGE)
+        ? data.filter(
+            (_item: Article, index: number): boolean => index < NUMBER_OF_ARTICLES_PER_PAGE,
+          )
         : data;
 
     const fragment: DocumentFragment = document.createDocumentFragment();
     const newsItemTemplate = document.querySelector('#newsItemTemplate') as HTMLTemplateElement;
 
-    news.forEach((item: Article, index: number) => {
+    news.forEach((item: Article, index: number): void => {
       const newsClone = newsItemTemplate.content.cloneNode(true) as DocumentFragment;
 
       if (this.isEven(index))

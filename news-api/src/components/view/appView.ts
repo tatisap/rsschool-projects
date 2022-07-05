@@ -11,7 +11,7 @@ export class AppView {
     this.sources = new SourcesRenderer();
   }
 
-  public render<T extends ArticlesResponse | SourcesResponse>(data: T) {
+  public render<T extends ArticlesResponse | SourcesResponse>(data: T): void {
     if (nameof<ArticlesResponse>('articles') in data) this.news.draw(data.articles);
     if (nameof<SourcesResponse>('sources') in data) this.sources.draw(data.sources);
   }

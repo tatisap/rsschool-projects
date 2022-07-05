@@ -6,7 +6,7 @@ class SourcesRenderer implements Renderer {
     const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemplate = document.querySelector('#sourceItemTemplate') as HTMLTemplateElement;
 
-    data.forEach((item: Source) => {
+    data.forEach((item: Source): void => {
       const sourceClone = sourceItemTemplate.content.cloneNode(true) as DocumentFragment;
 
       (sourceClone.querySelector('.source__item-name') as HTMLSpanElement).textContent = item.name;

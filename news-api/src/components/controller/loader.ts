@@ -42,7 +42,7 @@ class Loader {
     const urlOptions: Partial<UrlParameters> = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
-    Object.entries(urlOptions).forEach(([key, value]: [string, string]) => {
+    Object.entries(urlOptions).forEach(([key, value]: [string, string]): void => {
       url += `${key}=${value}&`;
     });
 
@@ -54,15 +54,15 @@ class Loader {
     endpoint: string,
     callback: Render<ArticlesResponse> | Render<SourcesResponse>,
     options: SearchParameters = {},
-  ) {
+  ): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((response: Response) => response.json())
+      .then((response: Response): Promise<ArticlesResponse & SourcesResponse> => response.json())
       .then((data?: ArticlesResponse & SourcesResponse): void => {
         if (!data) return;
         callback(data);
       })
-      .catch((error: Error) => console.error(error));
+      .catch((error: Error): void => console.error(error));
   }
 }
 

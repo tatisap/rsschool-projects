@@ -14,10 +14,10 @@ class App {
   public start(): void {
     (document.querySelector('.sources') as HTMLDivElement).addEventListener(
       'click',
-      (event: MouseEvent) =>
-        this.controller.getNews(event, (data: ArticlesResponse) => this.view.render(data)),
+      (event: MouseEvent): void =>
+        this.controller.getNews(event, (data: ArticlesResponse): void => this.view.render(data)),
     );
-    this.controller.getSources((data: SourcesResponse) => this.view.render(data));
+    this.controller.getSources((data: SourcesResponse): void => this.view.render(data));
 
     (document.querySelector('.sources__button_open') as HTMLButtonElement).addEventListener(
       'click',
@@ -33,7 +33,7 @@ class App {
     );
     (document.querySelector('.sources') as HTMLDivElement).addEventListener(
       'click',
-      (event: Event) => {
+      (event: Event): void => {
         const target = event.target as HTMLElement | null;
         if (target?.closest('.source__item')) this.controller.closeSources();
       },

@@ -42,7 +42,7 @@ export interface Renderer {
   draw(data: Article[] | Source[]): void;
 }
 
-export const nameof = <T>(name: keyof T) => name;
+export const nameof = <T>(name: keyof T): keyof T => name;
 
 export enum StatusCode {
   Unauthorized = 401,
