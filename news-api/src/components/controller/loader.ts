@@ -55,10 +55,7 @@ class Loader {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((response: Response): Promise<IArticlesResponse & ISourcesResponse> => response.json())
-      .then((data?: IArticlesResponse & ISourcesResponse): void => {
-        if (!data) return;
-        callback(data);
-      })
+      .then((data: IArticlesResponse & ISourcesResponse): void => callback(data))
       .catch((error: Error): void => console.error(error));
   }
 }
