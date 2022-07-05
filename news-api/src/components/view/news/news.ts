@@ -45,10 +45,8 @@ class NewsRenderer implements IRenderer {
         'href',
         item.url,
       );
-
       fragment.append(newsClone);
     });
-
     (document.querySelector('.news') as HTMLDivElement).innerHTML = '';
     (document.querySelector('.news') as HTMLDivElement).appendChild(fragment);
   }

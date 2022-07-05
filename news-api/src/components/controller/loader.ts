@@ -33,7 +33,6 @@ class Loader {
         console.log(`Sorry, but there is ${response.status} error: ${response.statusText}`);
       throw Error(response.statusText);
     }
-
     return response;
   }
 
@@ -44,7 +43,6 @@ class Loader {
     Object.entries(urlOptions).forEach(([key, value]: [string, string]): void => {
       url += `${key}=${value}&`;
     });
-
     return url.slice(Numbers.Zero, -Numbers.One);
   }
 
