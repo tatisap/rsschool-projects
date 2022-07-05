@@ -1,137 +1,133 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 .sources__button_open {
-    display: block;
-    width: 200px;
-    height: 50px;
-    border: #F5F5F5 1px solid;
-    border-radius: 5px;
-    background: #000000;
-    background-image: url('.././../../assets/icons/list.svg');
-    background-repeat: no-repeat;
-    background-position: right 10px bottom;
-    padding-left: 15px;
-    font-family: 'Merriweather', serif;
-    font-size: 1.5em;
-    color: #FFFFFF;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
+  display: block;
+  width: 200px;
+  height: 50px;
+  border: #F5F5F5 1px solid;
+  border-radius: 5px;
+  background: #000000;
+  background-image: url('.././../../assets/icons/list.svg');
+  background-repeat: no-repeat;
+  background-position: right 10px bottom;
+  padding-left: 15px;
+  font-family: 'Merriweather', serif;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .sources__button_open:hover {
-    background-position: right 5px bottom;
-    transform: scale(97%);
+  background-position: right 5px bottom;
+  transform: scale(97%);
 }
 
 .sources__button_open::after {
-    content: 'Sources';
+  content: 'Sources';
 }
 
 .blackout {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 25;
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    background-color: #000000;
-    opacity: 50%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 25;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 50%;
 }
 
 .blackout.on {
-    display: block;
+  display: block;
 }
 
 .sources {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 350px;
-    height: 100vh;
-    padding: 10px 20px;
-    background-color: #2A2A2A;
-    font: 300 1em 'Fira Sans', sans-serif;
-    transition: 0.3s;
-    overflow: auto;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 350px;
+  height: 100vh;
+  padding: 10px 20px;
+  background-color: #2A2A2A;
+  font: 300 1em 'Fira Sans', sans-serif;
+  transition: 0.3s;
+  overflow: auto;
 }
 
 .sources::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
-  
+
 .sources__button_close {
-    position: sticky;
-    top: 5px;
-    align-self: end;
-    border: 0;
-    border-radius: 5px;
-    background-color: #2A2A2A;
-    font-size: 1.5rem;
-    color: #FFFFFF;
-    cursor: pointer;
-    transition: 0.3s;
+  position: sticky;
+  top: 5px;
+  align-self: end;
+  border: 0;
+  border-radius: 5px;
+  background-color: #2A2A2A;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .sources__button_close:hover {
-    transform: scale(115%);
+  transform: scale(115%);
 }
 
 .sources.open {
-    right: 0;
+  right: 0;
 }
 
 .source__item {
-    width: 90%;
-    margin: 0.5em;
-    padding: 1em 2em;
-    border-radius: 10px;
-    background: none;
-    font: inherit;
-    color: #FFFFFF;
-    text-align: center;
-    line-height: 1;
-    cursor: pointer;
-    transition: 0.25s;
+  width: 90%;
+  margin: 0.5em;
+  padding: 1em 2em;
+  border-radius: 10px;
+  background: none;
+  font: inherit;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.25s;
 }
 
 .source__item:hover,
 .source__item:focus {
-    border-color: #3FCC59;
-    box-shadow: 0 0.5em 0.5em -0.4em #3FCC59;
-    color: #69DB7E;
+  border-color: #3FCC59;
+  box-shadow: 0 0.5em 0.5em -0.4em #3FCC59;
+  color: #69DB7E;
 }
 
 .source__item-name {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
+  .sources__button_open {
+    width: 70px;
+  }
 
-    .sources__button_open {
-        width: 70px;
-    }
+  .sources__button_open:hover {
+    background-position: right 10px bottom;
+    transform: rotate(180deg);
+  }
 
-    .sources__button_open:hover {
-        background-position: right 10px bottom;
-        transform: rotate(180deg);
-    }
-
-    .sources__button_open::after {
-        content: '';
-    }
-
-} 
+  .sources__button_open::after {
+    content: '';
+  }
+}
 
 @media (max-width: 400px) {
-
-    .sources {
-        width: 100vw;
-    }
-    
+  .sources {
+    width: 100vw;
+  }
 }

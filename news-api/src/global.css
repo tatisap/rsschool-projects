@@ -1,133 +1,129 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    margin: 0;
-    background: #FFFFFF;
-    font-family: sans-serif;
-    color: #2A2A2A;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+  background: #FFFFFF;
+  font-family: sans-serif;
+  color: #2A2A2A;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    background: #000000;
-    font-family: 'Abril Fatface', cursive;
-    color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background: #000000;
+  font-family: 'Abril Fatface', cursive;
+  color: #FFFFFF;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 4rem;
-    font-weight: 800;
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 800;
 }
 
 main {
-    position: relative;
-    flex-grow: 1;
-    min-height: calc(100vh - 100px - 192px);
-    margin-bottom: 70px;
+  position: relative;
+  flex-grow: 1;
+  min-height: calc(100vh - 100px - 192px);
+  margin-bottom: 70px;
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 70px;
-    padding: 0 30px;
-    background: #000000;
-    color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+  padding: 0 30px;
+  background: #000000;
+  color: #FFFFFF;
 }
 
 footer .copyright {
-    font-size: 14px;
-    color: #333333;
-    text-align: center;
+  font-size: 14px;
+  color: #333333;
+  text-align: center;
 }
 
 footer .copyright a {
-    color: #444444;
+  color: #444444;
 }
 
 footer .copyright a:hover {
-    color: #555555;
+  color: #555555;
 }
 
 footer .copyright:before {
-    content: '©';
+  content: '©';
 }
 
 .footer__link_github,
 .footer__link_github:visited {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .footer__link_github:hover {
-    color: #69DB7E;
+  color: #69DB7E;
 }
 
 .footer__link_rs {
-    width: 104px;
-    height: 48px;
-    border-radius: 10px;
-    background-color: white;
-    background-image: url('./assets/icons/rsschool.svg');
-    background-size: 94px 38px;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: 0.3s;
+  width: 104px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: white;
+  background-image: url('./assets/icons/rsschool.svg');
+  background-size: 94px 38px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.3s;
 }
 
 .footer__link_rs:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .footer__link_rs a {
-    display: block;
-    width: 100%;
-    height: 100%;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
+  header h1 {
+    font-size: 10vw;
+  }
 
-    header h1 {
-        font-size: 10vw;
-    }
-
-    .footer__link_rs {
-        width: 65px;
-        height: 30px;
-        border-radius: 8px;
-        background-size: 54px 25px;
-    }
-
+  .footer__link_rs {
+    width: 65px;
+    height: 30px;
+    border-radius: 8px;
+    background-size: 54px 25px;
+  }
 }
 
 @media (max-width: 450px) {
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-    header {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    footer {
-        gap: 10px;
-        padding: 0 10px;
-    }
-    
+  footer {
+    gap: 10px;
+    padding: 0 10px;
+  }
 }
