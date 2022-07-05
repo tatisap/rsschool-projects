@@ -1,9 +1,9 @@
 import { ENDPOINTS } from '../../constants';
-import { ArticlesResponse, Numbers, Render, SourcesResponse } from '../../types';
+import { IArticlesResponse, Numbers, IRender, ISourcesResponse } from '../../types';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-  public getSources(callback: Render<SourcesResponse>): void {
+  public getSources(callback: IRender<ISourcesResponse>): void {
     super.getResponse(
       {
         endpoint: ENDPOINTS.sources,
@@ -12,7 +12,7 @@ class AppController extends AppLoader {
     );
   }
 
-  public getNews(event: Event, callback: Render<ArticlesResponse>): void {
+  public getNews(event: Event, callback: IRender<IArticlesResponse>): void {
     let target = event.target as HTMLElement | null;
     const newsContainer = event.currentTarget as HTMLElement | null;
     if (newsContainer === null) return;

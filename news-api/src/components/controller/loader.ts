@@ -1,10 +1,10 @@
 import {
-  ArticlesResponse,
-  Render,
+  IArticlesResponse,
+  IRender,
   LoaderParameters,
-  RequestParameters,
+  IRequestParameters,
   SearchParameters,
-  SourcesResponse,
+  ISourcesResponse,
   UrlParameters,
   StatusCode,
   Numbers,
@@ -20,8 +20,8 @@ class Loader {
   }
 
   public getResponse(
-    { endpoint, options = {} }: RequestParameters,
-    callback: Render<ArticlesResponse> | Render<SourcesResponse> = (): void => {
+    { endpoint, options = {} }: IRequestParameters,
+    callback: IRender<IArticlesResponse> | IRender<ISourcesResponse> = (): void => {
       console.error('No callback for GET response');
     },
   ): void {
@@ -52,13 +52,13 @@ class Loader {
   private load(
     method: string,
     endpoint: string,
-    callback: Render<ArticlesResponse> | Render<SourcesResponse>,
+    callback: IRender<IArticlesResponse> | IRender<ISourcesResponse>,
     options: SearchParameters = {},
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((response: Response): Promise<ArticlesResponse & SourcesResponse> => response.json())
-      .then((data?: ArticlesResponse & SourcesResponse): void => {
+      .then((response: Response): Promise<IArticlesResponse & ISourcesResponse> => response.json())
+      .then((data?: IArticlesResponse & ISourcesResponse): void => {
         if (!data) return;
         callback(data);
       })

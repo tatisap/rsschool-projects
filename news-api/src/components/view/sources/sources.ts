@@ -1,12 +1,12 @@
-import { Renderer, Source } from '../../../types';
+import { IRenderer, ISource } from '../../../types';
 import './sources.css';
 
-class SourcesRenderer implements Renderer {
-  public draw(data: Source[]): void {
+class SourcesRenderer implements IRenderer {
+  public draw(data: ISource[]): void {
     const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemplate = document.querySelector('#sourceItemTemplate') as HTMLTemplateElement;
 
-    data.forEach((item: Source): void => {
+    data.forEach((item: ISource): void => {
       const sourceClone = sourceItemTemplate.content.cloneNode(true) as DocumentFragment;
 
       (sourceClone.querySelector('.source__item-name') as HTMLSpanElement).textContent = item.name;

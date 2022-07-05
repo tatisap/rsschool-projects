@@ -1,5 +1,5 @@
-export interface Article {
-  readonly source: Source;
+export interface IArticle {
+  readonly source: ISource;
   readonly author: string;
   readonly title: string;
   readonly description: string;
@@ -8,20 +8,20 @@ export interface Article {
   readonly publishedAt: string;
 }
 
-export interface Source {
+export interface ISource {
   readonly id: string;
   readonly name: string;
 }
 
-export interface ArticlesResponse {
-  articles: Article[];
+export interface IArticlesResponse {
+  articles: IArticle[];
 }
 
-export interface SourcesResponse {
-  sources: Source[];
+export interface ISourcesResponse {
+  sources: ISource[];
 }
 
-export interface RequestParameters {
+export interface IRequestParameters {
   endpoint: string;
   options?: SearchParameters;
 }
@@ -34,12 +34,12 @@ export type UrlParameters = {
 export type LoaderParameters = Pick<UrlParameters, 'apiKey'>;
 export type SearchParameters = Partial<Pick<UrlParameters, 'sources'>>;
 
-export interface Render<T> {
+export interface IRender<T> {
   (data: T): void;
 }
 
-export interface Renderer {
-  draw(data: Article[] | Source[]): void;
+export interface IRenderer {
+  draw(data: IArticle[] | ISource[]): void;
 }
 
 export const nameof = <T>(name: keyof T): keyof T => name;

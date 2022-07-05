@@ -1,21 +1,21 @@
-import { Article, Numbers, Renderer } from '../../../types';
+import { IArticle, Numbers, IRenderer } from '../../../types';
 import './news.css';
 import placeholder from '../../../assets/placeholder.png';
 import { NUMBER_OF_ARTICLES_PER_PAGE } from '../../../constants';
 
-class NewsRenderer implements Renderer {
-  public draw(data: Article[]): void {
-    const news: Article[] =
+class NewsRenderer implements IRenderer {
+  public draw(data: IArticle[]): void {
+    const news: IArticle[] =
       data.length >= NUMBER_OF_ARTICLES_PER_PAGE
         ? data.filter(
-            (_item: Article, index: number): boolean => index < NUMBER_OF_ARTICLES_PER_PAGE,
+            (_item: IArticle, index: number): boolean => index < NUMBER_OF_ARTICLES_PER_PAGE,
           )
         : data;
 
     const fragment: DocumentFragment = document.createDocumentFragment();
     const newsItemTemplate = document.querySelector('#newsItemTemplate') as HTMLTemplateElement;
 
-    news.forEach((item: Article, index: number): void => {
+    news.forEach((item: IArticle, index: number): void => {
       const newsClone = newsItemTemplate.content.cloneNode(true) as DocumentFragment;
 
       if (this.isEven(index))

@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { ArticlesResponse, SourcesResponse } from '../../types';
+import { IArticlesResponse, ISourcesResponse } from '../../types';
 
 class App {
   private readonly controller: AppController;
@@ -15,9 +15,9 @@ class App {
     (document.querySelector('.sources') as HTMLDivElement).addEventListener(
       'click',
       (event: MouseEvent): void =>
-        this.controller.getNews(event, (data: ArticlesResponse): void => this.view.render(data)),
+        this.controller.getNews(event, (data: IArticlesResponse): void => this.view.render(data)),
     );
-    this.controller.getSources((data: SourcesResponse): void => this.view.render(data));
+    this.controller.getSources((data: ISourcesResponse): void => this.view.render(data));
 
     (document.querySelector('.sources__button_open') as HTMLButtonElement).addEventListener(
       'click',

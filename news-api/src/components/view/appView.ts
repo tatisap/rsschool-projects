@@ -1,4 +1,4 @@
-import { ArticlesResponse, SourcesResponse, nameof } from '../../types';
+import { IArticlesResponse, ISourcesResponse, nameof } from '../../types';
 import NewsRenderer from './news/news';
 import SourcesRenderer from './sources/sources';
 
@@ -11,9 +11,9 @@ export class AppView {
     this.sources = new SourcesRenderer();
   }
 
-  public render<T extends ArticlesResponse | SourcesResponse>(data: T): void {
-    if (nameof<ArticlesResponse>('articles') in data) this.news.draw(data.articles);
-    if (nameof<SourcesResponse>('sources') in data) this.sources.draw(data.sources);
+  public render<T extends IArticlesResponse | ISourcesResponse>(data: T): void {
+    if (nameof<IArticlesResponse>('articles') in data) this.news.draw(data.articles);
+    if (nameof<ISourcesResponse>('sources') in data) this.sources.draw(data.sources);
   }
 }
 
