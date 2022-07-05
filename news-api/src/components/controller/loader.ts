@@ -6,9 +6,8 @@ import {
   SearchParameters,
   ISourcesResponse,
   UrlParameters,
-  StatusCode,
-  Numbers,
 } from '../../types';
+import { StatusCode, Numbers } from '../../enums';
 
 class Loader {
   private readonly baseLink: string;

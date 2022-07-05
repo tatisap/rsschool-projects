@@ -1,4 +1,5 @@
-import { IArticle, Numbers, IRenderer } from '../../../types';
+import { IArticle, IRenderer } from '../../../types';
+import { Numbers } from '../../../enums';
 import './news.css';
 import placeholder from '../../../assets/placeholder.png';
 import { NUMBER_OF_ARTICLES_PER_PAGE } from '../../../constants';

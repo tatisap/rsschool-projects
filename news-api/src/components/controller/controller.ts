@@ -1,6 +1,7 @@
 import { ENDPOINTS } from '../../constants';
-import { IArticlesResponse, Numbers, IRender, ISourcesResponse } from '../../types';
+import { IArticlesResponse, IRender, ISourcesResponse } from '../../types';
 import AppLoader from './appLoader';
+import { Numbers } from '../../enums';
 
 class AppController extends AppLoader {
   public getSources(callback: IRender<ISourcesResponse>): void {
