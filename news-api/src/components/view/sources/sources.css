@@ -6,14 +6,14 @@
   height: 50px;
   border: #F5F5F5 1px solid;
   border-radius: 5px;
-  background: #000000;
+  background: #000;
   background-image: url('.././../../assets/icons/list.svg');
   background-repeat: no-repeat;
   background-position: right 10px bottom;
   padding-left: 15px;
   font-family: 'Merriweather', serif;
   font-size: 1.5em;
-  color: #FFFFFF;
+  color: #FFF;
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
@@ -36,7 +36,7 @@
   display: none;
   width: 100vw;
   height: 100vh;
-  background-color: #000000;
+  background-color: #000;
   opacity: 50%;
 }
 
@@ -48,7 +48,7 @@
   position: fixed;
   top: 0;
   right: -400px;
-  z-index: 30;
+  z-index: 50;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -73,7 +73,7 @@
   border-radius: 5px;
   background-color: #2A2A2A;
   font-size: 1.5rem;
-  color: #FFFFFF;
+  color: #FFF;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -93,7 +93,7 @@
   border-radius: 10px;
   background: none;
   font: inherit;
-  color: #FFFFFF;
+  color: #FFF;
   text-align: center;
   line-height: 1;
   cursor: pointer;

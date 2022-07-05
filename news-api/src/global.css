@@ -8,21 +8,23 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   margin: 0;
-  background: #FFFFFF;
+  background: #FFF;
   font-family: sans-serif;
   color: #2A2A2A;
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;
-  background: #000000;
+  background: #000;
   font-family: 'Abril Fatface', cursive;
-  color: #FFFFFF;
+  color: #FFF;
 }
 
 header h1 {
@@ -34,7 +36,6 @@ header h1 {
 main {
   position: relative;
   flex-grow: 1;
-  min-height: calc(100vh - 100px - 192px);
   margin-bottom: 70px;
 }
 
@@ -48,22 +49,22 @@ footer {
   width: 100%;
   height: 70px;
   padding: 0 30px;
-  background: #000000;
-  color: #FFFFFF;
+  background: #000;
+  color: #FFF;
 }
 
 footer .copyright {
   font-size: 14px;
-  color: #333333;
+  color: #333;
   text-align: center;
 }
 
 footer .copyright a {
-  color: #444444;
+  color: #444;
 }
 
 footer .copyright a:hover {
-  color: #555555;
+  color: #555;
 }
 
 footer .copyright:before {
@@ -72,7 +73,7 @@ footer .copyright:before {
 
 .footer__link_github,
 .footer__link_github:visited {
-  color: white;
+  color: #FFF;
   text-decoration: none;
   transition: 0.3s;
 }
@@ -85,7 +86,7 @@ footer .copyright:before {
   width: 104px;
   height: 48px;
   border-radius: 10px;
-  background-color: white;
+  background-color: #FFF;
   background-image: url('./assets/icons/rsschool.svg');
   background-size: 94px 38px;
   background-position: center;
