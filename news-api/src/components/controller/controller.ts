@@ -1,11 +1,12 @@
-import { ArticlesResponse, Render, SourcesResponse } from '../../types';
+import { ENDPOINTS } from '../../constants';
+import { ArticlesResponse, Numbers, Render, SourcesResponse } from '../../types';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
     public getSources(callback: Render<SourcesResponse>): void {
         super.getResponse(
             {
-                endpoint: 'sources',
+                endpoint: ENDPOINTS.sources,
             },
             callback
         );
@@ -25,7 +26,7 @@ class AppController extends AppLoader {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResponse(
                         {
-                            endpoint: 'everything',
+                            endpoint: ENDPOINTS.everything,
                             options: {
                                 sources: sourceId,
                             },
@@ -47,7 +48,7 @@ class AppController extends AppLoader {
     public closeSources(): void {
         const sources = document.querySelector('.sources') as HTMLDivElement;
         sources.classList.remove('open');
-        sources.scrollTop = 0;
+        sources.scrollTop = Numbers.Zero;
         (document.querySelector('.blackout') as HTMLDivElement).classList.remove('on');
     }
 }

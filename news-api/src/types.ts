@@ -21,10 +21,8 @@ export interface SourcesResponse {
     sources: Source[];
 }
 
-export type Endpoint = 'everything' | 'sources';
-
 export interface RequestParams {
-    endpoint: Endpoint;
+    endpoint: string;
     options?: SearchParams;
 }
 
@@ -49,4 +47,11 @@ export const nameof = <T>(name: keyof T) => name;
 export enum StatusCode {
     Unauthorized = 401,
     NotFound = 404,
+}
+
+export enum Numbers {
+    Zero = 0,
+    One = 1,
+    Two = 2,
+    Ten = 10,
 }

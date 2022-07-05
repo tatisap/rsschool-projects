@@ -1,10 +1,14 @@
-import { Article, Renderer } from '../../../types';
+import { Article, Numbers, Renderer } from '../../../types';
 import './news.css';
 import placeholder from '../../../assets/placeholder.png';
+import { NUMBER_OF_ARTICLES_PER_PAGE } from '../../../constants';
 
 class NewsRenderer implements Renderer {
     public draw(data: Article[]): void {
-        const news: Article[] = data.length >= 10 ? data.filter((_item: Article, index: number) => index < 10) : data;
+        const news: Article[] =
+            data.length >= NUMBER_OF_ARTICLES_PER_PAGE
+                ? data.filter((_item: Article, index: number) => index < NUMBER_OF_ARTICLES_PER_PAGE)
+                : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemplate = document.querySelector('#newsItemTemplate') as HTMLTemplateElement;
@@ -12,7 +16,7 @@ class NewsRenderer implements Renderer {
         news.forEach((item: Article, index: number) => {
             const newsClone = newsItemTemplate.content.cloneNode(true) as DocumentFragment;
 
-            if (index % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
+            if (this.isEven(index)) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
 
             (newsClone.querySelector('.news__meta-photo') as HTMLDivElement).style.backgroundImage = `url(${
                 item.urlToImage || placeholder
@@ -20,7 +24,7 @@ class NewsRenderer implements Renderer {
             (newsClone.querySelector('.news__meta-author') as HTMLLIElement).textContent =
                 item.author || item.source.name;
             (newsClone.querySelector('.news__meta-date') as HTMLLIElement).textContent = item.publishedAt
-                .slice(0, 10)
+                .slice(Numbers.Zero, Numbers.Ten)
                 .split('-')
                 .reverse()
                 .join('-');
@@ -36,6 +40,10 @@ class NewsRenderer implements Renderer {
 
         (document.querySelector('.news') as HTMLDivElement).innerHTML = '';
         (document.querySelector('.news') as HTMLDivElement).appendChild(fragment);
+    }
+
+    private isEven(number: number): boolean {
+        return !(number % Numbers.Two);
     }
 }
 
