@@ -24,7 +24,9 @@ class NewsRenderer implements IRenderer {
 
       (newsClone.querySelector(
         '.news__meta-photo',
-      ) as HTMLDivElement).style.backgroundImage = `url(${item.urlToImage || placeholder})`;
+      ) as HTMLDivElement).style.backgroundImage = `url(${
+        item.urlToImage || (placeholder as string)
+      })`;
       (newsClone.querySelector('.news__meta-author') as HTMLLIElement).textContent =
         item.author || item.source.name;
       (newsClone.querySelector(
