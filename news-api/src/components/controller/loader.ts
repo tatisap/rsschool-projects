@@ -1,26 +1,26 @@
 import {
     ArticlesResponse,
     Render,
-    LoaderParams,
-    RequestParams,
-    SearchParams,
+    LoaderParameters,
+    RequestParameters,
+    SearchParameters,
     SourcesResponse,
-    UrlParams,
+    UrlParameters,
     StatusCode,
     Numbers,
 } from '../../types';
 
 class Loader {
     private readonly baseLink: string;
-    private readonly options: LoaderParams;
+    private readonly options: LoaderParameters;
 
-    constructor(baseLink: string, options: LoaderParams) {
+    constructor(baseLink: string, options: LoaderParameters) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     public getResponse(
-        { endpoint, options = {} }: RequestParams,
+        { endpoint, options = {} }: RequestParameters,
         callback: Render<ArticlesResponse> | Render<SourcesResponse> = (): void => {
             console.error('No callback for GET response');
         }
@@ -38,8 +38,8 @@ class Loader {
         return response;
     }
 
-    private makeUrl(options: SearchParams, endpoint: string): string {
-        const urlOptions: Partial<UrlParams> = { ...this.options, ...options };
+    private makeUrl(options: SearchParameters, endpoint: string): string {
+        const urlOptions: Partial<UrlParameters> = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.entries(urlOptions).forEach(([key, value]: [string, string]) => {
@@ -53,7 +53,7 @@ class Loader {
         method: string,
         endpoint: string,
         callback: Render<ArticlesResponse> | Render<SourcesResponse>,
-        options: SearchParams = {}
+        options: SearchParameters = {}
     ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)

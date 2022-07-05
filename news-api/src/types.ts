@@ -21,18 +21,18 @@ export interface SourcesResponse {
     sources: Source[];
 }
 
-export interface RequestParams {
+export interface RequestParameters {
     endpoint: string;
-    options?: SearchParams;
+    options?: SearchParameters;
 }
 
-export type UrlParams = {
+export type UrlParameters = {
     apiKey: string;
     sources: string;
 };
 
-export type LoaderParams = Pick<UrlParams, 'apiKey'>;
-export type SearchParams = Partial<Pick<UrlParams, 'sources'>>;
+export type LoaderParameters = Pick<UrlParameters, 'apiKey'>;
+export type SearchParameters = Partial<Pick<UrlParameters, 'sources'>>;
 
 export interface Render<T> {
     (data: T): void;
