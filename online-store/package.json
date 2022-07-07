@@ -1,0 +1,16 @@
+{
+  "name": "online-store",
+  "version": "1.0.0",
+  "description": "Project on assignment from RSSchool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolling-scopes-school/tatisap-JSFE2022Q1"
+  },
+  "keywords": ["store", "typescript", "rsschool"],
+  "author": "Tatsiana Sapun",
+  "license": "ISC"
+}
