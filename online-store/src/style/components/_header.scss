@@ -1,0 +1,33 @@
+.header {
+  position: relative;
+  padding: 90px 25px;
+  color: $white;
+  .header__title {
+    margin: 0;
+    font: {
+      family: $monoton;
+      weight: 400;
+      size: 6rem;
+    }
+  }
+  .shopping-cart {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    @include background($cart-icon);
+    .shopping-cart__counter {
+      position: absolute;
+      right: -15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 35px;
+      background-color: $dark-grey;
+      font-size: 1.25rem;
+    }
+  }
+}
