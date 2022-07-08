@@ -8,79 +8,81 @@
     <link rel="icon" href="./favicon.ico">
   </head>
   <body>
-    <header class="header">
-      <h1 class="header__title">BIKE STORE</h1>
-      <div class="shopping-cart">
-        <span class="shopping-cart__counter">0</span>
-      </div>
-    </header>
-    <main class="main">
-      <form class="form">
-        <section class="form-section">
-          <label class="form-section__title" for="search">Search</label>
-          <input class="search" type="search" id="search" placeholder="Enter text..." autocomplete="off" autofocus>
-          <button class="search__submit"></button>
-        </section>
-        <section class="form-section">
-          <label class="form-section__title" for="sort">Sort</label>
-          <select class="sort" id="sort">
-            <option class="sort__item">A - Z</option>
-            <option class="sort__item">Z - A</option>
-            <option class="sort__item">Newest</option>
-            <option class="sort__item">Oldest</option>
-          </select>
-        </section>
-        <section class="form-section">
-          <input class="checkbox" id="popular" type="checkbox">
-          <label class="form-section__title" for="popular">Get popular</label>
-        </section>
-        <section class="form-section">
-          <h2 class="form-section__title">Filters</h2>
-          <div class="filter">
-            <h3 class="filter__title">Manufacturer</h3>
-            <ul id="manufacturer" class="filter__list">
-              <li class="filter__item">Cannondale</li>
-              <li class="filter__item">Giant</li>
-              <li class="filter__item">Marin</li>
-              <li class="filter__item">Trek</li>
-            </ul>
-          </div>
-          <div class="filter">
-            <h3 class="filter__title">Type</h3>
-            <ul id="type" class="filter__list">
-              <li class="filter__item">Road</li>
-              <li class="filter__item">Gravel</li>
-              <li class="filter__item">MTB</li>
-            </ul>
-          </div>
-          <div class="filter color-filter">
-            <h3 class="filter__title">Color</h3>
-            <ul id="color" class="color-filter__list">
-              <li class="color-filter__item"></li>
-              <li class="color-filter__item"></li>
-              <li class="color-filter__item"></li>
-              <li class="color-filter__item"></li>
-            </ul>
-          </div>
-          <div class="filter">
-            <h3 class="filter__title">Quantity in stock</h3>
-            <div id="quantity"></div>
-          </div>
-          <div class="filter">
-            <h3 class="filter__title">Year of manufacture</h3>
-            <div id="year"></div>
-          </div>
-        </section>
-        <section class="form-section">
-          <button class="reset-button">Reset filters</button>
-          <button class="reset-button">Reset settings</button>
-        </section>
-      </form>
-      <ul class="bikes-list"></ul>
-    </main>
-    <footer class="footer">
-      <div class="footer__info">© 2022 <a href="https://github.com/tatisap" class="github-link">tatisap</a> </div>
-      <a href="https://rs.school" class="rs-link"></a>
-    </footer>
+    <div class="page-container">
+      <header class="header">
+        <h1 class="header__title">BIKE STORE</h1>
+        <div class="shopping-cart">
+          <span class="shopping-cart__counter">0</span>
+        </div>
+      </header>
+      <main class="main">
+        <form class="form">
+          <section class="form-section">
+            <label class="form-section__title" for="search">Search</label>
+            <input class="search" type="search" id="search" placeholder="Enter text..." autocomplete="off" autofocus>
+            <button class="search__submit"></button>
+          </section>
+          <section class="form-section">
+            <label class="form-section__title" for="sort">Sort</label>
+            <select class="sort" id="sort">
+              <option class="sort__item">A - Z</option>
+              <option class="sort__item">Z - A</option>
+              <option class="sort__item">Newest</option>
+              <option class="sort__item">Oldest</option>
+            </select>
+          </section>
+          <section class="form-section">
+            <input class="checkbox" id="popular" type="checkbox">
+            <label class="form-section__title" for="popular">Get popular</label>
+          </section>
+          <section class="form-section">
+            <h2 class="form-section__title">Filters</h2>
+            <div class="filter">
+              <h3 class="filter__title">Manufacturer</h3>
+              <ul id="manufacturer" class="filter__list">
+                <li class="filter__item">Cannondale</li>
+                <li class="filter__item">Giant</li>
+                <li class="filter__item">Marin</li>
+                <li class="filter__item">Trek</li>
+              </ul>
+            </div>
+            <div class="filter">
+              <h3 class="filter__title">Type</h3>
+              <ul id="type" class="filter__list">
+                <li class="filter__item">Road</li>
+                <li class="filter__item">Gravel</li>
+                <li class="filter__item">MTB</li>
+              </ul>
+            </div>
+            <div class="filter color-filter">
+              <h3 class="filter__title">Color</h3>
+              <ul id="color" class="color-filter__list">
+                <li class="color-filter__item"></li>
+                <li class="color-filter__item"></li>
+                <li class="color-filter__item"></li>
+                <li class="color-filter__item"></li>
+              </ul>
+            </div>
+            <div class="filter">
+              <h3 class="filter__title">Quantity in stock</h3>
+              <div id="quantity"></div>
+            </div>
+            <div class="filter">
+              <h3 class="filter__title">Year of manufacture</h3>
+              <div id="year"></div>
+            </div>
+          </section>
+          <section class="form-section">
+            <button class="reset-button">Reset filters</button>
+            <button class="reset-button">Reset settings</button>
+          </section>
+        </form>
+        <ul class="bikes-list"></ul>
+      </main>
+      <footer class="footer">
+        <div class="footer__info">© 2022 <a href="https://github.com/tatisap" class="github-link">tatisap</a> </div>
+        <a href="https://rs.school" class="rs-link"></a>
+      </footer>
+    </div>
   </body>
 </html>
