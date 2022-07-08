@@ -25,6 +25,10 @@ const commonConfig = {
           from: path.resolve(dirname, './src/assets/img'),
           to: path.resolve(dirname, 'dist'),
         },
+        {
+          from: path.resolve(dirname, './src/assets/favicon.ico'),
+          to: path.resolve(dirname, 'dist'),
+        },
       ],
     }),
   ],
@@ -40,7 +44,7 @@ const commonConfig = {
         exclude: /node_modules/,
       },
       {
-        test: /\.svg$/i,
+        test: /\.(svg|png)$/i,
         type: 'asset/resource',
       },
     ],
