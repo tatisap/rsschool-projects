@@ -1,0 +1,122 @@
+[
+  {
+    "model": "Boone",
+    "type": "gravel",
+    "color": "black",
+    "manufacturer": "Trek",
+    "image": "./boone.png",
+    "year": 2019,
+    "amount": 5,
+    "isPopular": false
+  },
+  {
+    "model": "CAAD Optimo",
+    "type": "road",
+    "color": "black",
+    "manufacturer": "Cannondale",
+    "image": "./caad-optimo.png",
+    "year": 2012,
+    "amount": 2,
+    "isPopular": true
+  },
+  {
+    "model": "Domane Al",
+    "type": "road",
+    "color": "blue",
+    "manufacturer": "Trek",
+    "image": "./domane-al.png",
+    "year": 2018,
+    "amount": 2,
+    "isPopular": true
+  },
+  {
+    "model": "Nicasio+",
+    "type": "gravel",
+    "color": "orange",
+    "manufacturer": "Marin",
+    "image": "./nicasio-plus.png",
+    "year": 2014,
+    "amount": 2,
+    "isPopular": true
+  },
+  {
+    "model": "Nicasio",
+    "type": "road",
+    "color": "black",
+    "manufacturer": "Marin",
+    "image": "./nicasio.png",
+    "year": 2012,
+    "amount": 3,
+    "isPopular": false
+  },
+  {
+    "model": "Revolt",
+    "type": "gravel",
+    "color": "blue",
+    "manufacturer": "Giant",
+    "image": "./revolt.png",
+    "year": 2015,
+    "amount": 5,
+    "isPopular": true
+  },
+  {
+    "model": "TCR Advanced",
+    "type": "road",
+    "color": "white",
+    "manufacturer": "Giant",
+    "image": "./tcr-advanced.png",
+    "year": 2020,
+    "amount": 2,
+    "isPopular": false
+  },
+  {
+    "model": "Team Marin",
+    "type": "mtb",
+    "color": "white",
+    "manufacturer": "Marin",
+    "image": "./team-marin.png",
+    "year": 2016,
+    "amount": 1,
+    "isPopular": false
+  },
+  {
+    "model": "Topstone",
+    "type": "gravel",
+    "color": "white",
+    "manufacturer": "Cannondale",
+    "image": "./topstone.png",
+    "year": 2021,
+    "amount": 4,
+    "isPopular": true
+  },
+  {
+    "model": "Trail",
+    "type": "mtb",
+    "color": "blue",
+    "manufacturer": "Cannondale",
+    "image": "./trail.png",
+    "year": 2010,
+    "amount": 3,
+    "isPopular": true
+  },
+  {
+    "model": "X-Caliber",
+    "type": "mtb",
+    "color": "white",
+    "manufacturer": "Trek",
+    "image": "./x-caliber.png",
+    "year": 2017,
+    "amount": 2,
+    "isPopular": true
+  },
+  {
+    "model": "Yukon",
+    "type": "mtb",
+    "color": "black",
+    "manufacturer": "Giant",
+    "image": "./yukon.png",
+    "year": 2011,
+    "amount": 1,
+    "isPopular": false
+  }
+]
