@@ -68,6 +68,9 @@
   background-repeat: no-repeat;
   background-position: center;
   @extend %interactive;
+  @media (max-width:$tablet) {
+    right: 0;
+  }
 }
 
 .sort {
