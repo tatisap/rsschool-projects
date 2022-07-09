@@ -1,46 +1,55 @@
 .cards-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 40px;
   margin: 0;
   padding-bottom: 50px;
+  @media (max-width: $desktop) {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
+  @media (max-width: $tablet), (min-width: $mobile) {
+    padding: 0 0 40px;
+  }
   .cards-list__item {
-    max-width: 440px;
+    max-width: 450px;
     border: 1px solid $dark-grey;
     border-radius: 5px;
+    @media (max-width: $mobile) {
+      max-width: 355px;
+    }
   }
 }
 
 .bike {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 60% 1fr;
-  justify-content: space-between;
+  grid-template-columns: auto min-content;
+  row-gap: 20px;
   padding: 20px;
   .bike__img {
     grid-column: 1 / 3;
     width: 100%;
   }
-  .bike__info {
-    .bike__title {
-      margin: 30px 0 15px;
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-    .bike__description {
-      font-weight: 200;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0.06em;
-    }
+  .bike__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .bike__description {
+    grid-column: 1 / 3;
+    margin: 0;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.06em;
   }
   .add-button {
     @extend %interactive;
     justify-self: end;
     width: 140px;
     height: 40px;
-    margin-top: 30px;
     border: 1px solid $black;
     border-radius: 1px;
     background-color: transparent;
@@ -51,6 +60,16 @@
     &:hover {
       background-color: $black;
       color: $white;
+    }
+  }
+  .flame {
+    position: absolute;
+  }
+  @media (max-width: $mobile) {
+    justify-items: center;
+    .add-button {
+      justify-self: auto;
+      order: 1;
     }
   }
 }

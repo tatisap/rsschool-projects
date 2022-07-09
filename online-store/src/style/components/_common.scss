@@ -19,4 +19,8 @@ body {
   font-family: $lexend;
   color: $black;
   @include background($header-background);
+  @media (max-width: 1024px) {
+    @include background($header-background-tablet);
+    background-position: top 50px;
+  }
 }

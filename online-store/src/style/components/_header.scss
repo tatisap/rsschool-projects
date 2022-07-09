@@ -1,13 +1,23 @@
 .header {
   position: relative;
-  padding: 90px 70px;
+  padding: 70px;
   color: $white;
+  @media (max-width: $tablet) {
+    padding: 5vw ;
+  }
   .header__title {
     margin: 0;
     font: {
       family: $monoton;
       weight: 400;
       size: 6rem;
+    }
+    @media (max-width: 1024px) {
+      font-size: 8vw;
+    }
+    @media (max-width: 1024px) {
+      width: 50vw;
+      line-height: 8vw;
     }
   }
   .shopping-cart {
@@ -28,6 +38,18 @@
       border-radius: 35px;
       background-color: $dark-grey;
       font-size: 1.25rem;
+    }
+    @media (max-width: $mobile) {
+      top: 5vw;
+      right: 5vw;
+      width: 10vw;
+      height: 10vw;
+      .shopping-cart__counter {
+        right: -2vw;
+        width: 5vw;
+        height: 5vw;
+        font-size: 3vw;
+      }
     }
   }
 }

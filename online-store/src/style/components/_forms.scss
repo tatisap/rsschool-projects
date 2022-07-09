@@ -11,6 +11,22 @@
       font-size: 1.5rem;
     }
   }
+  @media (max-width: $tablet) and (min-width: $mobile) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    .form-section {
+      margin: 0;
+    }
+  }
+  @media (max-width:$tablet) {
+    padding-bottom: 30px;
+    border-right: 0;
+    border-bottom: 1px solid $black;
+    .form-section {
+      padding: 0;
+    }
+  }
 }
 
 .search,
@@ -41,7 +57,7 @@
 
 .search__submit {
   position: absolute;
-  bottom: 0;
+  top: 45px;
   right: 40px;
   width: 35px;
   height: 35px;
@@ -175,4 +191,12 @@
       color: $white;
     }
   }
+}
+
+@media (max-width: $tablet) and (min-width: $mobile) {
+  .form-section:nth-child(4) {
+    grid-row: 1 / 5;
+    order: -2;
+  }
+  
 }
