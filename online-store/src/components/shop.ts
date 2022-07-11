@@ -12,8 +12,8 @@ export class Shop<T extends Item> {
   }
   init(): void {
     this.render(this.goods);
-    (document.querySelector('.form') as HTMLFormElement).addEventListener(
-      'submit',
+    (document.querySelector('.search') as HTMLFormElement).addEventListener(
+      'input',
       (event: Event) => this.search(event)
     );
   }
@@ -21,15 +21,15 @@ export class Shop<T extends Item> {
     goods.forEach((item: T) => item.render());
   }
   search(event: Event): void {
-    event.preventDefault();
+    const searchValue: string = (event.target as HTMLFormElement).value.trim();
 
-    const searchValue: string = (event.target as HTMLFormElement).search.value;
-    if (searchValue === '') return;
-    (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
-    console.log(this);
     const foundGoods: Item[] = this.searcher.getGoodsByName<Item>(searchValue, this.goods);
-    console.log(foundGoods);
-    this.render(foundGoods);
+    (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
+    if (foundGoods.length !== 0) {
+      this.render(foundGoods);
+    } else {
+      (document.querySelector('.cards-list') as HTMLUListElement).append('No results');
+    }
   }
 }
 
