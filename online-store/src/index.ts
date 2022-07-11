@@ -1,6 +1,7 @@
 import './style.scss';
 import bikes from './data/bikes.json';
-import { Shop } from './components/shop';
+import { BikeShop } from './components/shop';
+import { IBike } from './types/types';
 
-const shop: Shop = new Shop(bikes);
+const shop: BikeShop = new BikeShop(bikes as IBike[]);
 shop.init();

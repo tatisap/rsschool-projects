@@ -1,6 +1,6 @@
 [
   {
-    "model": "Boone",
+    "name": "Boone",
     "type": "gravel",
     "color": "black",
     "manufacturer": "Trek",
@@ -10,7 +10,7 @@
     "isPopular": false
   },
   {
-    "model": "CAAD Optimo",
+    "name": "CAAD Optimo",
     "type": "road",
     "color": "black",
     "manufacturer": "Cannondale",
@@ -20,7 +20,7 @@
     "isPopular": true
   },
   {
-    "model": "Domane Al",
+    "name": "Domane Al",
     "type": "road",
     "color": "blue",
     "manufacturer": "Trek",
@@ -30,7 +30,7 @@
     "isPopular": true
   },
   {
-    "model": "Nicasio+",
+    "name": "Nicasio+",
     "type": "gravel",
     "color": "orange",
     "manufacturer": "Marin",
@@ -40,7 +40,7 @@
     "isPopular": true
   },
   {
-    "model": "Nicasio",
+    "name": "Nicasio",
     "type": "road",
     "color": "black",
     "manufacturer": "Marin",
@@ -50,7 +50,7 @@
     "isPopular": false
   },
   {
-    "model": "Revolt",
+    "name": "Revolt",
     "type": "gravel",
     "color": "blue",
     "manufacturer": "Giant",
@@ -60,7 +60,7 @@
     "isPopular": true
   },
   {
-    "model": "TCR Advanced",
+    "name": "TCR Advanced",
     "type": "road",
     "color": "white",
     "manufacturer": "Giant",
@@ -70,7 +70,7 @@
     "isPopular": false
   },
   {
-    "model": "Team Marin",
+    "name": "Team Marin",
     "type": "mtb",
     "color": "white",
     "manufacturer": "Marin",
@@ -80,7 +80,7 @@
     "isPopular": false
   },
   {
-    "model": "Topstone",
+    "name": "Topstone",
     "type": "gravel",
     "color": "white",
     "manufacturer": "Cannondale",
@@ -90,7 +90,7 @@
     "isPopular": true
   },
   {
-    "model": "Trail",
+    "name": "Trail",
     "type": "mtb",
     "color": "blue",
     "manufacturer": "Cannondale",
@@ -100,7 +100,7 @@
     "isPopular": true
   },
   {
-    "model": "X-Caliber",
+    "name": "X-Caliber",
     "type": "mtb",
     "color": "white",
     "manufacturer": "Trek",
@@ -110,7 +110,7 @@
     "isPopular": true
   },
   {
-    "model": "Yukon",
+    "name": "Yukon",
     "type": "mtb",
     "color": "black",
     "manufacturer": "Giant",
