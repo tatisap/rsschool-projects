@@ -19,7 +19,7 @@
       margin: 0;
     }
   }
-  @media (max-width:$tablet) {
+  @media (max-width: $tablet) {
     padding-bottom: 30px;
     border-right: 0;
     border-bottom: 1px solid $black;
@@ -58,7 +58,7 @@
   width: 24px;
   height: 24px;
   appearance: none;
-  @include background($close-icon)
+  @include background($close-icon);
 }
 
 .sort {
@@ -131,7 +131,7 @@
       width: 25px;
       height: 25px;
       border-radius: 25px;
-      
+
       &:nth-child(1) {
         outline: $black 1px solid;
       }
