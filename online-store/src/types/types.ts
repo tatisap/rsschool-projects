@@ -1,13 +1,14 @@
-export interface IGoods {
+export interface IBike {
   readonly name: string;
   readonly image: string;
   readonly amount: number;
   readonly isPopular: boolean;
-}
-
-export interface IBike extends IGoods {
   readonly type: string;
   readonly color: string;
   readonly manufacturer: string;
   readonly year: number;
 }
+
+export type sortOrder = 'ascending' | 'descending';
+
+export type SortParameters = [keyof IBike, sortOrder];

@@ -1,31 +1,20 @@
-import { IGoods, IBike } from '../types/types';
-
-export class Item {
-  private htmlElement: HTMLLIElement;
-  public info: IGoods;
-
-  constructor(container: HTMLLIElement, info: IGoods) {
-    this.htmlElement = container;
-    this.info = info;
-  }
-  render(): void {
-    (document.querySelector('.cards-list') as HTMLUListElement).append(this.htmlElement);
-  }
-}
+import { IBike } from '../types/types';
+import { Item } from './common/item';
 
 export class Bike extends Item {
-  constructor(item: IBike) {
+  public readonly info: IBike;
+  constructor(bikeInfo: IBike) {
     const container: HTMLLIElement = document.createElement('li');
     container.classList.add('cards-list__item', 'bike');
 
     const image: HTMLImageElement = document.createElement('img');
     image.classList.add('bike__img');
-    image.src = item.image;
-    image.alt = item.name;
+    image.src = bikeInfo.image;
+    image.alt = bikeInfo.name;
 
     const heading: HTMLHeadingElement = document.createElement('h2');
     heading.classList.add('bike__title');
-    heading.textContent = item.name;
+    heading.textContent = bikeInfo.name;
 
     const addButton: HTMLButtonElement = document.createElement('button');
     addButton.classList.add('add-button');
@@ -34,19 +23,20 @@ export class Bike extends Item {
     const description: HTMLParagraphElement = document.createElement('p');
     description.classList.add('bike__description');
     description.innerHTML = `
-    Manufacturer: ${item.manufacturer}<br>
-    Type: ${item.type}<br>
-    Color: ${item.color}<br>
-      Quantity in stock: ${item.amount}<br>
-      Year of manufacture: ${item.year}<br>
+    Manufacturer: ${bikeInfo.manufacturer}<br>
+    Type: ${bikeInfo.type}<br>
+    Color: ${bikeInfo.color}<br>
+      Quantity in stock: ${bikeInfo.amount}<br>
+      Year of manufacture: ${bikeInfo.year}<br>
     `;
 
     const flameIcon: HTMLDivElement = document.createElement('div');
-    if (item.isPopular) {
+    if (bikeInfo.isPopular) {
       flameIcon.classList.add('flame');
     }
 
     container.append(image, heading, addButton, description, flameIcon);
-    super(container, item);
+    super(container);
+    this.info = bikeInfo;
   }
 }
