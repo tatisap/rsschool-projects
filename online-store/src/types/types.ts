@@ -12,3 +12,6 @@ export interface IBike {
 export type sortOrder = 'ascending' | 'descending';
 
 export type SortParameters = [keyof IBike, sortOrder];
+
+export type FilterProperty = 'color' | 'amount' | 'isPopular' | 'manufacturer' | 'type' | 'year';
+export type FilterParameters = Record<FilterProperty, string[]>;

@@ -114,7 +114,8 @@
     .filter__item {
       @extend %interactive;
       padding-left: 5px;
-      &:hover {
+      &:hover,
+      &.active {
         @extend %interactive;
         background-color: $light-grey;
       }
@@ -155,7 +156,8 @@
         transition: 0.5s;
         opacity: 0;
       }
-      &:hover::before {
+      &:hover::before,
+      &.active::before {
         opacity: 1;
       }
     }

@@ -34,37 +34,37 @@
             <input class="checkbox" id="popular" type="checkbox">
             <label class="checkbox__title" for="popular">Get popular</label>
           </section>
-          <section class="form-section">
+          <section class="form-section filter-section">
             <h2 class="form-section__title">Filters</h2>
             <div class="filter">
               <h3 class="filter__title">Manufacturer</h3>
               <ul id="manufacturer" class="filter__list">
-                <li class="filter__item">Cannondale</li>
-                <li class="filter__item">Giant</li>
-                <li class="filter__item">Marin</li>
-                <li class="filter__item">Trek</li>
+                <li class="filter__item" data-value="Cannondale">Cannondale</li>
+                <li class="filter__item" data-value="Giant">Giant</li>
+                <li class="filter__item" data-value="Marin">Marin</li>
+                <li class="filter__item" data-value="Trek">Trek</li>
               </ul>
             </div>
             <div class="filter">
               <h3 class="filter__title">Type</h3>
               <ul id="type" class="filter__list">
-                <li class="filter__item">Road</li>
-                <li class="filter__item">Gravel</li>
-                <li class="filter__item">MTB</li>
+                <li class="filter__item" data-value="road">Road</li>
+                <li class="filter__item" data-value="gravel">Gravel</li>
+                <li class="filter__item" data-value="mtb">MTB</li>
               </ul>
             </div>
             <div class="filter color-filter">
               <h3 class="filter__title">Color</h3>
               <ul id="color" class="color-filter__list">
-                <li class="color-filter__item"></li>
-                <li class="color-filter__item"></li>
-                <li class="color-filter__item"></li>
-                <li class="color-filter__item"></li>
+                <li class="color-filter__item" data-value="white"></li>
+                <li class="color-filter__item" data-value="green"></li>
+                <li class="color-filter__item" data-value="blue"></li>
+                <li class="color-filter__item" data-value="black"></li>
               </ul>
             </div>
             <div class="filter">
               <h3 class="filter__title">Quantity in stock</h3>
-              <div id="quantity"></div>
+              <div id="amount"></div>
             </div>
             <div class="filter">
               <h3 class="filter__title">Year of manufacture</h3>
