@@ -12,7 +12,7 @@ export class BikeShop extends Shop<Bike> {
   private viewParameters: FilterParameters;
 
   constructor(goodsInfo: IBike[]) {
-    const goods: Bike[] = goodsInfo.map((item: IBike) => new Bike(item));
+    const goods: Bike[] = goodsInfo.map((item: IBike): Bike => new Bike(item));
     super(goods);
     this.searcher = new Searcher();
     this.sorter = new Sorter();
@@ -30,15 +30,15 @@ export class BikeShop extends Shop<Bike> {
     super.init();
     (document.querySelector('.search') as HTMLFormElement).addEventListener(
       'input',
-      (event: Event) => this.searchHandler(event)
+      (event: Event): void => this.searchHandler(event)
     );
     (document.querySelector('.sort') as HTMLSelectElement).addEventListener(
       'change',
-      (event: Event) => this.sortHandler(event)
+      (event: Event): void => this.sortHandler(event)
     );
     (document.querySelector('.filter-section') as HTMLElement).addEventListener(
       'click',
-      (event: Event) => this.filterHandler(event)
+      (event: Event): void => this.filterHandler(event)
     );
   }
   searchHandler(event: Event): void {

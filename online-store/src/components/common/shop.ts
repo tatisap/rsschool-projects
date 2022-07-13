@@ -10,6 +10,6 @@ export class Shop<T extends Item> {
     this.render(this.goods);
   }
   render<T extends Item>(goods: T[]): void {
-    goods.forEach((item: T) => item.render());
+    goods.forEach((item: T): void => item.render());
   }
 }

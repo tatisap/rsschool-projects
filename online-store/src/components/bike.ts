@@ -23,9 +23,9 @@ export class Bike extends Item {
     const description: HTMLParagraphElement = document.createElement('p');
     description.classList.add('bike__description');
     description.innerHTML = `
-    Manufacturer: ${bikeInfo.manufacturer}<br>
-    Type: ${bikeInfo.type}<br>
-    Color: ${bikeInfo.color}<br>
+      Manufacturer: ${bikeInfo.manufacturer}<br>
+      Type: ${bikeInfo.type}<br>
+      Color: ${bikeInfo.color}<br>
       Quantity in stock: ${bikeInfo.amount}<br>
       Year of manufacture: ${bikeInfo.year}<br>
     `;
