@@ -5,12 +5,14 @@ import { Searcher } from '../utils/search';
 import { Sorter } from '../utils/sorter';
 import { Bike } from './bike';
 import { Shop } from './common/shop';
+import { Slider } from './common/slider';
 
 export class BikeShop extends Shop<Bike> {
   private searcher: Searcher;
   private sorter: Sorter;
   private filter: Filter;
   private viewParameters: FilterParameters;
+  private sliders: Slider[];
 
   constructor(goodsInfo: IBike[]) {
     const goods: Bike[] = goodsInfo.map((item: IBike): Bike => new Bike(item));
@@ -26,9 +28,14 @@ export class BikeShop extends Shop<Bike> {
       year: [],
       isPopular: [],
     };
+    this.sliders = [
+      new Slider('amount', 'amount-start', 'amount-end', 1, 10),
+      new Slider('year', 'year-start', 'year-end', 2010, 2022),
+    ];
   }
   init(): void {
     super.init();
+    this.sliders.forEach((slider: Slider): void => slider.init());
     (document.querySelector('.search') as HTMLFormElement).addEventListener(
       'input',
       (event: Event): void => this.searchHandler(event)

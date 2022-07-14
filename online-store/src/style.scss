@@ -13,3 +13,6 @@
 @import './style/components/forms';
 @import './style/components/card';
 @import './style/components/message';
+
+@import '../node_modules/nouislider/dist/nouislider.css';
+@import './style/components/slider';
