@@ -9,6 +9,7 @@
   padding-bottom: 50px;
   @media (max-width: $desktop) {
     grid-template-columns: 1fr;
+    justify-items: center;
     margin: 0 auto;
   }
   @media (max-width: $tablet), (min-width: $mobile) {
@@ -57,24 +58,56 @@
       grid-column: auto;
     }
   }
-  .add-button {
-    @extend %interactive;
+  .button-with-counter {
+    display: flex;
     justify-self: end;
-    width: 140px;
-    height: 40px;
-    border: 1px solid $black;
-    border-radius: 1px;
-    background-color: transparent;
     font: {
       family: inherit;
       size: 18px;
     }
-    &:hover {
-      background-color: $black;
-      color: $white;
-    }
     @media (max-width: $mobile) {
       justify-self: auto;
+    }
+    .button-with-counter__main {
+      @extend %interactive;
+      width: 140px;
+      height: 40px;
+      border: 1px solid $black;
+      border-radius: 1px;
+      background-color: transparent;
+      font: inherit;
+      &:hover {
+        background-color: $black;
+        color: $white;
+      }
+    }
+    .button-with-counter__add,
+    .button-with-counter__remove {
+      @extend %interactive;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid $black;
+      border-radius: 1px;
+      background-color: $black;
+      font: inherit;
+      color: $white;
+      &:hover {
+        background-color: transparent;
+        color: $black;
+      }
+    }
+    .button-with-counter__counter {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 40px;
+      vertical-align: middle;
+      text-align: center;
+      font: inherit;
     }
   }
   .flame {

@@ -1,5 +1,6 @@
 import { IBike } from '../types/types';
 import { Item } from './common/item';
+import { ButtonWithCounter } from './counter-button';
 
 export class Bike extends Item {
   public readonly info: IBike;
@@ -16,9 +17,8 @@ export class Bike extends Item {
     heading.classList.add('bike__title');
     heading.textContent = bikeInfo.name;
 
-    const addButton: HTMLButtonElement = document.createElement('button');
-    addButton.classList.add('add-button');
-    addButton.textContent = 'Add to cart';
+    const counterButton = new ButtonWithCounter('Add to cart', bikeInfo.amount);
+    counterButton.init();
 
     const description: HTMLParagraphElement = document.createElement('p');
     description.classList.add('bike__description');
@@ -35,7 +35,7 @@ export class Bike extends Item {
       flameIcon.classList.add('flame');
     }
 
-    container.append(image, heading, addButton, description, flameIcon);
+    container.append(image, heading, counterButton.wrapper, description, flameIcon);
     super(container);
     this.info = bikeInfo;
   }

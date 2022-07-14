@@ -1,5 +1,5 @@
 export class Item {
-  private htmlElement: HTMLLIElement;
+  protected htmlElement: HTMLLIElement;
 
   constructor(container: HTMLLIElement) {
     this.htmlElement = container;
