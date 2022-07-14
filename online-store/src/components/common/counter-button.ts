@@ -1,4 +1,4 @@
-import { MAX_ITEMS_IN_CART } from '../../constants/constants';
+import { MAX_ITEMS_IN_CART, STYLE_DISPLAY_VALUE } from '../../constants/constants';
 import { Numbers } from '../../types/enums';
 
 export class ButtonWithCounter {
@@ -52,8 +52,13 @@ export class ButtonWithCounter {
     } else {
       if (this.maxValue === this.counter) return;
       if (this.counter === Numbers.Zero) {
-        this.setDisplayValue('none', this.mainButton);
-        this.setDisplayValue('flex', this.removeButton, this.addButton, this.counterElement);
+        this.setDisplayValue(STYLE_DISPLAY_VALUE.none, this.mainButton);
+        this.setDisplayValue(
+          STYLE_DISPLAY_VALUE.flex,
+          this.removeButton,
+          this.addButton,
+          this.counterElement
+        );
       }
       this.counterElement.textContent = String(++this.counter);
       (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
@@ -64,8 +69,13 @@ export class ButtonWithCounter {
   remove(): void {
     this.counter--;
     if (this.counter === Numbers.Zero) {
-      this.setDisplayValue('none', this.removeButton, this.addButton, this.counterElement);
-      this.setDisplayValue('block', this.mainButton);
+      this.setDisplayValue(
+        STYLE_DISPLAY_VALUE.none,
+        this.removeButton,
+        this.addButton,
+        this.counterElement
+      );
+      this.setDisplayValue(STYLE_DISPLAY_VALUE.block, this.mainButton);
     }
     this.counterElement.textContent = String(this.counter);
     (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(

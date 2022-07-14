@@ -1,6 +1,7 @@
 import { IBike } from '../types/types';
 import { Item } from './common/item';
 import { ButtonWithCounter } from './common/counter-button';
+import { BUTTON_TEXT } from '../constants/constants';
 
 export class Bike extends Item {
   public readonly info: IBike;
@@ -17,7 +18,7 @@ export class Bike extends Item {
     heading.classList.add('bike__title');
     heading.textContent = bikeInfo.name;
 
-    const counterButton = new ButtonWithCounter('Add to cart', bikeInfo.amount);
+    const counterButton = new ButtonWithCounter(BUTTON_TEXT.counterText, bikeInfo.amount);
     counterButton.init();
 
     const description: HTMLParagraphElement = document.createElement('p');
