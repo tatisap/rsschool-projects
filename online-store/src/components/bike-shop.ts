@@ -1,3 +1,4 @@
+import { Numbers } from '../types/enums';
 import { FilterParameters, FilterProperty, IBike, SortParameters } from '../types/types';
 import { Filter } from './actions/filter';
 import { Searcher } from './actions/search';
@@ -46,7 +47,7 @@ export class BikeShop extends Shop<Bike> {
 
     const result: Bike[] = this.searcher.getGoodsByName<Bike>(searchValue, this.goods);
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
-    if (result.length !== 0) {
+    if (result.length !== Numbers.Zero) {
       this.render(result);
     } else {
       (document.querySelector('.cards-list') as HTMLUListElement).append('No results');
