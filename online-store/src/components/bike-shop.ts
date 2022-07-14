@@ -61,17 +61,24 @@ export class BikeShop extends Shop<Bike> {
 
     this.goods = this.sorter.sort<Bike>(this.goods, sortProperty, order);
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
-    this.render(this.goods);
+    this.render(this.filter.applyParameters(this.goods, this.viewParameters));
   }
   filterHandler(event: Event): void {
     const target: HTMLElement = event.target as HTMLElement;
     if (!target.hasAttribute('data-value')) return;
     const filterProperty: FilterProperty = (target.parentNode as HTMLElement).id as FilterProperty;
 
-    this.viewParameters[filterProperty].push(target.dataset.value as string);
-    target.classList.add('active');
-    const result = this.filter.applyParameters(this.goods, this.viewParameters);
+    if (!target.classList.contains('active')) {
+      this.viewParameters[filterProperty].push(target.dataset.value as string);
+      target.classList.add('active');
+    } else {
+      this.viewParameters[filterProperty] = this.viewParameters[filterProperty].filter(
+        (value: string): boolean => value !== (target.dataset.value as string)
+      );
+      target.classList.remove('active');
+    }
+
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
-    this.render(result);
+    this.render(this.filter.applyParameters(this.goods, this.viewParameters));
   }
 }
