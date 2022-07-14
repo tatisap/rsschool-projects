@@ -1,0 +1,32 @@
+.warning-message {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  height: 10vw;
+  padding: 1vw;
+  background-color: $orange;
+  font: {
+    family: $lexend;
+    size: 18px;
+  };
+  color: $white;
+  text-align: center;
+  .warning-message__close-button {
+    @extend %interactive;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    width: 2vw;
+    padding: 0.2vw;
+    border: 0;
+    background-color: transparent;
+    &::before {
+      content: 'X';
+      color: $white;
+    }
+  }
+}
