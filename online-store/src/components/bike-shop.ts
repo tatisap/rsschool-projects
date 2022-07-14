@@ -1,8 +1,8 @@
 import { Numbers } from '../types/enums';
 import { FilterParameters, FilterProperty, IBike, SortParameters } from '../types/types';
-import { Filter } from './actions/filter';
-import { Searcher } from './actions/search';
-import { Sorter } from './actions/sorter';
+import { Filter } from '../utils/filter';
+import { Searcher } from '../utils/search';
+import { Sorter } from '../utils/sorter';
 import { Bike } from './bike';
 import { Shop } from './common/shop';
 

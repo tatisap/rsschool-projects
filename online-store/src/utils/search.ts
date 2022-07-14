@@ -1,4 +1,4 @@
-import { Bike } from '../bike';
+import { Bike } from '../components/bike';
 
 export class Searcher {
   getGoodsByName<T extends Bike>(value: string, goods: T[]): T[] {

@@ -1,6 +1,6 @@
-import { Numbers } from '../../types/enums';
-import { FilterParameters, FilterProperty } from '../../types/types';
-import { Bike } from '../bike';
+import { Numbers } from '../types/enums';
+import { FilterParameters, FilterProperty } from '../types/types';
+import { Bike } from '../components/bike';
 
 export class Filter {
   applyParameters<T extends Bike>(goods: T[], parameters: FilterParameters): T[] {

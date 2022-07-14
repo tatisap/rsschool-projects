@@ -1,6 +1,6 @@
 import { IBike } from '../types/types';
 import { Item } from './common/item';
-import { ButtonWithCounter } from './counter-button';
+import { ButtonWithCounter } from './common/counter-button';
 
 export class Bike extends Item {
   public readonly info: IBike;
@@ -22,12 +22,12 @@ export class Bike extends Item {
 
     const description: HTMLParagraphElement = document.createElement('p');
     description.classList.add('bike__description');
-    description.innerHTML = `
-      Manufacturer: ${bikeInfo.manufacturer}<br>
-      Type: ${bikeInfo.type}<br>
-      Color: ${bikeInfo.color}<br>
-      Quantity in stock: ${bikeInfo.amount}<br>
-      Year of manufacture: ${bikeInfo.year}<br>
+    description.textContent = `
+      Manufacturer: ${bikeInfo.manufacturer}\n
+      Type: ${bikeInfo.type}\n
+      Color: ${bikeInfo.color}\n
+      Quantity in stock: ${bikeInfo.amount}\n
+      Year of manufacture: ${bikeInfo.year}\n
     `;
 
     const flameIcon: HTMLDivElement = document.createElement('div');

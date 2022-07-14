@@ -1,4 +1,4 @@
-import { MAX_ITEMS_IN_CART, WARNING_MESSAGE_TEXT } from '../../constants';
+import { MAX_ITEMS_IN_CART, WARNING_MESSAGE_TEXT } from '../../constants/constants';
 import { Numbers } from '../../types/enums';
 import { WarningMessage } from './warning-message';
 

@@ -1,5 +1,5 @@
-import { MAX_ITEMS_IN_CART } from '../constants';
-import { Numbers } from '../types/enums';
+import { MAX_ITEMS_IN_CART } from '../../constants/constants';
+import { Numbers } from '../../types/enums';
 
 export class ButtonWithCounter {
   private readonly mainButton: HTMLButtonElement;
