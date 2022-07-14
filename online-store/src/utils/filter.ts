@@ -1,16 +1,42 @@
 import { Numbers } from '../types/enums';
-import { FilterParameters, FilterProperty } from '../types/types';
+import {
+  FilterParameters,
+  FilterProperty,
+  IViewParameters,
+  RangeParameters,
+  RangeProperty,
+} from '../types/types';
 import { Bike } from '../components/bike';
 
-export class Filter {
-  applyParameters<T extends Bike>(goods: T[], parameters: FilterParameters): T[] {
-    let result: T[] = [].concat.apply(goods);
+export class Filter<T extends Bike> {
+  private filteredGoods: T[];
+
+  constructor() {
+    this.filteredGoods = [];
+  }
+
+  applyViewParameters(goods: T[], parameters: IViewParameters): T[] {
+    this.filteredGoods = goods;
+    this.applyFilterParameters(parameters.filterParameters);
+    this.applyRangeParameters(parameters.rangeParameters);
+    (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
+    return this.filteredGoods;
+  }
+  applyFilterParameters(parameters: FilterParameters): void {
     (Object.keys(parameters) as FilterProperty[]).forEach((property: FilterProperty): void => {
       if (parameters[property].length === Numbers.Zero) return;
-      result = result.filter((item: T): boolean =>
+      this.filteredGoods = this.filteredGoods.filter((item: T): boolean =>
         parameters[property].includes(`${item.info[property]}`)
       );
     });
-    return result;
+  }
+  applyRangeParameters(parameters: RangeParameters): void {
+    (Object.keys(parameters) as RangeProperty[]).forEach((property: RangeProperty): void => {
+      this.filteredGoods = this.filteredGoods.filter(
+        (item: T): boolean =>
+          parameters[property][Numbers.Zero] <= item.info[property] &&
+          parameters[property][Numbers.One] >= item.info[property]
+      );
+    });
   }
 }

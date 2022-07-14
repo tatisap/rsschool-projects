@@ -15,3 +15,11 @@ export type SortParameters = [keyof IBike, sortOrder];
 
 export type FilterProperty = 'color' | 'amount' | 'isPopular' | 'manufacturer' | 'type' | 'year';
 export type FilterParameters = Record<FilterProperty, string[]>;
+
+export type RangeProperty = 'year' | 'amount';
+export type RangeParameters = Record<RangeProperty, [number, number]>;
+
+export interface IViewParameters {
+  filterParameters: FilterParameters;
+  rangeParameters: RangeParameters;
+}

@@ -1,7 +1,7 @@
 import * as noUiSlider from 'nouislider';
 
 export class Slider {
-  private readonly container: noUiSlider.target;
+  public readonly container: noUiSlider.target;
   private readonly valueElements: HTMLDivElement[];
   private readonly startValue: number;
   private readonly endValue: number;
