@@ -41,11 +41,18 @@ export class BikeShop extends Shop<Bike> {
       'click',
       (event: Event): void => this.filterHandler(event)
     );
+    (document.getElementById('popular') as HTMLInputElement).addEventListener(
+      'change',
+      (event: Event): void => this.checkHandler(event)
+    );
   }
   searchHandler(event: Event): void {
     const searchValue: string = (event.target as HTMLInputElement).value.trim();
 
-    const result: Bike[] = this.searcher.getGoodsByName<Bike>(searchValue, this.goods);
+    const result: Bike[] = this.searcher.getGoodsByName<Bike>(
+      searchValue,
+      this.filter.applyParameters(this.goods, this.viewParameters)
+    );
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
     if (result.length !== Numbers.Zero) {
       this.render(result);
@@ -78,6 +85,16 @@ export class BikeShop extends Shop<Bike> {
       target.classList.remove('active');
     }
 
+    (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
+    this.render(this.filter.applyParameters(this.goods, this.viewParameters));
+  }
+  checkHandler(event: Event): void {
+    const target: HTMLInputElement = event.target as HTMLInputElement;
+    if (target.checked) {
+      this.viewParameters.isPopular.push('true');
+    } else {
+      this.viewParameters.isPopular = [];
+    }
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
     this.render(this.filter.applyParameters(this.goods, this.viewParameters));
   }
