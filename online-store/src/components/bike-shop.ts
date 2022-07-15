@@ -1,4 +1,5 @@
 import { API } from 'nouislider';
+import { WARNING_MESSAGE_TEXT } from '../constants/constants';
 import { Numbers } from '../types/enums';
 import {
   FilterProperty,
@@ -13,6 +14,7 @@ import { Sorter } from '../utils/sorter';
 import { Bike } from './bike';
 import { Shop } from './common/shop';
 import { Slider } from './common/slider';
+import { WarningMessage } from './common/warning-message';
 
 export class BikeShop extends Shop<Bike> {
   private searcher: Searcher;
@@ -21,6 +23,7 @@ export class BikeShop extends Shop<Bike> {
   private viewParameters: IViewParameters;
   private sliders: Slider[];
   private isSettingsReseted: boolean;
+  private noResultsMessage: WarningMessage;
 
   constructor(goodsInfo: IBike[]) {
     const goods: Bike[] = goodsInfo.map((item: IBike): Bike => new Bike(item));
@@ -36,6 +39,7 @@ export class BikeShop extends Shop<Bike> {
     this.sorter = new Sorter();
     this.filter = new Filter();
     this.isSettingsReseted = false;
+    this.noResultsMessage = new WarningMessage(WARNING_MESSAGE_TEXT.noResultsText);
     this.sliders = [
       new Slider('amount', 'amount-start', 'amount-end', minAmount, maxAmount),
       new Slider('year', 'year-start', 'year-end', minYear, maxYear),
@@ -74,6 +78,7 @@ export class BikeShop extends Shop<Bike> {
         ) => this.filterByRangeHandler(values, sliderApi)
       );
     });
+    this.noResultsMessage.init();
     this.setActiveStyle();
 
     (document.querySelector('.search') as HTMLFormElement).addEventListener(
@@ -108,14 +113,15 @@ export class BikeShop extends Shop<Bike> {
   searchHandler(event: Event): void {
     const searchValue: string = (event.target as HTMLInputElement).value.trim();
 
-    const result: Bike[] = this.searcher.getGoodsByName<Bike>(
+    const searchResult: Bike[] = this.searcher.getGoodsByName<Bike>(
       searchValue,
       this.filter.applyViewParameters(this.goods, this.viewParameters)
     );
-    if (result.length !== Numbers.Zero) {
-      this.render(result);
+    if (searchResult.length !== Numbers.Zero) {
+      this.noResultsMessage.close();
+      this.render(searchResult);
     } else {
-      (document.querySelector('.cards-list') as HTMLUListElement).append('No results');
+      this.noResultsMessage.open();
     }
   }
   sortHandler(event: Event): void {

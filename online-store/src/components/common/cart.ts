@@ -12,7 +12,7 @@ export class Cart {
     this.counter = Numbers.Zero;
     this.htmlElement = document.querySelector('.shopping-cart') as HTMLDivElement;
     this.counterElement = document.querySelector('.shopping-cart__counter') as HTMLSpanElement;
-    this.warningMessage = new WarningMessage(WARNING_MESSAGE_TEXT);
+    this.warningMessage = new WarningMessage(WARNING_MESSAGE_TEXT.fullCartText);
   }
   init(): void {
     this.warningMessage.init();

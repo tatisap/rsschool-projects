@@ -14,4 +14,7 @@ export const STYLE_DISPLAY_VALUE = {
 };
 
 export const MAX_ITEMS_IN_CART = 20;
-export const WARNING_MESSAGE_TEXT = `You can not add more then ${MAX_ITEMS_IN_CART} items to the cart`;
+export const WARNING_MESSAGE_TEXT = {
+  fullCartText: `You can not add more then ${MAX_ITEMS_IN_CART} items to the cart`,
+  noResultsText: 'Sorry, no matches found',
+};
