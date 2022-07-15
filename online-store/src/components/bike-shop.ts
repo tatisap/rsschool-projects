@@ -86,6 +86,10 @@ export class BikeShop extends Shop<Bike> {
       'change',
       (event: Event): void => this.checkHandler(event)
     );
+    (document.querySelector('.reset-button') as HTMLButtonElement).addEventListener(
+      'click',
+      (event: Event): void => this.resetFilters(event)
+    );
   }
   searchHandler(event: Event): void {
     const searchValue: string = (event.target as HTMLInputElement).value.trim();
@@ -140,6 +144,30 @@ export class BikeShop extends Shop<Bike> {
       number,
       number
     ];
+    this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+  }
+  resetFilters(event: Event): void {
+    event.preventDefault();
+    (document.getElementById('popular') as HTMLInputElement).checked = false;
+    (
+      (document.querySelector('.filter-section') as HTMLElement).querySelectorAll(
+        '.active'
+      ) as NodeListOf<HTMLElement>
+    ).forEach((element: HTMLElement): void => element.classList.remove('active'));
+    this.sliders.forEach((slider: Slider) => {
+      slider.container.noUiSlider?.reset();
+      const values: [number, number] = slider.container.noUiSlider?.get(true) as [number, number];
+      this.viewParameters.rangeParameters[slider.container.noUiSlider?.target.id as RangeProperty] =
+        values;
+    });
+    this.viewParameters.filterParameters = {
+      manufacturer: [],
+      type: [],
+      color: [],
+      amount: [],
+      year: [],
+      isPopular: [],
+    };
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
   }
 }
