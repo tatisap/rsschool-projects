@@ -11,7 +11,6 @@ export class Shop<T extends Item> {
   }
   init(): void {
     this.cart.init();
-    this.render(this.goods);
   }
   render<T extends Item>(goods: T[]): void {
     goods.forEach((item: T): void => item.render());

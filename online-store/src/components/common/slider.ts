@@ -1,13 +1,15 @@
 import * as noUiSlider from 'nouislider';
+import { RangeProperty } from '../../types/types';
 
 export class Slider {
   public readonly container: noUiSlider.target;
   private readonly valueElements: HTMLDivElement[];
   private readonly startValue: number;
   private readonly endValue: number;
+  public readonly id: RangeProperty;
 
   constructor(
-    containerId: string,
+    containerId: RangeProperty,
     startValueElementId: string,
     endValueElementId: string,
     startValue: number,
@@ -20,6 +22,7 @@ export class Slider {
     ];
     this.startValue = startValue;
     this.endValue = endValue;
+    this.id = containerId;
   }
   init(): void {
     noUiSlider.create(this.container, {
@@ -39,5 +42,11 @@ export class Slider {
     this.container.noUiSlider?.on('update', (values: (number | string)[], handle: number) => {
       this.valueElements[handle].textContent = String(Math.round(Number(values[handle])));
     });
+  }
+  reset(): void {
+    this.container.noUiSlider?.reset();
+  }
+  getValues(): [number, number] {
+    return this.container.noUiSlider?.get(true) as [number, number];
   }
 }

@@ -36,6 +36,10 @@ export class BikeShop extends Shop<Bike> {
     this.sorter = new Sorter();
     this.filter = new Filter();
     this.isSettingsReseted = false;
+    this.sliders = [
+      new Slider('amount', 'amount-start', 'amount-end', minAmount, maxAmount),
+      new Slider('year', 'year-start', 'year-end', minYear, maxYear),
+    ];
     this.viewParameters = localStorage.getItem('view-parameters')
       ? JSON.parse(localStorage.getItem('view-parameters') as string)
       : {
@@ -52,10 +56,6 @@ export class BikeShop extends Shop<Bike> {
             year: [minYear, maxYear],
           },
         };
-    this.sliders = [
-      new Slider('amount', 'amount-start', 'amount-end', minAmount, maxAmount),
-      new Slider('year', 'year-start', 'year-end', minYear, maxYear),
-    ];
   }
   init(): void {
     super.init();
@@ -168,10 +168,8 @@ export class BikeShop extends Shop<Bike> {
       ) as NodeListOf<HTMLElement>
     ).forEach((element: HTMLElement): void => element.classList.remove('active'));
     this.sliders.forEach((slider: Slider) => {
-      slider.container.noUiSlider?.reset();
-      const values: [number, number] = slider.container.noUiSlider?.get(true) as [number, number];
-      this.viewParameters.rangeParameters[slider.container.noUiSlider?.target.id as RangeProperty] =
-        values;
+      slider.reset();
+      this.viewParameters.rangeParameters[slider.id] = slider.getValues();
     });
     this.viewParameters.filterParameters = {
       manufacturer: [],
