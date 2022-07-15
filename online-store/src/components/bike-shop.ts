@@ -20,6 +20,7 @@ export class BikeShop extends Shop<Bike> {
   private filter: Filter<Bike>;
   private viewParameters: IViewParameters;
   private sliders: Slider[];
+  private isSettingsReseted: boolean;
 
   constructor(goodsInfo: IBike[]) {
     const goods: Bike[] = goodsInfo.map((item: IBike): Bike => new Bike(item));
@@ -34,20 +35,23 @@ export class BikeShop extends Shop<Bike> {
     this.searcher = new Searcher();
     this.sorter = new Sorter();
     this.filter = new Filter();
-    this.viewParameters = {
-      filterParameters: {
-        manufacturer: [],
-        type: [],
-        color: [],
-        amount: [],
-        year: [],
-        isPopular: [],
-      },
-      rangeParameters: {
-        amount: [minAmount, maxAmount],
-        year: [minYear, maxYear],
-      },
-    };
+    this.isSettingsReseted = false;
+    this.viewParameters = localStorage.getItem('view-parameters')
+      ? JSON.parse(localStorage.getItem('view-parameters') as string)
+      : {
+          filterParameters: {
+            manufacturer: [],
+            type: [],
+            color: [],
+            amount: [],
+            year: [],
+            isPopular: [],
+          },
+          rangeParameters: {
+            amount: [minAmount, maxAmount],
+            year: [minYear, maxYear],
+          },
+        };
     this.sliders = [
       new Slider('amount', 'amount-start', 'amount-end', minAmount, maxAmount),
       new Slider('year', 'year-start', 'year-end', minYear, maxYear),
@@ -55,6 +59,7 @@ export class BikeShop extends Shop<Bike> {
   }
   init(): void {
     super.init();
+    this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
     this.sliders.forEach((slider: Slider): void => {
       slider.init();
       slider.container.noUiSlider?.on(
@@ -69,6 +74,7 @@ export class BikeShop extends Shop<Bike> {
         ) => this.filterByRangeHandler(values, sliderApi)
       );
     });
+    this.setActiveStyle();
 
     (document.querySelector('.search') as HTMLFormElement).addEventListener(
       'input',
@@ -88,8 +94,16 @@ export class BikeShop extends Shop<Bike> {
     );
     (document.querySelector('.reset-button') as HTMLButtonElement).addEventListener(
       'click',
-      (event: Event): void => this.resetFilters(event)
+      (event: Event): void => {
+        event.preventDefault();
+        this.resetFilters();
+      }
     );
+    (document.querySelector('.reset-settings-button') as HTMLButtonElement).addEventListener(
+      'click',
+      (): void => this.resetSettings()
+    );
+    window.addEventListener('beforeunload', (): void => this.saveParameters());
   }
   searchHandler(event: Event): void {
     const searchValue: string = (event.target as HTMLInputElement).value.trim();
@@ -146,8 +160,7 @@ export class BikeShop extends Shop<Bike> {
     ];
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
   }
-  resetFilters(event: Event): void {
-    event.preventDefault();
+  resetFilters(): void {
     (document.getElementById('popular') as HTMLInputElement).checked = false;
     (
       (document.querySelector('.filter-section') as HTMLElement).querySelectorAll(
@@ -169,5 +182,35 @@ export class BikeShop extends Shop<Bike> {
       isPopular: [],
     };
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+  }
+  saveParameters(): void {
+    if (this.isSettingsReseted) return;
+    localStorage.setItem('view-parameters', JSON.stringify(this.viewParameters));
+  }
+  setActiveStyle(): void {
+    (Object.keys(this.viewParameters.filterParameters) as FilterProperty[]).forEach(
+      (property: FilterProperty): void => {
+        this.viewParameters.filterParameters[property].forEach((value: string) =>
+          (document.querySelector(`[data-value="${value}"]`) as HTMLElement)?.classList.add(
+            'active'
+          )
+        );
+      }
+    );
+    if (this.viewParameters.filterParameters.isPopular.includes('true')) {
+      (document.getElementById('popular') as HTMLInputElement).checked = true;
+    }
+    (Object.keys(this.viewParameters.rangeParameters) as RangeProperty[]).forEach(
+      (property: RangeProperty): void => {
+        const slider = this.sliders.find(
+          (slider: Slider): boolean => slider.container.id === property
+        ) as Slider;
+        slider.container.noUiSlider?.set(this.viewParameters.rangeParameters[property]);
+      }
+    );
+  }
+  resetSettings(): void {
+    this.isSettingsReseted = true;
+    localStorage.clear();
   }
 }
