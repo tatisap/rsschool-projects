@@ -15,7 +15,6 @@ export class Cart {
     this.warningMessage = new WarningMessage(WARNING_MESSAGE_TEXT.fullCartText);
   }
   init(): void {
-    this.warningMessage.init();
     this.htmlElement.addEventListener('add-to-cart', (): void => this.add());
     this.htmlElement.addEventListener('remove-from-cart', (): void => this.remove());
     this.htmlElement.addEventListener('overflow', (): void => this.showMessage());

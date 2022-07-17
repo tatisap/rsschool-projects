@@ -1,5 +1,3 @@
-import { STYLE_DISPLAY_VALUE } from '../../constants/constants';
-
 export class WarningMessage {
   private readonly container: HTMLDivElement;
   private readonly closeButton: HTMLButtonElement;
@@ -11,19 +9,16 @@ export class WarningMessage {
 
     const closeButton: HTMLButtonElement = document.createElement('button');
     closeButton.classList.add('warning-message__close-button');
+    closeButton.addEventListener('click', (): void => this.close());
 
+    container.append(closeButton);
     this.container = container;
     this.closeButton = closeButton;
   }
-  init() {
-    this.closeButton.addEventListener('click', (): void => this.close());
-    this.container.append(this.closeButton);
+  open(): void {
     document.body.append(this.container);
   }
-  open(): void {
-    this.container.style.display = STYLE_DISPLAY_VALUE.flex;
-  }
   close(): void {
-    this.container.style.display = STYLE_DISPLAY_VALUE.none;
+    this.container.remove();
   }
 }

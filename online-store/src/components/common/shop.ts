@@ -13,6 +13,10 @@ export class Shop<T extends Item> {
     this.cart.init();
   }
   render<T extends Item>(goods: T[]): void {
+    this.clear();
     goods.forEach((item: T): void => item.render());
+  }
+  clear(): void {
+    (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
   }
 }

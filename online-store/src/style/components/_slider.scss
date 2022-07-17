@@ -24,6 +24,7 @@
   height: 20px;
 }
 .noUi-handle {
+  @extend %interactive;
   border-radius: 10px;
   border: 0;
   background-color: $black;
@@ -31,6 +32,9 @@
   &::after,
   &::before {
     display: none;
+  }
+  &:hover {
+    @extend %interactive;
   }
   &:active .noUi-tooltip {
     display: block;

@@ -2,9 +2,10 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 300px;
   width: max-content;
   height: 200px;
   padding: 15px;

@@ -28,7 +28,6 @@ export class Slider {
     noUiSlider.create(this.container, {
       start: [this.startValue, this.endValue],
       connect: true,
-      margin: 1,
       step: 1,
       range: {
         min: this.startValue,
