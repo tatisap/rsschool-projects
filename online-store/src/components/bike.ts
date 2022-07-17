@@ -21,22 +21,24 @@ export class Bike extends Item {
     const counterButton = new ButtonWithCounter(BUTTON_TEXT.counterText, bikeInfo.amount);
     counterButton.init();
 
-    const description: HTMLParagraphElement = document.createElement('p');
+    const description: HTMLUListElement = document.createElement('ul');
     description.classList.add('bike__description');
-    description.textContent = `
-      Manufacturer: ${bikeInfo.manufacturer}\n
-      Type: ${bikeInfo.type}\n
-      Color: ${bikeInfo.color}\n
-      Quantity in stock: ${bikeInfo.amount}\n
-      Year of manufacture: ${bikeInfo.year}\n
+    description.innerHTML = `
+      <li>Manufacturer: ${bikeInfo.manufacturer}</li>
+      <li>Type: ${bikeInfo.type}</li>
+      <li>Color: ${bikeInfo.color}</li>
+      <li>Quantity in stock: ${bikeInfo.amount}</li>
+      <li>Year of manufacture: ${bikeInfo.year}</li>
     `;
 
-    const flameIcon: HTMLDivElement = document.createElement('div');
+    container.append(image, heading, counterButton.wrapper, description);
+
     if (bikeInfo.isPopular) {
+      const flameIcon: HTMLDivElement = document.createElement('div');
       flameIcon.classList.add('flame');
+      container.append(flameIcon);
     }
 
-    container.append(image, heading, counterButton.wrapper, description, flameIcon);
     super(container);
     this.info = bikeInfo;
   }
