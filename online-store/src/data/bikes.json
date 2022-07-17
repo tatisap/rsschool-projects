@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Boone",
     "type": "gravel",
     "color": "black",
@@ -10,6 +11,7 @@
     "isPopular": false
   },
   {
+    "id": 2,
     "name": "CAAD Optimo",
     "type": "road",
     "color": "black",
@@ -20,6 +22,7 @@
     "isPopular": true
   },
   {
+    "id": 3,
     "name": "Domane Al",
     "type": "road",
     "color": "blue",
@@ -30,6 +33,7 @@
     "isPopular": true
   },
   {
+    "id": 4,
     "name": "Nicasio+",
     "type": "gravel",
     "color": "green",
@@ -40,6 +44,7 @@
     "isPopular": true
   },
   {
+    "id": 5,
     "name": "Nicasio",
     "type": "road",
     "color": "black",
@@ -50,6 +55,7 @@
     "isPopular": false
   },
   {
+    "id": 6,
     "name": "Revolt",
     "type": "gravel",
     "color": "blue",
@@ -60,6 +66,7 @@
     "isPopular": true
   },
   {
+    "id": 7,
     "name": "TCR Advanced",
     "type": "road",
     "color": "white",
@@ -70,6 +77,7 @@
     "isPopular": false
   },
   {
+    "id": 8,
     "name": "Team Marin",
     "type": "mtb",
     "color": "white",
@@ -80,6 +88,7 @@
     "isPopular": false
   },
   {
+    "id": 9,
     "name": "Topstone",
     "type": "gravel",
     "color": "white",
@@ -90,6 +99,7 @@
     "isPopular": true
   },
   {
+    "id": 10,
     "name": "Trail",
     "type": "mtb",
     "color": "blue",
@@ -100,6 +110,7 @@
     "isPopular": true
   },
   {
+    "id": 11,
     "name": "X-Caliber",
     "type": "mtb",
     "color": "white",
@@ -110,6 +121,7 @@
     "isPopular": true
   },
   {
+    "id": 12,
     "name": "Yukon",
     "type": "mtb",
     "color": "black",

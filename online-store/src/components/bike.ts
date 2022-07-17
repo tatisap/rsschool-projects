@@ -2,12 +2,18 @@ import { IBike } from '../types/types';
 import { Item } from './common/item';
 import { ButtonWithCounter } from './common/counter-button';
 import { BUTTON_TEXT } from '../constants/constants';
+import { Numbers } from '../types/enums';
 
 export class Bike extends Item {
   public readonly info: IBike;
   constructor(bikeInfo: IBike) {
     const container: HTMLLIElement = document.createElement('li');
     container.classList.add('cards-list__item', 'bike');
+    container.addEventListener('click', (event: Event): void => {
+      if ((event.target as HTMLElement).closest('.button-with-counter')) {
+        this.updateCart();
+      }
+    });
 
     const image: HTMLImageElement = document.createElement('img');
     image.classList.add('bike__img');
@@ -18,7 +24,15 @@ export class Bike extends Item {
     heading.classList.add('bike__title');
     heading.textContent = bikeInfo.name;
 
-    const counterButton = new ButtonWithCounter(BUTTON_TEXT.counterText, bikeInfo.amount);
+    const quantityInCart: number = localStorage.getItem('shopping-list')
+      ? JSON.parse(localStorage.getItem('shopping-list') as string)[`${bikeInfo.id}`]
+      : Numbers.Zero;
+
+    const counterButton = new ButtonWithCounter(
+      BUTTON_TEXT.counterText,
+      bikeInfo.amount,
+      quantityInCart
+    );
     counterButton.init();
 
     const description: HTMLUListElement = document.createElement('ul');
@@ -41,5 +55,19 @@ export class Bike extends Item {
 
     super(container);
     this.info = bikeInfo;
+  }
+  updateCart(): void {
+    const quantity = Number(
+      (this.htmlElement.querySelector('.button-with-counter__counter') as HTMLDivElement)
+        .textContent
+    );
+    (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
+      new CustomEvent('update-cart', {
+        detail: {
+          itemId: this.info.id,
+          quantity: quantity,
+        },
+      })
+    );
   }
 }

@@ -219,6 +219,7 @@ export class BikeShop extends Shop<Bike> {
     if (this.isSettingsReseted) return;
     localStorage.setItem('filter-parameters', JSON.stringify(this.filterParameters));
     localStorage.setItem('sort-parameters', JSON.stringify(this.sortParameters));
+    localStorage.setItem('cart-counter', JSON.stringify(this.cart.counter));
   }
   switchNoResultMessage(): void {
     if (

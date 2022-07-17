@@ -10,7 +10,7 @@ export class ButtonWithCounter {
   private counter: number;
   public readonly wrapper: HTMLDivElement;
 
-  constructor(content: string, maxValue: number) {
+  constructor(content: string, maxValue: number, initialValue = 0) {
     const wrapper: HTMLDivElement = document.createElement('div');
     wrapper.classList.add('button-with-counter');
 
@@ -28,7 +28,12 @@ export class ButtonWithCounter {
 
     const counterElement: HTMLDivElement = document.createElement('div');
     counterElement.classList.add('button-with-counter__counter');
-    counterElement.textContent = String(Numbers.Zero);
+    counterElement.textContent = String(initialValue);
+
+    if (initialValue) {
+      this.setDisplayValue(STYLE_DISPLAY_VALUE.none, mainButton);
+      this.setDisplayValue(STYLE_DISPLAY_VALUE.flex, removeButton, addButton, counterElement);
+    }
 
     wrapper.append(mainButton, removeButton, counterElement, addButton);
     this.wrapper = wrapper;
@@ -36,7 +41,7 @@ export class ButtonWithCounter {
     this.removeButton = removeButton;
     this.addButton = addButton;
     this.counterElement = counterElement;
-    this.counter = Numbers.Zero;
+    this.counter = initialValue;
     this.maxValue = maxValue;
   }
   init(): void {

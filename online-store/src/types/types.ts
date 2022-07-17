@@ -1,4 +1,5 @@
 export interface IBike {
+  readonly id: number;
   readonly name: string;
   readonly image: string;
   readonly amount: number;
@@ -7,6 +8,10 @@ export interface IBike {
   readonly color: string;
   readonly manufacturer: string;
   readonly year: number;
+}
+
+export interface IShoppingList {
+  [id: string]: number;
 }
 
 export type sortOrder = 'ascending' | 'descending';

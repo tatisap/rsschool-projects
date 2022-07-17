@@ -3,7 +3,7 @@ import { Item } from './item';
 
 export class Shop<T extends Item> {
   protected goods: T[];
-  private cart: Cart;
+  protected cart: Cart;
 
   constructor(goods: T[]) {
     this.goods = goods;
