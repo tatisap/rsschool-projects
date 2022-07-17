@@ -1,5 +1,3 @@
-import { SortParameters, ValueParameters } from '../types/types';
-
 export const SORT_ORDER = {
   ascending: 'ascending',
   descending: 'descending',

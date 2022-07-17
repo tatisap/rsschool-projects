@@ -21,6 +21,7 @@ export class BikeShop extends Shop<Bike> {
   private filter: Filter<Bike>;
   private filterParameters: FilterParameters;
   private sortParameters: SortParameters;
+  private searchValue: string;
   private sliders: Slider[];
   private isSettingsReseted: boolean;
   private noResultsMessage: WarningMessage;
@@ -44,6 +45,7 @@ export class BikeShop extends Shop<Bike> {
       new Slider('amount', 'amount-start', 'amount-end', minAmount, maxAmount),
       new Slider('year', 'year-start', 'year-end', minYear, maxYear),
     ];
+    this.searchValue = '';
     this.sortParameters = (this.getParametersFromLocalStorage('sort-parameters') as
       | SortParameters
       | false) || ['name', 'ascending'];
@@ -73,7 +75,7 @@ export class BikeShop extends Shop<Bike> {
     });
     this.setActiveParametersStyle();
 
-    (document.querySelector('.search') as HTMLFormElement).addEventListener(
+    (document.querySelector('.search') as HTMLInputElement).addEventListener(
       'input',
       (event: Event): void => this.searchHandler(event)
     );
@@ -103,9 +105,9 @@ export class BikeShop extends Shop<Bike> {
     window.addEventListener('beforeunload', (): void => this.setParametersToLocalStorage());
   }
   searchHandler(event: Event): void {
-    const searchValue: string = (event.target as HTMLInputElement).value.trim();
+    this.searchValue = (event.target as HTMLInputElement).value.trim();
     const searchResult: Bike[] = this.searcher.getGoodsByName<Bike>(
-      searchValue,
+      this.searchValue,
       this.filterGoods(this.goods)
     );
     this.render(searchResult);
@@ -152,6 +154,8 @@ export class BikeShop extends Shop<Bike> {
     this.switchNoResultMessage();
   }
   resetFilters(): void {
+    this.searchValue = '';
+    (document.querySelector('.search') as HTMLInputElement).value = '';
     (document.getElementById('popular') as HTMLInputElement).checked = false;
     (
       (document.querySelector('.filter-section') as HTMLElement).querySelectorAll(
@@ -197,7 +201,10 @@ export class BikeShop extends Shop<Bike> {
     localStorage.clear();
   }
   filterGoods(goods: Bike[]): Bike[] {
-    return this.filter.filter(goods, this.filterParameters);
+    return this.filter.filter(
+      this.searcher.getGoodsByName(this.searchValue, goods),
+      this.filterParameters
+    );
   }
   getParametersFromLocalStorage(key: string): SortParameters | FilterParameters | boolean {
     const savedValue = localStorage.getItem(key);
