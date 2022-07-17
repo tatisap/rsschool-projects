@@ -32,8 +32,12 @@
   &::before {
     display: none;
   }
+  &:active .noUi-tooltip {
+    display: block;
+  }
 }
 .noUi-tooltip {
+  display:  none;
   padding: 2px;
   border-color: $dark-grey;
   font-size: 14px;

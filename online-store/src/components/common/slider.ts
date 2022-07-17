@@ -34,6 +34,7 @@ export class Slider {
         min: this.startValue,
         max: this.endValue,
       },
+      tooltips: [true, true],
       format: {
         to: (value: number): number => value,
         from: (value: string): number => Number(value),
