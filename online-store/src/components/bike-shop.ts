@@ -175,6 +175,11 @@ export class BikeShop extends Shop<Bike> {
     this.switchNoResultMessage();
   }
   setActiveParametersStyle(): void {
+    (
+      document.querySelector(
+        `[value="${this.sortParameters.join(SORT_PARAMETERS_DIVIDER)}"]`
+      ) as HTMLOptionElement
+    ).selected = true;
     (Object.keys(this.filterParameters.valueParameters) as ValueProperty[]).forEach(
       (property: ValueProperty): void => {
         this.filterParameters.valueParameters[property].forEach((value: string) =>
