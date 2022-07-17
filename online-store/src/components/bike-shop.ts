@@ -149,6 +149,11 @@ export class BikeShop extends Shop<Bike> {
     }
 
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+    if ((document.querySelector('.cards-list') as HTMLUListElement).children.length === 0) {
+      this.noResultsMessage.open();
+    } else {
+      this.noResultsMessage.close();
+    }
   }
   checkHandler(event: Event): void {
     const target: HTMLInputElement = event.target as HTMLInputElement;
@@ -158,6 +163,11 @@ export class BikeShop extends Shop<Bike> {
       this.viewParameters.filterParameters.isPopular = [];
     }
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+    if ((document.querySelector('.cards-list') as HTMLUListElement).children.length === 0) {
+      this.noResultsMessage.open();
+    } else {
+      this.noResultsMessage.close();
+    }
   }
   filterByRangeHandler(values: (number | string)[], sliderApi: API): void {
     this.viewParameters.rangeParameters[sliderApi.target.id as RangeProperty] = values as [
@@ -165,6 +175,12 @@ export class BikeShop extends Shop<Bike> {
       number
     ];
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+    this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+    if ((document.querySelector('.cards-list') as HTMLUListElement).children.length === 0) {
+      this.noResultsMessage.open();
+    } else {
+      this.noResultsMessage.close();
+    }
   }
   resetFilters(): void {
     (document.getElementById('popular') as HTMLInputElement).checked = false;
@@ -186,6 +202,7 @@ export class BikeShop extends Shop<Bike> {
       isPopular: [],
     };
     this.render(this.filter.applyViewParameters(this.goods, this.viewParameters));
+    this.noResultsMessage.close();
   }
   saveParameters(): void {
     if (this.isSettingsReseted) return;
