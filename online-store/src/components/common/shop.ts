@@ -2,7 +2,7 @@ import { Cart } from './cart';
 import { Item } from './item';
 
 export class Shop<T extends Item> {
-  protected goods: T[];
+  public goods: T[];
   protected cart: Cart;
 
   constructor(goods: T[]) {

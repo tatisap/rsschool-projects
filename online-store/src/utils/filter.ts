@@ -9,33 +9,29 @@ import {
 import { Bike } from '../components/bike';
 
 export class Filter<T extends Bike> {
-  private filteredGoods: T[];
-
-  constructor() {
-    this.filteredGoods = [];
-  }
-
   filter(goods: T[], parameters: FilterParameters): T[] {
-    this.filteredGoods = goods;
-    this.filterByValue(parameters.valueParameters);
-    this.filterByRange(parameters.rangeParameters);
-    return this.filteredGoods;
+    const filteredByValueGoods = this.filterByValue(goods, parameters.valueParameters);
+    return this.filterByRange(filteredByValueGoods, parameters.rangeParameters);
   }
-  filterByValue(parameters: ValueParameters): void {
+  filterByValue(goods: T[], parameters: ValueParameters): T[] {
+    let filteredGoods: T[] = goods;
     (Object.keys(parameters) as ValueProperty[]).forEach((property: ValueProperty): void => {
       if (parameters[property].length === Numbers.Zero) return;
-      this.filteredGoods = this.filteredGoods.filter((item: T): boolean =>
+      filteredGoods = filteredGoods.filter((item: T): boolean =>
         parameters[property].includes(`${item.info[property]}`)
       );
     });
+    return filteredGoods;
   }
-  filterByRange(parameters: RangeParameters): void {
+  filterByRange(goods: T[], parameters: RangeParameters): T[] {
+    let filteredGoods: T[] = goods;
     (Object.keys(parameters) as RangeProperty[]).forEach((property: RangeProperty): void => {
-      this.filteredGoods = this.filteredGoods.filter(
+      filteredGoods = filteredGoods.filter(
         (item: T): boolean =>
           parameters[property][Numbers.Zero] <= item.info[property] &&
           parameters[property][Numbers.One] >= item.info[property]
       );
     });
+    return filteredGoods;
   }
 }
