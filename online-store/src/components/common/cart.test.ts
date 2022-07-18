@@ -14,7 +14,7 @@ describe('Cart behavior', () => {
   beforeEach(() => (cart.counter = 0));
   it('Should add to the cart', () => {
     cart.add();
-    expect(cart.counter).toBe(0);
+    expect(cart.counter).toBe(1);
   });
 
   it('Should remove from the cart', () => {
