@@ -7,18 +7,18 @@ const searcher: Searcher = new Searcher();
 const bikes: Bike[] = (info as IBike[]).map((itemInfo: IBike) => new Bike(itemInfo));
 
 describe('Search', () => {
-  it('When search value is "b"', () => {
+  it('Should return values containing "b"', () => {
     const searchValue = 'b';
     const searchResult = searcher.getGoodsByName(searchValue, bikes);
     expect(searchResult.length).toBe(2);
     expect(searchResult).toContainEqual(new Bike(info[0]));
   });
-  it('When search value is "g"', () => {
+  it('Should return values containing "g"', () => {
     const searchValue = 'g';
     const searchResult = searcher.getGoodsByName(searchValue, bikes);
     expect(searchResult.length).toBe(0);
   });
-  it('When search value is "yukon"', () => {
+  it('Should return values containing "yukon"', () => {
     const searchValue = 'yukon';
     const searchResult = searcher.getGoodsByName(searchValue, bikes);
     expect(searchResult.length).toBe(1);

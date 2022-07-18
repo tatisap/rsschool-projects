@@ -16,25 +16,25 @@ document.body.innerHTML = `
 
 const shop: BikeShop = new BikeShop(info);
 
-describe('BikeShop', () => {
-  it('When render method called', () => {
+describe('BikeShop behavior', () => {
+  it('Should render bikes on the page', () => {
     shop.render(shop.goods);
     expect(document.body.lastElementChild?.children.length).toBe(12);
   });
-  it('When filterByRangeHandler method called with value: [5, 5] and sliderId: "amount"', () => {
+  it('Should render filtered bikes by amount', () => {
     shop.filterByRangeHandler([5, 5], 'amount');
     expect(document.body.lastElementChild?.children.length).toBe(2);
   });
-  it('When filterByRangeHandler method called with value: [2013, 2018] and sliderId: "year"', () => {
+  it('Should render filtered bikes by year', () => {
     shop.filterByRangeHandler([2013, 2018], 'year');
     expect(document.body.lastElementChild?.children.length).toBe(1);
   });
-  it('When get sort parameters from localStorage', () => {
+  it('Should get sort parameters from localStorage', () => {
     localStorage.setItem('sort-parameters', '["name", "ascending"]');
     const parameters = shop.getParametersFromLocalStorage('sort-parameters');
     expect(parameters).toEqual(['name', 'ascending']);
   });
-  it('When resetSettings method is called', () => {
+  it('Should reset settings', () => {
     localStorage.setItem('test-key', 'test-value');
     shop.resetSettings();
     expect(localStorage.length).toBe(0);

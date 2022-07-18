@@ -11,13 +11,13 @@ document.body.innerHTML = `
 const slider: Slider = new Slider('amount', 'amount-start', 'amount-end', 0, 10);
 slider.init();
 
-describe('Slider', () => {
-  it('Getting values', () => {
+describe('Slider behavior', () => {
+  it('Should get values', () => {
     const values = slider.getValues();
     expect(values).toBeDefined();
     expect(values).toEqual([0, 10]);
   });
-  it('Resetting values', () => {
+  it('Should reset values', () => {
     slider.container.noUiSlider?.set([8, 9]);
     expect(slider.getValues()).toEqual([8, 9]);
     slider.reset();

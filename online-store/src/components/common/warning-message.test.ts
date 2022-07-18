@@ -2,15 +2,15 @@ import { WarningMessage } from './warning-message';
 
 const message: WarningMessage = new WarningMessage('I am warning message');
 
-describe('Warning Message', () => {
+describe('Warning Message behavior', () => {
   beforeEach(() => {
     message.close();
   });
-  it('Adding to page', () => {
+  it('Should add message to page', () => {
     message.open();
     expect(document.body.lastChild).toBeInstanceOf(HTMLDivElement);
   });
-  it('Removing from page', () => {
+  it('Should remove message from page', () => {
     message.open();
     message.close();
     expect(document.body.lastChild).not.toBeInstanceOf(HTMLDivElement);

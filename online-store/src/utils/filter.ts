@@ -9,11 +9,11 @@ import {
 import { Bike } from '../components/bike';
 
 export class Filter<T extends Bike> {
-  filter(goods: T[], parameters: FilterParameters): T[] {
+  public filter(goods: T[], parameters: FilterParameters): T[] {
     const filteredByValueGoods = this.filterByValue(goods, parameters.valueParameters);
     return this.filterByRange(filteredByValueGoods, parameters.rangeParameters);
   }
-  filterByValue(goods: T[], parameters: ValueParameters): T[] {
+  public filterByValue(goods: T[], parameters: ValueParameters): T[] {
     let filteredGoods: T[] = goods;
     (Object.keys(parameters) as ValueProperty[]).forEach((property: ValueProperty): void => {
       if (parameters[property].length === Numbers.Zero) return;
@@ -23,7 +23,7 @@ export class Filter<T extends Bike> {
     });
     return filteredGoods;
   }
-  filterByRange(goods: T[], parameters: RangeParameters): T[] {
+  public filterByRange(goods: T[], parameters: RangeParameters): T[] {
     let filteredGoods: T[] = goods;
     (Object.keys(parameters) as RangeProperty[]).forEach((property: RangeProperty): void => {
       filteredGoods = filteredGoods.filter(

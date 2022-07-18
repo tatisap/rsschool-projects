@@ -7,17 +7,17 @@ const sorter: Sorter = new Sorter();
 const bikes: Bike[] = (info as IBike[]).map((itemInfo: IBike) => new Bike(itemInfo));
 
 describe('Sort', () => {
-  it('By name in ascending order', () => {
+  it('Should sort by name in ascending order', () => {
     const sortParameters: SortParameters = ['name', 'ascending'];
     const sortedBikes = sorter.sort(bikes, sortParameters);
     expect(sortedBikes).toEqual(bikes);
   });
-  it('By name in descending order', () => {
+  it('Should sort by name in descending order', () => {
     const sortParameters: SortParameters = ['name', 'descending'];
     const sortedBikes = sorter.sort(bikes, sortParameters);
     expect(sortedBikes).toEqual(bikes.reverse());
   });
-  it('By year in ascending order', () => {
+  it('Should sort by year in ascending order', () => {
     const sortParameters: SortParameters = ['year', 'ascending'];
     const sortedBikes = sorter.sort(bikes, sortParameters);
     expect(sortedBikes[0].info.id).toBe(10);
@@ -25,7 +25,7 @@ describe('Sort', () => {
     expect(sortedBikes[6].info.id).toBe(8);
     expect(sortedBikes[11].info.id).toBe(9);
   });
-  it('By year in descending order', () => {
+  it('Should sort by year in descending order', () => {
     const sortParameters: SortParameters = ['year', 'descending'];
     const sortedBikes = sorter.sort(bikes, sortParameters);
     expect(sortedBikes[1].info.id).toBe(7);

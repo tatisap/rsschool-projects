@@ -4,7 +4,7 @@ import { SortParameters } from '../types/types';
 import { Bike } from '../components/bike';
 
 export class Sorter {
-  sort<T extends Bike>(goods: T[], [property, order]: SortParameters): T[] {
+  public sort<T extends Bike>(goods: T[], [property, order]: SortParameters): T[] {
     goods.sort((a: T, b: T): number =>
       a.info[property] > b.info[property]
         ? Numbers.One
