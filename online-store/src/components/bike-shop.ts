@@ -1,5 +1,10 @@
-import { SORT_PARAMETERS_DIVIDER, WARNING_MESSAGE_TEXT } from '../constants/constants';
-import { Numbers } from '../types/enums';
+import {
+  DEFAULT_SORT_PARAMETERS,
+  LOCAL_STORAGE_KEYS,
+  SORT_PARAMETERS_DIVIDER,
+  WARNING_MESSAGE_TEXT,
+} from '../constants/constants';
+import { Boolean, Numbers } from '../types/enums';
 import {
   IBike,
   FilterParameters,
@@ -16,15 +21,15 @@ import { Slider } from './common/slider';
 import { WarningMessage } from './common/warning-message';
 
 export class BikeShop extends Shop<Bike> {
-  private searcher: Searcher;
-  private sorter: Sorter;
-  private filter: Filter<Bike>;
+  private readonly searcher: Searcher;
+  private readonly sorter: Sorter;
+  private readonly filter: Filter<Bike>;
+  private readonly sliders: Slider[];
+  private readonly noResultsMessage: WarningMessage;
   private filterParameters: FilterParameters;
   private sortParameters: SortParameters;
   private searchValue: string;
-  private sliders: Slider[];
   private isSettingsReseted: boolean;
-  private noResultsMessage: WarningMessage;
 
   constructor(goodsInfo: IBike[]) {
     const goods: Bike[] = goodsInfo.map((item: IBike): Bike => new Bike(item));
@@ -46,12 +51,13 @@ export class BikeShop extends Shop<Bike> {
       new Slider('year', 'year-start', 'year-end', minYear, maxYear),
     ];
     this.searchValue = '';
-    this.sortParameters = (this.getParametersFromLocalStorage('sort-parameters') as
-      | SortParameters
-      | false) || ['name', 'ascending'];
-    this.filterParameters = (this.getParametersFromLocalStorage('filter-parameters') as
-      | FilterParameters
-      | false) || {
+    this.sortParameters =
+      (this.getParametersFromLocalStorage(LOCAL_STORAGE_KEYS.sortParameters) as
+        | SortParameters
+        | false) || DEFAULT_SORT_PARAMETERS;
+    this.filterParameters = (this.getParametersFromLocalStorage(
+      LOCAL_STORAGE_KEYS.filterParameters
+    ) as FilterParameters | false) || {
       valueParameters: {
         manufacturer: [],
         type: [],
@@ -64,12 +70,12 @@ export class BikeShop extends Shop<Bike> {
       },
     };
   }
-  init(): void {
+  public init(): void {
     super.init();
     this.render(this.filterGoods(this.sorter.sort<Bike>(this.goods, this.sortParameters)));
     this.sliders.forEach((slider: Slider): void => {
       slider.init();
-      slider.container.noUiSlider?.on('change', (values: (number | string)[]) =>
+      slider.container.noUiSlider?.on('change', (values: (number | string)[]): void =>
         this.filterByRangeHandler(values as [number, number], slider.container.id as RangeProperty)
       );
     });
@@ -104,7 +110,7 @@ export class BikeShop extends Shop<Bike> {
     );
     window.addEventListener('beforeunload', (): void => this.setParametersToLocalStorage());
   }
-  searchHandler(event: Event): void {
+  public searchHandler(event: Event): void {
     this.searchValue = (event.target as HTMLInputElement).value.trim();
     const searchResult: Bike[] = this.searcher.getGoodsByName<Bike>(
       this.searchValue,
@@ -113,14 +119,14 @@ export class BikeShop extends Shop<Bike> {
     this.render(searchResult);
     this.switchNoResultMessage();
   }
-  sortHandler(event: Event): void {
+  public sortHandler(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.sortParameters = target.options[target.selectedIndex].value.split(
       SORT_PARAMETERS_DIVIDER
     ) as SortParameters;
     this.render(this.filterGoods(this.sorter.sort<Bike>(this.goods, this.sortParameters)));
   }
-  filterByValueHandler(event: Event): void {
+  public filterByValueHandler(event: Event): void {
     const target: HTMLElement = event.target as HTMLElement;
     if (!target.hasAttribute('data-value')) return;
     const valueProperty: ValueProperty = (target.parentNode as HTMLElement).id as ValueProperty;
@@ -138,22 +144,22 @@ export class BikeShop extends Shop<Bike> {
     this.render(this.filterGoods(this.goods));
     this.switchNoResultMessage();
   }
-  filterByRangeHandler(values: [number, number], sliderId: RangeProperty): void {
+  public filterByRangeHandler(values: [number, number], sliderId: RangeProperty): void {
     this.filterParameters.rangeParameters[sliderId] = values;
     this.render(this.filterGoods(this.goods));
     this.switchNoResultMessage();
   }
-  checkHandler(event: Event): void {
+  public checkHandler(event: Event): void {
     const target: HTMLInputElement = event.target as HTMLInputElement;
     if (target.checked) {
-      this.filterParameters.valueParameters.isPopular.push('true');
+      this.filterParameters.valueParameters.isPopular.push(Boolean.True);
     } else {
       this.filterParameters.valueParameters.isPopular = [];
     }
     this.render(this.filterGoods(this.goods));
     this.switchNoResultMessage();
   }
-  resetFilters(): void {
+  public resetFilters(): void {
     this.searchValue = '';
     (document.querySelector('.search') as HTMLInputElement).value = '';
     (document.getElementById('popular') as HTMLInputElement).checked = false;
@@ -162,7 +168,7 @@ export class BikeShop extends Shop<Bike> {
         '.active'
       ) as NodeListOf<HTMLElement>
     ).forEach((element: HTMLElement): void => element.classList.remove('active'));
-    this.sliders.forEach((slider: Slider) => {
+    this.sliders.forEach((slider: Slider): void => {
       slider.reset();
       this.filterParameters.rangeParameters[slider.id] = slider.getValues();
     });
@@ -174,7 +180,7 @@ export class BikeShop extends Shop<Bike> {
     this.render(this.filterGoods(this.goods));
     this.switchNoResultMessage();
   }
-  setActiveParametersStyle(): void {
+  private setActiveParametersStyle(): void {
     (
       document.querySelector(
         `[value="${this.sortParameters.join(SORT_PARAMETERS_DIVIDER)}"]`
@@ -182,14 +188,14 @@ export class BikeShop extends Shop<Bike> {
     ).selected = true;
     (Object.keys(this.filterParameters.valueParameters) as ValueProperty[]).forEach(
       (property: ValueProperty): void => {
-        this.filterParameters.valueParameters[property].forEach((value: string) =>
+        this.filterParameters.valueParameters[property].forEach((value: string): void =>
           (document.querySelector(`[data-value="${value}"]`) as HTMLElement)?.classList.add(
             'active'
           )
         );
       }
     );
-    if (this.filterParameters.valueParameters.isPopular.includes('true')) {
+    if (this.filterParameters.valueParameters.isPopular.includes(Boolean.True)) {
       (document.getElementById('popular') as HTMLInputElement).checked = true;
     }
     (Object.keys(this.filterParameters.rangeParameters) as RangeProperty[]).forEach(
@@ -201,27 +207,30 @@ export class BikeShop extends Shop<Bike> {
       }
     );
   }
-  resetSettings(): void {
+  public resetSettings(): void {
     this.isSettingsReseted = true;
     localStorage.clear();
   }
-  filterGoods(goods: Bike[]): Bike[] {
+  private filterGoods(goods: Bike[]): Bike[] {
     return this.filter.filter(
       this.searcher.getGoodsByName(this.searchValue, goods),
       this.filterParameters
     );
   }
-  getParametersFromLocalStorage(key: string): SortParameters | FilterParameters | boolean {
+  public getParametersFromLocalStorage(key: string): SortParameters | FilterParameters | boolean {
     const savedValue = localStorage.getItem(key);
     return savedValue ? JSON.parse(savedValue) : false;
   }
-  setParametersToLocalStorage(): void {
+  public setParametersToLocalStorage(): void {
     if (this.isSettingsReseted) return;
-    localStorage.setItem('filter-parameters', JSON.stringify(this.filterParameters));
-    localStorage.setItem('sort-parameters', JSON.stringify(this.sortParameters));
-    localStorage.setItem('cart-counter', JSON.stringify(this.cart.counter));
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.filterParameters,
+      JSON.stringify(this.filterParameters)
+    );
+    localStorage.setItem(LOCAL_STORAGE_KEYS.sortParameters, JSON.stringify(this.sortParameters));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.cartCounter, JSON.stringify(this.cart.counter));
   }
-  switchNoResultMessage(): void {
+  private switchNoResultMessage(): void {
     if (
       (document.querySelector('.cards-list') as HTMLUListElement).children.length === Numbers.Zero
     ) {

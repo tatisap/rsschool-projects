@@ -27,7 +27,6 @@ describe('BikeShop', () => {
   });
   it('When filterByRangeHandler method called with value: [2013, 2018] and sliderId: "year"', () => {
     shop.filterByRangeHandler([2013, 2018], 'year');
-    console.log(document.body.lastElementChild?.children[0]);
     expect(document.body.lastElementChild?.children.length).toBe(1);
   });
   it('When get sort parameters from localStorage', () => {

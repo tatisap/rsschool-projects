@@ -1,10 +1,10 @@
 export class Item {
-  protected htmlElement: HTMLLIElement;
+  protected readonly htmlElement: HTMLLIElement;
 
   constructor(container: HTMLLIElement) {
     this.htmlElement = container;
   }
-  render(): void {
+  public render(): void {
     (document.querySelector('.cards-list') as HTMLUListElement).append(this.htmlElement);
   }
 }

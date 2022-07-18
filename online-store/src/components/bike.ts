@@ -1,7 +1,7 @@
 import { IBike } from '../types/types';
 import { Item } from './common/item';
 import { ButtonWithCounter } from './common/counter-button';
-import { BUTTON_TEXT } from '../constants/constants';
+import { BUTTON_TEXT, CUSTOM_EVENT_NAMES, LOCAL_STORAGE_KEYS } from '../constants/constants';
 import { Numbers } from '../types/enums';
 
 export class Bike extends Item {
@@ -24,8 +24,10 @@ export class Bike extends Item {
     heading.classList.add('bike__title');
     heading.textContent = bikeInfo.name;
 
-    const quantityInCart: number = localStorage.getItem('shopping-list')
-      ? JSON.parse(localStorage.getItem('shopping-list') as string)[`${bikeInfo.id}`]
+    const quantityInCart: number = localStorage.getItem(LOCAL_STORAGE_KEYS.shoppingList)
+      ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.shoppingList) as string)[
+          `${bikeInfo.id}`
+        ]
       : Numbers.Zero;
 
     const counterButton = new ButtonWithCounter(
@@ -52,17 +54,16 @@ export class Bike extends Item {
       flameIcon.classList.add('flame');
       container.append(flameIcon);
     }
-
     super(container);
     this.info = bikeInfo;
   }
-  updateCart(): void {
+  public updateCart(): void {
     const quantity = Number(
       (this.htmlElement.querySelector('.button-with-counter__counter') as HTMLDivElement)
         .textContent
     );
     (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
-      new CustomEvent('update-cart', {
+      new CustomEvent(CUSTOM_EVENT_NAMES.updateCart, {
         detail: {
           itemId: this.info.id,
           quantity: quantity,

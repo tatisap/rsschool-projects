@@ -1,4 +1,5 @@
 import * as noUiSlider from 'nouislider';
+import { Numbers } from '../../types/enums';
 import { RangeProperty } from '../../types/types';
 
 export class Slider {
@@ -24,11 +25,11 @@ export class Slider {
     this.endValue = endValue;
     this.id = containerId;
   }
-  init(): void {
-    noUiSlider.create(this.container, {
+  public init(): void {
+    noUiSlider.create(this.container as noUiSlider.target, {
       start: [this.startValue, this.endValue],
       connect: true,
-      step: 1,
+      step: Numbers.One,
       range: {
         min: this.startValue,
         max: this.endValue,
@@ -39,14 +40,14 @@ export class Slider {
         from: (value: string): number => Number(value),
       },
     });
-    this.container.noUiSlider?.on('update', (values: (number | string)[], handle: number) => {
+    this.container.noUiSlider?.on('update', (values: (number | string)[], handle: number): void => {
       this.valueElements[handle].textContent = String(Math.round(Number(values[handle])));
     });
   }
-  reset(): void {
+  public reset(): void {
     this.container.noUiSlider?.reset();
   }
-  getValues(): [number, number] {
+  public getValues(): [number, number] {
     return this.container.noUiSlider?.get(true) as [number, number];
   }
 }

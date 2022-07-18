@@ -1,4 +1,8 @@
-import { MAX_ITEMS_IN_CART, STYLE_DISPLAY_VALUE } from '../../constants/constants';
+import {
+  CUSTOM_EVENT_NAMES,
+  MAX_ITEMS_IN_CART,
+  STYLE_DISPLAY_VALUE,
+} from '../../constants/constants';
 import { Numbers } from '../../types/enums';
 
 export class ButtonWithCounter {
@@ -7,10 +11,10 @@ export class ButtonWithCounter {
   private readonly removeButton: HTMLButtonElement;
   private readonly counterElement: HTMLDivElement;
   private readonly maxValue: number;
-  private counter: number;
   public readonly wrapper: HTMLDivElement;
+  private counter: number;
 
-  constructor(content: string, maxValue: number, initialValue = 0) {
+  constructor(content: string, maxValue: number, initialValue = Numbers.Zero) {
     const wrapper: HTMLDivElement = document.createElement('div');
     wrapper.classList.add('button-with-counter');
 
@@ -44,15 +48,15 @@ export class ButtonWithCounter {
     this.counter = initialValue;
     this.maxValue = maxValue;
   }
-  init(): void {
+  public init(): void {
     this.mainButton.addEventListener('click', (): void => this.add());
     this.addButton.addEventListener('click', (): void => this.add());
     this.removeButton.addEventListener('click', (): void => this.remove());
   }
-  add(): void {
+  public add(): void {
     if (this.isCartFull()) {
       (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
-        new Event('overflow')
+        new Event(CUSTOM_EVENT_NAMES.overflow)
       );
     } else {
       if (this.maxValue === this.counter) return;
@@ -67,11 +71,11 @@ export class ButtonWithCounter {
       }
       this.counterElement.textContent = String(++this.counter);
       (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
-        new Event('add-to-cart')
+        new Event(CUSTOM_EVENT_NAMES.addToCart)
       );
     }
   }
-  remove(): void {
+  public remove(): void {
     this.counter--;
     if (this.counter === Numbers.Zero) {
       this.setDisplayValue(
@@ -84,16 +88,16 @@ export class ButtonWithCounter {
     }
     this.counterElement.textContent = String(this.counter);
     (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
-      new Event('remove-from-cart')
+      new Event(CUSTOM_EVENT_NAMES.removeFromCart)
     );
   }
-  isCartFull(): boolean {
+  private isCartFull(): boolean {
     return (
       Number((document.querySelector('.shopping-cart__counter') as HTMLSpanElement).textContent) ===
       MAX_ITEMS_IN_CART
     );
   }
-  setDisplayValue(value: string, ...buttons: HTMLElement[]): void {
+  private setDisplayValue(value: string, ...buttons: HTMLElement[]): void {
     buttons.forEach((button: HTMLElement): void => {
       button.style.display = value;
     });

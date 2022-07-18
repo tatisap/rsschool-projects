@@ -3,20 +3,20 @@ import { Item } from './item';
 
 export class Shop<T extends Item> {
   public goods: T[];
-  protected cart: Cart;
+  protected readonly cart: Cart;
 
   constructor(goods: T[]) {
     this.goods = goods;
     this.cart = new Cart();
   }
-  init(): void {
+  public init(): void {
     this.cart.init();
   }
-  render<T extends Item>(goods: T[]): void {
+  public render<T extends Item>(goods: T[]): void {
     this.clear();
     goods.forEach((item: T): void => item.render());
   }
-  clear(): void {
+  private clear(): void {
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';
   }
 }

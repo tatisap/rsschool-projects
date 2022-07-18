@@ -15,10 +15,10 @@ export class WarningMessage {
     this.container = container;
     this.closeButton = closeButton;
   }
-  open(): void {
+  public open(): void {
     document.body.append(this.container);
   }
-  close(): void {
+  public close(): void {
     this.container.remove();
   }
 }
