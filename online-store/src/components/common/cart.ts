@@ -5,7 +5,7 @@ import {
   WARNING_MESSAGE_TEXT,
 } from '../../constants/constants';
 import { Numbers } from '../../types/enums';
-import { IShoppingList } from '../../types/types';
+import { IShoppingList, IShoppingListItem } from '../../types/types';
 import { WarningMessage } from './warning-message';
 
 export class Cart {
@@ -44,7 +44,7 @@ export class Cart {
   private showMessage(): void {
     this.warningMessage.open();
   }
-  public update(event: CustomEvent): void {
+  public update(event: CustomEvent<IShoppingListItem>): void {
     const shoppingList: IShoppingList = localStorage.getItem(LOCAL_STORAGE_KEYS.shoppingList)
       ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.shoppingList) as string)
       : {};

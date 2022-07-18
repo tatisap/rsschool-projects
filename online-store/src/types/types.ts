@@ -14,6 +14,11 @@ export interface IShoppingList {
   [id: string]: number;
 }
 
+export interface IShoppingListItem {
+  itemId: number;
+  quantity: number;
+}
+
 export type sortOrder = 'ascending' | 'descending';
 
 export type SortParameters = [keyof IBike, sortOrder];

@@ -73,6 +73,7 @@ export class BikeShop extends Shop<Bike> {
   public init(): void {
     super.init();
     this.render(this.filterGoods(this.sorter.sort<Bike>(this.goods, this.sortParameters)));
+    this.switchNoResultMessage();
     this.sliders.forEach((slider: Slider): void => {
       slider.init();
       slider.container.noUiSlider?.on('change', (values: (number | string)[]): void =>

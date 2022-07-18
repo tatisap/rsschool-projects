@@ -1,4 +1,4 @@
-import { IBike } from '../types/types';
+import { IBike, IShoppingListItem } from '../types/types';
 import { Item } from './common/item';
 import { ButtonWithCounter } from './common/counter-button';
 import { BUTTON_TEXT, CUSTOM_EVENT_NAMES, LOCAL_STORAGE_KEYS } from '../constants/constants';
@@ -63,7 +63,7 @@ export class Bike extends Item {
         .textContent
     );
     (document.querySelector('.shopping-cart') as HTMLDivElement).dispatchEvent(
-      new CustomEvent(CUSTOM_EVENT_NAMES.updateCart, {
+      new CustomEvent<IShoppingListItem>(CUSTOM_EVENT_NAMES.updateCart, {
         detail: {
           itemId: this.info.id,
           quantity: quantity,
