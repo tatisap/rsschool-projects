@@ -6,6 +6,6 @@ export enum Numbers {
 }
 
 export enum Boolean {
-  True = 'true',
+  true = 'true',
   false = 'false',
 }

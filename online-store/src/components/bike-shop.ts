@@ -153,7 +153,7 @@ export class BikeShop extends Shop<Bike> {
   public checkHandler(event: Event): void {
     const target: HTMLInputElement = event.target as HTMLInputElement;
     if (target.checked) {
-      this.filterParameters.valueParameters.isPopular.push(Boolean.True);
+      this.filterParameters.valueParameters.isPopular.push(Boolean.true);
     } else {
       this.filterParameters.valueParameters.isPopular = [];
     }
@@ -196,7 +196,7 @@ export class BikeShop extends Shop<Bike> {
         );
       }
     );
-    if (this.filterParameters.valueParameters.isPopular.includes(Boolean.True)) {
+    if (this.filterParameters.valueParameters.isPopular.includes(Boolean.true)) {
       (document.getElementById('popular') as HTMLInputElement).checked = true;
     }
     (Object.keys(this.filterParameters.rangeParameters) as RangeProperty[]).forEach(
