@@ -20,7 +20,7 @@ describe('Cart behavior', () => {
   });
 
   it('Should remove from the cart', () => {
-    for (let i = INITIAL_STEP; i <= MAX_ITEMS_IN_CART + Numbers.One; i++) {
+    for (let i = INITIAL_STEP; i <= MAX_ITEMS_IN_CART; i++) {
       cart.add();
     }
     for (let i = INITIAL_STEP; i < MAX_ITEMS_IN_CART; i++) {
