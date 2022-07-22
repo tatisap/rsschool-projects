@@ -1,8 +1,14 @@
 export enum Numbers {
   Zero = 0,
   One,
-  Twenty = 20,
-  TwentyFive = 25,
+  Two,
+  Three,
+  Four,
+  Five,
+  Six,
+  Seven,
+  Eight,
+  Nine,
 }
 
 export enum Boolean {
