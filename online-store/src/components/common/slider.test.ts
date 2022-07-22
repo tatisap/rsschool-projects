@@ -1,3 +1,5 @@
+import { SLIDER_ELEMENTS_ID } from '../../constants/constants';
+import { RangeProperty } from '../../types/types';
 import { Slider } from './slider';
 
 document.body.innerHTML = `
@@ -8,7 +10,13 @@ document.body.innerHTML = `
   </div>
 `;
 
-const slider: Slider = new Slider('amount', 'amount-start', 'amount-end', 0, 10);
+const slider: Slider = new Slider(
+  SLIDER_ELEMENTS_ID.amountSlider.containerId as RangeProperty,
+  SLIDER_ELEMENTS_ID.amountSlider.startValueElementId,
+  SLIDER_ELEMENTS_ID.amountSlider.endValueElementId,
+  0,
+  10
+);
 slider.init();
 
 describe('Slider behavior', () => {
