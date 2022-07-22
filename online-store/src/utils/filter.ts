@@ -9,7 +9,7 @@ import {
 import { Bike } from '../components/bike';
 
 export class Filter<T extends Bike> {
-  public filter(goods: T[], parameters: FilterParameters): T[] {
+  public filterGoods(goods: T[], parameters: FilterParameters): T[] {
     const filteredByValueGoods = this.filterByValue(goods, parameters.valueParameters);
     return this.filterByRange(filteredByValueGoods, parameters.rangeParameters);
   }

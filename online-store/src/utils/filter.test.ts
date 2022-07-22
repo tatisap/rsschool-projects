@@ -103,7 +103,7 @@ describe('MixedFilter', () => {
   it('Should return road bikes which manufactured in 2012', () => {
     parameters.valueParameters.type = ['road'];
     parameters.rangeParameters.year = [2012, 2012];
-    const filteredBikes = filter.filter(bikes, parameters);
+    const filteredBikes = filter.filterGoods(bikes, parameters);
     expect(filteredBikes.length).toBe(2);
     expect(filteredBikes).toContainEqual(new Bike(info[1]));
     expect(filteredBikes).toContainEqual(new Bike(info[4]));
@@ -113,7 +113,7 @@ describe('MixedFilter', () => {
   it('Should return popular bikes which is 2 in stock', () => {
     parameters.valueParameters.isPopular = ['true'];
     parameters.rangeParameters.amount = [2, 2];
-    const filteredBikes = filter.filter(bikes, parameters);
+    const filteredBikes = filter.filterGoods(bikes, parameters);
     expect(filteredBikes.length).toBe(4);
     expect(filteredBikes).toContainEqual(new Bike(info[1]));
     expect(filteredBikes).toContainEqual(new Bike(info[3]));

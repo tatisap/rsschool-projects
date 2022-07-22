@@ -33,3 +33,9 @@ export type FilterParameters = {
   valueParameters: ValueParameters;
   rangeParameters: RangeParameters;
 };
+
+export interface ISavedParameters {
+  filterParameters: FilterParameters;
+  sortParameters: SortParameters;
+  cartCounter: number;
+}

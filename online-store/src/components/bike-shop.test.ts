@@ -31,12 +31,7 @@ describe('BikeShop behavior', () => {
   });
   it('Should get sort parameters from localStorage', () => {
     localStorage.setItem('sort-parameters', '["name", "ascending"]');
-    const parameters = shop.getParametersFromLocalStorage('sort-parameters');
+    const parameters = shop.localStorageManager.getParametersFromLocalStorage('sort-parameters');
     expect(parameters).toEqual(['name', 'ascending']);
-  });
-  it('Should reset settings', () => {
-    localStorage.setItem('test-key', 'test-value');
-    shop.resetSettings();
-    expect(localStorage.length).toBe(0);
   });
 });
