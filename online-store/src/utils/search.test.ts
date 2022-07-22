@@ -4,7 +4,7 @@ import { IBike } from '../types/types';
 import { Searcher } from './search';
 
 const searcher: Searcher = new Searcher();
-const bikes: Bike[] = (info as IBike[]).map((itemInfo: IBike) => new Bike(itemInfo));
+const bikes: Bike[] = (info as IBike[]).map((bikeInfo: IBike) => new Bike(bikeInfo));
 
 describe('Search', () => {
   it('Should return values containing "b"', () => {

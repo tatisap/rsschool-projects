@@ -14,7 +14,7 @@ export class Shop<T extends Item> {
   }
   public render<T extends Item>(goods: T[]): void {
     this.clear();
-    goods.forEach((item: T): void => item.render());
+    goods.forEach((goodsItem: T): void => goodsItem.render());
   }
   private clear(): void {
     (document.querySelector('.cards-list') as HTMLUListElement).innerHTML = '';

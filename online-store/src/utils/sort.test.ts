@@ -4,7 +4,7 @@ import { IBike, SortParameters } from '../types/types';
 import { Bike } from '../components/bike';
 
 const sorter: Sorter = new Sorter();
-const bikes: Bike[] = (info as IBike[]).map((itemInfo: IBike) => new Bike(itemInfo));
+const bikes: Bike[] = (info as IBike[]).map((bikeInfo: IBike) => new Bike(bikeInfo));
 
 describe('Sort', () => {
   it('Should sort by name in ascending order', () => {

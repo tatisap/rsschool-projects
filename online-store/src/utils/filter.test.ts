@@ -4,7 +4,7 @@ import info from '../data/bikes.json';
 import { FilterParameters, IBike, RangeParameters, ValueParameters } from '../types/types';
 
 const filter: Filter<Bike> = new Filter<Bike>();
-const bikes: Bike[] = (info as IBike[]).map((itemInfo: IBike) => new Bike(itemInfo));
+const bikes: Bike[] = (info as IBike[]).map((bikeInfo: IBike) => new Bike(bikeInfo));
 let valueParameters: ValueParameters = {
   manufacturer: [],
   type: [],

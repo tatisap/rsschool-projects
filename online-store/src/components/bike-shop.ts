@@ -33,10 +33,10 @@ export class BikeShop extends Shop<Bike> {
   private isSettingsReseted: boolean;
 
   constructor(goodsInfo: IBike[]) {
-    const goods: Bike[] = goodsInfo.map((item: IBike): Bike => new Bike(item));
+    const goods: Bike[] = goodsInfo.map((bikeInfo: IBike): Bike => new Bike(bikeInfo));
     super(goods);
-    const goodsAmount: number[] = goodsInfo.map((item: IBike): number => item.amount);
-    const goodsYears: number[] = goodsInfo.map((item: IBike): number => item.year);
+    const goodsAmount: number[] = goodsInfo.map((bikeInfo: IBike): number => bikeInfo.amount);
+    const goodsYears: number[] = goodsInfo.map((bikeInfo: IBike): number => bikeInfo.year);
     const maxAmount = Math.max(...goodsAmount);
     const minAmount = Math.min(...goodsAmount);
     const maxYear = Math.max(...goodsYears);

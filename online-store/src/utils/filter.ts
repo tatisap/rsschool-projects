@@ -17,8 +17,8 @@ export class Filter<T extends Bike> {
     let filteredGoods: T[] = goods;
     (Object.keys(parameters) as ValueProperty[]).forEach((property: ValueProperty): void => {
       if (parameters[property].length === Numbers.Zero) return;
-      filteredGoods = filteredGoods.filter((item: T): boolean =>
-        parameters[property].includes(`${item.info[property]}`)
+      filteredGoods = filteredGoods.filter((goodsItem: T): boolean =>
+        parameters[property].includes(`${goodsItem.info[property]}`)
       );
     });
     return filteredGoods;
@@ -27,9 +27,9 @@ export class Filter<T extends Bike> {
     let filteredGoods: T[] = goods;
     (Object.keys(parameters) as RangeProperty[]).forEach((property: RangeProperty): void => {
       filteredGoods = filteredGoods.filter(
-        (item: T): boolean =>
-          parameters[property][Numbers.Zero] <= item.info[property] &&
-          parameters[property][Numbers.One] >= item.info[property]
+        (goodsItem: T): boolean =>
+          parameters[property][Numbers.Zero] <= goodsItem.info[property] &&
+          parameters[property][Numbers.One] >= goodsItem.info[property]
       );
     });
     return filteredGoods;
