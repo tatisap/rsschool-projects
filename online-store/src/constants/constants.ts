@@ -39,3 +39,16 @@ export const LOCAL_STORAGE_KEYS = {
   cartCounter: 'cart-counter',
   shoppingList: 'shopping-list',
 };
+
+export const SLIDER_ELEMENTS_ID = {
+  amountSlider: {
+    containerId: 'amount',
+    startValueElementId: 'amount-start',
+    endValueElementId: 'amount-end',
+  },
+  yearSlider: {
+    containerId: 'year',
+    startValueElementId: 'year-start',
+    endValueElementId: 'year-end',
+  },
+};

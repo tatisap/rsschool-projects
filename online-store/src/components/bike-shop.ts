@@ -1,6 +1,7 @@
 import {
   DEFAULT_SORT_PARAMETERS,
   LOCAL_STORAGE_KEYS,
+  SLIDER_ELEMENTS_ID,
   SORT_PARAMETERS_DIVIDER,
   WARNING_MESSAGE_TEXT,
 } from '../constants/constants';
@@ -47,8 +48,20 @@ export class BikeShop extends Shop<Bike> {
     this.isSettingsReseted = false;
     this.noResultsMessage = new WarningMessage(WARNING_MESSAGE_TEXT.noResultsText);
     this.sliders = [
-      new Slider('amount', 'amount-start', 'amount-end', minAmount, maxAmount),
-      new Slider('year', 'year-start', 'year-end', minYear, maxYear),
+      new Slider(
+        SLIDER_ELEMENTS_ID.amountSlider.containerId as RangeProperty,
+        SLIDER_ELEMENTS_ID.amountSlider.startValueElementId,
+        SLIDER_ELEMENTS_ID.amountSlider.endValueElementId,
+        minAmount,
+        maxAmount
+      ),
+      new Slider(
+        SLIDER_ELEMENTS_ID.yearSlider.containerId as RangeProperty,
+        SLIDER_ELEMENTS_ID.yearSlider.startValueElementId,
+        SLIDER_ELEMENTS_ID.yearSlider.endValueElementId,
+        minYear,
+        maxYear
+      ),
     ];
     this.searchValue = '';
     this.sortParameters =
