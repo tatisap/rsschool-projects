@@ -2,6 +2,7 @@ import { Sorter } from './sorter';
 import info from '../data/bikes.json';
 import { IBike, SortParameters } from '../types/types';
 import { Bike } from '../components/bike';
+import { Numbers } from '../types/enums';
 
 const sorter: Sorter = new Sorter();
 const bikes: Bike[] = (info as IBike[]).map((bikeInfo: IBike) => new Bike(bikeInfo));
@@ -20,17 +21,17 @@ describe('Sort', () => {
   it('Should sort by year in ascending order', () => {
     const sortParameters: SortParameters = ['year', 'ascending'];
     const sortedBikes = sorter.sort(bikes, sortParameters);
-    expect(sortedBikes[0].info.id).toBe(10);
-    expect(sortedBikes[3].info.id).toBe(5);
-    expect(sortedBikes[6].info.id).toBe(8);
-    expect(sortedBikes[11].info.id).toBe(9);
+    expect(sortedBikes[Numbers.Zero].info.id).toBe(Numbers.Ten);
+    expect(sortedBikes[Numbers.Three].info.id).toBe(Numbers.Five);
+    expect(sortedBikes[Numbers.Six].info.id).toBe(Numbers.Eight);
+    expect(sortedBikes[Numbers.Eleven].info.id).toBe(Numbers.Nine);
   });
   it('Should sort by year in descending order', () => {
     const sortParameters: SortParameters = ['year', 'descending'];
     const sortedBikes = sorter.sort(bikes, sortParameters);
-    expect(sortedBikes[1].info.id).toBe(7);
-    expect(sortedBikes[4].info.id).toBe(11);
-    expect(sortedBikes[6].info.id).toBe(6);
-    expect(sortedBikes[10].info.id).toBe(12);
+    expect(sortedBikes[Numbers.One].info.id).toBe(Numbers.Seven);
+    expect(sortedBikes[Numbers.Four].info.id).toBe(Numbers.Eleven);
+    expect(sortedBikes[Numbers.Six].info.id).toBe(Numbers.Six);
+    expect(sortedBikes[Numbers.Ten].info.id).toBe(Numbers.Twelve);
   });
 });

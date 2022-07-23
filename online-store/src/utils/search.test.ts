@@ -12,7 +12,7 @@ describe('Search', () => {
     const searchValue = 'b';
     const searchResult = searcher.getGoodsByName(searchValue, bikes);
     expect(searchResult.length).toBe(Numbers.Two);
-    expect(searchResult).toContainEqual(new Bike(info[0]));
+    expect(searchResult).toContainEqual(new Bike(info[Numbers.Zero]));
   });
   it('Should return values containing "g"', () => {
     const searchValue = 'g';
@@ -23,6 +23,6 @@ describe('Search', () => {
     const searchValue = 'yukon';
     const searchResult = searcher.getGoodsByName(searchValue, bikes);
     expect(searchResult.length).toBe(Numbers.One);
-    expect(searchResult).toContainEqual(new Bike(info[11]));
+    expect(searchResult).toContainEqual(new Bike(info[Numbers.Eleven]));
   });
 });

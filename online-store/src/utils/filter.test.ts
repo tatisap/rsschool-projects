@@ -36,28 +36,28 @@ describe('FilterByValue', () => {
     valueParameters.manufacturer = ['Cannondale'];
     const filteredBikes = filter.filterByValue(bikes, valueParameters);
     expect(filteredBikes.length).toBe(Numbers.Three);
-    expect(filteredBikes).toContainEqual(new Bike(info[1]));
-    expect(filteredBikes).toContainEqual(new Bike(info[8]));
-    expect(filteredBikes).toContainEqual(new Bike(info[9]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[0]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.One]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Eight]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Nine]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Zero]));
   });
   it('Should return only road and gravel types', () => {
     valueParameters.type = ['road', 'gravel'];
     const filteredBikes = filter.filterByValue(bikes, valueParameters);
     expect(filteredBikes.length).toBe(Numbers.Eight);
-    expect(filteredBikes).toContainEqual(new Bike(info[0]));
-    expect(filteredBikes).toContainEqual(new Bike(info[1]));
-    expect(filteredBikes).toContainEqual(new Bike(info[2]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[9]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Zero]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.One]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Two]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Nine]));
   });
   it('Should return only green and blue color', () => {
     valueParameters.color = ['green', 'blue'];
     const filteredBikes = filter.filterByValue(bikes, valueParameters);
     expect(filteredBikes.length).toBe(Numbers.Four);
-    expect(filteredBikes).toContainEqual(new Bike(info[2]));
-    expect(filteredBikes).toContainEqual(new Bike(info[3]));
-    expect(filteredBikes).toContainEqual(new Bike(info[9]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[4]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Two]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Three]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Nine]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Four]));
   });
 });
 
@@ -72,19 +72,19 @@ describe('FilterByValue', () => {
     rangeParameters.amount = [3, 5];
     const filteredBikes = filter.filterByRange(bikes, rangeParameters);
     expect(filteredBikes.length).toBe(Numbers.Five);
-    expect(filteredBikes).toContainEqual(new Bike(info[4]));
-    expect(filteredBikes).toContainEqual(new Bike(info[5]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[6]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[7]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Four]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Five]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Six]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Seven]));
   });
   it('Should return manufactured from 2015 to 2020', () => {
     rangeParameters.year = [2015, 2020];
     const filteredBikes = filter.filterByRange(bikes, rangeParameters);
     expect(filteredBikes.length).toBe(Numbers.Six);
-    expect(filteredBikes).toContainEqual(new Bike(info[5]));
-    expect(filteredBikes).toContainEqual(new Bike(info[6]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[4]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[8]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Five]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Six]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Four]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Eight]));
   });
 });
 
@@ -108,19 +108,19 @@ describe('MixedFilter', () => {
     parameters.rangeParameters.year = [2012, 2012];
     const filteredBikes = filter.filterGoods(bikes, parameters);
     expect(filteredBikes.length).toBe(Numbers.Two);
-    expect(filteredBikes).toContainEqual(new Bike(info[1]));
-    expect(filteredBikes).toContainEqual(new Bike(info[4]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[6]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[7]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.One]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Four]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Six]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Seven]));
   });
   it('Should return popular bikes which is 2 in stock', () => {
     parameters.valueParameters.isPopular = ['true'];
     parameters.rangeParameters.amount = [2, 2];
     const filteredBikes = filter.filterGoods(bikes, parameters);
     expect(filteredBikes.length).toBe(Numbers.Four);
-    expect(filteredBikes).toContainEqual(new Bike(info[1]));
-    expect(filteredBikes).toContainEqual(new Bike(info[3]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[0]));
-    expect(filteredBikes).not.toContainEqual(new Bike(info[11]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.One]));
+    expect(filteredBikes).toContainEqual(new Bike(info[Numbers.Three]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Zero]));
+    expect(filteredBikes).not.toContainEqual(new Bike(info[Numbers.Eleven]));
   });
 });

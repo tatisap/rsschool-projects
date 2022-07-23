@@ -9,6 +9,9 @@ export enum Numbers {
   Seven,
   Eight,
   Nine,
+  Ten,
+  Eleven,
+  Twelve,
 }
 
 export enum Boolean {
