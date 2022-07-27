@@ -1,9 +1,9 @@
 import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { merge } from 'webpack-merge';
-import { devConfig } from './webpack.dev.config.js';
-import { prodConfig } from './webpack.prod.config.js';
+import os from 'os';
 import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import { merge } from 'webpack-merge';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -18,6 +18,14 @@ const commonConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(dirname, './src/index.html'),
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(dirname, './src/assets/favicon.ico'),
+          to: path.resolve(dirname, 'dist'),
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
@@ -31,7 +39,7 @@ const commonConfig = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(svg|png)$/i,
+        test: /\.(svg)$/i,
         type: 'asset/resource',
       },
     ],
@@ -39,6 +47,37 @@ const commonConfig = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+};
+
+const osName = os.type();
+let browserName;
+switch (osName) {
+  case 'Linux':
+    browserName = 'google-chrome';
+    break;
+  case 'Darwin':
+    browserName = 'Google Chrome';
+    break;
+  default:
+    browserName = 'chrome';
+    break;
+}
+
+const devConfig = {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    static: path.resolve(dirname, './dist'),
+    open: {
+      app: {
+        name: browserName,
+      },
+    },
+  },
+};
+
+const prodConfig = {
+  mode: 'production',
 };
 
 export default ({ mode }) => {
