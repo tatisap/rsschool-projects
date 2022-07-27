@@ -1,0 +1,33 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: $light-grey;
+  font-family: $lexend;
+  color: $black;
+}
+
+.section {
+  width: 100%;
+  padding: 20px;
+  .button {
+    @extend %normalized-button;
+    @extend %interactive;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 1px;
+    background-color: $orange;
+    &:hover {
+      background-color: $white;
+    }
+  }
+}

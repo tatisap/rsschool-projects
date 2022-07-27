@@ -1,0 +1,21 @@
+.winners-list {
+  margin: 16px 0;
+  border: $dark-grey 1px solid;
+  border-collapse: collapse;
+  tr {
+    padding: 10px;
+  }
+  th {
+    background-color: $dark-grey;
+  }
+  th,
+  td {
+    padding: 10px;
+  }
+  tr:nth-child(even){
+    background-color: $white;
+  }
+  tbody td:nth-child(2) {
+      @extend %car;
+  }
+}

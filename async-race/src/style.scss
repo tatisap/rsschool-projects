@@ -1,0 +1,10 @@
+@import 'https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200;400;700&display=swap';
+@import '../node_modules/normalize-scss/sass/normalize';
+
+@import './style/utilities/variables';
+@import './style/utilities/extends';
+
+@import './style/components/common';
+@import './style/components/tabs';
+@import './style/components/garage';
+@import './style/components/winners';
