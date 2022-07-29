@@ -1,5 +1,5 @@
-import { BASE_URL, ENDPOINTS } from './constants';
-import { HttpMethods } from './enums';
+import { BASE_URL, ENDPOINTS } from './constants/constants';
+import { HttpMethods } from './types/enums';
 import {
   Car,
   Winner,
@@ -8,8 +8,8 @@ import {
   EngineStatus,
   MoveParameters,
   FinishResult,
-} from './types';
-import { makeUrl } from './utilities';
+} from './types/types';
+import { makeUrl } from './utilities/utilities';
 
 const getDatabaseItems = <T>(endpoint: string) => {
   return async (queryParameters: QueryParameters): Promise<Info<T>> => {

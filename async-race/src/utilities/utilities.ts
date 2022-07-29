@@ -1,6 +1,6 @@
-import { SEPARATOR } from './constants';
-import { Numbers } from './enums';
-import { QueryParameters } from './types';
+import { SEPARATOR } from '../constants/constants';
+import { Numbers } from '../types/enums';
+import { QueryParameters } from '../types/types';
 
 export const makeQueryString = (queryParameters: QueryParameters): string => {
   return `?${(Object.entries(queryParameters) as [keyof QueryParameters, number | string][])
