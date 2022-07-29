@@ -1,6 +1,19 @@
 export type SortKey = 'id' | 'wins' | 'time';
 export type SortOrder = 'ASC' | 'DESC';
 export type EngineStatus = 'started' | 'stopped' | 'drive';
+export type FormType = 'create' | 'update';
+export type ButtonAction =
+  | 'create'
+  | 'update'
+  | 'race'
+  | 'reset'
+  | 'generate'
+  | 'select'
+  | 'remove'
+  | 'start'
+  | 'stop'
+  | 'previous'
+  | 'next';
 
 export interface QueryParameters {
   id?: number;
