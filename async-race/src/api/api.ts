@@ -1,5 +1,5 @@
-import { BASE_URL, ENDPOINTS } from './constants/constants';
-import { HttpMethods } from './types/enums';
+import { BASE_URL, ENDPOINTS } from '../constants/constants';
+import { HttpMethods } from '../types/enums';
 import {
   Car,
   Winner,
@@ -8,8 +8,8 @@ import {
   EngineStatus,
   MoveParameters,
   FinishResult,
-} from './types/types';
-import { makeUrl } from './utilities/url-maker';
+} from '../types/types';
+import { makeUrl } from '../utilities/url-maker';
 
 const getDatabaseItems = <T>(endpoint: string) => {
   return async (queryParameters: QueryParameters): Promise<Info<T>> => {
@@ -61,17 +61,6 @@ const updateDatabaseItem = <T>(endpoint: string) => {
   };
 };
 
-export const getCars = getDatabaseItems<Car>(ENDPOINTS.garage);
-export const getWinners = getDatabaseItems<Winner>(ENDPOINTS.winners);
-export const getCarById = getDatabaseItemById<Car>(ENDPOINTS.garage);
-export const getWinnerById = getDatabaseItemById<Winner>(ENDPOINTS.winners);
-export const createCar = createDatabaseItem<Car>(ENDPOINTS.garage);
-export const createWinner = createDatabaseItem<Winner>(ENDPOINTS.winners);
-export const deleteCar = deleteDatabaseItem<Car>(ENDPOINTS.garage);
-export const deleteWinner = deleteDatabaseItem<Winner>(ENDPOINTS.winners);
-export const updateCar = updateDatabaseItem<Car>(ENDPOINTS.garage);
-export const updateWinner = updateDatabaseItem<Winner>(ENDPOINTS.winners);
-
 const changeEngineMode = <T>(status: EngineStatus) => {
   return async (id: number): Promise<T> => {
     return (
@@ -82,6 +71,18 @@ const changeEngineMode = <T>(status: EngineStatus) => {
   };
 };
 
-export const startEngine = changeEngineMode<MoveParameters>('started');
-export const stopEngine = changeEngineMode<MoveParameters>('stopped');
-export const switchEngineToDriveMode = changeEngineMode<FinishResult>('drive');
+export default {
+  getCars: getDatabaseItems<Car>(ENDPOINTS.garage),
+  getWinners: getDatabaseItems<Winner>(ENDPOINTS.winners),
+  getCarById: getDatabaseItemById<Car>(ENDPOINTS.garage),
+  getWinnerById: getDatabaseItemById<Winner>(ENDPOINTS.winners),
+  createCar: createDatabaseItem<Car>(ENDPOINTS.garage),
+  createWinner: createDatabaseItem<Winner>(ENDPOINTS.winners),
+  deleteCar: deleteDatabaseItem<Car>(ENDPOINTS.garage),
+  deleteWinner: deleteDatabaseItem<Winner>(ENDPOINTS.winners),
+  updateCar: updateDatabaseItem<Car>(ENDPOINTS.garage),
+  updateWinner: updateDatabaseItem<Winner>(ENDPOINTS.winners),
+  startEngine: changeEngineMode<MoveParameters>('started'),
+  stopEngine: changeEngineMode<MoveParameters>('stopped'),
+  switchEngineToDriveMode: changeEngineMode<FinishResult>('drive'),
+};
