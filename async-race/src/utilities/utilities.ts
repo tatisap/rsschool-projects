@@ -11,7 +11,7 @@ export const makeQueryString = (queryParameters: QueryParameters): string => {
 export const makeUrl = (
   base: string,
   endpoint: string,
-  id?: number,
+  id?: string,
   queryParameters?: QueryParameters
 ): string => {
   const idString: string = id ? `${SEPARATOR.url}${id}` : SEPARATOR.url;

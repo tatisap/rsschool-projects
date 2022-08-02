@@ -22,7 +22,7 @@ const getDatabaseItems = <T>(endpoint: string) => {
 };
 
 const getDatabaseItemById = <T>(endpoint: string) => {
-  return async (id: number): Promise<T> => {
+  return async (id: string): Promise<T> => {
     return (await fetch(makeUrl(BASE_URL, endpoint, id))).json();
   };
 };
@@ -42,13 +42,13 @@ const createDatabaseItem = <T>(endpoint: string) => {
 };
 
 const deleteDatabaseItem = <T>(endpoint: string) => {
-  return async (id: number): Promise<T> => {
+  return async (id: string): Promise<T> => {
     return (await fetch(makeUrl(BASE_URL, endpoint, id), { method: HttpMethods.DELETE })).json();
   };
 };
 
 const updateDatabaseItem = <T>(endpoint: string) => {
-  return async (id: number, info: Omit<T, 'id'>): Promise<T> => {
+  return async (id: string, info: Omit<T, 'id'>): Promise<T> => {
     return (
       await fetch(makeUrl(BASE_URL, endpoint, id), {
         method: HttpMethods.PUT,
