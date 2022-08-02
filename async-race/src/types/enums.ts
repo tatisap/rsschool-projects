@@ -2,6 +2,7 @@ export enum Numbers {
   Zero = 0,
   One,
   Three = 3,
+  Six = 6,
 }
 
 export enum HttpMethods {

@@ -1,9 +1,4 @@
-import {
-  CAR_BRANDS,
-  HASH_SYMBOL,
-  HEXADECIMAL_BASE,
-  MAX_DECIMAL_NUMBER,
-} from '../constants/constants';
+import { CAR_BRANDS, HASH_SYMBOL, HEXADECIMAL_BASE } from '../constants/constants';
 import { Numbers } from '../types/enums';
 import { Car } from '../types/types';
 
@@ -12,8 +7,8 @@ const generateRandomCarBrand = (brandsList: string[]): string =>
 
 const generateColor = (): string => {
   let color = HASH_SYMBOL;
-  for (let i = Numbers.Zero; i < Numbers.Three; i += Numbers.One) {
-    color += `${Math.floor(Math.random() * MAX_DECIMAL_NUMBER).toString(HEXADECIMAL_BASE)}`;
+  for (let i = Numbers.Zero; i < Numbers.Six; i += Numbers.One) {
+    color += `${Math.floor(Math.random() * HEXADECIMAL_BASE).toString(HEXADECIMAL_BASE)}`;
   }
   return color;
 };
