@@ -9,7 +9,7 @@ import {
   MoveParameters,
   FinishResult,
 } from './types/types';
-import { makeUrl } from './utilities/utilities';
+import { makeUrl } from './utilities/url-maker';
 
 const getDatabaseItems = <T>(endpoint: string) => {
   return async (queryParameters: QueryParameters): Promise<Info<T>> => {
