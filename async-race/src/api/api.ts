@@ -1,5 +1,5 @@
 import { BASE_URL, ENDPOINTS } from '../constants/constants';
-import { HttpMethods } from '../types/enums';
+import { HttpMethods, StatusCode } from '../types/enums';
 import {
   Car,
   Winner,
@@ -71,6 +71,16 @@ const changeEngineMode = <T>(status: EngineStatus) => {
   };
 };
 
+const switchEngineToDriveMode = async (id: number): Promise<FinishResult> => {
+  const response = await fetch(
+    makeUrl(BASE_URL, ENDPOINTS.engine, undefined, { id, status: 'drive' }),
+    {
+      method: HttpMethods.PATCH,
+    }
+  );
+  return response.status === StatusCode.Ok ? response.json() : { success: false };
+};
+
 export default {
   getCars: getDatabaseItems<Car>(ENDPOINTS.garage),
   getWinners: getDatabaseItems<Winner>(ENDPOINTS.winners),
@@ -84,5 +94,5 @@ export default {
   updateWinner: updateDatabaseItem<Winner>(ENDPOINTS.winners),
   startEngine: changeEngineMode<MoveParameters>('started'),
   stopEngine: changeEngineMode<MoveParameters>('stopped'),
-  switchEngineToDriveMode: changeEngineMode<FinishResult>('drive'),
+  switchEngineToDriveMode,
 };
