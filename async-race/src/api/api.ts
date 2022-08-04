@@ -28,7 +28,7 @@ const getDatabaseItemById = <T>(endpoint: string) => {
 };
 
 const createDatabaseItem = <T>(endpoint: string) => {
-  return async (itemInfo: Omit<T, 'id'>): Promise<T> => {
+  return async (itemInfo: Omit<T, 'id'> | T): Promise<T> => {
     return (
       await fetch(makeUrl(BASE_URL, endpoint), {
         method: HttpMethods.POST,
@@ -81,6 +81,13 @@ const switchEngineToDriveMode = async (id: number): Promise<FinishResult> => {
   return response.status === StatusCode.Ok ? response.json() : { success: false };
 };
 
+const isDatabaseItemExist = (endpoint: string) => {
+  return async (id: string): Promise<boolean> => {
+    const response = await fetch(makeUrl(BASE_URL, endpoint, id));
+    return response.status === StatusCode.Ok;
+  };
+};
+
 export default {
   getCars: getDatabaseItems<Car>(ENDPOINTS.garage),
   getWinners: getDatabaseItems<Winner>(ENDPOINTS.winners),
@@ -95,4 +102,6 @@ export default {
   startEngine: changeEngineMode<MoveParameters>('started'),
   stopEngine: changeEngineMode<MoveParameters>('stopped'),
   switchEngineToDriveMode,
+  isCarExist: isDatabaseItemExist(ENDPOINTS.garage),
+  isWinnerExist: isDatabaseItemExist(ENDPOINTS.winners),
 };
