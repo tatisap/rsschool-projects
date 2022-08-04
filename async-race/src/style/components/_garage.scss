@@ -23,6 +23,7 @@
 .cars-list {
   @extend %normalized-list;
   .cars-list__item {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, max-content);
     gap: 10px;
@@ -34,6 +35,13 @@
     background-size: contain;
     .car__image {
       @extend %car;
+      width: 100px;
+      height: 30px;
+    }
+    .car__finish-point {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       width: 100px;
       height: 30px;
     }
