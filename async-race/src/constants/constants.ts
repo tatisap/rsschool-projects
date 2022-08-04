@@ -9,6 +9,7 @@ export const SEPARATOR = {
   query: '&',
 };
 export const MAX_CARS_PER_PAGE = 7;
+export const MAX_WINNERS_PER_PAGE = 10;
 
 export const BUTTON_TEXT = {
   garage: 'GARAGE',
@@ -57,4 +58,6 @@ export const CAR_BRANDS = [
 
 export const HASH_SYMBOL = '#';
 export const HEXADECIMAL_BASE = 16;
-export const MAX_DECIMAL_NUMBER = 255;
+
+export const GENERATOR_COUNTER = 100;
+export const NO_TEXT_CONTENT = '';
