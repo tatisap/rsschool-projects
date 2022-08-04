@@ -73,4 +73,11 @@ export interface UIElementParameters {
   children?: HTMLElement[];
   innerText?: string;
   listenerInfo?: ListenerInfo;
+  attributeInfo?: [string, string];
+}
+
+export interface RaceResult {
+  success: boolean;
+  id?: string;
+  time?: number;
 }
