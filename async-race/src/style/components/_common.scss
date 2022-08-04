@@ -29,5 +29,9 @@ body {
     &:hover {
       background-color: $white;
     }
+    &[disabled=true]:hover {
+      background-color: $orange;
+      cursor: default;
+    }
   }
 }

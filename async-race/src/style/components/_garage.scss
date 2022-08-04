@@ -31,7 +31,7 @@
     border-bottom: $dark-grey 2px dashed;
     background-image: $flag;
     background-repeat: no-repeat;
-    background-position: bottom 0px right 120px;
+    background-position: bottom 0px right 100px;
     background-size: contain;
     .car__image {
       @extend %car;
@@ -55,6 +55,10 @@
         background-color: white;
         &:hover {
           border: $dark-grey 2px solid;
+        }
+        &[disabled=true]:hover {
+          border: transparent 2px solid;
+          cursor: default;
         }
       }
     }
