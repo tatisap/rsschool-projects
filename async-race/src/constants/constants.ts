@@ -27,7 +27,7 @@ export const BUTTON_TEXT = {
   next: 'NEXT',
 };
 
-export const WINNERS_TABLE_COLUMN_NAMES = ['Place', 'Car', 'Name', 'Wins', 'Best time (sec)'];
+export const WINNERS_TABLE_COLUMN_NAMES = ['№', 'Car', 'Name', 'Wins', 'Best time (sec)'];
 
 export const CAR_BRANDS = [
   'Acura',
