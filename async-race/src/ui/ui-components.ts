@@ -5,11 +5,17 @@ import {
   raceHandler,
   resetRaceHandler,
   selectCar,
+  sortTableHandler,
   startHandler,
   stopHandler,
   updateHandler,
 } from '../handlers/handlers';
-import { BUTTON_TEXT, NO_TEXT_CONTENT, WINNERS_TABLE_COLUMN_NAMES } from '../constants/constants';
+import {
+  BUTTON_TEXT,
+  NO_TEXT_CONTENT,
+  WINNERS_TABLE_COLUMN_NAMES,
+  WINNERS_TABLE_COLUMN_NAMES_CLASSES,
+} from '../constants/constants';
 import { Numbers } from '../types/enums';
 import {
   Action,
@@ -185,7 +191,8 @@ export const createGarageSection = (garageInfo: Info<Car>, pageNumber: number) =
 export const createTableRow = (
   cellTag: string,
   cellsInnerText: string[],
-  cellColor: string
+  cellColor: string,
+  cellsClassList?: string[]
 ): HTMLTableRowElement => {
   const row = document.createElement('tr');
   row.append(
@@ -193,16 +200,30 @@ export const createTableRow = (
       const cell = document.createElement(cellTag);
       cell.textContent = cellText;
       if (index === Numbers.One) cell.style.backgroundColor = cellColor;
+      if (cellsClassList !== undefined) cell.classList.add(cellsClassList[index]);
       return cell;
     })
   );
   return row;
 };
 
-export const makeTableContent = (winnersCarInfo: (Winner & Car)[]): HTMLElement[] => {
+export const makeTableHead = (): HTMLElement => {
   const thead = document.createElement('thead');
+  thead.classList.add('table__head', 'head');
+  thead.addEventListener('click', sortTableHandler);
+  thead.append(
+    createTableRow(
+      'th',
+      WINNERS_TABLE_COLUMN_NAMES,
+      NO_TEXT_CONTENT,
+      WINNERS_TABLE_COLUMN_NAMES_CLASSES
+    )
+  );
+  return thead;
+};
+
+export const makeTableContent = (winnersCarInfo: (Winner & Car)[]): HTMLElement => {
   const tbody = document.createElement('tbody');
-  thead.append(createTableRow('th', WINNERS_TABLE_COLUMN_NAMES, NO_TEXT_CONTENT));
   tbody.append(
     ...winnersCarInfo.map((winnerInfo, index) =>
       createTableRow(
@@ -218,14 +239,14 @@ export const makeTableContent = (winnersCarInfo: (Winner & Car)[]): HTMLElement[
       )
     )
   );
-  return [thead, tbody];
+  return tbody;
 };
 
 const createWinnersTable = (winnersCarInfo: (Winner & Car)[]): HTMLTableElement => {
   return createParentUIElement<HTMLTableElement>({
     tag: 'table',
-    classNames: ['winners-list'],
-    children: makeTableContent(winnersCarInfo),
+    classNames: ['winners-list', 'table'],
+    children: [makeTableHead(), makeTableContent(winnersCarInfo)],
   });
 };
 

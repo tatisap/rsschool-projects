@@ -26,3 +26,10 @@
   mask-position: center;
   background-color: black;
 }
+
+%arrow {
+  padding-right: 30px !important;
+  background-position: bottom 50% right 5px;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+}

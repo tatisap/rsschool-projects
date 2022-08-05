@@ -2,7 +2,16 @@ import API from '../api/api';
 import { MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE, NO_TEXT_CONTENT } from '../constants/constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
-import { AnimationId, Car, Info, MoveParameters, RaceResult, Winner } from '../types/types';
+import {
+  AnimationId,
+  Car,
+  Info,
+  MoveParameters,
+  RaceResult,
+  SortKey,
+  SortOrder,
+  Winner,
+} from '../types/types';
 import { createCarUIElement, makeTableContent } from '../ui/ui-components';
 import { animate, getDistanceBetweenTwoElements } from '../utilities/animation';
 import generateCar from '../utilities/generator';
@@ -32,7 +41,7 @@ const updateGarageSection = async (): Promise<void> => {
   );
 };
 
-const updateWinnersSection = async (): Promise<void> => {
+const updateWinnersSection = async (sortKey: SortKey, sortOrder: SortOrder): Promise<void> => {
   const carsInfo: Info<Car> = await API.getCars({
     _page: store.garageCurrentPage,
     _limit: MAX_CARS_PER_PAGE,
@@ -40,6 +49,8 @@ const updateWinnersSection = async (): Promise<void> => {
   const winnersInfo: Info<Winner> = await API.getWinners({
     _page: store.winnersCurrentPage,
     _limit: MAX_WINNERS_PER_PAGE,
+    _sort: sortKey,
+    _order: sortOrder,
   });
   const winnersCarInfo: (Winner & Car)[] = winnersInfo.content.map((info) => {
     return Object.assign(
@@ -51,8 +62,8 @@ const updateWinnersSection = async (): Promise<void> => {
   (document.querySelector('.winners__title') as HTMLHeadingElement).textContent =
     createSectionTitleText('WINNERS', winnersInfo.totalAmount);
   const winnerTable: HTMLTableElement = document.querySelector('.winners-list') as HTMLTableElement;
-  winnerTable.innerHTML = NO_TEXT_CONTENT;
-  winnerTable.append(...makeTableContent(winnersCarInfo));
+  winnerTable.lastChild?.remove();
+  winnerTable.append(makeTableContent(winnersCarInfo));
 };
 
 export const createHandler = async (event: Event): Promise<void> => {
@@ -89,7 +100,7 @@ export const deleteHandler = async (event: Event): Promise<void> => {
   await API.deleteWinner(id);
   cleanCarsList();
   await updateGarageSection();
-  await updateWinnersSection();
+  await updateWinnersSection('id', 'ASC');
 };
 
 const startCar = async (carElement: HTMLLIElement): Promise<RaceResult> => {
@@ -175,7 +186,7 @@ export const raceHandler = async (): Promise<void> => {
   } else {
     await API.createWinner({ id: Number(winnerId), wins: Numbers.One, time: winnerTime });
   }
-  await updateWinnersSection();
+  await updateWinnersSection('id', 'ASC');
 };
 
 export const resetRaceHandler = (): void => {
@@ -184,4 +195,19 @@ export const resetRaceHandler = (): void => {
   document
     .querySelectorAll('.car')
     .forEach((car) => car.querySelector('.stop-button')?.dispatchEvent(new Event('click')));
+};
+
+export const sortTableHandler = async (event: Event): Promise<void> => {
+  const tableHeadCell: HTMLTableCellElement = event.target as HTMLTableCellElement;
+  const sortOrder: SortOrder = tableHeadCell.dataset.order === 'ASC' ? 'DESC' : 'ASC';
+  tableHeadCell.dataset.order = sortOrder;
+  (document.querySelectorAll('th') as NodeListOf<HTMLTableCellElement>).forEach(
+    (cell: HTMLTableCellElement) => cell.classList.remove('ascending', 'descending')
+  );
+  tableHeadCell.classList.add(sortOrder === 'ASC' ? 'ascending' : 'descending');
+  if (tableHeadCell.classList.contains('car-wins')) {
+    await updateWinnersSection('wins', sortOrder);
+  } else if (tableHeadCell.classList.contains('car-time')) {
+    await updateWinnersSection('time', sortOrder);
+  }
 };

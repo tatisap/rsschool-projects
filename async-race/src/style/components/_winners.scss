@@ -11,6 +11,14 @@
   }
   th {
     background-color: $dark-grey;
+    &.ascending {
+      @extend %arrow;
+      background-image: $arrow-asc
+    }
+    &.descending {
+      @extend %arrow;
+      background-image: $arrow-desc;
+    }
   }
   th,
   td {

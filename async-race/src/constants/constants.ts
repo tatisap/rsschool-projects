@@ -28,6 +28,13 @@ export const BUTTON_TEXT = {
 };
 
 export const WINNERS_TABLE_COLUMN_NAMES = ['№', 'Car', 'Name', 'Wins', 'Best time (sec)'];
+export const WINNERS_TABLE_COLUMN_NAMES_CLASSES = [
+  'number',
+  'car-image',
+  'car-name',
+  'car-wins',
+  'car-time',
+];
 
 export const CAR_BRANDS = [
   'Acura',
