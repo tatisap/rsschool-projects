@@ -1,6 +1,7 @@
 import {
   createHandler,
   deleteHandler,
+  garagePaginationHandler,
   generateHandler,
   raceHandler,
   resetRaceHandler,
@@ -9,9 +10,11 @@ import {
   startHandler,
   stopHandler,
   updateHandler,
+  winnersPaginationHandler,
 } from '../handlers/handlers';
 import {
   BUTTON_TEXT,
+  MAX_WINNERS_PER_PAGE,
   NO_TEXT_CONTENT,
   WINNERS_TABLE_COLUMN_NAMES,
   WINNERS_TABLE_COLUMN_NAMES_CLASSES,
@@ -21,6 +24,7 @@ import {
   Action,
   Car,
   FormType,
+  Handler,
   Info,
   ListenerInfo,
   UIElementParameters,
@@ -28,6 +32,7 @@ import {
 } from '../types/types';
 import { createPageNumberText, createSectionTitleText } from '../utilities/ui-text-makers';
 import { openTabContent } from './open-tab-content';
+import store from '../store/store';
 
 export const createUIElement = <T extends HTMLElement>(parameters: UIElementParameters): T => {
   const { tag, classNames, innerText = NO_TEXT_CONTENT, listenerInfo, attributeInfo } = parameters;
@@ -93,12 +98,22 @@ export const createTabsPanel = (tabsText: string[]): HTMLElement =>
     listenerInfo: { eventName: 'click', callback: openTabContent },
   });
 
-export const createPagination = (): HTMLDivElement =>
-  createParentUIElement<HTMLDivElement>({
+export const createPagination = (
+  callback: Handler,
+  currentPage: number,
+  maxPage: number
+): HTMLDivElement => {
+  const previousButton = createActionButton('previous');
+  if (currentPage === Numbers.One) previousButton.setAttribute('disabled', 'true');
+  const nextButton = createActionButton('next');
+  if (currentPage === maxPage) nextButton.setAttribute('disabled', 'true');
+  return createParentUIElement<HTMLDivElement>({
     tag: 'div',
     classNames: ['pagination'],
-    children: [createActionButton('previous'), createActionButton('next')],
+    children: [previousButton, nextButton],
+    listenerInfo: { eventName: 'click', callback },
   });
+}
 
 const createForm = (formType: FormType, listenerInfo?: ListenerInfo): HTMLFormElement =>
   createParentUIElement<HTMLFormElement>({
@@ -162,7 +177,11 @@ const createGarageSectionHeader = (): HTMLDivElement =>
     ],
   });
 
-export const createGarageSection = (garageInfo: Info<Car>, pageNumber: number) =>
+export const createGarageSection = (
+  garageInfo: Info<Car>,
+  pageNumber: number,
+  maxPageNumber: number
+) =>
   createParentUIElement({
     tag: 'section',
     id: 'garage',
@@ -176,7 +195,7 @@ export const createGarageSection = (garageInfo: Info<Car>, pageNumber: number) =
       }),
       createUIElement({
         tag: 'div',
-        classNames: ['page-number'],
+        classNames: ['garage__page-number'],
         innerText: createPageNumberText(pageNumber),
       }),
       createParentUIElement({
@@ -184,7 +203,7 @@ export const createGarageSection = (garageInfo: Info<Car>, pageNumber: number) =
         classNames: ['cars-list'],
         children: garageInfo.content.map((carInfo) => createCarUIElement(carInfo)),
       }),
-      createPagination(),
+      createPagination(garagePaginationHandler, pageNumber, maxPageNumber),
     ],
   });
 
@@ -229,7 +248,9 @@ export const makeTableContent = (winnersCarInfo: (Winner & Car)[]): HTMLElement 
       createTableRow(
         'td',
         [
-          `${index + Numbers.One}`,
+          `${
+            index + Numbers.One + (store.winnersCurrentPage - Numbers.One) * MAX_WINNERS_PER_PAGE
+          }`,
           '',
           `${winnerInfo.name}`,
           `${winnerInfo.wins}`,
@@ -253,7 +274,8 @@ const createWinnersTable = (winnersCarInfo: (Winner & Car)[]): HTMLTableElement 
 export const createWinnersSection = (
   winnersCarInfo: (Winner & Car)[],
   totalAmount: string,
-  pageNumber: number
+  pageNumber: number,
+  maxPageNumber: number
 ) =>
   createParentUIElement({
     tag: 'section',
@@ -267,10 +289,10 @@ export const createWinnersSection = (
       }),
       createUIElement({
         tag: 'div',
-        classNames: ['page-number'],
+        classNames: ['winners__page-number'],
         innerText: createPageNumberText(pageNumber),
       }),
       createWinnersTable(winnersCarInfo),
-      createPagination(),
+      createPagination(winnersPaginationHandler, pageNumber, maxPageNumber),
     ],
   });

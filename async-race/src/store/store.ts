@@ -1,5 +1,5 @@
 import { Numbers } from '../types/enums';
-import { AnimationId, Car, Winner } from '../types/types';
+import { AnimationId, Car, SortKey, SortOrder, Winner } from '../types/types';
 
 export default {
   cars: [] as Car[],
@@ -9,4 +9,6 @@ export default {
   garageCurrentPage: Numbers.One,
   winnersCurrentPage: Numbers.One,
   animate: {} as { [id: string]: AnimationId },
+  sortKey: 'id' as SortKey,
+  sortOrder: 'ASC' as SortOrder,
 };

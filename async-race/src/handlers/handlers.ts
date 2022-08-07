@@ -1,5 +1,10 @@
 import API from '../api/api';
-import { MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE, NO_TEXT_CONTENT } from '../constants/constants';
+import {
+  GENERATOR_COUNTER,
+  MAX_CARS_PER_PAGE,
+  MAX_WINNERS_PER_PAGE,
+  NO_TEXT_CONTENT,
+} from '../constants/constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
 import {
@@ -8,14 +13,13 @@ import {
   Info,
   MoveParameters,
   RaceResult,
-  SortKey,
   SortOrder,
   Winner,
 } from '../types/types';
 import { createCarUIElement, makeTableContent } from '../ui/ui-components';
 import { animate, getDistanceBetweenTwoElements } from '../utilities/animation';
 import generateCar from '../utilities/generator';
-import { createSectionTitleText } from '../utilities/ui-text-makers';
+import { createPageNumberText, createSectionTitleText } from '../utilities/ui-text-makers';
 
 const getUserCarInput = (createForm: HTMLFormElement): Omit<Car, 'id'> => {
   return {
@@ -28,42 +32,67 @@ const cleanCarsList = (): void => {
   (document.querySelector('.cars-list') as HTMLUListElement).innerHTML = NO_TEXT_CONTENT;
 };
 
+const updatePaginationDisabledStatus = (
+  paginationContainer: HTMLDivElement,
+  currentPage: number,
+  maxPage: number
+): void => {
+  const previousButton = paginationContainer.querySelector('.previous-button') as HTMLButtonElement;
+  const nextButton = paginationContainer.querySelector('.next-button') as HTMLButtonElement;
+  [previousButton, nextButton].forEach((button: HTMLButtonElement): void =>
+    button.removeAttribute('disabled')
+  );
+  if (currentPage <= Numbers.One) previousButton.setAttribute('disabled', 'true');
+  if (currentPage >= maxPage) nextButton.setAttribute('disabled', 'true');
+};
+
 const updateGarageSection = async (): Promise<void> => {
   const carsInfo: Info<Car> = await API.getCars({
     _page: store.garageCurrentPage,
     _limit: MAX_CARS_PER_PAGE,
   });
   [store.cars, store.carsAmount] = [carsInfo.content, Number(carsInfo.totalAmount)];
+  const section: HTMLElement = document.getElementById('garage') as HTMLElement;
   (document.querySelector('.garage__title') as HTMLHeadingElement).textContent =
     createSectionTitleText('GARAGE', carsInfo.totalAmount);
+  (document.querySelector('.garage__page-number') as HTMLHeadingElement).textContent =
+    createPageNumberText(store.garageCurrentPage);
   (document.querySelector('.cars-list') as HTMLUListElement).append(
     ...carsInfo.content.map(createCarUIElement)
   );
+  updatePaginationDisabledStatus(
+    section.querySelector('.pagination') as HTMLDivElement,
+    store.garageCurrentPage,
+    Math.ceil(store.carsAmount / MAX_CARS_PER_PAGE)
+  );
 };
 
-const updateWinnersSection = async (sortKey: SortKey, sortOrder: SortOrder): Promise<void> => {
-  const carsInfo: Info<Car> = await API.getCars({
-    _page: store.garageCurrentPage,
-    _limit: MAX_CARS_PER_PAGE,
-  });
+const updateWinnersSection = async (): Promise<void> => {
   const winnersInfo: Info<Winner> = await API.getWinners({
     _page: store.winnersCurrentPage,
     _limit: MAX_WINNERS_PER_PAGE,
-    _sort: sortKey,
-    _order: sortOrder,
+    _sort: store.sortKey,
+    _order: store.sortOrder,
   });
-  const winnersCarInfo: (Winner & Car)[] = winnersInfo.content.map((info) => {
-    return Object.assign(
-      info,
-      carsInfo.content.find((car) => car.id === info.id)
-    );
-  });
+  const winnersCarInfo: (Winner & Car)[] = await Promise.all(
+    winnersInfo.content.map(async (winner: Winner): Promise<Winner & Car> => {
+      return Object.assign(winner, (await API.getCarById(String(winner.id))) as Car);
+    })
+  );
   [store.winners, store.winnersAmount] = [winnersInfo.content, Number(winnersInfo.totalAmount)];
+  const section: HTMLElement = document.getElementById('winners') as HTMLElement;
   (document.querySelector('.winners__title') as HTMLHeadingElement).textContent =
     createSectionTitleText('WINNERS', winnersInfo.totalAmount);
+  (document.querySelector('.winners__page-number') as HTMLHeadingElement).textContent =
+    createPageNumberText(store.winnersCurrentPage);
   const winnerTable: HTMLTableElement = document.querySelector('.winners-list') as HTMLTableElement;
   winnerTable.lastChild?.remove();
   winnerTable.append(makeTableContent(winnersCarInfo));
+  updatePaginationDisabledStatus(
+    section.querySelector('.pagination') as HTMLDivElement,
+    store.winnersCurrentPage,
+    Math.ceil(store.winnersAmount / MAX_WINNERS_PER_PAGE)
+  );
 };
 
 export const createHandler = async (event: Event): Promise<void> => {
@@ -100,7 +129,7 @@ export const deleteHandler = async (event: Event): Promise<void> => {
   await API.deleteWinner(id);
   cleanCarsList();
   await updateGarageSection();
-  await updateWinnersSection('id', 'ASC');
+  await updateWinnersSection();
 };
 
 const startCar = async (carElement: HTMLLIElement): Promise<RaceResult> => {
@@ -139,7 +168,11 @@ export const stopHandler = async (event: Event): Promise<void> => {
 };
 
 export const generateHandler = async (): Promise<void> => {
-  await API.createCar(generateCar());
+  await Promise.all(
+    new Array(GENERATOR_COUNTER)
+      .fill(generateCar)
+      .map((generator: () => Car) => API.createCar(generator()))
+  );
   cleanCarsList();
   await updateGarageSection();
 };
@@ -186,7 +219,7 @@ export const raceHandler = async (): Promise<void> => {
   } else {
     await API.createWinner({ id: Number(winnerId), wins: Numbers.One, time: winnerTime });
   }
-  await updateWinnersSection('id', 'ASC');
+  await updateWinnersSection();
 };
 
 export const resetRaceHandler = (): void => {
@@ -199,6 +232,10 @@ export const resetRaceHandler = (): void => {
 
 export const sortTableHandler = async (event: Event): Promise<void> => {
   const tableHeadCell: HTMLTableCellElement = event.target as HTMLTableCellElement;
+  if (
+    !(tableHeadCell.classList.contains('car-wins') || tableHeadCell.classList.contains('car-time'))
+  )
+    return;
   const sortOrder: SortOrder = tableHeadCell.dataset.order === 'ASC' ? 'DESC' : 'ASC';
   tableHeadCell.dataset.order = sortOrder;
   (document.querySelectorAll('th') as NodeListOf<HTMLTableCellElement>).forEach(
@@ -206,8 +243,46 @@ export const sortTableHandler = async (event: Event): Promise<void> => {
   );
   tableHeadCell.classList.add(sortOrder === 'ASC' ? 'ascending' : 'descending');
   if (tableHeadCell.classList.contains('car-wins')) {
-    await updateWinnersSection('wins', sortOrder);
+    store.sortKey = 'wins';
+    store.sortOrder = sortOrder;
   } else if (tableHeadCell.classList.contains('car-time')) {
-    await updateWinnersSection('time', sortOrder);
+    store.sortKey = 'time';
+    store.sortOrder = sortOrder;
   }
+  await updateWinnersSection();
+};
+
+export const garagePaginationHandler = async (event: Event): Promise<void> => {
+  const target: HTMLElement = event.target as HTMLElement;
+  if (!(target instanceof HTMLButtonElement)) return;
+  if (target.classList.contains('next-button')) {
+    store.garageCurrentPage += Numbers.One;
+  }
+  if (target.classList.contains('previous-button')) {
+    store.garageCurrentPage -= Numbers.One;
+  }
+  cleanCarsList();
+  await updateGarageSection();
+  updatePaginationDisabledStatus(
+    target.closest('.pagination') as HTMLDivElement,
+    store.garageCurrentPage,
+    Math.ceil(store.carsAmount / MAX_CARS_PER_PAGE)
+  );
+};
+
+export const winnersPaginationHandler = async (event: Event): Promise<void> => {
+  const target: HTMLElement = event.target as HTMLElement;
+  if (!(target instanceof HTMLButtonElement)) return;
+  if (target.classList.contains('next-button')) {
+    store.winnersCurrentPage += Numbers.One;
+  }
+  if (target.classList.contains('previous-button')) {
+    store.winnersCurrentPage -= Numbers.One;
+  }
+  await updateWinnersSection();
+  updatePaginationDisabledStatus(
+    target.closest('.pagination') as HTMLDivElement,
+    store.winnersCurrentPage,
+    Math.ceil(store.winnersAmount / MAX_WINNERS_PER_PAGE)
+  );
 };
