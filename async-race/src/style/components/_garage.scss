@@ -31,7 +31,7 @@
     border-bottom: $dark-grey 2px dashed;
     background-image: $flag;
     background-repeat: no-repeat;
-    background-position: bottom 0px right 100px;
+    background-position: bottom 0 right 100px;
     background-size: contain;
     .car__image {
       @extend %car;

@@ -19,6 +19,10 @@
       @extend %arrow;
       background-image: $arrow-desc;
     }
+    &.car-wins,
+    &.car-time {
+      cursor: pointer;
+    }
   }
   th,
   td {
