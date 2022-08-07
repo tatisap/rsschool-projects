@@ -63,6 +63,23 @@ export const CAR_BRANDS = [
   'Volvo',
 ];
 
+export const CAR_MODELS = [
+  'X5',
+  'Cayenne',
+  'Polo',
+  'CX-5',
+  'Passat',
+  'Ulysse',
+  'Panamera',
+  'Zafira',
+  'Vito',
+  'Meteor',
+  'Escalade',
+  'Accent',
+  'Rio',
+  'Impreza',
+];
+
 export const HASH_SYMBOL = '#';
 export const HEXADECIMAL_BASE = 16;
 
