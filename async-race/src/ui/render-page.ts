@@ -12,7 +12,6 @@ export default async ([cars, winners]: [Info<Car>, Info<Winner>]): Promise<void>
   );
   const main = document.createElement('main');
   main.append(
-    createTabsPanel([BUTTON_TEXT.garage, BUTTON_TEXT.winners]),
     createGarageSection(
       cars,
       store.garageCurrentPage,
@@ -25,5 +24,6 @@ export default async ([cars, winners]: [Info<Car>, Info<Winner>]): Promise<void>
       Math.ceil(store.winnersAmount / MAX_WINNERS_PER_PAGE)
     )
   );
-  document.body.append(main);
+  const tabsPanel = createTabsPanel([BUTTON_TEXT.garage, BUTTON_TEXT.winners]);
+  document.body.append(tabsPanel, main);
 };
