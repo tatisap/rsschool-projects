@@ -1,5 +1,6 @@
 import { BASE_URL, ENDPOINTS } from '../constants/constants';
 import { HttpMethods, StatusCode } from '../types/enums';
+import { makeUrl } from '../utilities/url-maker';
 import {
   Car,
   Winner,
@@ -9,11 +10,10 @@ import {
   MoveParameters,
   FinishResult,
 } from '../types/types';
-import { makeUrl } from '../utilities/url-maker';
 
 const getDatabaseItems = <T>(endpoint: string) => {
   return async (queryParameters: QueryParameters): Promise<Info<T>> => {
-    const response = await fetch(makeUrl(BASE_URL, endpoint, undefined, queryParameters));
+    const response: Response = await fetch(makeUrl(BASE_URL, endpoint, undefined, queryParameters));
     return {
       content: await response.json(),
       totalAmount: response.headers.get('X-Total-Count') as string,
@@ -81,10 +81,10 @@ const switchEngineToDriveMode = async (id: number): Promise<FinishResult> => {
   return response.status === StatusCode.Ok ? response.json() : { success: false };
 };
 
-const isDatabaseItemExist = (endpoint: string) => {
+const isDatabaseItemExist = <T extends Car | Winner>(endpoint: string) => {
   return async (id: string): Promise<boolean> => {
-    const response = await fetch(makeUrl(BASE_URL, endpoint, id));
-    return response.status === StatusCode.Ok;
+    const itemsList: T[] = await (await fetch(makeUrl(BASE_URL, endpoint))).json();
+    return !!itemsList.find((item: T): boolean => item.id === Number(id));
   };
 };
 
@@ -102,6 +102,6 @@ export default {
   startEngine: changeEngineMode<MoveParameters>('started'),
   stopEngine: changeEngineMode<MoveParameters>('stopped'),
   switchEngineToDriveMode,
-  isCarExist: isDatabaseItemExist(ENDPOINTS.garage),
-  isWinnerExist: isDatabaseItemExist(ENDPOINTS.winners),
+  isCarExist: isDatabaseItemExist<Car>(ENDPOINTS.garage),
+  isWinnerExist: isDatabaseItemExist<Winner>(ENDPOINTS.winners),
 };
