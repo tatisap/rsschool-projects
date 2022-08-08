@@ -17,8 +17,14 @@ body {
 }
 
 .section {
+  position: absolute;
   width: 100%;
   padding: 20px;
+  opacity: 0;
+  &.section_visible {
+    z-index: 10;
+    opacity: 1;
+  }
   .button {
     @extend %normalized-button;
     @extend %interactive;

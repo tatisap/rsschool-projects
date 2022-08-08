@@ -8,11 +8,12 @@ export const openTabContent = (event: Event): void => {
   (document.querySelectorAll('section') as NodeListOf<HTMLElement>).forEach(
     (tabContent: HTMLElement) => {
       const content: HTMLElement = tabContent;
-      content.style.display = 'none';
+      content.classList.remove('section_visible');
     }
   );
-  (document.getElementById(tab.textContent?.toLowerCase() as string) as HTMLElement).style.display =
-    'block';
+  (document.getElementById(tab.textContent?.toLowerCase() as string) as HTMLElement).classList.add(
+    'section_visible'
+  );
 };
 
 export const open = (): void => undefined;
