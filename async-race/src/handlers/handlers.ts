@@ -5,6 +5,7 @@ import {
   MAX_CARS_PER_PAGE,
   MAX_WINNERS_PER_PAGE,
   NO_CONTENT,
+  SORT_KEY,
   SORT_ORDER,
   TEXT_MESSAGE_CONTENT,
 } from '../constants/others-constants';
@@ -180,10 +181,10 @@ export const sortTableHandler = async (event: Event): Promise<void> => {
   );
   tableHeadCell.classList.add(sortOrder === SORT_ORDER.ascending ? 'ascending' : 'descending');
   if (tableHeadCell.classList.contains('car-wins')) {
-    store.sortKey = 'wins';
+    store.sortKey = SORT_KEY.wins;
     store.sortOrder = sortOrder;
   } else if (tableHeadCell.classList.contains('car-time')) {
-    store.sortKey = 'time';
+    store.sortKey = SORT_KEY.time;
     store.sortOrder = sortOrder;
   }
   await updateWinnersSection();

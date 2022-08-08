@@ -1,4 +1,4 @@
-import { TEXT_INPUT_PLACEHOLDERS } from '../../constants/others-constants';
+import { FORM_TYPE, TEXT_INPUT_PLACEHOLDERS } from '../../constants/others-constants';
 import { FormType, ListenerInfo } from '../../types/types';
 import createActionButton from './create-action-button';
 import { createParentUIElement } from './create-general-element';
@@ -13,7 +13,7 @@ export default (formType: FormType, listenerInfo?: ListenerInfo): HTMLFormElemen
         'text',
         'form__text-input',
         'text',
-        formType === 'create'
+        formType === FORM_TYPE.create
           ? TEXT_INPUT_PLACEHOLDERS.createForm
           : TEXT_INPUT_PLACEHOLDERS.updateForm
       ),

@@ -1,4 +1,4 @@
-import { SortOrder } from '../types/types';
+import { EngineStatus, FormType, SortKey, SortOrder } from '../types/types';
 
 export const ENDPOINTS = {
   garage: 'garage',
@@ -16,6 +16,12 @@ export const SEPARATOR = {
   query: '&',
 };
 
+export const ENGINE_STATUS: { [K in EngineStatus]: EngineStatus } = {
+  stopped: 'stopped',
+  drive: 'drive',
+  started: 'started',
+};
+
 export const TEXT_MESSAGE_CONTENT = {
   raceInProgress: 'Race in progress. Wait for the end of the race and click "RESET"',
   showWinner: 'The winner is',
@@ -28,9 +34,20 @@ export const SORT_ORDER = {
   descending: 'DESC' as SortOrder,
 };
 
+export const SORT_KEY: { [K in SortKey]: SortKey } = {
+  id: 'id',
+  wins: 'wins',
+  time: 'time',
+};
+
 export const SECTION_TITLE_TEXT = {
   garage: 'GARAGE',
   winners: 'WINNERS',
+};
+
+export const FORM_TYPE: { [K in FormType]: FormType } = {
+  create: 'create',
+  update: 'update',
 };
 
 export const TEXT_INPUT_PLACEHOLDERS = {
@@ -58,3 +75,4 @@ export const MSEC_PER_SEC = 1000;
 export const MAX_CARS_PER_PAGE = 7;
 export const MAX_WINNERS_PER_PAGE = 10;
 export const PAGE_NUMBER_TEXT = 'Page #';
+export const SERVER_CONTENT_TYPE = 'application/json';

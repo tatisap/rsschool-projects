@@ -1,4 +1,10 @@
-import { BASE_URL, ENDPOINTS, HEADERS } from '../constants/others-constants';
+import {
+  BASE_URL,
+  ENDPOINTS,
+  ENGINE_STATUS,
+  HEADERS,
+  SERVER_CONTENT_TYPE,
+} from '../constants/others-constants';
 import { HttpMethods, StatusCode } from '../types/enums';
 import { makeUrl } from '../utilities/url-maker';
 import {
@@ -33,7 +39,7 @@ const createDatabaseItem = <T>(endpoint: string) => {
       await fetch(makeUrl(BASE_URL, endpoint), {
         method: HttpMethods.POST,
         headers: {
-          [HEADERS.contentType]: 'application/json',
+          [HEADERS.contentType]: SERVER_CONTENT_TYPE,
         },
         body: JSON.stringify(itemInfo),
       })
@@ -53,7 +59,7 @@ const updateDatabaseItem = <T>(endpoint: string) => {
       await fetch(makeUrl(BASE_URL, endpoint, id), {
         method: HttpMethods.PUT,
         headers: {
-          [HEADERS.contentType]: 'application/json',
+          [HEADERS.contentType]: SERVER_CONTENT_TYPE,
         },
         body: JSON.stringify(info),
       })
@@ -73,7 +79,7 @@ const changeEngineMode = <T>(status: EngineStatus) => {
 
 const switchEngineToDriveMode = async (id: number): Promise<FinishResult> => {
   const response = await fetch(
-    makeUrl(BASE_URL, ENDPOINTS.engine, undefined, { id, status: 'drive' }),
+    makeUrl(BASE_URL, ENDPOINTS.engine, undefined, { id, status: ENGINE_STATUS.drive }),
     {
       method: HttpMethods.PATCH,
     }
@@ -99,8 +105,8 @@ export default {
   deleteWinner: deleteDatabaseItem<Winner>(ENDPOINTS.winners),
   updateCar: updateDatabaseItem<Car>(ENDPOINTS.garage),
   updateWinner: updateDatabaseItem<Winner>(ENDPOINTS.winners),
-  startEngine: changeEngineMode<MoveParameters>('started'),
-  stopEngine: changeEngineMode<MoveParameters>('stopped'),
+  startEngine: changeEngineMode<MoveParameters>(ENGINE_STATUS.started),
+  stopEngine: changeEngineMode<MoveParameters>(ENGINE_STATUS.stopped),
   switchEngineToDriveMode,
   isCarExist: isDatabaseItemExist<Car>(ENDPOINTS.garage),
   isWinnerExist: isDatabaseItemExist<Winner>(ENDPOINTS.winners),

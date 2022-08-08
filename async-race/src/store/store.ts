@@ -1,5 +1,6 @@
+import { SORT_KEY, SORT_ORDER } from '../constants/others-constants';
 import { Numbers } from '../types/enums';
-import { IStore } from '../types/types';
+import { Store } from '../types/types';
 
 export default {
   cars: [],
@@ -9,7 +10,7 @@ export default {
   garageCurrentPage: Numbers.One,
   winnersCurrentPage: Numbers.One,
   animate: {},
-  sortKey: 'id',
-  sortOrder: 'ASC',
+  sortKey: SORT_KEY.id,
+  sortOrder: SORT_ORDER.ascending,
   isRaceStarted: false,
-} as IStore;
+} as Store;

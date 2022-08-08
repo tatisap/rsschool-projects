@@ -82,7 +82,7 @@ export interface RaceResult {
   time?: number;
 }
 
-export interface IStore {
+export interface Store {
   cars: Car[];
   winners: Winner[];
   carsAmount: number;
