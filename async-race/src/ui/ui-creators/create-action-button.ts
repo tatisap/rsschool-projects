@@ -1,4 +1,4 @@
-import { BUTTON_TEXT } from '../../constants/constants';
+import BUTTON_TEXT from '../../constants/button-text';
 import { Action, ListenerInfo } from '../../types/types';
 import { createUIElement } from './create-general-element';
 

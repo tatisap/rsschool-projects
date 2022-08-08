@@ -7,7 +7,7 @@ import {
   NO_CONTENT,
   SORT_ORDER,
   TEXT_MESSAGE_CONTENT,
-} from '../constants/constants';
+} from '../constants/others-constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
 import { Car, RaceResult, SortOrder } from '../types/types';

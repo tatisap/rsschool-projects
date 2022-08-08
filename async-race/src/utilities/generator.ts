@@ -1,4 +1,6 @@
-import { CAR_BRANDS, CAR_MODELS, HASH_SYMBOL, HEXADECIMAL_BASE } from '../constants/constants';
+import { HASH_SYMBOL, HEXADECIMAL_BASE } from '../constants/others-constants';
+import CAR_BRANDS from '../constants/car-brands';
+import CAR_MODELS from '../constants/car-models';
 import { Numbers } from '../types/enums';
 import { Car } from '../types/types';
 

@@ -1,4 +1,4 @@
-import { NO_CONTENT } from '../../constants/constants';
+import { NO_CONTENT } from '../../constants/others-constants';
 import { Numbers } from '../../types/enums';
 import { UIElementParameters } from '../../types/types';
 

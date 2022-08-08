@@ -1,4 +1,4 @@
-import { NO_CONTENT } from '../../constants/constants';
+import { NO_CONTENT } from '../../constants/others-constants';
 
 export default (
   type: string,

@@ -1,5 +1,6 @@
 import API from '../../api/api';
-import { BUTTON_TEXT, MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE } from '../../constants/constants';
+import { MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE } from '../../constants/others-constants';
+import BUTTON_TEXT from '../../constants/button-text';
 import store from '../../store/store';
 import { Car, Info, Winner } from '../../types/types';
 import createGarageSection from '../ui-creators/create-garage-section';

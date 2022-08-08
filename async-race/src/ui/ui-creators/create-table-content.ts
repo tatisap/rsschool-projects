@@ -1,4 +1,4 @@
-import { MAX_WINNERS_PER_PAGE } from '../../constants/constants';
+import { MAX_WINNERS_PER_PAGE } from '../../constants/others-constants';
 import store from '../../store/store';
 import { Numbers } from '../../types/enums';
 import { Car, Winner } from '../../types/types';

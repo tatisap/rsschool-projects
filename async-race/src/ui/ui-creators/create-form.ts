@@ -1,4 +1,4 @@
-import { TEXT_INPUT_PLACEHOLDERS } from '../../constants/constants';
+import { TEXT_INPUT_PLACEHOLDERS } from '../../constants/others-constants';
 import { FormType, ListenerInfo } from '../../types/types';
 import createActionButton from './create-action-button';
 import { createParentUIElement } from './create-general-element';

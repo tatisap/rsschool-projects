@@ -2,7 +2,7 @@ import {
   NO_CONTENT,
   WINNERS_TABLE_COLUMN_NAMES,
   WINNERS_TABLE_COLUMN_NAMES_CLASSES,
-} from '../../constants/constants';
+} from '../../constants/others-constants';
 import * as handlers from '../../handlers/handlers';
 import createTableRow from './create-table-row';
 

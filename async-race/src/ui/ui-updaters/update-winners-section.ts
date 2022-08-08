@@ -1,5 +1,5 @@
 import API from '../../api/api';
-import { MAX_WINNERS_PER_PAGE, SECTION_TITLE_TEXT } from '../../constants/constants';
+import { MAX_WINNERS_PER_PAGE, SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import store from '../../store/store';
 import { Car, Info, Winner } from '../../types/types';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';

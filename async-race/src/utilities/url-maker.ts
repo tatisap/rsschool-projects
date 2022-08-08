@@ -1,4 +1,4 @@
-import { SEPARATOR } from '../constants/constants';
+import { SEPARATOR } from '../constants/others-constants';
 import { Numbers } from '../types/enums';
 import { QueryParameters } from '../types/types';
 

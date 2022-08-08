@@ -1,0 +1,15 @@
+export default {
+  garage: 'GARAGE',
+  winners: 'WINNERS',
+  create: 'CREATE',
+  update: 'UPDATE',
+  race: 'RACE',
+  reset: 'RESET',
+  generate: 'GENERATE CARS',
+  select: 'SELECT',
+  remove: 'REMOVE',
+  start: 'START',
+  stop: 'STOP',
+  previous: 'PREVIOUS',
+  next: 'NEXT',
+};

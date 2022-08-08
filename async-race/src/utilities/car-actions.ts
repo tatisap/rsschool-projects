@@ -1,5 +1,5 @@
 import API from '../api/api';
-import { MSEC_PER_SEC, NO_CONTENT } from '../constants/constants';
+import { MSEC_PER_SEC, NO_CONTENT } from '../constants/others-constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
 import { AnimationId, MoveParameters, RaceResult } from '../types/types';

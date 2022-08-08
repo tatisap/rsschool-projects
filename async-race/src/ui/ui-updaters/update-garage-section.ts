@@ -1,5 +1,5 @@
 import API from '../../api/api';
-import { MAX_CARS_PER_PAGE, SECTION_TITLE_TEXT } from '../../constants/constants';
+import { MAX_CARS_PER_PAGE, SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import store from '../../store/store';
 import { Car, Info } from '../../types/types';
 import createCarUiElement from '../ui-creators/create-car-ui-element';

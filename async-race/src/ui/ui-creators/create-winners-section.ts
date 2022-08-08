@@ -1,5 +1,5 @@
 import * as handlers from '../../handlers/handlers';
-import { SECTION_TITLE_TEXT } from '../../constants/constants';
+import { SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import { Car, Winner } from '../../types/types';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';
 import createTableHead from './create-table-head';

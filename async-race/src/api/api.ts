@@ -1,4 +1,4 @@
-import { BASE_URL, ENDPOINTS, HEADERS } from '../constants/constants';
+import { BASE_URL, ENDPOINTS, HEADERS } from '../constants/others-constants';
 import { HttpMethods, StatusCode } from '../types/enums';
 import { makeUrl } from '../utilities/url-maker';
 import {

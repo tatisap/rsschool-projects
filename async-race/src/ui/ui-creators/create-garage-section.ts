@@ -4,7 +4,7 @@ import createForm from './create-form';
 import createActionButton from './create-action-button';
 import { Car, Info } from '../../types/types';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';
-import { SECTION_TITLE_TEXT } from '../../constants/constants';
+import { SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import createCarUIElement from './create-car-ui-element';
 import createPagination from './create-pagination';
 

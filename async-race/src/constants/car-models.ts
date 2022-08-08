@@ -1,0 +1,16 @@
+export default [
+  'X5',
+  'Cayenne',
+  'Polo',
+  'CX-5',
+  'Passat',
+  'Ulysse',
+  'Panamera',
+  'Zafira',
+  'Vito',
+  'Meteor',
+  'Escalade',
+  'Accent',
+  'Rio',
+  'Impreza',
+];

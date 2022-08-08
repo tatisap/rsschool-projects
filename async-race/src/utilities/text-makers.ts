@@ -1,4 +1,4 @@
-import { PAGE_NUMBER_TEXT } from '../constants/constants';
+import { PAGE_NUMBER_TEXT } from '../constants/others-constants';
 
 export const createSectionTitleText = (text: string, totalAmount: string): string =>
   `${text}(${totalAmount})`;
