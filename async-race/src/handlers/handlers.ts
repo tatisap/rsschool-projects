@@ -3,31 +3,22 @@ import {
   GENERATOR_COUNTER,
   MAX_CARS_PER_PAGE,
   MAX_WINNERS_PER_PAGE,
-  NO_TEXT_CONTENT,
+  NO_CONTENT,
   TEXT_MESSAGE_CONTENT,
 } from '../constants/constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
-import { AnimationId, Car, MoveParameters, RaceResult, SortOrder } from '../types/types';
+import { Car, RaceResult, SortOrder } from '../types/types';
 import textMessage from '../ui/text-message';
-import { animate, getDistanceBetweenTwoElements } from '../utilities/animation';
 import generateCar from '../utilities/generator';
 import {
   updateGarageSection,
   updateWinnersSection,
   updatePaginationDisabledStatus,
 } from '../ui/update-ui-components';
-
-const getUserCarInput = (createForm: HTMLFormElement): Omit<Car, 'id'> => {
-  return {
-    name: createForm.text.value,
-    color: createForm.color.value,
-  };
-};
-
-const cleanCarsList = (): void => {
-  (document.querySelector('.cars-list') as HTMLUListElement).innerHTML = NO_TEXT_CONTENT;
-};
+import { race, startCar } from '../utilities/car-actions';
+import cleanCarsList from '../ui/clean-cars-list';
+import getUserInput from '../utilities/get-user-input';
 
 export const createHandler = async (event: Event): Promise<void> => {
   event.preventDefault();
@@ -36,11 +27,11 @@ export const createHandler = async (event: Event): Promise<void> => {
     return;
   }
   const createForm: HTMLFormElement = event.target as HTMLFormElement;
-  if (createForm.text.value.trim() === NO_TEXT_CONTENT) {
+  if (createForm.text.value.trim() === NO_CONTENT) {
     textMessage.open(TEXT_MESSAGE_CONTENT.noInput);
     return;
   }
-  await API.createCar(getUserCarInput(createForm));
+  await API.createCar(getUserInput(createForm));
   createForm.reset();
   cleanCarsList();
   await updateGarageSection();
@@ -57,14 +48,14 @@ export const updateHandler = async (event: Event): Promise<void> => {
     textMessage.open(TEXT_MESSAGE_CONTENT.noSelectedCar);
     return;
   }
-  await API.updateCar(updateForm.dataset.currentId as string, getUserCarInput(updateForm));
+  await API.updateCar(updateForm.dataset.currentId as string, getUserInput(updateForm));
   updateForm.reset();
   updateForm.removeAttribute('data-current-id');
   cleanCarsList();
   await updateGarageSection();
 };
 
-export const selectCar = async (event: Event): Promise<void> => {
+export const selectHandler = async (event: Event): Promise<void> => {
   if (store.isRaceStarted) {
     textMessage.open(TEXT_MESSAGE_CONTENT.raceInProgress);
     return;
@@ -91,25 +82,6 @@ export const deleteHandler = async (event: Event): Promise<void> => {
   await updateWinnersSection();
 };
 
-const startCar = async (carElement: HTMLLIElement): Promise<RaceResult> => {
-  const car: HTMLLIElement = carElement;
-  (car.querySelector('.start-button') as HTMLButtonElement).setAttribute('disabled', 'true');
-  const startPoint: HTMLDivElement = car.querySelector('.car__start-point') as HTMLDivElement;
-  const finishPoint: HTMLDivElement = car.querySelector('.car__finish-point') as HTMLDivElement;
-  const moveParameters: MoveParameters = await API.startEngine(Number(car.id));
-  (car.querySelector('.stop-button') as HTMLButtonElement).removeAttribute('disabled');
-  const time: number = moveParameters.distance / moveParameters.velocity;
-  const distance: number = getDistanceBetweenTwoElements(startPoint, finishPoint);
-  const id: AnimationId = animate(startPoint, distance, time);
-  store.animate[car.id] = id;
-  const { success } = await API.switchEngineToDriveMode(Number(car.id));
-  if (!success) {
-    window.cancelAnimationFrame(id.value);
-    return { success, id: car.id };
-  }
-  return { success, id: car.id, time: +(time / 1000).toFixed(Numbers.Three) };
-};
-
 export const startHandler = async (event: Event): Promise<void> => {
   const car: HTMLLIElement = (event.target as HTMLButtonElement).closest('.car') as HTMLLIElement;
   await startCar(car);
@@ -122,7 +94,7 @@ export const stopHandler = async (event: Event): Promise<void> => {
   const carImage: HTMLDivElement = car.querySelector('.car__image') as HTMLDivElement;
   await API.stopEngine(Number(car.id));
   window.cancelAnimationFrame(store.animate[car.id].value);
-  carImage.style.transform = NO_TEXT_CONTENT;
+  carImage.style.transform = NO_CONTENT;
   (car.querySelector('.start-button') as HTMLButtonElement).removeAttribute('disabled');
 };
 
@@ -138,23 +110,6 @@ export const generateHandler = async (): Promise<void> => {
   );
   cleanCarsList();
   await updateGarageSection();
-};
-
-export const race = async (
-  carsPromises: Promise<RaceResult>[],
-  ids: string[]
-): Promise<RaceResult> => {
-  const firstResult: RaceResult = await Promise.race(carsPromises);
-  if (!firstResult.success) {
-    const restCarsPromises = carsPromises.filter(
-      (promise: Promise<RaceResult>, index: number): boolean => ids[index] !== firstResult.id
-    );
-    return race(
-      restCarsPromises,
-      ids.filter((id: string): boolean => id !== firstResult.id)
-    );
-  }
-  return firstResult;
 };
 
 export const raceHandler = async (): Promise<void> => {

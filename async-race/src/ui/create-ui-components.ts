@@ -5,7 +5,7 @@ import {
   generateHandler,
   raceHandler,
   resetRaceHandler,
-  selectCar,
+  selectHandler,
   sortTableHandler,
   startHandler,
   stopHandler,
@@ -15,7 +15,7 @@ import {
 import {
   BUTTON_TEXT,
   MAX_WINNERS_PER_PAGE,
-  NO_TEXT_CONTENT,
+  NO_CONTENT,
   WINNERS_TABLE_COLUMN_NAMES,
   WINNERS_TABLE_COLUMN_NAMES_CLASSES,
 } from '../constants/constants';
@@ -35,7 +35,7 @@ import openTabContent from './open-tab-content';
 import store from '../store/store';
 
 export const createUIElement = <T extends HTMLElement>(parameters: UIElementParameters): T => {
-  const { tag, classNames, innerText = NO_TEXT_CONTENT, listenerInfo, attributeInfo } = parameters;
+  const { tag, classNames, innerText = NO_CONTENT, listenerInfo, attributeInfo } = parameters;
   const element = document.createElement(tag) as T;
   element.classList.add(...classNames);
   element.textContent = innerText;
@@ -62,7 +62,7 @@ export const createInput = (
   type: string,
   className: string,
   name: string,
-  placeholder: string = NO_TEXT_CONTENT
+  placeholder: string = NO_CONTENT
 ): HTMLInputElement => {
   const input = document.createElement('input');
   input.type = type;
@@ -143,7 +143,7 @@ const createCarControlButtons = (): HTMLDivElement =>
     tag: 'div',
     classNames: ['control-buttons'],
     children: [
-      createActionButton('select', { eventName: 'click', callback: selectCar }),
+      createActionButton('select', { eventName: 'click', callback: selectHandler }),
       createActionButton('remove', { eventName: 'click', callback: deleteHandler }),
       createActionButton('start', { eventName: 'click', callback: startHandler }),
       createActionButton('stop', { eventName: 'click', callback: stopHandler }, [
@@ -242,12 +242,7 @@ export const makeTableHead = (): HTMLElement => {
   thead.classList.add('table__head', 'head');
   thead.addEventListener('click', sortTableHandler);
   thead.append(
-    createTableRow(
-      'th',
-      WINNERS_TABLE_COLUMN_NAMES,
-      NO_TEXT_CONTENT,
-      WINNERS_TABLE_COLUMN_NAMES_CLASSES
-    )
+    createTableRow('th', WINNERS_TABLE_COLUMN_NAMES, NO_CONTENT, WINNERS_TABLE_COLUMN_NAMES_CLASSES)
   );
   return thead;
 };

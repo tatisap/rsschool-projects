@@ -88,7 +88,8 @@ export const HASH_SYMBOL = '#';
 export const HEXADECIMAL_BASE = 16;
 
 export const GENERATOR_COUNTER = 100;
-export const NO_TEXT_CONTENT = '';
+export const NO_CONTENT = '';
+export const MSEC_PER_SEC = 1000;
 
 export const TEXT_MESSAGE_CONTENT = {
   raceInProgress: 'Race in progress. Wait for the end of the race and click "RESET"',
