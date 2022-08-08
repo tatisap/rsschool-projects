@@ -5,3 +5,6 @@ export const createSectionTitleText = (text: string, totalAmount: string): strin
 
 export const createPageNumberText = (currentPageNumber: number): string =>
   `${PAGE_NUMBER_TEXT}${currentPageNumber}`;
+
+export const createTranslateValueText = (translateValue: number): string =>
+  `translateX(${translateValue}px)`;

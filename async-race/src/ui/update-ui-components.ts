@@ -1,18 +1,26 @@
 import API from '../api/api';
-import { MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE } from '../constants/constants';
+import {
+  MAX_CARS_PER_PAGE,
+  MAX_WINNERS_PER_PAGE,
+  SECTION_TITLE_TEXT,
+} from '../constants/constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
 import { Car, Info, Winner } from '../types/types';
 import { createCarUIElement, makeTableContent } from './create-ui-components';
-import { createPageNumberText, createSectionTitleText } from '../utilities/ui-text-makers';
+import { createPageNumberText, createSectionTitleText } from '../utilities/text-makers';
 
 export const updatePaginationDisabledStatus = (
   paginationContainer: HTMLDivElement,
   currentPage: number,
   maxPage: number
 ): void => {
-  const previousButton = paginationContainer.querySelector('.previous-button') as HTMLButtonElement;
-  const nextButton = paginationContainer.querySelector('.next-button') as HTMLButtonElement;
+  const previousButton: HTMLButtonElement = paginationContainer.querySelector(
+    '.previous-button'
+  ) as HTMLButtonElement;
+  const nextButton: HTMLButtonElement = paginationContainer.querySelector(
+    '.next-button'
+  ) as HTMLButtonElement;
   [previousButton, nextButton].forEach((button: HTMLButtonElement): void =>
     button.removeAttribute('disabled')
   );
@@ -28,7 +36,7 @@ export const updateGarageSection = async (): Promise<void> => {
   [store.cars, store.carsAmount] = [carsInfo.content, Number(carsInfo.totalAmount)];
   const section: HTMLElement = document.getElementById('garage') as HTMLElement;
   (document.querySelector('.garage__title') as HTMLHeadingElement).textContent =
-    createSectionTitleText('GARAGE', carsInfo.totalAmount);
+    createSectionTitleText(SECTION_TITLE_TEXT.garage, carsInfo.totalAmount);
   (document.querySelector('.garage__page-number') as HTMLHeadingElement).textContent =
     createPageNumberText(store.garageCurrentPage);
   (document.querySelector('.cars-list') as HTMLUListElement).append(
@@ -56,7 +64,7 @@ export const updateWinnersSection = async (): Promise<void> => {
   [store.winners, store.winnersAmount] = [winnersInfo.content, Number(winnersInfo.totalAmount)];
   const section: HTMLElement = document.getElementById('winners') as HTMLElement;
   (document.querySelector('.winners__title') as HTMLHeadingElement).textContent =
-    createSectionTitleText('WINNERS', winnersInfo.totalAmount);
+    createSectionTitleText(SECTION_TITLE_TEXT.winners, winnersInfo.totalAmount);
   (document.querySelector('.winners__page-number') as HTMLHeadingElement).textContent =
     createPageNumberText(store.winnersCurrentPage);
   const winnerTable: HTMLTableElement = document.querySelector('.winners-list') as HTMLTableElement;

@@ -4,6 +4,7 @@ import {
   MAX_CARS_PER_PAGE,
   MAX_WINNERS_PER_PAGE,
   NO_CONTENT,
+  SORT_ORDER,
   TEXT_MESSAGE_CONTENT,
 } from '../constants/constants';
 import store from '../store/store';
@@ -161,12 +162,15 @@ export const sortTableHandler = async (event: Event): Promise<void> => {
     !(tableHeadCell.classList.contains('car-wins') || tableHeadCell.classList.contains('car-time'))
   )
     return;
-  const sortOrder: SortOrder = tableHeadCell.dataset.order === 'ASC' ? 'DESC' : 'ASC';
+  const sortOrder: SortOrder =
+    tableHeadCell.dataset.order === SORT_ORDER.ascending
+      ? SORT_ORDER.descending
+      : SORT_ORDER.ascending;
   tableHeadCell.dataset.order = sortOrder;
   (document.querySelectorAll('th') as NodeListOf<HTMLTableCellElement>).forEach(
     (cell: HTMLTableCellElement): void => cell.classList.remove('ascending', 'descending')
   );
-  tableHeadCell.classList.add(sortOrder === 'ASC' ? 'ascending' : 'descending');
+  tableHeadCell.classList.add(sortOrder === SORT_ORDER.ascending ? 'ascending' : 'descending');
   if (tableHeadCell.classList.contains('car-wins')) {
     store.sortKey = 'wins';
     store.sortOrder = sortOrder;

@@ -1,5 +1,6 @@
 import { Numbers } from '../types/enums';
 import { AnimationId } from '../types/types';
+import { createTranslateValueText } from './text-makers';
 
 export const getDistanceBetweenTwoElements = (
   elementA: HTMLElement,
@@ -16,7 +17,7 @@ export const animate = (car: HTMLDivElement, distance: number, moveTime: number)
     if (!start) start = timestamp;
     const time: number = timestamp - start;
     const passedDistance: number = Math.floor((time * distance) / moveTime);
-    carElement.style.transform = `translateX(${Math.min(passedDistance, distance)}px)`;
+    carElement.style.transform = createTranslateValueText(Math.min(passedDistance, distance));
     if (passedDistance < distance) {
       id.value = window.requestAnimationFrame(move);
     }

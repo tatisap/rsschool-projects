@@ -16,6 +16,7 @@ import {
   BUTTON_TEXT,
   MAX_WINNERS_PER_PAGE,
   NO_CONTENT,
+  SECTION_TITLE_TEXT,
   WINNERS_TABLE_COLUMN_NAMES,
   WINNERS_TABLE_COLUMN_NAMES_CLASSES,
 } from '../constants/constants';
@@ -30,7 +31,7 @@ import {
   UIElementParameters,
   Winner,
 } from '../types/types';
-import { createPageNumberText, createSectionTitleText } from '../utilities/ui-text-makers';
+import { createPageNumberText, createSectionTitleText } from '../utilities/text-makers';
 import openTabContent from './open-tab-content';
 import store from '../store/store';
 
@@ -202,7 +203,7 @@ export const createGarageSection = (
       createUIElement({
         tag: 'h2',
         classNames: ['section__title', 'garage__title'],
-        innerText: createSectionTitleText('GARAGE', garageInfo.totalAmount),
+        innerText: createSectionTitleText(SECTION_TITLE_TEXT.garage, garageInfo.totalAmount),
       }),
       createUIElement({
         tag: 'div',
@@ -294,7 +295,7 @@ export const createWinnersSection = (
       createUIElement({
         tag: 'h2',
         classNames: ['section__title', 'winners__title'],
-        innerText: createSectionTitleText('WINNERS', totalAmount),
+        innerText: createSectionTitleText(SECTION_TITLE_TEXT.winners, totalAmount),
       }),
       createUIElement({
         tag: 'div',

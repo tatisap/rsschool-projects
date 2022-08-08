@@ -1,3 +1,5 @@
+import { SortOrder } from '../types/types';
+
 export const BASE_URL = 'http://127.0.0.1:3000';
 export const ENDPOINTS = {
   garage: 'garage',
@@ -99,3 +101,13 @@ export const TEXT_MESSAGE_CONTENT = {
 };
 
 export const PAGE_NUMBER_TEXT = 'Page #';
+
+export const SORT_ORDER = {
+  ascending: 'ASC' as SortOrder,
+  descending: 'DESC' as SortOrder,
+};
+
+export const SECTION_TITLE_TEXT = {
+  garage: 'GARAGE',
+  winners: 'WINNERS',
+};
