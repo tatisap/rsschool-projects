@@ -31,7 +31,7 @@
     border-bottom: $dark-grey 2px dashed;
     background-image: $flag;
     background-repeat: no-repeat;
-    background-position: bottom 0 right 100px;
+    background-position: bottom 0 right 80px;
     background-size: contain;
     .car__image {
       @extend %car;
@@ -68,4 +68,42 @@
 .pagination {
   display: flex;
   gap: 10px;
+}
+
+.blackout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $transparent-black;
+  .text-message {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $light-grey;
+    color: inherit;
+    text-align: center;
+    .close-button {
+      @extend %normalized-button;
+      @extend %interactive;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      &::before {
+        content: 'X';
+      }
+    }
+  }
 }

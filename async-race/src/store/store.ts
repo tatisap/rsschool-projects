@@ -11,4 +11,5 @@ export default {
   animate: {} as { [id: string]: AnimationId },
   sortKey: 'id' as SortKey,
   sortOrder: 'ASC' as SortOrder,
+  isRaceStarted: false,
 };

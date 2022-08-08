@@ -85,3 +85,11 @@ export const HEXADECIMAL_BASE = 16;
 
 export const GENERATOR_COUNTER = 100;
 export const NO_TEXT_CONTENT = '';
+
+export const TEXT_MESSAGE_CONTENT = {
+  raceInProgress:
+    'Race in progress. Wait for the end of the race and click "RESET" or click "RESET" immediately not to wait for the end',
+  showWinner: 'The winner is',
+  noInput: 'Please, enter a name',
+  noSelectedCar: 'Please, select a car',
+};
