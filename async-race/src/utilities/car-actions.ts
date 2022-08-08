@@ -28,6 +28,7 @@ export const race = async (
   carsPromises: Promise<RaceResult>[],
   ids: string[]
 ): Promise<RaceResult> => {
+  if (carsPromises.length === Numbers.Zero) return { success: false };
   const firstResult: RaceResult = await Promise.race(carsPromises);
   if (!firstResult.success) {
     const restCarsPromises: Promise<RaceResult>[] = carsPromises.filter(

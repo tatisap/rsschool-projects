@@ -130,7 +130,10 @@ export const raceHandler = async (): Promise<void> => {
     carsElements.map((element: HTMLLIElement): string => element.id)
   )) as Required<RaceResult>;
 
-  if (!success) return;
+  if (!success) {
+    document.querySelector('.reset-button')?.removeAttribute('disabled');
+    return;
+  }
   if (!(await API.isCarExist(winnerId))) return;
 
   if (await API.isWinnerExist(winnerId)) {
