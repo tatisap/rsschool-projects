@@ -25,7 +25,7 @@ export default async (): Promise<void> => {
   (document.querySelector('.winners__page-number') as HTMLHeadingElement).textContent =
     createPageNumberText(store.winnersCurrentPage);
   const winnerTable: HTMLTableElement = document.querySelector('.winners-list') as HTMLTableElement;
-  winnerTable.lastChild?.remove();
+  (winnerTable.lastChild as HTMLElement).remove();
   winnerTable.append(createTableContent(winnersCarInfo));
   updatePaginationDisabledStatus(
     section.querySelector('.pagination') as HTMLDivElement,

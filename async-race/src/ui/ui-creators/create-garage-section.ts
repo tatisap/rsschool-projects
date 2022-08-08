@@ -25,23 +25,23 @@ const createGarageSectionHeader = (): HTMLDivElement =>
   });
 
 export default (garageInfo: Info<Car>, pageNumber: number, maxPageNumber: number): HTMLElement =>
-  createParentUIElement({
+  createParentUIElement<HTMLElement>({
     tag: 'section',
     id: 'garage',
     classNames: ['section', 'section_visible'],
     children: [
       createGarageSectionHeader(),
-      createUIElement({
+      createUIElement<HTMLHeadingElement>({
         tag: 'h2',
         classNames: ['section__title', 'garage__title'],
         innerText: createSectionTitleText(SECTION_TITLE_TEXT.garage, garageInfo.totalAmount),
       }),
-      createUIElement({
+      createUIElement<HTMLDivElement>({
         tag: 'div',
         classNames: ['garage__page-number'],
         innerText: createPageNumberText(pageNumber),
       }),
-      createParentUIElement({
+      createParentUIElement<HTMLUListElement>({
         tag: 'ul',
         classNames: ['cars-list'],
         children: garageInfo.content.map(

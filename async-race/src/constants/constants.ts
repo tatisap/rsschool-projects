@@ -112,3 +112,8 @@ export const SECTION_TITLE_TEXT = {
   garage: 'GARAGE',
   winners: 'WINNERS',
 };
+
+export const TEXT_INPUT_PLACEHOLDERS = {
+  createForm: 'Enter car name',
+  updateForm: 'Select car to update',
+};

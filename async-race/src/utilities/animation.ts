@@ -10,7 +10,7 @@ export const getDistanceBetweenTwoElements = (
 };
 
 export const animate = (car: HTMLDivElement, distance: number, moveTime: number): AnimationId => {
-  const carElement = car;
+  const carElement: HTMLDivElement = car;
   let start: number = Numbers.Zero;
   const id: AnimationId = { value: Numbers.Zero };
   const move = (timestamp: number): void => {

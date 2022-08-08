@@ -66,7 +66,7 @@ export const selectHandler = async (event: Event): Promise<void> => {
   const updateForm: HTMLFormElement = document.querySelector('.update-form') as HTMLFormElement;
   const carId: string = ((event.target as HTMLButtonElement).closest('.car') as HTMLLIElement)
     .id as string;
-  const carInfo = await API.getCarById(carId);
+  const carInfo: Car = await API.getCarById(carId);
   updateForm.dataset.currentId = carId;
   updateForm.text.value = carInfo.name;
   updateForm.color.value = carInfo.color;
@@ -77,7 +77,8 @@ export const deleteHandler = async (event: Event): Promise<void> => {
     textMessage.open(TEXT_MESSAGE_CONTENT.raceInProgress);
     return;
   }
-  const id = ((event.target as HTMLButtonElement).closest('.car') as HTMLLIElement).id as string;
+  const id: string = ((event.target as HTMLButtonElement).closest('.car') as HTMLLIElement)
+    .id as string;
   await API.deleteCar(id);
   if (await API.isWinnerExist(id)) await API.deleteWinner(id);
   cleanCarsList();
@@ -121,7 +122,7 @@ export const generateHandler = async (): Promise<void> => {
 };
 
 export const raceHandler = async (): Promise<void> => {
-  document.querySelector('.race-button')?.setAttribute('disabled', 'true');
+  (document.querySelector('.race-button') as HTMLButtonElement).setAttribute('disabled', 'true');
   store.isRaceStarted = true;
   const carsElements = Array.from(document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>);
   const raceCarsPromises = carsElements.map(startCar);
@@ -135,20 +136,20 @@ export const raceHandler = async (): Promise<void> => {
   )) as Required<RaceResult>;
 
   if (!success) {
-    document.querySelector('.reset-button')?.removeAttribute('disabled');
+    (document.querySelector('.reset-button') as HTMLButtonElement).removeAttribute('disabled');
     return;
   }
   if (!(await API.isCarExist(winnerId))) return;
 
   if (await API.isWinnerExist(winnerId)) {
     const { wins, time } = await API.getWinnerById(winnerId);
-    const newWinsValue = wins + Numbers.One;
-    const newBestTime = time < winnerTime ? time : winnerTime;
+    const newWinsValue: number = wins + Numbers.One;
+    const newBestTime: number = time < winnerTime ? time : winnerTime;
     await API.updateWinner(winnerId, { wins: newWinsValue, time: newBestTime });
   } else {
     await API.createWinner({ id: Number(winnerId), wins: Numbers.One, time: winnerTime });
   }
-  document.querySelector('.reset-button')?.removeAttribute('disabled');
+  (document.querySelector('.reset-button') as HTMLButtonElement).removeAttribute('disabled');
   textMessage.open(
     `${TEXT_MESSAGE_CONTENT.showWinner} ${(await API.getCarById(winnerId)).name} (${winnerTime}s)`
   );
@@ -156,12 +157,12 @@ export const raceHandler = async (): Promise<void> => {
 };
 
 export const resetRaceHandler = async (): Promise<void> => {
-  document.querySelector('.reset-button')?.setAttribute('disabled', 'true');
+  (document.querySelector('.reset-button') as HTMLButtonElement).setAttribute('disabled', 'true');
   store.isRaceStarted = false;
   await Promise.allSettled(
     Array.from(document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>).map(stopCar)
   );
-  document.querySelector('.race-button')?.removeAttribute('disabled');
+  (document.querySelector('.race-button') as HTMLButtonElement).removeAttribute('disabled');
 };
 
 export const sortTableHandler = async (event: Event): Promise<void> => {

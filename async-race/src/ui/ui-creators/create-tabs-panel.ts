@@ -7,7 +7,7 @@ export default (tabsText: string[]): HTMLElement =>
     tag: 'header',
     classNames: ['tabs'],
     children: tabsText.map((tabText: string, index: number): HTMLButtonElement => {
-      const tab = createUIElement<HTMLButtonElement>({
+      const tab: HTMLButtonElement = createUIElement<HTMLButtonElement>({
         tag: 'button',
         classNames: ['tab-button'],
         innerText: tabText,

@@ -15,7 +15,7 @@ const createCarControlButtons = (): HTMLDivElement =>
   });
 
 export default ({ name, color, id }: Car): HTMLLIElement => {
-  const carImageElement: HTMLDivElement = createUIElement({
+  const carImageElement: HTMLDivElement = createUIElement<HTMLDivElement>({
     tag: 'div',
     classNames: ['car__image', 'car__start-point'],
   });
@@ -25,9 +25,9 @@ export default ({ name, color, id }: Car): HTMLLIElement => {
     classNames: ['cars-list__item', 'car'],
     children: [
       createCarControlButtons(),
-      createUIElement({ tag: 'div', classNames: ['car__name'], innerText: name }),
+      createUIElement<HTMLDivElement>({ tag: 'div', classNames: ['car__name'], innerText: name }),
       carImageElement,
-      createUIElement({ tag: 'div', classNames: ['car__finish-point'] }),
+      createUIElement<HTMLDivElement>({ tag: 'div', classNames: ['car__finish-point'] }),
     ],
     id: `${id}`,
   });

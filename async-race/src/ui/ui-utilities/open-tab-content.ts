@@ -10,7 +10,7 @@ export default (event: Event): void => {
       tabContent.classList.remove('section_visible');
     }
   );
-  (document.getElementById(tab.textContent?.toLowerCase() as string) as HTMLElement).classList.add(
+  (document.getElementById((tab.textContent as string).toLowerCase()) as HTMLElement).classList.add(
     'section_visible'
   );
 };

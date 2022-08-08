@@ -8,18 +8,18 @@ const close = (event: Event): void => {
 };
 
 const open = (text: string): void => {
-  const closeButton: HTMLButtonElement = UI.createUIElement({
+  const closeButton: HTMLButtonElement = UI.createUIElement<HTMLButtonElement>({
     tag: 'button',
     classNames: ['close-button'],
     listenerInfo: { eventName: 'click', callback: close },
   });
-  const message: HTMLDivElement = UI.createParentUIElement({
+  const message: HTMLDivElement = UI.createParentUIElement<HTMLDivElement>({
     tag: 'div',
     classNames: ['text-message'],
     innerText: text,
     children: [closeButton],
   });
-  const blackoutContainer: HTMLDivElement = UI.createParentUIElement({
+  const blackoutContainer: HTMLDivElement = UI.createParentUIElement<HTMLDivElement>({
     tag: 'div',
     classNames: ['blackout'],
     children: [message],

@@ -21,17 +21,17 @@ export default (
   pageNumber: number,
   maxPageNumber: number
 ): HTMLElement =>
-  createParentUIElement({
+  createParentUIElement<HTMLDivElement>({
     tag: 'section',
     id: 'winners',
     classNames: ['section'],
     children: [
-      createUIElement({
+      createUIElement<HTMLHeadingElement>({
         tag: 'h2',
         classNames: ['section__title', 'winners__title'],
         innerText: createSectionTitleText(SECTION_TITLE_TEXT.winners, totalAmount),
       }),
-      createUIElement({
+      createUIElement<HTMLDivElement>({
         tag: 'div',
         classNames: ['winners__page-number'],
         innerText: createPageNumberText(pageNumber),
