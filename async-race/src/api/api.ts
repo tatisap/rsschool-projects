@@ -82,7 +82,7 @@ const changeEngineMode = <T>(status: EngineStatus): ((id: number) => Promise<T>)
 };
 
 const switchEngineToDriveMode = async (id: number): Promise<IFinishResult> => {
-  const response = await fetch(
+  const response: Response = await fetch(
     makeUrl(BASE_URL, ENDPOINTS.engine, undefined, { id, status: ENGINE_STATUS.drive }),
     {
       method: HttpMethods.PATCH,

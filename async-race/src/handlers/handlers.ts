@@ -125,8 +125,10 @@ export const generateHandler = async (): Promise<void> => {
 export const raceHandler = async (): Promise<void> => {
   (document.querySelector('.race-button') as HTMLButtonElement).setAttribute('disabled', 'true');
   store.isRaceStarted = true;
-  const carsElements = Array.from(document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>);
-  const raceCarsPromises = carsElements.map(startCar);
+  const carsElements: HTMLLIElement[] = Array.from(
+    document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>
+  );
+  const raceCarsPromises: Promise<IRaceResult>[] = carsElements.map(startCar);
   const {
     success,
     id: winnerId,
