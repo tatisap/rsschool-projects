@@ -58,12 +58,18 @@ export const createParentUIElement = <T extends HTMLElement>(
   return parentElement;
 };
 
-export const createInput = (type: string, className: string, name: string): HTMLInputElement => {
+export const createInput = (
+  type: string,
+  className: string,
+  name: string,
+  placeholder: string = NO_TEXT_CONTENT
+): HTMLInputElement => {
   const input = document.createElement('input');
   input.type = type;
   input.name = name;
   input.classList.add(className);
   if (type === 'text') {
+    input.placeholder = placeholder;
     input.setAttribute('autocomplete', 'off');
   }
   return input;
@@ -113,14 +119,19 @@ export const createPagination = (
     children: [previousButton, nextButton],
     listenerInfo: { eventName: 'click', callback },
   });
-}
+};
 
 const createForm = (formType: FormType, listenerInfo?: ListenerInfo): HTMLFormElement =>
   createParentUIElement<HTMLFormElement>({
     tag: 'form',
     classNames: ['form', `${formType}-form`],
     children: [
-      createInput('text', 'form__text-input', 'text'),
+      createInput(
+        'text',
+        'form__text-input',
+        'text',
+        formType === 'create' ? 'Enter car name' : 'Select car to update'
+      ),
       createInput('color', 'form__color-input', 'color'),
       createActionButton(formType),
     ],
@@ -185,7 +196,7 @@ export const createGarageSection = (
   createParentUIElement({
     tag: 'section',
     id: 'garage',
-    classNames: ['section'],
+    classNames: ['section', 'section_visible'],
     children: [
       createGarageSectionHeader(),
       createUIElement({
