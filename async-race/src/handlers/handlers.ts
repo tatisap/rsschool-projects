@@ -8,20 +8,15 @@ import {
 } from '../constants/constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
-import {
-  AnimationId,
-  Car,
-  Info,
-  MoveParameters,
-  RaceResult,
-  SortOrder,
-  Winner,
-} from '../types/types';
+import { AnimationId, Car, MoveParameters, RaceResult, SortOrder } from '../types/types';
 import textMessage from '../ui/text-message';
-import { createCarUIElement, makeTableContent } from '../ui/ui-components';
 import { animate, getDistanceBetweenTwoElements } from '../utilities/animation';
 import generateCar from '../utilities/generator';
-import { createPageNumberText, createSectionTitleText } from '../utilities/ui-text-makers';
+import {
+  updateGarageSection,
+  updateWinnersSection,
+  updatePaginationDisabledStatus,
+} from '../ui/update-ui-components';
 
 const getUserCarInput = (createForm: HTMLFormElement): Omit<Car, 'id'> => {
   return {
@@ -32,69 +27,6 @@ const getUserCarInput = (createForm: HTMLFormElement): Omit<Car, 'id'> => {
 
 const cleanCarsList = (): void => {
   (document.querySelector('.cars-list') as HTMLUListElement).innerHTML = NO_TEXT_CONTENT;
-};
-
-const updatePaginationDisabledStatus = (
-  paginationContainer: HTMLDivElement,
-  currentPage: number,
-  maxPage: number
-): void => {
-  const previousButton = paginationContainer.querySelector('.previous-button') as HTMLButtonElement;
-  const nextButton = paginationContainer.querySelector('.next-button') as HTMLButtonElement;
-  [previousButton, nextButton].forEach((button: HTMLButtonElement): void =>
-    button.removeAttribute('disabled')
-  );
-  if (currentPage <= Numbers.One) previousButton.setAttribute('disabled', 'true');
-  if (currentPage >= maxPage) nextButton.setAttribute('disabled', 'true');
-};
-
-const updateGarageSection = async (): Promise<void> => {
-  const carsInfo: Info<Car> = await API.getCars({
-    _page: store.garageCurrentPage,
-    _limit: MAX_CARS_PER_PAGE,
-  });
-  [store.cars, store.carsAmount] = [carsInfo.content, Number(carsInfo.totalAmount)];
-  const section: HTMLElement = document.getElementById('garage') as HTMLElement;
-  (document.querySelector('.garage__title') as HTMLHeadingElement).textContent =
-    createSectionTitleText('GARAGE', carsInfo.totalAmount);
-  (document.querySelector('.garage__page-number') as HTMLHeadingElement).textContent =
-    createPageNumberText(store.garageCurrentPage);
-  (document.querySelector('.cars-list') as HTMLUListElement).append(
-    ...carsInfo.content.map(createCarUIElement)
-  );
-  updatePaginationDisabledStatus(
-    section.querySelector('.pagination') as HTMLDivElement,
-    store.garageCurrentPage,
-    Math.ceil(store.carsAmount / MAX_CARS_PER_PAGE)
-  );
-};
-
-const updateWinnersSection = async (): Promise<void> => {
-  const winnersInfo: Info<Winner> = await API.getWinners({
-    _page: store.winnersCurrentPage,
-    _limit: MAX_WINNERS_PER_PAGE,
-    _sort: store.sortKey,
-    _order: store.sortOrder,
-  });
-  const winnersCarInfo: (Winner & Car)[] = await Promise.all(
-    winnersInfo.content.map(async (winner: Winner): Promise<Winner & Car> => {
-      return Object.assign(winner, (await API.getCarById(String(winner.id))) as Car);
-    })
-  );
-  [store.winners, store.winnersAmount] = [winnersInfo.content, Number(winnersInfo.totalAmount)];
-  const section: HTMLElement = document.getElementById('winners') as HTMLElement;
-  (document.querySelector('.winners__title') as HTMLHeadingElement).textContent =
-    createSectionTitleText('WINNERS', winnersInfo.totalAmount);
-  (document.querySelector('.winners__page-number') as HTMLHeadingElement).textContent =
-    createPageNumberText(store.winnersCurrentPage);
-  const winnerTable: HTMLTableElement = document.querySelector('.winners-list') as HTMLTableElement;
-  winnerTable.lastChild?.remove();
-  winnerTable.append(makeTableContent(winnersCarInfo));
-  updatePaginationDisabledStatus(
-    section.querySelector('.pagination') as HTMLDivElement,
-    store.winnersCurrentPage,
-    Math.ceil(store.winnersAmount / MAX_WINNERS_PER_PAGE)
-  );
 };
 
 export const createHandler = async (event: Event): Promise<void> => {

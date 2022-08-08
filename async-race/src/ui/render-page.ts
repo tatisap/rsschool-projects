@@ -2,7 +2,7 @@ import API from '../api/api';
 import { BUTTON_TEXT, MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE } from '../constants/constants';
 import store from '../store/store';
 import { Info, Car, Winner } from '../types/types';
-import { createGarageSection, createTabsPanel, createWinnersSection } from './ui-components';
+import { createGarageSection, createTabsPanel, createWinnersSection } from './create-ui-components';
 
 export default async ([cars, winners]: [Info<Car>, Info<Winner>]): Promise<void> => {
   const winnersCarInfo: (Winner & Car)[] = await Promise.all(

@@ -1,4 +1,4 @@
-import { createParentUIElement, createUIElement } from './ui-components';
+import { createParentUIElement, createUIElement } from './create-ui-components';
 
 const close = (event: Event) => {
   const message: HTMLDivElement = (event.target as HTMLButtonElement).closest(
