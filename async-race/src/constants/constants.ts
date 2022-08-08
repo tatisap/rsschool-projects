@@ -87,6 +87,7 @@ export const CAR_MODELS = [
 ];
 
 export const HASH_SYMBOL = '#';
+export const BLACK_COLOR = '#000000';
 export const HEXADECIMAL_BASE = 16;
 
 export const GENERATOR_COUNTER = 100;

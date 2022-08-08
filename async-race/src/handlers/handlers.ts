@@ -1,5 +1,6 @@
 import API from '../api/api';
 import {
+  BLACK_COLOR,
   GENERATOR_COUNTER,
   MAX_CARS_PER_PAGE,
   MAX_WINNERS_PER_PAGE,
@@ -33,7 +34,8 @@ export const createHandler = async (event: Event): Promise<void> => {
     return;
   }
   await API.createCar(getUserInput(createForm));
-  createForm.reset();
+  createForm.text.value = NO_CONTENT;
+  createForm.color.value = BLACK_COLOR;
   cleanCarsList();
   await updateGarageSection();
 };
@@ -50,7 +52,8 @@ export const updateHandler = async (event: Event): Promise<void> => {
     return;
   }
   await API.updateCar(updateForm.dataset.currentId as string, getUserInput(updateForm));
-  updateForm.reset();
+  updateForm.text.value = NO_CONTENT;
+  updateForm.color.value = BLACK_COLOR;
   updateForm.removeAttribute('data-current-id');
   cleanCarsList();
   await updateGarageSection();
