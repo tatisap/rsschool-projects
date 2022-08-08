@@ -9,19 +9,23 @@ export const getDistanceBetweenTwoElements = (
   return Math.abs(elementA.getBoundingClientRect().x - elementB.getBoundingClientRect().x);
 };
 
-export const animate = (car: HTMLDivElement, distance: number, moveTime: number): AnimationId => {
+export const animate = (
+  car: HTMLDivElement,
+  totalDistance: number,
+  totalMoveTime: number
+): AnimationId => {
   const carElement: HTMLDivElement = car;
   let start: number = Numbers.Zero;
-  const id: AnimationId = { value: Numbers.Zero };
-  const move = (timestamp: number): void => {
+  const animationFrameId: AnimationId = { value: Numbers.Zero };
+  const moveCar = (timestamp: number): void => {
     if (!start) start = timestamp;
-    const time: number = timestamp - start;
-    const passedDistance: number = Math.floor((time * distance) / moveTime);
-    carElement.style.transform = createTranslateValueText(Math.min(passedDistance, distance));
-    if (passedDistance < distance) {
-      id.value = window.requestAnimationFrame(move);
+    const passedTime: number = timestamp - start;
+    const passedDistance: number = Math.floor((passedTime * totalDistance) / totalMoveTime);
+    carElement.style.transform = createTranslateValueText(Math.min(passedDistance, totalDistance));
+    if (passedDistance < totalDistance) {
+      animationFrameId.value = window.requestAnimationFrame(moveCar);
     }
   };
-  id.value = window.requestAnimationFrame(move);
-  return id;
+  animationFrameId.value = window.requestAnimationFrame(moveCar);
+  return animationFrameId;
 };

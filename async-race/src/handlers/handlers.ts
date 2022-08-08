@@ -139,7 +139,6 @@ export const raceHandler = async (): Promise<void> => {
     (document.querySelector('.reset-button') as HTMLButtonElement).removeAttribute('disabled');
     return;
   }
-  if (!(await API.isCarExist(winnerId))) return;
 
   if (await API.isWinnerExist(winnerId)) {
     const { wins, time } = await API.getWinnerById(winnerId);
