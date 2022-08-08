@@ -2,15 +2,15 @@ import API from '../../api/api';
 import { MAX_CARS_PER_PAGE, MAX_WINNERS_PER_PAGE } from '../../constants/others-constants';
 import BUTTON_TEXT from '../../constants/button-text';
 import store from '../../store/store';
-import { Car, Info, Winner } from '../../types/types';
+import { ICar, IInfo, IWinner } from '../../types/types';
 import createGarageSection from '../ui-creators/create-garage-section';
 import createTabsPanel from '../ui-creators/create-tabs-panel';
 import createWinnersSection from '../ui-creators/create-winners-section';
 
-export default async ([cars, winners]: [Info<Car>, Info<Winner>]): Promise<void> => {
-  const winnersCarInfo: (Winner & Car)[] = await Promise.all(
-    winners.content.map(async (winner: Winner): Promise<Winner & Car> => {
-      return Object.assign(winner, (await API.getCarById(String(winner.id))) as Car);
+export default async ([cars, winners]: [IInfo<ICar>, IInfo<IWinner>]): Promise<void> => {
+  const winnersCarInfo: (IWinner & ICar)[] = await Promise.all(
+    winners.content.map(async (winner: IWinner): Promise<IWinner & ICar> => {
+      return Object.assign(winner, (await API.getCarById(String(winner.id))) as ICar);
     })
   );
   const main: HTMLElement = document.createElement('main');

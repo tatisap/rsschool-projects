@@ -1,8 +1,8 @@
 import { NO_CONTENT } from '../../constants/others-constants';
 import { Numbers } from '../../types/enums';
-import { UIElementParameters } from '../../types/types';
+import { IUIElementParameters } from '../../types/types';
 
-export const createUIElement = <T extends HTMLElement>(parameters: UIElementParameters): T => {
+export const createUIElement = <T extends HTMLElement>(parameters: IUIElementParameters): T => {
   const { tag, classNames, innerText = NO_CONTENT, listenerInfo, attributeInfo } = parameters;
   const element: T = document.createElement(tag) as T;
   element.classList.add(...classNames);
@@ -17,7 +17,7 @@ export const createUIElement = <T extends HTMLElement>(parameters: UIElementPara
 };
 
 export const createParentUIElement = <T extends HTMLElement>(
-  parameters: UIElementParameters
+  parameters: IUIElementParameters
 ): T => {
   const { children = [], id } = parameters;
   const parentElement: T = createUIElement<T>(parameters);

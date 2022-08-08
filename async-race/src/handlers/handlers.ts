@@ -11,7 +11,7 @@ import {
 } from '../constants/others-constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
-import { Car, RaceResult, SortOrder } from '../types/types';
+import { ICar, IRaceResult, SortOrder } from '../types/types';
 import textMessage from '../ui/ui-creators/text-message';
 import generateCar from '../utilities/generator';
 import { race, startCar, stopCar } from '../utilities/car-actions';
@@ -67,7 +67,7 @@ export const selectHandler = async (event: Event): Promise<void> => {
   const updateForm: HTMLFormElement = document.querySelector('.update-form') as HTMLFormElement;
   const carId: string = ((event.target as HTMLButtonElement).closest('.car') as HTMLLIElement)
     .id as string;
-  const carInfo: Car = await API.getCarById(carId);
+  const carInfo: ICar = await API.getCarById(carId);
   updateForm.dataset.currentId = carId;
   updateForm.text.value = carInfo.name;
   updateForm.color.value = carInfo.color;
@@ -116,7 +116,7 @@ export const generateHandler = async (): Promise<void> => {
   await Promise.all(
     new Array(GENERATOR_COUNTER)
       .fill(generateCar)
-      .map((generator: () => Car): Promise<Car> => API.createCar(generator()))
+      .map((generator: () => ICar): Promise<ICar> => API.createCar(generator()))
   );
   cleanCarsList();
   await updateGarageSection();
@@ -131,10 +131,10 @@ export const raceHandler = async (): Promise<void> => {
     success,
     id: winnerId,
     time: winnerTime,
-  }: RaceResult = (await race(
+  }: IRaceResult = (await race(
     raceCarsPromises,
     carsElements.map((element: HTMLLIElement): string => element.id)
-  )) as Required<RaceResult>;
+  )) as Required<IRaceResult>;
 
   if (!success) {
     (document.querySelector('.reset-button') as HTMLButtonElement).removeAttribute('disabled');

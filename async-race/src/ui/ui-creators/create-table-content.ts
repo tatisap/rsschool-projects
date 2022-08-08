@@ -1,14 +1,14 @@
 import { MAX_WINNERS_PER_PAGE } from '../../constants/others-constants';
 import store from '../../store/store';
 import { Numbers } from '../../types/enums';
-import { Car, Winner } from '../../types/types';
+import { ICar, IWinner } from '../../types/types';
 import createTableRow from './create-table-row';
 
-export default (winnersCarInfo: (Winner & Car)[]): HTMLElement => {
+export default (winnersCarInfo: (IWinner & ICar)[]): HTMLElement => {
   const tbody: HTMLElement = document.createElement('tbody');
   tbody.append(
     ...winnersCarInfo.map(
-      (winnerInfo: Winner & Car, index: number): HTMLTableRowElement =>
+      (winnerInfo: IWinner & ICar, index: number): HTMLTableRowElement =>
         createTableRow(
           'td',
           [

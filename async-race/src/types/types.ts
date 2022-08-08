@@ -15,7 +15,7 @@ export type Action =
   | 'previous'
   | 'next';
 
-export interface QueryParameters {
+export interface IQueryParameters {
   id?: number;
   status?: EngineStatus;
   _page?: number;
@@ -24,72 +24,72 @@ export interface QueryParameters {
   _order?: SortOrder;
 }
 
-export interface UrlParameters {
+export interface IUrlParameters {
   id?: number;
-  query?: QueryParameters;
+  query?: IQueryParameters;
 }
 
-export interface Car {
+export interface ICar {
   name: string;
   color: string;
   id: number;
 }
 
-export interface Winner {
+export interface IWinner {
   id: number;
   wins: number;
   time: number;
 }
 
-export interface Info<T> {
+export interface IInfo<T> {
   content: T[];
   totalAmount: string;
 }
 
-export interface MoveParameters {
+export interface IMoveParameters {
   velocity: number;
   distance: number;
 }
 
-export interface FinishResult {
+export interface IFinishResult {
   success: boolean;
 }
 
-export interface AnimationId {
+export interface IAnimationId {
   value: number;
 }
 
-export interface ListenerInfo {
+export interface IListenerInfo {
   eventName: string;
   callback: Handler;
 }
 
 export type Handler = (event: Event) => void;
 
-export interface UIElementParameters {
+export interface IUIElementParameters {
   tag: string;
   classNames: string[];
   id?: string;
   children?: HTMLElement[];
   innerText?: string;
-  listenerInfo?: ListenerInfo;
+  listenerInfo?: IListenerInfo;
   attributeInfo?: [string, string];
 }
 
-export interface RaceResult {
+export interface IRaceResult {
   success: boolean;
   id?: string;
   time?: number;
 }
 
-export interface Store {
-  cars: Car[];
-  winners: Winner[];
+export interface IStore {
+  cars: ICar[];
+  winners: IWinner[];
   carsAmount: number;
   winnersAmount: number;
   garageCurrentPage: number;
   winnersCurrentPage: number;
-  animate: { [id: string]: AnimationId };
+  animate: { [id: string]: IAnimationId };
   sortKey: SortKey;
   sortOrder: SortOrder;
   isRaceStarted: boolean;

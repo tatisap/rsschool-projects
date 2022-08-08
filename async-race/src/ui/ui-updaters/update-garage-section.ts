@@ -1,13 +1,13 @@
 import API from '../../api/api';
 import { MAX_CARS_PER_PAGE, SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import store from '../../store/store';
-import { Car, Info } from '../../types/types';
+import { ICar, IInfo } from '../../types/types';
 import createCarUiElement from '../ui-creators/create-car-ui-element';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';
 import updatePaginationDisabledStatus from './update-pagination-disabled-status';
 
 export default async (): Promise<void> => {
-  const carsInfo: Info<Car> = await API.getCars({
+  const carsInfo: IInfo<ICar> = await API.getCars({
     _page: store.garageCurrentPage,
     _limit: MAX_CARS_PER_PAGE,
   });

@@ -2,7 +2,7 @@ import { HASH_SYMBOL, HEXADECIMAL_BASE } from '../constants/others-constants';
 import CAR_BRANDS from '../constants/car-brands';
 import CAR_MODELS from '../constants/car-models';
 import { Numbers } from '../types/enums';
-import { Car } from '../types/types';
+import { ICar } from '../types/types';
 
 const generateRandomCarName = (brandsList: string[], modelsList: string[]): string =>
   `${brandsList[Math.floor(Math.random() * brandsList.length)]} ${
@@ -17,7 +17,7 @@ const generateRandomColor = (): string => {
   return color;
 };
 
-export default (): Omit<Car, 'id'> => {
+export default (): Omit<ICar, 'id'> => {
   return {
     name: generateRandomCarName(CAR_BRANDS, CAR_MODELS),
     color: generateRandomColor(),

@@ -1,21 +1,21 @@
 import API from '../../api/api';
 import { MAX_WINNERS_PER_PAGE, SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import store from '../../store/store';
-import { Car, Info, Winner } from '../../types/types';
+import { ICar, IInfo, IWinner } from '../../types/types';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';
 import createTableContent from '../ui-creators/create-table-content';
 import updatePaginationDisabledStatus from './update-pagination-disabled-status';
 
 export default async (): Promise<void> => {
-  const winnersInfo: Info<Winner> = await API.getWinners({
+  const winnersInfo: IInfo<IWinner> = await API.getWinners({
     _page: store.winnersCurrentPage,
     _limit: MAX_WINNERS_PER_PAGE,
     _sort: store.sortKey,
     _order: store.sortOrder,
   });
-  const winnersCarInfo: (Winner & Car)[] = await Promise.all(
-    winnersInfo.content.map(async (winner: Winner): Promise<Winner & Car> => {
-      return Object.assign(winner, (await API.getCarById(String(winner.id))) as Car);
+  const winnersCarInfo: (IWinner & ICar)[] = await Promise.all(
+    winnersInfo.content.map(async (winner: IWinner): Promise<IWinner & ICar> => {
+      return Object.assign(winner, (await API.getCarById(String(winner.id))) as ICar);
     })
   );
   [store.winners, store.winnersAmount] = [winnersInfo.content, Number(winnersInfo.totalAmount)];

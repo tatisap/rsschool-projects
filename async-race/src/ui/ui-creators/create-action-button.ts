@@ -1,10 +1,10 @@
 import BUTTON_TEXT from '../../constants/button-text';
-import { Action, ListenerInfo } from '../../types/types';
+import { Action, IListenerInfo } from '../../types/types';
 import { createUIElement } from './create-general-element';
 
 export default (
   action: Action,
-  listenerInfo?: ListenerInfo,
+  listenerInfo?: IListenerInfo,
   attributeInfo?: [string, string]
 ): HTMLButtonElement =>
   createUIElement<HTMLButtonElement>({

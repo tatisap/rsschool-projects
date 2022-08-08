@@ -2,7 +2,7 @@ import { createParentUIElement, createUIElement } from './create-general-element
 import * as handlers from '../../handlers/handlers';
 import createForm from './create-form';
 import createActionButton from './create-action-button';
-import { Car, Info } from '../../types/types';
+import { ICar, IInfo } from '../../types/types';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';
 import { SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import createCarUIElement from './create-car-ui-element';
@@ -24,7 +24,7 @@ const createGarageSectionHeader = (): HTMLDivElement =>
     ],
   });
 
-export default (garageInfo: Info<Car>, pageNumber: number, maxPageNumber: number): HTMLElement =>
+export default (garageInfo: IInfo<ICar>, pageNumber: number, maxPageNumber: number): HTMLElement =>
   createParentUIElement<HTMLElement>({
     tag: 'section',
     id: 'garage',
@@ -45,7 +45,7 @@ export default (garageInfo: Info<Car>, pageNumber: number, maxPageNumber: number
         tag: 'ul',
         classNames: ['cars-list'],
         children: garageInfo.content.map(
-          (carInfo: Car): HTMLLIElement => createCarUIElement(carInfo)
+          (carInfo: ICar): HTMLLIElement => createCarUIElement(carInfo)
         ),
       }),
       createPagination(handlers.garagePaginationHandler, pageNumber, maxPageNumber),

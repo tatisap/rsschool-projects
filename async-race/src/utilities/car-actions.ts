@@ -2,19 +2,19 @@ import API from '../api/api';
 import { MSEC_PER_SEC, NO_CONTENT } from '../constants/others-constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
-import { AnimationId, MoveParameters, RaceResult } from '../types/types';
+import { IAnimationId, IMoveParameters, IRaceResult } from '../types/types';
 import { animate, getDistanceBetweenTwoElements } from './animation';
 
-export const startCar = async (carElement: HTMLLIElement): Promise<RaceResult> => {
+export const startCar = async (carElement: HTMLLIElement): Promise<IRaceResult> => {
   const car: HTMLLIElement = carElement;
   (car.querySelector('.start-button') as HTMLButtonElement).setAttribute('disabled', 'true');
   const startPoint: HTMLDivElement = car.querySelector('.car__start-point') as HTMLDivElement;
   const finishPoint: HTMLDivElement = car.querySelector('.car__finish-point') as HTMLDivElement;
-  const moveParameters: MoveParameters = await API.startEngine(Number(car.id));
+  const moveParameters: IMoveParameters = await API.startEngine(Number(car.id));
   (car.querySelector('.stop-button') as HTMLButtonElement).removeAttribute('disabled');
   const totalMoveTime: number = moveParameters.distance / moveParameters.velocity;
   const totalDistance: number = getDistanceBetweenTwoElements(startPoint, finishPoint);
-  const animationFrameId: AnimationId = animate(startPoint, totalDistance, totalMoveTime);
+  const animationFrameId: IAnimationId = animate(startPoint, totalDistance, totalMoveTime);
   store.animate[car.id] = animationFrameId;
   const { success } = await API.switchEngineToDriveMode(Number(car.id));
   if (!success) {
@@ -38,13 +38,13 @@ export const stopCar = async (carElement: HTMLLIElement): Promise<void> => {
 };
 
 export const race = async (
-  carsPromises: Promise<RaceResult>[],
+  carsPromises: Promise<IRaceResult>[],
   carsIds: string[]
-): Promise<RaceResult> => {
+): Promise<IRaceResult> => {
   if (carsPromises.length === Numbers.Zero) return { success: false };
-  const firstResult: RaceResult = await Promise.race(carsPromises);
+  const firstResult: IRaceResult = await Promise.race(carsPromises);
   if (!firstResult.success) {
-    const restCarsPromises: Promise<RaceResult>[] = carsPromises.filter(
+    const restCarsPromises: Promise<IRaceResult>[] = carsPromises.filter(
       (_, index: number): boolean => carsIds[index] !== firstResult.id
     );
     return race(

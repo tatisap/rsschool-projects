@@ -1,10 +1,10 @@
 import { FORM_TYPE, TEXT_INPUT_PLACEHOLDERS } from '../../constants/others-constants';
-import { FormType, ListenerInfo } from '../../types/types';
+import { FormType, IListenerInfo } from '../../types/types';
 import createActionButton from './create-action-button';
 import { createParentUIElement } from './create-general-element';
 import createInput from './create-input';
 
-export default (formType: FormType, listenerInfo?: ListenerInfo): HTMLFormElement =>
+export default (formType: FormType, listenerInfo?: IListenerInfo): HTMLFormElement =>
   createParentUIElement<HTMLFormElement>({
     tag: 'form',
     classNames: ['form', `${formType}-form`],

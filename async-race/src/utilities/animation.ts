@@ -1,5 +1,5 @@
 import { Numbers } from '../types/enums';
-import { AnimationId } from '../types/types';
+import { IAnimationId } from '../types/types';
 import { createTranslateValueText } from './text-makers';
 
 export const getDistanceBetweenTwoElements = (
@@ -13,10 +13,10 @@ export const animate = (
   car: HTMLDivElement,
   totalDistance: number,
   totalMoveTime: number
-): AnimationId => {
+): IAnimationId => {
   const carElement: HTMLDivElement = car;
   let start: number = Numbers.Zero;
-  const animationFrameId: AnimationId = { value: Numbers.Zero };
+  const animationFrameId: IAnimationId = { value: Numbers.Zero };
   const moveCar = (timestamp: number): void => {
     if (!start) start = timestamp;
     const passedTime: number = timestamp - start;

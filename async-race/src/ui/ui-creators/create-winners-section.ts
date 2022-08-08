@@ -1,13 +1,13 @@
 import * as handlers from '../../handlers/handlers';
 import { SECTION_TITLE_TEXT } from '../../constants/others-constants';
-import { Car, Winner } from '../../types/types';
+import { ICar, IWinner } from '../../types/types';
 import { createPageNumberText, createSectionTitleText } from '../../utilities/text-makers';
 import createTableHead from './create-table-head';
 import { createParentUIElement, createUIElement } from './create-general-element';
 import createPagination from './create-pagination';
 import createTableContent from './create-table-content';
 
-const createWinnersTable = (winnersCarInfo: (Winner & Car)[]): HTMLTableElement => {
+const createWinnersTable = (winnersCarInfo: (IWinner & ICar)[]): HTMLTableElement => {
   return createParentUIElement<HTMLTableElement>({
     tag: 'table',
     classNames: ['winners-list', 'table'],
@@ -16,7 +16,7 @@ const createWinnersTable = (winnersCarInfo: (Winner & Car)[]): HTMLTableElement 
 };
 
 export default (
-  winnersCarInfo: (Winner & Car)[],
+  winnersCarInfo: (IWinner & ICar)[],
   totalAmount: string,
   pageNumber: number,
   maxPageNumber: number

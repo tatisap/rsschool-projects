@@ -1,4 +1,4 @@
-import { Car } from '../../types/types';
+import { ICar } from '../../types/types';
 import createActionButton from './create-action-button';
 import { createParentUIElement, createUIElement } from './create-general-element';
 
@@ -14,7 +14,7 @@ const createCarControlButtons = (): HTMLDivElement =>
     ],
   });
 
-export default ({ name, color, id }: Car): HTMLLIElement => {
+export default ({ name, color, id }: ICar): HTMLLIElement => {
   const carImageElement: HTMLDivElement = createUIElement<HTMLDivElement>({
     tag: 'div',
     classNames: ['car__image', 'car__start-point'],
