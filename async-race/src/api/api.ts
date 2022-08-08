@@ -1,4 +1,4 @@
-import { BASE_URL, ENDPOINTS } from '../constants/constants';
+import { BASE_URL, ENDPOINTS, HEADERS } from '../constants/constants';
 import { HttpMethods, StatusCode } from '../types/enums';
 import { makeUrl } from '../utilities/url-maker';
 import {
@@ -16,7 +16,7 @@ const getDatabaseItems = <T>(endpoint: string) => {
     const response: Response = await fetch(makeUrl(BASE_URL, endpoint, undefined, queryParameters));
     return {
       content: await response.json(),
-      totalAmount: response.headers.get('X-Total-Count') as string,
+      totalAmount: response.headers.get(HEADERS.totalCount) as string,
     };
   };
 };
@@ -33,7 +33,7 @@ const createDatabaseItem = <T>(endpoint: string) => {
       await fetch(makeUrl(BASE_URL, endpoint), {
         method: HttpMethods.POST,
         headers: {
-          'Content-Type': 'application/json',
+          [HEADERS.contentType]: 'application/json',
         },
         body: JSON.stringify(itemInfo),
       })
@@ -53,7 +53,7 @@ const updateDatabaseItem = <T>(endpoint: string) => {
       await fetch(makeUrl(BASE_URL, endpoint, id), {
         method: HttpMethods.PUT,
         headers: {
-          'Content-Type': 'application/json',
+          [HEADERS.contentType]: 'application/json',
         },
         body: JSON.stringify(info),
       })

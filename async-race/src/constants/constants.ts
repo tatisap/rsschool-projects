@@ -4,6 +4,10 @@ export const ENDPOINTS = {
   engine: 'engine',
   winners: 'winners',
 };
+export const HEADERS = {
+  contentType: 'Content-Type',
+  totalCount: 'X-Total-Count',
+};
 export const SEPARATOR = {
   url: '/',
   query: '&',
