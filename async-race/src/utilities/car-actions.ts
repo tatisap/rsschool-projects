@@ -1,5 +1,5 @@
 import API from '../api/api';
-import { MSEC_PER_SEC } from '../constants/constants';
+import { MSEC_PER_SEC, NO_CONTENT } from '../constants/constants';
 import store from '../store/store';
 import { Numbers } from '../types/enums';
 import { AnimationId, MoveParameters, RaceResult } from '../types/types';
@@ -22,6 +22,15 @@ export const startCar = async (carElement: HTMLLIElement): Promise<RaceResult> =
     return { success, id: car.id };
   }
   return { success, id: car.id, time: Number((time / MSEC_PER_SEC).toFixed(Numbers.Three)) };
+};
+
+export const stopCar = async (carElement: HTMLLIElement): Promise<void> => {
+  (carElement.querySelector('.stop-button') as HTMLButtonElement).setAttribute('disabled', 'true');
+  const carImage: HTMLDivElement = carElement.querySelector('.car__image') as HTMLDivElement;
+  await API.stopEngine(Number(carElement.id));
+  window.cancelAnimationFrame(store.animate[carElement.id].value);
+  carImage.style.transform = NO_CONTENT;
+  (carElement.querySelector('.start-button') as HTMLButtonElement).removeAttribute('disabled');
 };
 
 export const race = async (

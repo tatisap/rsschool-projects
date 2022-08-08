@@ -18,7 +18,7 @@ import {
   updateWinnersSection,
   updatePaginationDisabledStatus,
 } from '../ui/update-ui-components';
-import { race, startCar } from '../utilities/car-actions';
+import { race, startCar, stopCar } from '../utilities/car-actions';
 import cleanCarsList from '../ui/clean-cars-list';
 import getUserInput from '../utilities/get-user-input';
 
@@ -57,6 +57,7 @@ export const updateHandler = async (event: Event): Promise<void> => {
   updateForm.removeAttribute('data-current-id');
   cleanCarsList();
   await updateGarageSection();
+  await updateWinnersSection();
 };
 
 export const selectHandler = async (event: Event): Promise<void> => {
@@ -92,14 +93,11 @@ export const startHandler = async (event: Event): Promise<void> => {
 };
 
 export const stopHandler = async (event: Event): Promise<void> => {
-  const target = event.target as HTMLButtonElement;
-  target.setAttribute('disabled', 'true');
-  const car: HTMLLIElement = (event.target as HTMLButtonElement).closest('.car') as HTMLLIElement;
-  const carImage: HTMLDivElement = car.querySelector('.car__image') as HTMLDivElement;
-  await API.stopEngine(Number(car.id));
-  window.cancelAnimationFrame(store.animate[car.id].value);
-  carImage.style.transform = NO_CONTENT;
-  (car.querySelector('.start-button') as HTMLButtonElement).removeAttribute('disabled');
+  if (store.isRaceStarted) {
+    textMessage.open(TEXT_MESSAGE_CONTENT.raceInProgress);
+    return;
+  }
+  await stopCar((event.target as HTMLButtonElement).closest('.car') as HTMLLIElement);
 };
 
 export const generateHandler = async (): Promise<void> => {
@@ -151,15 +149,13 @@ export const raceHandler = async (): Promise<void> => {
   await updateWinnersSection();
 };
 
-export const resetRaceHandler = (): void => {
+export const resetRaceHandler = async (): Promise<void> => {
   document.querySelector('.reset-button')?.setAttribute('disabled', 'true');
-  document.querySelector('.race-button')?.removeAttribute('disabled');
   store.isRaceStarted = false;
-  (document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>).forEach(
-    (car: HTMLLIElement): void => {
-      car.querySelector('.stop-button')?.dispatchEvent(new Event('click'));
-    }
+  await Promise.allSettled(
+    Array.from(document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>).map(stopCar)
   );
+  document.querySelector('.race-button')?.removeAttribute('disabled');
 };
 
 export const sortTableHandler = async (event: Event): Promise<void> => {
