@@ -11,16 +11,14 @@ import {
 import store from '../store/store';
 import { Numbers } from '../types/enums';
 import { Car, RaceResult, SortOrder } from '../types/types';
-import textMessage from '../ui/text-message';
+import textMessage from '../ui/ui-creators/text-message';
 import generateCar from '../utilities/generator';
-import {
-  updateGarageSection,
-  updateWinnersSection,
-  updatePaginationDisabledStatus,
-} from '../ui/update-ui-components';
 import { race, startCar, stopCar } from '../utilities/car-actions';
-import cleanCarsList from '../ui/clean-cars-list';
+import cleanCarsList from '../ui/ui-utilities/clean-cars-list';
 import getUserInput from '../utilities/get-user-input';
+import updateGarageSection from '../ui/ui-updaters/update-garage-section';
+import updateWinnersSection from '../ui/ui-updaters/update-winners-section';
+import updatePaginationDisabledStatus from '../ui/ui-updaters/update-pagination-disabled-status';
 
 export const createHandler = async (event: Event): Promise<void> => {
   event.preventDefault();
@@ -98,6 +96,14 @@ export const stopHandler = async (event: Event): Promise<void> => {
     return;
   }
   await stopCar((event.target as HTMLButtonElement).closest('.car') as HTMLLIElement);
+};
+
+export const controlsHandler = async (event: Event): Promise<void> => {
+  const target: HTMLButtonElement = event.target as HTMLButtonElement;
+  if (target.classList.contains('select-button')) await selectHandler(event);
+  if (target.classList.contains('remove-button')) await deleteHandler(event);
+  if (target.classList.contains('start-button')) await startHandler(event);
+  if (target.classList.contains('stop-button')) await stopHandler(event);
 };
 
 export const generateHandler = async (): Promise<void> => {

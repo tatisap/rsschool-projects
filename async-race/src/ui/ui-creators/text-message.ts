@@ -1,4 +1,4 @@
-import { createParentUIElement, createUIElement } from './create-ui-components';
+import * as UI from './create-general-element';
 
 const close = (event: Event): void => {
   const message: HTMLDivElement = (event.target as HTMLButtonElement).closest(
@@ -8,18 +8,18 @@ const close = (event: Event): void => {
 };
 
 const open = (text: string): void => {
-  const closeButton: HTMLButtonElement = createUIElement({
+  const closeButton: HTMLButtonElement = UI.createUIElement({
     tag: 'button',
     classNames: ['close-button'],
     listenerInfo: { eventName: 'click', callback: close },
   });
-  const message: HTMLDivElement = createParentUIElement({
+  const message: HTMLDivElement = UI.createParentUIElement({
     tag: 'div',
     classNames: ['text-message'],
     innerText: text,
     children: [closeButton],
   });
-  const blackoutContainer: HTMLDivElement = createParentUIElement({
+  const blackoutContainer: HTMLDivElement = UI.createParentUIElement({
     tag: 'div',
     classNames: ['blackout'],
     children: [message],
