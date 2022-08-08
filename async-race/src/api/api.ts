@@ -17,7 +17,9 @@ import {
   IFinishResult,
 } from '../types/types';
 
-const getDatabaseItems = <T>(endpoint: string) => {
+const getDatabaseItems = <T>(
+  endpoint: string
+): ((queryParameters: IQueryParameters) => Promise<IInfo<T>>) => {
   return async (queryParameters: IQueryParameters): Promise<IInfo<T>> => {
     const response: Response = await fetch(makeUrl(BASE_URL, endpoint, undefined, queryParameters));
     return {
@@ -27,13 +29,13 @@ const getDatabaseItems = <T>(endpoint: string) => {
   };
 };
 
-const getDatabaseItemById = <T>(endpoint: string) => {
+const getDatabaseItemById = <T>(endpoint: string): ((id: string) => Promise<T>) => {
   return async (id: string): Promise<T> => {
     return (await fetch(makeUrl(BASE_URL, endpoint, id))).json();
   };
 };
 
-const createDatabaseItem = <T>(endpoint: string) => {
+const createDatabaseItem = <T>(endpoint: string): ((itemInfo: Omit<T, 'id'> | T) => Promise<T>) => {
   return async (itemInfo: Omit<T, 'id'> | T): Promise<T> => {
     return (
       await fetch(makeUrl(BASE_URL, endpoint), {
@@ -47,13 +49,15 @@ const createDatabaseItem = <T>(endpoint: string) => {
   };
 };
 
-const deleteDatabaseItem = <T>(endpoint: string) => {
+const deleteDatabaseItem = <T>(endpoint: string): ((id: string) => Promise<T>) => {
   return async (id: string): Promise<T> => {
     return (await fetch(makeUrl(BASE_URL, endpoint, id), { method: HttpMethods.DELETE })).json();
   };
 };
 
-const updateDatabaseItem = <T>(endpoint: string) => {
+const updateDatabaseItem = <T>(
+  endpoint: string
+): ((id: string, info: Omit<T, 'id'>) => Promise<T>) => {
   return async (id: string, info: Omit<T, 'id'>): Promise<T> => {
     return (
       await fetch(makeUrl(BASE_URL, endpoint, id), {
@@ -67,7 +71,7 @@ const updateDatabaseItem = <T>(endpoint: string) => {
   };
 };
 
-const changeEngineMode = <T>(status: EngineStatus) => {
+const changeEngineMode = <T>(status: EngineStatus): ((id: number) => Promise<T>) => {
   return async (id: number): Promise<T> => {
     return (
       await fetch(makeUrl(BASE_URL, ENDPOINTS.engine, undefined, { id, status }), {
@@ -87,7 +91,9 @@ const switchEngineToDriveMode = async (id: number): Promise<IFinishResult> => {
   return response.status === StatusCode.Ok ? response.json() : { success: false };
 };
 
-const isDatabaseItemExist = <T extends ICar | IWinner>(endpoint: string) => {
+const isDatabaseItemExist = <T extends ICar | IWinner>(
+  endpoint: string
+): ((id: string) => Promise<boolean>) => {
   return async (id: string): Promise<boolean> => {
     const itemsList: T[] = await (await fetch(makeUrl(BASE_URL, endpoint))).json();
     return !!itemsList.find((item: T): boolean => item.id === Number(id));
