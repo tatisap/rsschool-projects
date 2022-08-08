@@ -30,7 +30,7 @@ export const race = async (
 ): Promise<RaceResult> => {
   const firstResult: RaceResult = await Promise.race(carsPromises);
   if (!firstResult.success) {
-    const restCarsPromises = carsPromises.filter(
+    const restCarsPromises: Promise<RaceResult>[] = carsPromises.filter(
       (promise: Promise<RaceResult>, index: number): boolean => ids[index] !== firstResult.id
     );
     return race(

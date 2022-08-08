@@ -4,7 +4,10 @@ import { QueryParameters } from '../types/types';
 
 export const makeQueryString = (queryParameters: QueryParameters): string => {
   return `?${(Object.entries(queryParameters) as [keyof QueryParameters, number | string][])
-    .map((parameter): string => `${parameter[Numbers.Zero]}=${parameter[Numbers.One]}`)
+    .map(
+      (parameter: [keyof QueryParameters, number | string]): string =>
+        `${parameter[Numbers.Zero]}=${parameter[Numbers.One]}`
+    )
     .join(SEPARATOR.query)}`;
 };
 

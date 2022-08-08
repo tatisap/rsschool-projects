@@ -15,7 +15,7 @@ export const animate = (car: HTMLDivElement, distance: number, moveTime: number)
   const move = (timestamp: number): void => {
     if (!start) start = timestamp;
     const time: number = timestamp - start;
-    const passedDistance = Math.floor((time * distance) / moveTime);
+    const passedDistance: number = Math.floor((time * distance) / moveTime);
     carElement.style.transform = `translateX(${Math.min(passedDistance, distance)}px)`;
     if (passedDistance < distance) {
       id.value = window.requestAnimationFrame(move);

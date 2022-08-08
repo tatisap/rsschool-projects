@@ -8,7 +8,7 @@ const generateRandomCarBrand = (brandsList: string[], modelsList: string[]): str
   }`;
 
 const generateColor = (): string => {
-  let color = HASH_SYMBOL;
+  let color: string = HASH_SYMBOL;
   for (let i = Numbers.Zero; i < Numbers.Six; i += Numbers.One) {
     color += `${Math.floor(Math.random() * HEXADECIMAL_BASE).toString(HEXADECIMAL_BASE)}`;
   }

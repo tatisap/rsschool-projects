@@ -36,7 +36,7 @@ import store from '../store/store';
 
 export const createUIElement = <T extends HTMLElement>(parameters: UIElementParameters): T => {
   const { tag, classNames, innerText = NO_CONTENT, listenerInfo, attributeInfo } = parameters;
-  const element = document.createElement(tag) as T;
+  const element: T = document.createElement(tag) as T;
   element.classList.add(...classNames);
   element.textContent = innerText;
   if (listenerInfo !== undefined) {
@@ -52,7 +52,7 @@ export const createParentUIElement = <T extends HTMLElement>(
   parameters: UIElementParameters
 ): T => {
   const { children = [], id } = parameters;
-  const parentElement = createUIElement<T>(parameters);
+  const parentElement: T = createUIElement<T>(parameters);
   parentElement.append(...children);
   if (id !== undefined) parentElement.id = id;
   return parentElement;
@@ -64,7 +64,7 @@ export const createInput = (
   name: string,
   placeholder: string = NO_CONTENT
 ): HTMLInputElement => {
-  const input = document.createElement('input');
+  const input: HTMLInputElement = document.createElement('input');
   input.type = type;
   input.name = name;
   input.classList.add(className);
@@ -92,7 +92,7 @@ export const createTabsPanel = (tabsText: string[]): HTMLElement =>
   createParentUIElement<HTMLElement>({
     tag: 'header',
     classNames: ['tabs'],
-    children: tabsText.map((tabText, index) => {
+    children: tabsText.map((tabText: string, index: number): HTMLButtonElement => {
       const tab = createUIElement<HTMLButtonElement>({
         tag: 'button',
         classNames: ['tab-button'],
@@ -109,9 +109,9 @@ export const createPagination = (
   currentPage: number,
   maxPage: number
 ): HTMLDivElement => {
-  const previousButton = createActionButton('previous');
+  const previousButton: HTMLButtonElement = createActionButton('previous');
   if (currentPage === Numbers.One) previousButton.setAttribute('disabled', 'true');
-  const nextButton = createActionButton('next');
+  const nextButton: HTMLButtonElement = createActionButton('next');
   if (currentPage === maxPage) nextButton.setAttribute('disabled', 'true');
   return createParentUIElement<HTMLDivElement>({
     tag: 'div',
@@ -154,7 +154,7 @@ const createCarControlButtons = (): HTMLDivElement =>
   });
 
 export const createCarUIElement = ({ name, color, id }: Car): HTMLLIElement => {
-  const carImageElement = createUIElement({
+  const carImageElement: HTMLDivElement = createUIElement({
     tag: 'div',
     classNames: ['car__image', 'car__start-point'],
   });
@@ -192,7 +192,7 @@ export const createGarageSection = (
   garageInfo: Info<Car>,
   pageNumber: number,
   maxPageNumber: number
-) =>
+): HTMLElement =>
   createParentUIElement({
     tag: 'section',
     id: 'garage',
@@ -212,7 +212,9 @@ export const createGarageSection = (
       createParentUIElement({
         tag: 'ul',
         classNames: ['cars-list'],
-        children: garageInfo.content.map((carInfo) => createCarUIElement(carInfo)),
+        children: garageInfo.content.map(
+          (carInfo: Car): HTMLLIElement => createCarUIElement(carInfo)
+        ),
       }),
       createPagination(garagePaginationHandler, pageNumber, maxPageNumber),
     ],
@@ -224,10 +226,10 @@ export const createTableRow = (
   cellColor: string,
   cellsClassList?: string[]
 ): HTMLTableRowElement => {
-  const row = document.createElement('tr');
+  const row: HTMLTableRowElement = document.createElement('tr');
   row.append(
-    ...cellsInnerText.map((cellText: string, index: number) => {
-      const cell = document.createElement(cellTag);
+    ...cellsInnerText.map((cellText: string, index: number): HTMLElement => {
+      const cell: HTMLElement = document.createElement(cellTag);
       cell.textContent = cellText;
       if (index === Numbers.One) cell.style.backgroundColor = cellColor;
       if (cellsClassList !== undefined) cell.classList.add(cellsClassList[index]);
@@ -238,7 +240,7 @@ export const createTableRow = (
 };
 
 export const makeTableHead = (): HTMLElement => {
-  const thead = document.createElement('thead');
+  const thead: HTMLElement = document.createElement('thead');
   thead.classList.add('table__head', 'head');
   thead.addEventListener('click', sortTableHandler);
   thead.append(
@@ -248,22 +250,23 @@ export const makeTableHead = (): HTMLElement => {
 };
 
 export const makeTableContent = (winnersCarInfo: (Winner & Car)[]): HTMLElement => {
-  const tbody = document.createElement('tbody');
+  const tbody: HTMLElement = document.createElement('tbody');
   tbody.append(
-    ...winnersCarInfo.map((winnerInfo, index) =>
-      createTableRow(
-        'td',
-        [
-          `${
-            index + Numbers.One + (store.winnersCurrentPage - Numbers.One) * MAX_WINNERS_PER_PAGE
-          }`,
-          '',
-          `${winnerInfo.name}`,
-          `${winnerInfo.wins}`,
-          `${winnerInfo.time}`,
-        ],
-        winnerInfo.color
-      )
+    ...winnersCarInfo.map(
+      (winnerInfo: Winner & Car, index: number): HTMLTableRowElement =>
+        createTableRow(
+          'td',
+          [
+            `${
+              index + Numbers.One + (store.winnersCurrentPage - Numbers.One) * MAX_WINNERS_PER_PAGE
+            }`,
+            '',
+            `${winnerInfo.name}`,
+            `${winnerInfo.wins}`,
+            `${winnerInfo.time}`,
+          ],
+          winnerInfo.color
+        )
     )
   );
   return tbody;
@@ -282,7 +285,7 @@ export const createWinnersSection = (
   totalAmount: string,
   pageNumber: number,
   maxPageNumber: number
-) =>
+): HTMLElement =>
   createParentUIElement({
     tag: 'section',
     id: 'winners',

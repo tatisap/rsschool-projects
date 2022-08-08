@@ -106,7 +106,7 @@ export const generateHandler = async (): Promise<void> => {
   await Promise.all(
     new Array(GENERATOR_COUNTER)
       .fill(generateCar)
-      .map((generator: () => Car) => API.createCar(generator()))
+      .map((generator: () => Car): Promise<Car> => API.createCar(generator()))
   );
   cleanCarsList();
   await updateGarageSection();
@@ -148,9 +148,11 @@ export const resetRaceHandler = (): void => {
   document.querySelector('.reset-button')?.setAttribute('disabled', 'true');
   document.querySelector('.race-button')?.removeAttribute('disabled');
   store.isRaceStarted = false;
-  document
-    .querySelectorAll('.car')
-    .forEach((car) => car.querySelector('.stop-button')?.dispatchEvent(new Event('click')));
+  (document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>).forEach(
+    (car: HTMLLIElement): void => {
+      car.querySelector('.stop-button')?.dispatchEvent(new Event('click'));
+    }
+  );
 };
 
 export const sortTableHandler = async (event: Event): Promise<void> => {
@@ -162,7 +164,7 @@ export const sortTableHandler = async (event: Event): Promise<void> => {
   const sortOrder: SortOrder = tableHeadCell.dataset.order === 'ASC' ? 'DESC' : 'ASC';
   tableHeadCell.dataset.order = sortOrder;
   (document.querySelectorAll('th') as NodeListOf<HTMLTableCellElement>).forEach(
-    (cell: HTMLTableCellElement) => cell.classList.remove('ascending', 'descending')
+    (cell: HTMLTableCellElement): void => cell.classList.remove('ascending', 'descending')
   );
   tableHeadCell.classList.add(sortOrder === 'ASC' ? 'ascending' : 'descending');
   if (tableHeadCell.classList.contains('car-wins')) {

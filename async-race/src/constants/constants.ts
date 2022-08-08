@@ -97,3 +97,5 @@ export const TEXT_MESSAGE_CONTENT = {
   noInput: 'Please, enter a name',
   noSelectedCar: 'Please, select a car',
 };
+
+export const PAGE_NUMBER_TEXT = 'Page #';
