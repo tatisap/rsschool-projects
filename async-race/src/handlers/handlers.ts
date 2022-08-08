@@ -227,7 +227,6 @@ export const race = async (
 
 export const raceHandler = async (): Promise<void> => {
   document.querySelector('.race-button')?.setAttribute('disabled', 'true');
-  document.querySelector('.reset-button')?.removeAttribute('disabled');
   store.isRaceStarted = true;
   const carsElements = Array.from(document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>);
   const raceCarsPromises = carsElements.map(startCar);
@@ -251,6 +250,7 @@ export const raceHandler = async (): Promise<void> => {
   } else {
     await API.createWinner({ id: Number(winnerId), wins: Numbers.One, time: winnerTime });
   }
+  document.querySelector('.reset-button')?.removeAttribute('disabled');
   textMessage.open(
     `${TEXT_MESSAGE_CONTENT.showWinner} ${(await API.getCarById(winnerId)).name} (${winnerTime}s)`
   );

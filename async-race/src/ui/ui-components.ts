@@ -31,7 +31,7 @@ import {
   Winner,
 } from '../types/types';
 import { createPageNumberText, createSectionTitleText } from '../utilities/ui-text-makers';
-import { openTabContent } from './open-tab-content';
+import openTabContent from './open-tab-content';
 import store from '../store/store';
 
 export const createUIElement = <T extends HTMLElement>(parameters: UIElementParameters): T => {

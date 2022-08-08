@@ -1,4 +1,4 @@
-export const openTabContent = (event: Event): void => {
+export default (event: Event): void => {
   if (!(event.target as HTMLElement).classList.contains('tab-button')) return;
   const tab = event.target as HTMLButtonElement;
   (document.querySelectorAll('.tab-button') as NodeListOf<HTMLButtonElement>).forEach(
@@ -15,5 +15,3 @@ export const openTabContent = (event: Event): void => {
     'section_visible'
   );
 };
-
-export const open = (): void => undefined;
