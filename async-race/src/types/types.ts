@@ -81,3 +81,16 @@ export interface RaceResult {
   id?: string;
   time?: number;
 }
+
+export interface IStore {
+  cars: Car[];
+  winners: Winner[];
+  carsAmount: number;
+  winnersAmount: number;
+  garageCurrentPage: number;
+  winnersCurrentPage: number;
+  animate: { [id: string]: AnimationId };
+  sortKey: SortKey;
+  sortOrder: SortOrder;
+  isRaceStarted: boolean;
+}
