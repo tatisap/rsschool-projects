@@ -41,7 +41,7 @@ export const race = async (
   carsPromises: Promise<IRaceResult>[],
   carsIds: string[]
 ): Promise<IRaceResult> => {
-  if (carsPromises.length === Numbers.Zero) return { success: false };
+  if (!carsPromises.length) return { success: false };
   const firstResult: IRaceResult = await Promise.race(carsPromises);
   if (!firstResult.success) {
     const restCarsPromises: Promise<IRaceResult>[] = carsPromises.filter(

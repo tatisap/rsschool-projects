@@ -7,10 +7,10 @@ export const createUIElement = <T extends HTMLElement>(parameters: IUIElementPar
   const element: T = document.createElement(tag) as T;
   element.classList.add(...classNames);
   element.textContent = innerText;
-  if (listenerInfo !== undefined) {
+  if (listenerInfo) {
     element.addEventListener(listenerInfo.eventName, listenerInfo.callback);
   }
-  if (attributeInfo !== undefined) {
+  if (attributeInfo) {
     element.setAttribute(attributeInfo[Numbers.Zero], attributeInfo[Numbers.One]);
   }
   return element;
