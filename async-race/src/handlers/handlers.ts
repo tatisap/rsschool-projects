@@ -160,10 +160,10 @@ export const raceHandler = async (): Promise<void> => {
 
 export const resetRaceHandler = async (): Promise<void> => {
   (document.querySelector('.reset-button') as HTMLButtonElement).setAttribute('disabled', 'true');
-  store.isRaceStarted = false;
   await Promise.allSettled(
     Array.from(document.querySelectorAll('.car') as NodeListOf<HTMLLIElement>).map(stopCar)
   );
+  store.isRaceStarted = false;
   (document.querySelector('.race-button') as HTMLButtonElement).removeAttribute('disabled');
 };
 
