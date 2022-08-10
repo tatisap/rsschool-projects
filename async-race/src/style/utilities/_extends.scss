@@ -10,6 +10,11 @@
   list-style: none;
 }
 
+%normalized-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 %interactive {
   cursor: pointer;
   transition: 0.5s;

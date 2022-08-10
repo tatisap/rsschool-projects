@@ -7,6 +7,7 @@ import { createPageNumberText, createSectionTitleText } from '../../utilities/te
 import { SECTION_TITLE_TEXT } from '../../constants/others-constants';
 import createCarUIElement from './create-car-ui-element';
 import createPagination from './create-pagination';
+import createFooter from './create-footer';
 
 const createGarageSectionHeader = (): HTMLDivElement =>
   createParentUIElement<HTMLDivElement>({
@@ -49,6 +50,7 @@ export default (garageInfo: IInfo<ICar>, pageNumber: number, maxPageNumber: numb
         ),
       }),
       createPagination(handlers.garagePaginationHandler, pageNumber, maxPageNumber),
+      createFooter(),
     ],
     listenerInfo: { eventName: 'click', callback: handlers.controlsHandler },
   });

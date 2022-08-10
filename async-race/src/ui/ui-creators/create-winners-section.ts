@@ -6,6 +6,7 @@ import createTableHead from './create-table-head';
 import { createParentUIElement, createUIElement } from './create-general-element';
 import createPagination from './create-pagination';
 import createTableContent from './create-table-content';
+import createFooter from './create-footer';
 
 const createWinnersTable = (winnersCarInfo: (IWinner & ICar)[]): HTMLTableElement => {
   return createParentUIElement<HTMLTableElement>({
@@ -38,5 +39,6 @@ export default (
       }),
       createWinnersTable(winnersCarInfo),
       createPagination(handlers.winnersPaginationHandler, pageNumber, maxPageNumber),
+      createFooter(),
     ],
   });

@@ -76,3 +76,8 @@ export const MAX_CARS_PER_PAGE = 7;
 export const MAX_WINNERS_PER_PAGE = 10;
 export const PAGE_NUMBER_TEXT = 'Page #';
 export const SERVER_CONTENT_TYPE = 'application/json';
+export const FOOTER_INNER_TEXT = {
+  year: '© 2022 ',
+  github: 'tatisap',
+};
+export const GITHUB_LINK = 'https://github.com/tatisap';

@@ -1,0 +1,34 @@
+.footer {
+  // position: fixed;
+  // bottom: 0;
+  // z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // width: 100vw;
+  padding-top: 20px;
+  background-color: $light-grey;
+  font-size: 1.1rem;
+  .github-link {
+    @extend %normalized-link;
+    @extend %interactive;
+    &:hover,
+    &:focus {
+      @extend %interactive;
+      text-decoration: underline;
+    }
+  }
+  .rs-link {
+    @extend %interactive;
+    width: 80px;
+    height: 37px;
+    background-image: $rs-icon;
+    background-size: contain;
+    background-repeat: no-repeat;
+    &:hover,
+    &:focus {
+      @extend %interactive;
+      transform: scale(105%);
+    }
+  }
+}
