@@ -5,9 +5,7 @@ import { createTranslateValueText } from './text-makers';
 export const getDistanceBetweenTwoElements = (
   elementA: HTMLElement,
   elementB: HTMLElement
-): number => {
-  return Math.abs(elementA.getBoundingClientRect().x - elementB.getBoundingClientRect().x);
-};
+): number => Math.abs(elementA.getBoundingClientRect().x - elementB.getBoundingClientRect().x);
 
 export const animate = (
   car: HTMLDivElement,
